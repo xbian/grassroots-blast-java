@@ -29,12 +29,12 @@
   <display-name>MISO External LIMS</display-name>
 
     <servlet>
-      <servlet-name>miso-external</servlet-name>
+      <servlet-name>wis-web</servlet-name>
       <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
       <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-      <servlet-name>miso-external</servlet-name>
-      <url-pattern>/miso-external/*</url-pattern>
+      <servlet-name>wis-web</servlet-name>
+      <url-pattern>/wis-web/*</url-pattern>
     </servlet-mapping>
 </web-app>

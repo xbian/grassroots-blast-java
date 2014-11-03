@@ -98,12 +98,12 @@
 <table border="0" width="100%">
     <tr>
         <td class="headertable" align="left" onclick="window.location.href='<c:url value='/'/>'">
-            <img src="<c:url value='/styles/images/miso_bowl1_logo-tm.png'/>" alt="MISO Logo" name="logo"
+            <img src="<c:url value='/styles/images/brand_logo.png'/>" alt="MISO Logo" name="logo"
                  border="0" id="misologo"/>
         </td>
         <td class="headertable" align="right" onclick="window.location.href='<c:url value='/'/>'">
-            <img src="<c:url value='/styles/images/brand_logo.png'/>" alt="Brand Logo" name="logo"
-                 border="0" id="brandlogo" />
+            <%--<img src="<c:url value='/styles/images/brand_logo.png'/>" alt="Brand Logo" name="logo"--%>
+                 <%--border="0" id="brandlogo" />--%>
 
         </td>
     </tr>
