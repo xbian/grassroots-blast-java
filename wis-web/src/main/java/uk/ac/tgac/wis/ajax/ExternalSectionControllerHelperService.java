@@ -21,7 +21,7 @@
  * *********************************************************************
  */
 
-package uk.ac.tgac.bbsrc.miso.external.ajax;
+package uk.ac.tgac.wis.ajax;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -39,7 +39,6 @@ import javax.crypto.spec.SecretKeySpec;
 import javax.servlet.http.HttpSession;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SignatureException;
 

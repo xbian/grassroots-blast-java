@@ -21,7 +21,7 @@
  * *********************************************************************
  */
 
-package uk.ac.bbsrc.tgac.miso.spring.ajax.multipart;
+package uk.ac.tgac.wis.spring.ajax.multipart;
 
 import net.sourceforge.fluxion.ajax.beans.util.FileUploadListener;
 import org.apache.commons.fileupload.FileUpload;
