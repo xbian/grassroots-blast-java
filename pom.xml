@@ -52,6 +52,7 @@
               <report>project-team</report>
               <report>cim</report>
               <report>license</report>
+              <report>scm</report>
               <report>index</report>
             </reports>
           </reportSet>
@@ -93,6 +94,18 @@
       <properties/>
     </developer>
   </developers>
+
+    <scm>
+        <connection>
+            scm:git:https://stash.tgac.ac.uk/wis/wis-webapp.git
+        </connection>
+        <developerConnection>
+            scm:git:ssh://git@stash.tgac.ac.uk:49990/wis/wis-webapp.git
+        </developerConnection>
+        <url>
+            https://stash.tgac.ac.uk/WIS/
+        </url>
+    </scm>
 
   <!-- Maven repository deploy -->
   <distributionManagement>
