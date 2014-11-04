@@ -39,9 +39,13 @@
     <jsp:useBean id="timestamp" class="java.util.Date" scope="request"/>
 
     <link rel="stylesheet" href="<c:url value='/styles/style.css?ts=${timestamp.time}'/>" type="text/css">
-    <title>MISO LIMS External<c:if test="${not empty title}">- ${title}</c:if></title>
+    <title>Wheat Information System Portal <c:if test="${not empty title}">- ${title}</c:if></title>
     <script type="text/javascript" src="<c:url value='/scripts/scriptaculous/prototype.js'/>"></script>
     <script type="text/javascript" src="<c:url value='/scripts/fluxion-ajax/fluxion-ajax-compiled.js?ts=${timestamp.time}'/>"></script>
+
+    <!-- bootstrap -->
+    <script src="<c:url value='/scripts/bootstrap/bootstrap.min.js?ts=${timestamp.time}'/>" type="text/javascript"></script>
+    <link href="<c:url value='/scripts/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet" type="text/css">
 
     <!--Scriptaculous JS scripts below -->
     <script type="text/javascript" src="<c:url value='/scripts/scriptaculous/scriptaculous.js'/>"></script>
@@ -98,12 +102,13 @@
 <table border="0" width="100%">
     <tr>
         <td class="headertable" align="left" onclick="window.location.href='<c:url value='/'/>'">
-            <img src="<c:url value='/styles/images/brand_logo.png'/>" alt="MISO Logo" name="logo"
-                 border="0" id="misologo"/>
+            <%--<img src="<c:url value='/styles/images/brand_logo.png'/>" alt="MISO Logo" name="logo"--%>
+                 <%--border="0" id="misologo"/>--%>
+            Wheat Information System Portal
         </td>
         <td class="headertable" align="right" onclick="window.location.href='<c:url value='/'/>'">
-            <%--<img src="<c:url value='/styles/images/brand_logo.png'/>" alt="Brand Logo" name="logo"--%>
-                 <%--border="0" id="brandlogo" />--%>
+            <img src="<c:url value='/styles/images/brand_logo.png'/>" alt="Brand Logo" name="logo"
+                 border="0" id="brandlogo" />
 
         </td>
     </tr>
@@ -126,12 +131,7 @@
 
 <div id="navtabs">
     <script type="text/javascript">
-        <%-- checkUser('<sec:authentication property="principal.username"/>'); --%>
     </script>
-    <%--<ul>--%>
-            <%--<li><a href="<c:url value="/"/>"><span>Home</span></a></li>--%>
-
-    <%--</ul>--%>
 
 </div>
 
