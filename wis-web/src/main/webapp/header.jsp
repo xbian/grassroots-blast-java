@@ -1,26 +1,3 @@
-<%--
-  ~ Copyright (c) 2012. The Genome Analysis Centre, Norwich, UK
-  ~ MISO project contacts: Robert Davey, Mario Caccamo @ TGAC
-  ~ **********************************************************************
-  ~
-  ~ This file is part of MISO.
-  ~
-  ~ MISO is free software: you can redistribute it and/or modify
-  ~ it under the terms of the GNU General Public License as published by
-  ~ the Free Software Foundation, either version 3 of the License, or
-  ~ (at your option) any later version.
-  ~
-  ~ MISO is distributed in the hope that it will be useful,
-  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
-  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  ~ GNU General Public License for more details.
-  ~
-  ~ You should have received a copy of the GNU General Public License
-  ~ along with MISO.  If not, see <http://www.gnu.org/licenses/>.
-  ~
-  ~ **********************************************************************
-  --%>
-
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 
@@ -88,57 +65,47 @@
 
     <script type="text/javascript" src="<c:url value='/scripts/multi_select_drag_drop.js?ts=${timestamp.time}'/>"></script>
 
-    <link rel="shortcut icon" href="<c:url value='/styles/images/favicon.ico'/>" type="image/x-icon"/>
+    <%--<link rel="shortcut icon" href="<c:url value='/styles/images/favicon.ico'/>" type="image/x-icon"/>--%>
 
     <!--drop down menu -->
 
     <script src="<c:url value='/scripts/menus.js?ts=${timestamp.time}'/>" type="text/javascript"></script>
 
-    <!-- refresh page every 30mins and 1 sec -->
-    <!--<meta http-equiv="refresh" content="1801"/>-->
-
 </head>
 <body>
-<table border="0" width="100%">
-    <tr>
-        <td class="headertable" align="left" onclick="window.location.href='<c:url value='/'/>'">
-            <%--<img src="<c:url value='/styles/images/brand_logo.png'/>" alt="MISO Logo" name="logo"--%>
-                 <%--border="0" id="misologo"/>--%>
-            Wheat Information System Portal
-        </td>
-        <td class="headertable" align="right" onclick="window.location.href='<c:url value='/'/>'">
-            <img src="<c:url value='/styles/images/brand_logo.png'/>" alt="Brand Logo" name="logo"
-                 border="0" id="brandlogo" />
 
-        </td>
-    </tr>
-</table>
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Wheat Information System</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Portal Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <%--<li class="dropdown">--%>
+                    <%--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>--%>
+                    <%--<ul class="dropdown-menu" role="menu">--%>
+                        <%--<li><a href="#">Action</a></li>--%>
+                        <%--<li><a href="#">Another action</a></li>--%>
+                        <%--<li><a href="#">Something else here</a></li>--%>
+                        <%--<li class="divider"></li>--%>
+                        <%--<li class="dropdown-header">Nav header</li>--%>
+                        <%--<li><a href="#">Separated link</a></li>--%>
+                        <%--<li><a href="#">One more separated link</a></li>--%>
+                    <%--</ul>--%>
+                <%--</li>--%>
+            </ul>
+            <img class ="navbar-nav navbar-right" style="height:50px;" src="<c:url value='/images/tgac_logo.png'/>"/>
+        </div>
+    </div>
+</nav>
 
-<script type="text/javascript">
-    setBaseUrl("<c:url value="/"/>");
-    jQuery(function() {
-        //all hover and click logic for buttons
-        jQuery(".fg-button:not(.ui-state-disabled)")
-                .hover(
-                function() {
-                    jQuery(this).addClass("ui-state-hover");
-                },
-                function() {
-                    jQuery(this).removeClass("ui-state-hover");
-                })
-    });
-</script>
-
-<div id="navtabs">
-    <script type="text/javascript">
-    </script>
-
-</div>
-
-<div id="content">
-<c:if test="${not empty error}">
-    <br/>
-
-    <div class="flasherror">${error}</div>
-    <br/>
-</c:if>
