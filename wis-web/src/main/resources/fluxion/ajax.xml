@@ -33,8 +33,8 @@
     </bean>
 
 
-    <bean id="externalSectionControllerHelperService"
-          class="uk.ac.tgac.wis.spring.ajax.ExternalSectionControllerHelperService">
+    <bean id="wisControllerHelperService"
+          class="uk.ac.tgac.wis.WISControllerHelperService">
     </bean>
 
 </beans>

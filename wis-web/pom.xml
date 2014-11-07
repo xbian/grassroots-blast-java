@@ -47,7 +47,7 @@
                 </artifactItem>
               </artifactItems>
               <excludes>META-INF</excludes>
-              <outputDirectory>target/miso-external/scripts/fluxion-ajax/</outputDirectory>
+              <outputDirectory>target/wis-web/scripts/fluxion-ajax/</outputDirectory>
               <overWriteReleases>true</overWriteReleases>
             </configuration>
           </execution>

@@ -24,7 +24,7 @@
 //stop browser caching
 jQuery.ajaxSetup({cache: false});
 
-var ajaxurl = '/miso-external/miso-external/fluxion.ajax';
+var ajaxurl = '/wis-web/wis-web/fluxion.ajax';
 
 var Utils = Utils || {
   /** Maps a form element's child input elements to a JSON object. */
