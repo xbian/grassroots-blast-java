@@ -30,7 +30,7 @@
                     <input type="text" class="form-control" id="searchESStr"/>
 
           <span class="input-group-btn">
-          <button type="button" class="btn btn-default" onclick="searchElasticserach();">Search Solr</button>
+          <button type="button" class="btn btn-default" onclick="searchElasticserach();">Search ElasticSearch</button>
           </span>
                 </div>
             </div>

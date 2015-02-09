@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 @Controller
 @RequestMapping("/rest/")
-@SessionAttributes("rest")
+//@SessionAttributes("services")
 public class WISRestController {
 
   @RequestMapping(value = "services", method = RequestMethod.GET)
