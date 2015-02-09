@@ -30,7 +30,7 @@
                     <input type="text" class="form-control" id="searchESStr"/>
 
           <span class="input-group-btn">
-          <button type="button" class="btn btn-default" onclick="searchElasticserach();">Search ElasticSearch</button>
+          <button type="button" class="btn btn-default" onclick="searchElasticsearch();">Search ElasticSearch</button>
           </span>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                 }
         );
     }
-    function searchElasticserach() {
+    function searchElasticsearch() {
         jQuery('#solrResult').html('');
         Fluxion.doAjax(
                 'wisControllerHelperService',
