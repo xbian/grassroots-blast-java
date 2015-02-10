@@ -73,7 +73,7 @@
                     'url': ajaxurl
                 },
                 {'doOnSuccess': function (json) {
-                    jQuery('#solrResult').append(json.json);
+                    jQuery('#solrResult').append(json.toString());
                 }
                 }
         );
