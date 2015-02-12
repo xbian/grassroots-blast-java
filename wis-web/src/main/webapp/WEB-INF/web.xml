@@ -37,4 +37,9 @@
       <servlet-name>wis-web</servlet-name>
       <url-pattern>/wis-web/*</url-pattern>
     </servlet-mapping>
+
+  <!--<filter-mapping>-->
+    <!--<filter-name>OncePerRequestFilter</filter-name>-->
+    <!--<url-pattern>/wis-web/rest/*</url-pattern>-->
+  <!--</filter-mapping>-->
 </web-app>

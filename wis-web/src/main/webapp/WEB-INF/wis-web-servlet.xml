@@ -33,6 +33,7 @@
 
     <tx:annotation-driven proxy-target-class="true" />
 
+    <context:component-scan annotation-config="true" base-package="uk.ac.tgac.wis.controller"/>
     <context:component-scan annotation-config="true" base-package="net.sourceforge.fluxion.ajax"/>
 
 

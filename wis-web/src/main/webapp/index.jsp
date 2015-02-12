@@ -43,6 +43,9 @@
 </div>
 
 <script type="text/javascript">
+    jQuery(document).ready(function () {
+    });
+
     function searchSolr() {
         jQuery('#solrResult').html('');
         Fluxion.doAjax(
