@@ -1,9 +1,19 @@
 package uk.ac.tgac.wis.controller.rest;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import net.sourceforge.fluxion.ajax.util.JSONUtils;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  *
@@ -25,7 +35,7 @@ public class WISRestController {
               "   \"results\": [\n" +
               "     {\n" +
               "       \"protocol\": \"http\",\n" +
-              "       \"value\": \"http://v0214.nbi.ac.uk:8080/wis-web/wis-web/rest/searchsolor/query\"\n" +
+              "       \"value\": \"http://v0214.nbi.ac.uk:8080/wis-web/wis-web/rest/searchsolr/query\"\n" +
               "     }\n" +
               "   ]\n" +
               " }");
@@ -42,28 +52,65 @@ public class WISRestController {
     return "[" + sb.toString() + "]";
   }
 
-  @RequestMapping(value = "searchsolr", method = RequestMethod.GET)
+  @RequestMapping(value = "searchsolr/{query}", method = RequestMethod.GET)
   public
   @ResponseBody
-  String searchsolr() throws IOException {
-    StringBuilder sb = new StringBuilder();
-    sb.append("");
-    return "[" + sb.toString() + "]";
+  String searchsolr(@PathVariable String query) throws IOException {
+    JSONObject response = new JSONObject();
+    JSONObject jsonObject = new JSONObject();
+    JSONArray jarray = new JSONArray();
+    try {
+      String solrSearch = "http://v0214.nbi.ac.uk:8983/solr/select?q="+query+"&wt=json";
+      HttpClient client = new DefaultHttpClient();
+      HttpGet get = new HttpGet(solrSearch);
+      HttpResponse responseGet = client.execute(get);
+      HttpEntity resEntityGet = responseGet.getEntity();
+      if (resEntityGet != null) {
+        BufferedReader rd = new BufferedReader(new InputStreamReader(resEntityGet.getContent()));
+        String line = "";
+        while ((line = rd.readLine()) != null) {
+          jsonObject = JSONObject.fromObject(line);
+        }
+      }
+
+      jarray = jsonObject.getJSONObject("response").getJSONArray("docs");
+      response.put("service", "Solr indexing search service");
+      response.put("status", 5);
+//      response.put("numFound", jsonObject.getJSONObject("response").getInt("numFound"));
+      response.put("results",jarray);
+      return response.toString();
+    }
+    catch (Exception e) {
+      return ("Failed: " + e.getMessage());
+    }
   }
 
-  @RequestMapping(value = "searchelasticsearch", method = RequestMethod.GET)
+  @RequestMapping(value = "searchelasticsearch/{query}", method = RequestMethod.GET)
   public
   @ResponseBody
-  String searchelasticsearch() throws IOException {
-    StringBuilder sb = new StringBuilder();
-    sb.append("");
-    return "[" + sb.toString() + "]";
+  String searchelasticsearch(@PathVariable String query) throws IOException {
+    JSONObject jsonObject = new JSONObject();
+    try {
+      String solrSearch = "http://v0214.nbi.ac.uk:9200/test/external/1";
+      HttpClient client = new DefaultHttpClient();
+      HttpGet get = new HttpGet(solrSearch);
+      HttpResponse responseGet = client.execute(get);
+      HttpEntity resEntityGet = responseGet.getEntity();
+      if (resEntityGet != null) {
+        BufferedReader rd = new BufferedReader(new InputStreamReader(resEntityGet.getContent()));
+        String line = "";
+        while ((line = rd.readLine()) != null) {
+          jsonObject = JSONObject.fromObject(line);
+        }
+      }
+
+
+      return jsonObject.toString();
+    }
+    catch (Exception e) {
+      return ("Failed: " + e.getMessage());
+    }
   }
 
-//  public String jsonRestProjectList(Long projectId) throws IOException {
-//    StringBuilder sb = new StringBuilder();
-//
-//    return "{" + sb.toString() + "}";
-//  }
 
 }
