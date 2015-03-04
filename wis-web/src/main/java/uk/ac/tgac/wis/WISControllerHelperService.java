@@ -62,8 +62,9 @@ public class WISControllerHelperService {
     JSONObject response = new JSONObject();
     JSONObject jsonObject = new JSONObject();
     try {
-      String searchStr = json.getString("searchStr");
-      String solrSearch = "http://v0214.nbi.ac.uk:9200/test/external/1?pretty";
+      String name = json.getString("name");
+      String value = json.getString("value");
+      String solrSearch = "http://v0214.nbi.ac.uk:9200/_search?q="+name+":"+value;
       HttpClient client = new DefaultHttpClient();
       HttpGet get = new HttpGet(solrSearch);
       HttpResponse responseGet = client.execute(get);

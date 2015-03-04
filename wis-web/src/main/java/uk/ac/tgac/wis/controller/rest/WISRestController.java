@@ -45,7 +45,7 @@ public class WISRestController {
               "   \"results\": [\n" +
               "     {\n" +
               "       \"protocol\": \"http\",\n" +
-              "       \"value\": \"http://v0214.nbi.ac.uk:8080/wis-web/wis-web/rest/searchelasticsearch/query\"\n" +
+              "       \"value\": \"http://v0214.nbi.ac.uk:8080/wis-web/wis-web/rest/searchelasticsearch/name/value\"\n" +
               "     }\n" +
               "   ]\n" +
               " }");
@@ -76,7 +76,6 @@ public class WISRestController {
       jarray = jsonObject.getJSONObject("response").getJSONArray("docs");
       response.put("service", "Solr indexing search service");
       response.put("status", 5);
-//      response.put("numFound", jsonObject.getJSONObject("response").getInt("numFound"));
       response.put("results",jarray);
       return response.toString();
     }
@@ -85,13 +84,14 @@ public class WISRestController {
     }
   }
 
-  @RequestMapping(value = "searchelasticsearch/{query}", method = RequestMethod.GET)
+  @RequestMapping(value = "searchelasticsearch/{name}/{value}", method = RequestMethod.GET)
   public
   @ResponseBody
-  String searchelasticsearch(@PathVariable String query) throws IOException {
+  String searchelasticsearch(@PathVariable String name, @PathVariable String value) throws IOException {
+    JSONObject response = new JSONObject();
     JSONObject jsonObject = new JSONObject();
     try {
-      String solrSearch = "http://v0214.nbi.ac.uk:9200/test/external/1";
+      String solrSearch = "http://v0214.nbi.ac.uk:9200/_search?q="+name+":"+value;
       HttpClient client = new DefaultHttpClient();
       HttpGet get = new HttpGet(solrSearch);
       HttpResponse responseGet = client.execute(get);
@@ -100,12 +100,15 @@ public class WISRestController {
         BufferedReader rd = new BufferedReader(new InputStreamReader(resEntityGet.getContent()));
         String line = "";
         while ((line = rd.readLine()) != null) {
+          System.out.println(line);
           jsonObject = JSONObject.fromObject(line);
         }
       }
+      response.put("service", "ElasticSearch indexing search service");
+      response.put("status", 5);
+      response.put("results",jsonObject);
 
-
-      return jsonObject.toString();
+      return response.toString();
     }
     catch (Exception e) {
       return ("Failed: " + e.getMessage());

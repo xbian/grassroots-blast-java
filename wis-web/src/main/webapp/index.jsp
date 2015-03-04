@@ -27,7 +27,8 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="input-group">
-                    <input type="text" class="form-control" id="searchESStr"/>
+                    <input type="text" class="form-control" id="name"/>
+                    <input type="text" class="form-control" id="value"/>
 
           <span class="input-group-btn">
           <button type="button" class="btn btn-default" onclick="searchElasticsearch();">Search ElasticSearch</button>
@@ -72,7 +73,8 @@
                 'wisControllerHelperService',
                 'searchElasticSearch',
                 {
-                    'searchStr': jQuery('#searchESStr').val(),
+                    'name': jQuery('#name').val(),
+                    'value': jQuery('#value').val(),
                     'url': ajaxurl
                 },
                 {'doOnSuccess': function (json) {
