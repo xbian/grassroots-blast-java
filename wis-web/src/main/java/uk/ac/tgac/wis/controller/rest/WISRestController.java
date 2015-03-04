@@ -88,8 +88,8 @@ public class WISRestController {
   public
   @ResponseBody
   String searchelasticsearch(@PathVariable String name, @PathVariable String value) throws IOException {
-    JSONObject response = new JSONObject();
-    JSONObject jsonObject = new JSONObject();
+    StringBuilder response = new StringBuilder();
+    String esresult = "";
     try {
       String solrSearch = "http://v0214.nbi.ac.uk:9200/_search?q="+name+":"+value;
       HttpClient client = new DefaultHttpClient();
@@ -100,13 +100,12 @@ public class WISRestController {
         BufferedReader rd = new BufferedReader(new InputStreamReader(resEntityGet.getContent()));
         String line = "";
         while ((line = rd.readLine()) != null) {
-          System.out.println(line);
-          jsonObject = JSONObject.fromObject(line);
+          esresult = line;
         }
       }
-      response.put("service", "ElasticSearch indexing search service");
-      response.put("status", 5);
-      response.put("results",jsonObject.getJSONArray("hits"));
+      response.append("{{'service': 'ElasticSearch indexing search service'},");
+      response.append("{'status': 5},");
+      response.append("{'results': [" + esresult + "]}}");
 
       return response.toString();
     }
