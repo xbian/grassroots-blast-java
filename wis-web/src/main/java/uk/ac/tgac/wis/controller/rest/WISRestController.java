@@ -106,7 +106,7 @@ public class WISRestController {
       }
       response.put("service", "ElasticSearch indexing search service");
       response.put("status", 5);
-      response.put("results",jsonObject);
+      response.put("results",jsonObject.getJSONArray("hits"));
 
       return response.toString();
     }
