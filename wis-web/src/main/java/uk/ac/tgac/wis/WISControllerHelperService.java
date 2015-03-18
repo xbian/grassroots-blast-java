@@ -60,7 +60,7 @@ public class WISControllerHelperService {
 
   public JSONObject searchElasticSearch(HttpSession session, JSONObject json) {
     JSONObject response = new JSONObject();
-    JSONObject jsonObject = new JSONObject();
+    String esresult = "";
     try {
       String name = json.getString("name");
       String value = json.getString("value");
@@ -73,12 +73,12 @@ public class WISControllerHelperService {
         BufferedReader rd = new BufferedReader(new InputStreamReader(resEntityGet.getContent()));
         String line = "";
         while ((line = rd.readLine()) != null) {
-          jsonObject = JSONObject.fromObject(line);
+          esresult = line;
         }
       }
 
 
-      response.put("json", jsonObject);
+      response.put("json", esresult);
       return response;
     }
     catch (Exception e) {
