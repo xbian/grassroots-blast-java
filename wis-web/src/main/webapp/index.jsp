@@ -28,6 +28,7 @@
             <div class="col-lg-6">
                 <div class="input-group">
                     <input type="text" class="form-control" id="name"/>
+                    <br/>
                     <input type="text" class="form-control" id="value"/>
 
           <span class="input-group-btn">
@@ -78,7 +79,7 @@
                     'url': ajaxurl
                 },
                 {'doOnSuccess': function (json) {
-                    jQuery('#solrResult').append(json.toString());
+                    jQuery('#esResult').append(json.toString());
                 }
                 }
         );
