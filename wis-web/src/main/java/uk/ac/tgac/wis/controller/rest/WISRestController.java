@@ -103,9 +103,9 @@ public class WISRestController {
           esresult = line;
         }
       }
-      response.append("{{'service': 'ElasticSearch indexing search service'},");
-      response.append("{'status': 5},");
-      response.append("{'results': [" + esresult + "]}}");
+      response.append("{\"service\": \"ElasticSearch indexing search service\",");
+      response.append("\"status\": 5,");
+      response.append("\"results\": [" + esresult + "]}");
 
       return response.toString();
     }
