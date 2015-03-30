@@ -88,9 +88,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Portal Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li ><a href="<c:url value='/'/>">Portal Home</a></li>
+                <li><a href="<c:url value='/about.jsp'/>">About</a></li>
+                <li><a href="<c:url value='/contact.jsp'/>">Contact</a></li>
                 <%--<li class="dropdown">--%>
                     <%--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>--%>
                     <%--<ul class="dropdown-menu" role="menu">--%>

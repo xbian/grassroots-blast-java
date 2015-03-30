@@ -34,10 +34,10 @@
         </div>
 
         <button type="button" class="btn btn-default" onclick="searchElasticsearch();">Search ElasticSearch</button>
-    </div>
-    <p></p>
+        <p></p>
 
-    <div id="esResult"></div>
+        <div id="esResult"></div>
+    </div>
 </div>
 
 </div>
