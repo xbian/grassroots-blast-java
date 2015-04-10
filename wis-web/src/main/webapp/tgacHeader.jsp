@@ -1,15 +1,18 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=8"/>
     <title>The Genome Analysis Centre - Grassroots Genomics</title>
 
 
     <link rel="stylesheet" href="<c:url value='/styles/tgacstyle.css'/>" type="text/css">
+
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>The Genome Analysis Centre | TGAC - Grassroots Genomics</title>
@@ -201,7 +204,7 @@
         <div class="layer_124">
             <div class="layer_126">
 
-                <div class="work_with_tgac_inverted ui-corner-all" onclick="window.location.href='how-we-work'">
+                <div class="work_with_tgac_inverted ui-corner-all" onclick="window.location.href='http://www.tgac.ac.uk/how-we-work'">
                     Project Enquiries
                 </div>
                 <div class="work_with_tgac ui-corner-all" onclick="window.location.href='http://www.tgac.ac.uk/grassroots-genomics/'">
@@ -218,7 +221,6 @@
                 <div id="newsletter_trigger" class="work_with_tgac ui-corner-all" onclick="window.location.href='http://www.tgac.ac.uk/newsletter/'">
                     TGAC Newsletter
                 </div>
-
                 <div class="twitter">
                     <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/GenomeAnalysis" data-widget-id="347380014754439168">TGAC Tweets</a>
 
