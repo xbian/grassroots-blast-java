@@ -2,8 +2,6 @@ body {
     background-image: url('http://www.tgac.ac.uk/uploads/images/background_top_bbsrc_wide_sub.jpg');
     background-repeat: no-repeat;
     background-position: center top;
-}
-body {
     font-family:Arial;
     font-size: 14px;
     color: #404040;
@@ -44,6 +42,7 @@ margin-top: -10px;
 .header{
     float:right;
     margin-right:15px;
+    margin-top: 28px;
     width:555px;
 }
 
