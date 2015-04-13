@@ -85,20 +85,20 @@
         <a href="http://www.tgac.ac.uk/"><img src="http://www.tgac.ac.uk/v2images/tgac_logo_single.png" class="tgac_logo" border="0"/></a>
         <div class="header">
             <div class="header_right">
-                <%--<div class="searchbar">--%>
+                <div class="searchbar">
 
-                    <%--<form id="cntnt01moduleform_1" method="get" action="http://www.tgac.ac.uk/" class="cms_form">--%>
-                        <%--<div class="hidden">--%>
-                            <%--<input type="hidden" name="mact" value="Search,cntnt01,dosearch,0" />--%>
-                            <%--<input type="hidden" name="cntnt01returnid" value="15" />--%>
-                        <%--</div>--%>
+                    <form id="cntnt01moduleform_1" method="get" action="http://www.tgac.ac.uk/" class="cms_form">
+                        <div class="hidden">
+                            <input type="hidden" name="mact" value="Search,cntnt01,dosearch,0" />
+                            <input type="hidden" name="cntnt01returnid" value="15" />
+                        </div>
 
-                        <%--<label for="cntnt01searchinput">Search:&nbsp;</label><input type="text" class="search-input" id="cntnt01searchinput" name="cntnt01searchinput" size="20" maxlength="50" value="Site Search..." onfocus="if(this.value==this.defaultValue) this.value='';" onblur="if(this.value=='') this.value=this.defaultValue;"/>--%>
-                        <%--<input class="search-button" name="submit" value="Go" type="submit" />--%>
-                        <%--<input type="hidden" id="cntnt01origreturnid" name="cntnt01origreturnid" value="382" />--%>
-                    <%--</form>--%>
+                        <label for="cntnt01searchinput">Search:&nbsp;</label><input type="text" class="search-input" id="cntnt01searchinput" name="cntnt01searchinput" size="20" maxlength="50" value="Site Search..." onfocus="if(this.value==this.defaultValue) this.value='';" onblur="if(this.value=='') this.value=this.defaultValue;"/>
+                        <input class="search-button" name="submit" value="Go" type="submit" />
+                        <input type="hidden" id="cntnt01origreturnid" name="cntnt01origreturnid" value="382" />
+                    </form>
 
-                <%--</div>--%>
+                </div>
                 <div class="social_links">
                     <a href="http://www.linkedin.com/company/558283" target="_blank"><img src="http://www.tgac.ac.uk/newimages/linkedin_logo.jpg" alt="Lindedin" border="0"></a>&nbsp;
                     <a href="https://www.facebook.com/pages/The-Genome-Analysis-Centre/153811441346365" target="_blank"><img src="http://www.tgac.ac.uk/newimages/facebook.jpg" alt="Facebook" border="0"></a>&nbsp;
