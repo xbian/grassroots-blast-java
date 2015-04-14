@@ -271,7 +271,7 @@
   <modules>
 
     <!--<module>spring</module>-->
-    <module>wis-web</module>
+    <module>wis-portal</module>
   </modules>
 
 <profiles>

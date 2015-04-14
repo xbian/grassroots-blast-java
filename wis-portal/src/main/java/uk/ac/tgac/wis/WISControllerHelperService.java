@@ -86,4 +86,32 @@ public class WISControllerHelperService {
     }
   }
 
+  public JSONObject blastSearch(HttpSession session, JSONObject json) {
+    JSONObject response = new JSONObject();
+    String esresult = "";
+    try {
+      String name = json.getString("sequence");
+      String value = json.getString("value");
+      String solrSearch = "http://v0214.nbi.ac.uk:9200/_search?q="+name+":"+value;
+      HttpClient client = new DefaultHttpClient();
+      HttpGet get = new HttpGet(solrSearch);
+      HttpResponse responseGet = client.execute(get);
+      HttpEntity resEntityGet = responseGet.getEntity();
+      if (resEntityGet != null) {
+        BufferedReader rd = new BufferedReader(new InputStreamReader(resEntityGet.getContent()));
+        String line = "";
+        while ((line = rd.readLine()) != null) {
+          esresult = line;
+        }
+      }
+
+
+      response.put("json", esresult);
+      return response;
+    }
+    catch (Exception e) {
+      return JSONUtils.SimpleJSONError("Failed: " + e.getMessage());
+    }
+  }
+
 }

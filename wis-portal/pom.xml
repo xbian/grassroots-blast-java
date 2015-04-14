@@ -8,14 +8,14 @@
     <groupId>uk.ac.tgac.wis</groupId>
     <version>0.0.1</version>
   </parent>
-  <groupId>wis-web</groupId>
-  <artifactId>wis-web</artifactId>
+  <groupId>wis-portal</groupId>
+  <artifactId>wis-portal</artifactId>
   <version>0.0.1</version>
   <packaging>war</packaging>
-  <name>wis-web</name>
+  <name>wis-portal</name>
 
   <build>
-    <finalName>wis-web</finalName>
+    <finalName>wis-portal</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -47,7 +47,7 @@
                 </artifactItem>
               </artifactItems>
               <excludes>META-INF</excludes>
-              <outputDirectory>target/wis-web/scripts/fluxion-ajax/</outputDirectory>
+              <outputDirectory>target/wis-portal/scripts/fluxion-ajax/</outputDirectory>
               <overWriteReleases>true</overWriteReleases>
             </configuration>
           </execution>

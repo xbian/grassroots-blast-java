@@ -43,4 +43,9 @@ public class MenuController implements ServletContextAware {
   public void setServletContext(ServletContext servletContext) {
     this.servletContext = servletContext;
   }
+
+  @RequestMapping("/blast")
+  public String grassRootBlast() {
+    return "/grassroot.jsp";
+  }
 }
