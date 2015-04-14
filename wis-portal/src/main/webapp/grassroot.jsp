@@ -1,6 +1,6 @@
 <%@ include file="tgacHeader.jsp" %>
-<div class="breadcrumbs">>> <a href="http://www.tgac.ac.uk/">Home</a> >> <a href="http://www.tgac.ac.uk/grassroots-genomics/">Grassroots Genomics</a>
-    >> <a href="<c:url value='/grassroot.jsp'/>">Blast Search</a></div>
+<div class="breadcrumbs">&raquo; <a href="http://www.tgac.ac.uk/">Home</a> &raquo; <a href="http://www.tgac.ac.uk/grassroots-genomics/">Grassroots Genomics</a>
+    &raquo; <a href="<c:url value='/grassroot.jsp'/>">Blast Search</a></div>
 <h2>Grassroots Genomics Blast Search</h2>
 
 <p/>

@@ -27,7 +27,6 @@
          version="2.4">
 
   <display-name>Wheat Information System Portal</display-name>
-
     <servlet>
       <servlet-name>wis-portal</servlet-name>
       <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -37,9 +36,4 @@
       <servlet-name>wis-portal</servlet-name>
       <url-pattern>/wis-portal/*</url-pattern>
     </servlet-mapping>
-
-  <!--<filter-mapping>-->
-    <!--<filter-name>OncePerRequestFilter</filter-name>-->
-    <!--<url-pattern>/wis-web/rest/*</url-pattern>-->
-  <!--</filter-mapping>-->
 </web-app>
