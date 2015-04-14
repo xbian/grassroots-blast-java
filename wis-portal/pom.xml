@@ -15,7 +15,7 @@
   <name>wis-portal</name>
 
   <build>
-    <finalName>wis-portal</finalName>
+    <finalName>ROOT</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -47,7 +47,7 @@
                 </artifactItem>
               </artifactItems>
               <excludes>META-INF</excludes>
-              <outputDirectory>target/wis-portal/scripts/fluxion-ajax/</outputDirectory>
+              <outputDirectory>target/ROOT/scripts/fluxion-ajax/</outputDirectory>
               <overWriteReleases>true</overWriteReleases>
             </configuration>
           </execution>

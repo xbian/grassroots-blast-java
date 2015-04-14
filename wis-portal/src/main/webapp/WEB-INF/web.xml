@@ -26,16 +26,16 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
          version="2.4">
 
-  <display-name>MISO External LIMS</display-name>
+  <display-name>Wheat Information System Portal</display-name>
 
     <servlet>
-      <servlet-name>wis-web</servlet-name>
+      <servlet-name>wis-portal</servlet-name>
       <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
       <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-      <servlet-name>wis-web</servlet-name>
-      <url-pattern>/wis-web/*</url-pattern>
+      <servlet-name>wis-portal</servlet-name>
+      <url-pattern>/wis-portal/*</url-pattern>
     </servlet-mapping>
 
   <!--<filter-mapping>-->
