@@ -3,7 +3,7 @@
         href="http://www.tgac.ac.uk/grassroots-genomics/">Grassroots Genomics</a>
     &raquo; <a href="<c:url value='/grassroot.jsp'/>">Blast Search</a></div>
 <h2>Grassroots Genomics Blast Search</h2>
-
+<form id="blastSearchForm">
 <p/>
 Enter sequence below in FASTA format
 <br/>
@@ -270,7 +270,7 @@ Enter sequence below in FASTA format
     };
 
     function doBlast(){
-        jQuery('#blastResult').html('');
+        jQuery('#blastResult').html('<img src=\"/images/ajax-loader.gif\"/>');
         Fluxion.doAjax(
                 'wisControllerHelperService',
                 'blastSearch',
@@ -281,6 +281,7 @@ Enter sequence below in FASTA format
                 },
                 {
                     'doOnSuccess': function (json) {
+                        jQuery('#blastSearchForm').hide("slide", { direction: "up" }, 1000);
                         jQuery('#blastResult').html(json.html);
                     }
                 }

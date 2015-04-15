@@ -122,8 +122,7 @@ public class WISControllerHelperService {
         String midline = hit.getJSONArray("hsps").getJSONObject(0).getString("midline");
         String hseq = hit.getJSONArray("hsps").getJSONObject(0).getString("hseq");
         sb.append("<div class='blastResultBox ui-corner-all'>");
-        sb.append("<p><b>Number</b>: " + hit.getString("num") + "</p>");
-        sb.append("<p><b>Title</b>: " + title + "</p>");
+        sb.append("<p><b>" + hit.getString("num") + ". Title</b>: " + title + "</p>");
         sb.append("<p><b>Sequence ID</b>: " + id + "</p>");
         sb.append("<p><b>Taxid</b>: " + taxid + " | <b>Scientific Name</b>: " + sciname + " | <b>Bit Score</b>: " + bit_score + "</p>");
         sb.append("<p><b>Score</b>: " + score + " | <b>Evalue</b>: " + evalue + " | <b>Identity</b>: " + identity + "</p><hr/>");
@@ -131,10 +130,6 @@ public class WISControllerHelperService {
         sb.append(blastResultFormatter(qseq, midline, hseq, 100));
         sb.append("<p class='blastPosition'>Hit from: " + hit_from + " to: " + hit_to + " Strand: " + hit_strand + "</p>");
         sb.append("<hr/>");
-        sb.append("");
-        sb.append("");
-        sb.append("");
-        sb.append("");
         sb.append("</div>");
       }
       response.put("html", sb.toString());
