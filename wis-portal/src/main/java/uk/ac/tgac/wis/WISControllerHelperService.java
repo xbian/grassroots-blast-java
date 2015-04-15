@@ -15,7 +15,10 @@ import javax.servlet.http.HttpSession;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -92,23 +95,6 @@ public class WISControllerHelperService {
     String esresult = "";
     StringBuilder sb = new StringBuilder();
     try {
-//      String name = json.getString("sequence");
-//      String value = json.getString("value");
-//      String solrSearch = "http://v0214.nbi.ac.uk:9200/_search?q="+name+":"+value;
-//      HttpClient client = new DefaultHttpClient();
-//      HttpGet get = new HttpGet(solrSearch);
-//      HttpResponse responseGet = client.execute(get);
-//      HttpEntity resEntityGet = responseGet.getEntity();
-//      if (resEntityGet != null) {
-//        BufferedReader rd = new BufferedReader(new InputStreamReader(resEntityGet.getContent()));
-//        String line = "";
-//        while ((line = rd.readLine()) != null) {
-//          esresult = line;
-//        }
-//      }
-//
-//
-//      response.put("json", esresult);
       JSONArray resultsHits = blastResultJSON.getJSONObject("BlastOutput").getJSONObject("report")
           .getJSONObject("results").getJSONObject("search").getJSONArray("hits");
       for (JSONObject hit : (Iterable<JSONObject>) resultsHits) {
@@ -137,18 +123,14 @@ public class WISControllerHelperService {
         String hseq = hit.getJSONArray("hsps").getJSONObject(0).getString("hseq");
         sb.append("<div class='blastResultBox ui-corner-all'>");
         sb.append("<p>Number: " + hit.getString("num") + "</p>");
-        sb.append("<p>Sequence ID: " + id + "</p>");
         sb.append("<p>Title: " + title + "</p>");
-        sb.append("<p>Taxid: " + taxid + "</p>");
-        sb.append("<p>Scientific Name: " + sciname + "</p>");
-        sb.append("<p>bit_score: " + bit_score + "</p>");
-        sb.append("<p>score: " + score + " | evalue: " + evalue + " | identity: " + identity + "</p><br/>");
+        sb.append("<p>Sequence ID: " + id + "</p>");
+        sb.append("<p>Taxid: " + taxid + " | Scientific Name: " + sciname + " | bit_score: " + bit_score + "</p>");
+        sb.append("<p>score: " + score + " | evalue: " + evalue + " | identity: " + identity + "</p><hr/>");
         sb.append("<p>Query from: " + query_from + " to: " + query_to + " Strand: " + query_strand + "</p>");
-        sb.append("<pre>" + qseq + "</pre>");
-        sb.append("<pre>" + midline + "</pre>");
-        sb.append("<pre>" + hseq + "</pre>");
+        sb.append(blastResultFormatter(qseq, midline, hseq, 80));
         sb.append("<p>Hit from: " + hit_from + " to: " + hit_to + " Strand: " + hit_strand + "</p>");
-        sb.append("");
+        sb.append("<hr/>");
         sb.append("");
         sb.append("");
         sb.append("");
@@ -163,4 +145,31 @@ public class WISControllerHelperService {
     }
   }
 
+  public String blastResultFormatter(String qseq, String midline, String hseq, int size) {
+    ArrayList<String> qseqList = splitEqually(qseq, size);
+    ArrayList<String> midlineList = splitEqually(midline, size);
+    ArrayList<String> hseqList = splitEqually(hseq, size);
+
+    StringBuilder sb = new StringBuilder();
+
+    if (qseqList.size() == midlineList.size() && qseqList.size() == hseqList.size()) {
+      for (int i = 0; i < qseqList.size(); i++) {
+        sb.append("<pre>" + qseqList.get(i) + "</pre>");
+        sb.append("<pre>" + midlineList.get(i) + "</pre>");
+        sb.append("<pre>" + hseqList.get(i) + "</pre>");
+      }
+      return sb.toString();
+    }
+    else {
+      return "strands don't match";
+    }
+  }
+
+  public static ArrayList<String> splitEqually(String text, int size) {
+    ArrayList<String> list = new ArrayList<String>((text.length() + size - 1) / size);
+    for (int start = 0; start < text.length(); start += size) {
+      list.add(text.substring(start, Math.min(text.length(), start + size)));
+    }
+    return list;
+  }
 }
