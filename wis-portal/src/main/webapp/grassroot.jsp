@@ -7,7 +7,7 @@
 <p/>
 Enter sequence below in FASTA format
 <br/>
-<textarea name="SEQUENCE" id="sequence" rows=6 cols=60>
+<textarea name="sequence" id="sequence" rows=6 cols=60>
 </textarea>
 <br/>
 <%--Or load it from disk--%>
@@ -16,7 +16,7 @@ Enter sequence below in FASTA format
 <%--Set subsequence: From <input type="text" name="QUERY_FROM" value="" size="10">--%>
 <%--To <input type="text" name="QUERY_TO" value="" size="10">--%>
 <%--<p/>--%>
-<input type="submit" value="Blast Search">
+<button type="button" onclick="doBlast();">Blast Search</button>
 <hr/>
 <h3>Algorithm parameters</h3>
 <h4>General Parameters</h4>
@@ -59,7 +59,7 @@ Enter sequence below in FASTA format
 <br/>
 <hr/>
 <p/>
-<button type="button" onclick="doBlast();" value="Blast Search"/>
+<button type="button" onclick="doBlast();">Blast Search</button>
 </form>
 
 <div id="blastStatus"></div>
@@ -270,9 +270,22 @@ Enter sequence below in FASTA format
     };
 
     function doBlast(){
-        jQuery('#blastResult').append();
+        jQuery('#blastResult').html('');
+        Fluxion.doAjax(
+                'wisControllerHelperService',
+                'blastSearch',
+                {
+                    'dummy': blastdummy,
+                    'sequence': jQuery('#sequence').val(),
+                    'url': ajaxurl
+                },
+                {
+                    'doOnSuccess': function (json) {
+                        jQuery('#blastResult').html(json.html);
+                    }
+                }
+        );
     };
-
 
     jQuery(document).ready(function () {
     });

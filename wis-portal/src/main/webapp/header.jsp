@@ -50,7 +50,7 @@
           type="text/css">
 
 
-    <!-- LIMS -->
+    <!-- wis -->
     <script type="text/javascript" src="<c:url value='/scripts/wis.js?ts=${timestamp.time}'/>"></script>
     <script type="text/javascript" src="<c:url value='/scripts/external.js?ts=${timestamp.time}'/>"></script>
     <script type="text/javascript" src="<c:url value='/scripts/search.js?ts=${timestamp.time}'/>"></script>

@@ -44,6 +44,11 @@ public class MenuController implements ServletContextAware {
     this.servletContext = servletContext;
   }
 
+//  @RequestMapping("/")
+//  public String redirectgrassRootBlast() {
+//    return "redirect:/wis-portal/blast";
+//  }
+
   @RequestMapping("/blast")
   public String grassRootBlast() {
     return "/grassroot.jsp";

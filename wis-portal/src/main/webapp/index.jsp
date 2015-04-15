@@ -1,8 +1,11 @@
 <%@ include file="header.jsp" %>
 
 <div class="container center-block">
+    <div class="jumbotron" >
+        <a href="<c:url value='/wis-portal/blast'/>">Grassroots Genomics Blast Search</a>
+        </div>
 
-    <div class="jumbotron">
+    <div class="jumbotron" style="display: none">
         <h2>Wheat Information System</h2>
 
         <p>Search Literature Data</p>

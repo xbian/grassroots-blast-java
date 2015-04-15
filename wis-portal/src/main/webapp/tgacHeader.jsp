@@ -53,12 +53,43 @@
 
     <script type="text/javascript" src="http://www.tgac.ac.uk/newnavmenu/p7PMMscripts.js"></script>
 
+    <script type="text/javascript" src="<c:url value='/scripts/scriptaculous/prototype.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='/scripts/fluxion-ajax/fluxion-ajax-compiled.js?ts=${timestamp.time}'/>"></script>
+
+    <%--<!-- bootstrap -->--%>
+    <%--<script src="<c:url value='/scripts/bootstrap/bootstrap.min.js?ts=${timestamp.time}'/>" type="text/javascript"></script>--%>
+    <%--<link href="<c:url value='/scripts/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet" type="text/css">--%>
+
+    <%--<!--Scriptaculous JS scripts below -->--%>
+    <%--<script type="text/javascript" src="<c:url value='/scripts/scriptaculous/scriptaculous.js'/>"></script>--%>
+    <%--<script type="text/javascript" src="<c:url value='/scripts/scriptaculous/activityInput.js'/>"></script>--%>
+    <%--<script type="text/javascript" src="<c:url value='/scripts/scriptaculous/effects.js'/>"></script>--%>
+    <%--<script type="text/javascript" src="<c:url value='/scripts/scriptaculous/unittest.js'/>"></script>--%>
+    <%--<script type="text/javascript" src="<c:url value='/scripts/scriptaculous/dragdrop.js'/>"></script>--%>
+    <%--<script type="text/javascript" src="<c:url value='/scripts/scriptaculous/slider.js'/>"></script>--%>
+    <%--<script type="text/javascript" src="<c:url value='/scripts/scriptaculous/builder.js'/>"></script>--%>
+    <%--<script type="text/javascript" src="<c:url value='/scripts/scriptaculous/sound.js'/>"></script>--%>
+    <%--<script type="text/javascript" src="<c:url value='/scripts/scriptaculous/controls.js'/>"></script>--%>
+
     <!-- jQuery -->
     <script type="text/javascript" src="<c:url value='/scripts/jquery/js/jquery-1.4.2.min.js'/>"></script>
     <script type="text/javascript" src="<c:url value='/scripts/jquery/js/jquery-ui-1.8.custom.min.js'/>"></script>
+    <%--<script type="text/javascript" src="<c:url value='/scripts/jquery/js/jquery.simplyCountable.js'/>"></script>--%>
+    <%--<script type="text/javascript" src="<c:url value='/scripts/jquery/js/jquery.tinysort.min.js'/>"></script>--%>
+    <%--<script type="text/javascript" src="<c:url value='/scripts/jquery/js/jquery.tablesorter.min.js'/>"></script>--%>
+    <%--<script type="text/javascript" src="<c:url value='/scripts/jquery/js/jquery.uitablefilter.js'/>"></script>--%>
+    <%--<script type="text/javascript" src="<c:url value='/scripts/jquery/js/jquery.validate.min.js'/>"></script>--%>
+    <script type="text/javascript" src="<c:url value='/scripts/jquery/colorbox/jquery.colorbox-min.js'/>"></script>
     <link rel="stylesheet" href="<c:url value='/scripts/jquery/css/smoothness/jquery-ui-1.8.custom.css'/>"
           type="text/css">
+    <link rel="stylesheet" href="<c:url value='/scripts/jquery/colorbox/colorbox.css'/>"
+          type="text/css">
 
+
+    <!-- wis -->
+    <script type="text/javascript" src="<c:url value='/scripts/wis.js?ts=${timestamp.time}'/>"></script>
+    <script type="text/javascript" src="<c:url value='/scripts/external.js?ts=${timestamp.time}'/>"></script>
+    <script type="text/javascript" src="<c:url value='/scripts/search.js?ts=${timestamp.time}'/>"></script>
     <script>
      //ga
 
