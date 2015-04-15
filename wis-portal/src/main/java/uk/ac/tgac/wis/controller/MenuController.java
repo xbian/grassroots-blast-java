@@ -33,24 +33,20 @@ import javax.servlet.ServletContext;
 public class MenuController implements ServletContextAware {
 
   ServletContext servletContext;
-//
-//  @RequestMapping("/")
-//  public String techMenu() {
-//    return "/index.jsp";
-//  }
+
+  @RequestMapping("/")
+  public String indexPage() {
+    return "/index.jsp";
+  }
 
   @Override
   public void setServletContext(ServletContext servletContext) {
     this.servletContext = servletContext;
   }
 
-//  @RequestMapping("/")
-//  public String redirectgrassRootBlast() {
-//    return "redirect:/wis-portal/blast";
-//  }
 
   @RequestMapping("/blast")
   public String grassRootBlast() {
-    return "/grassroot.jsp";
+    return "/grassrootsBlast.jsp";
   }
 }
