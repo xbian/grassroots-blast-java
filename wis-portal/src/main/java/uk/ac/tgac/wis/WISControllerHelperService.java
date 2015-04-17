@@ -8,17 +8,22 @@ import net.sourceforge.fluxion.ajax.util.JSONUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import javax.servlet.http.HttpSession;
 import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.DataOutputStream;
+import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
+import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -67,9 +72,9 @@ public class WISControllerHelperService {
     try {
       String name = json.getString("name");
       String value = json.getString("value");
-      String solrSearch = "http://v0214.nbi.ac.uk:9200/_search?q=" + name + ":" + value;
+      String esSearch = "http://v0214.nbi.ac.uk:9200/_search?q=" + name + ":" + value;
       HttpClient client = new DefaultHttpClient();
-      HttpGet get = new HttpGet(solrSearch);
+      HttpGet get = new HttpGet(esSearch);
       HttpResponse responseGet = client.execute(get);
       HttpEntity resEntityGet = responseGet.getEntity();
       if (resEntityGet != null) {
@@ -92,11 +97,11 @@ public class WISControllerHelperService {
   public JSONObject blastSearch(HttpSession session, JSONObject json) {
     JSONObject blastResultJSON = json.getJSONObject("dummy");
     JSONObject response = new JSONObject();
-    String esresult = "";
     StringBuilder sb = new StringBuilder();
     try {
       JSONArray resultsHits = blastResultJSON.getJSONObject("BlastOutput").getJSONObject("report")
           .getJSONObject("results").getJSONObject("search").getJSONArray("hits");
+
       for (JSONObject hit : (Iterable<JSONObject>) resultsHits) {
         String id = hit.getJSONArray("description").getJSONObject(0).getString("id");
         String title = hit.getJSONArray("description").getJSONObject(0).getString("title");
@@ -122,9 +127,9 @@ public class WISControllerHelperService {
         String midline = hit.getJSONArray("hsps").getJSONObject(0).getString("midline");
         String hseq = hit.getJSONArray("hsps").getJSONObject(0).getString("hseq");
         sb.append("<div class='blastResultBox ui-corner-all'>");
-        sb.append("<p><b>" + hit.getString("num") + ". Title</b>: " + title + "</p>");
+        sb.append("<p><b>" + hit.getString("num") + ". Title</b>: " + title + " <a href=\"http://www.ensembl.org/Multi/Search/Results?q=" + id + "\">Ensembl</a></p>");
         sb.append("<p><b>Sequence ID</b>: " + id + "</p>");
-        sb.append("<p><b>Taxid</b>: " + taxid + " | <b>Scientific Name</b>: " + sciname + " | <b>Bit Score</b>: " + bit_score + "</p>");
+        sb.append("<p><b>Taxonomy ID</b>: " + taxid + " | <b>Scientific Name</b>: " + sciname + " | <b>Bit Score</b>: " + bit_score + "</p>");
         sb.append("<p><b>Score</b>: " + score + " | <b>Evalue</b>: " + evalue + " | <b>Identity</b>: " + identity + "</p><hr/>");
         sb.append("<p class='blastPosition'>Query from: " + query_from + " to: " + query_to + " Strand: " + query_strand + "</p>");
         sb.append(blastResultFormatter(qseq, midline, hseq, 100));
@@ -134,6 +139,47 @@ public class WISControllerHelperService {
       }
       response.put("html", sb.toString());
       return response;
+    }
+    catch (Exception e) {
+      return JSONUtils.SimpleJSONError("Failed: " + e.getMessage());
+    }
+  }
+
+
+  public JSONObject checkV0214(HttpSession session, JSONObject json) {
+    JSONObject dummy = JSONObject.fromObject("{  \"services\": [    {      \"services\": \"Blast service\",      \"run\": true,      \"parameter_set\": {        \"parameters\": [          {            \"param\": \"Input\",            \"current_value\": {              \"protocol\": \"\",              \"value\": \"\"            },            \"tag\": 1112100422,            \"type\": \"string\",            \"wheatis_type\": 7,            \"concise\": true          },          {            \"param\": \"Output\",            \"current_value\": {              \"protocol\": \"\",              \"value\": \"\"            },            \"tag\": 1112495430,            \"type\": \"string\",            \"wheatis_type\": 6,            \"concise\": true          },          {            \"param\": \"Query Sequence(s)\",            \"current_value\": \"qwefwefwefw\",            \"tag\": 1112626521,            \"type\": \"string\",            \"wheatis_type\": 5,            \"concise\": true          },          {            \"param\": \"Max target sequences\",            \"current_value\": 100,            \"tag\": 1112495430,            \"type\": \"integer\",            \"wheatis_type\": 2,            \"concise\": true          },          {            \"param\": \"Short queries\",            \"current_value\": false,            \"tag\": 1112754257,            \"type\": \"boolean\",            \"wheatis_type\": 0,            \"concise\": true          },          {            \"param\": \"Expect threshold\",            \"current_value\": 10,            \"tag\": 1111840852,            \"type\": \"integer\",            \"wheatis_type\": 2,            \"concise\": true          },          {            \"param\": \"Word size\",            \"current_value\": 28,            \"tag\": 1113015379,            \"type\": \"integer\",            \"wheatis_type\": 2,            \"concise\": true          },          {            \"param\": \"Max matches in a query range\",            \"current_value\": 0,            \"tag\": 1113015379,            \"type\": \"integer\",            \"wheatis_type\": 2,            \"concise\": true          }        ]      }    }  ]}");
+    String requestDummy = "{  \"services\": [    {      \"services\": \"Blast service\",      \"run\": true,      \"parameter_set\": {        \"parameters\": [          {            \"param\": \"Input\",            \"current_value\": {              \"protocol\": \"\",              \"value\": \"\"            },            \"tag\": 1112100422,            \"type\": \"string\",            \"wheatis_type\": 7,            \"concise\": true          },          {            \"param\": \"Output\",            \"current_value\": {              \"protocol\": \"\",              \"value\": \"\"            },            \"tag\": 1112495430,            \"type\": \"string\",            \"wheatis_type\": 6,            \"concise\": true          },          {            \"param\": \"Query Sequence(s)\",            \"current_value\": \"qwefwefwefw\",            \"tag\": 1112626521,            \"type\": \"string\",            \"wheatis_type\": 5,            \"concise\": true          },          {            \"param\": \"Max target sequences\",            \"current_value\": 100,            \"tag\": 1112495430,            \"type\": \"integer\",            \"wheatis_type\": 2,            \"concise\": true          },          {            \"param\": \"Short queries\",            \"current_value\": false,            \"tag\": 1112754257,            \"type\": \"boolean\",            \"wheatis_type\": 0,            \"concise\": true          },          {            \"param\": \"Expect threshold\",            \"current_value\": 10,            \"tag\": 1111840852,            \"type\": \"integer\",            \"wheatis_type\": 2,            \"concise\": true          },          {            \"param\": \"Word size\",            \"current_value\": 28,            \"tag\": 1113015379,            \"type\": \"integer\",            \"wheatis_type\": 2,            \"concise\": true          },          {            \"param\": \"Max matches in a query range\",            \"current_value\": 0,            \"tag\": 1113015379,            \"type\": \"integer\",            \"wheatis_type\": 2,            \"concise\": true          }        ]      }    }  ]}";
+    String service = "{  \"operations\": {    \"operationId\": 4  },  \"services\": [    \"Blast service\"  ]}";
+    JSONObject responses = new JSONObject();
+    try {
+
+      String url = "http://n79610.nbi.ac.uk:8080/wheatis";
+
+
+      HttpClient httpClient = new DefaultHttpClient();
+
+      try {
+        HttpPost request = new HttpPost(url);
+        StringEntity params = new StringEntity(service);
+        request.addHeader("content-type", "application/x-www-form-urlencoded");
+        request.setEntity(params);
+        HttpResponse response = httpClient.execute(request);
+
+        ResponseHandler<String> handler = new BasicResponseHandler();
+        String body = handler.handleResponse(response);
+        System.out.println(response + "body" + body);
+
+
+        responses.put("html", body);
+      }
+      catch (Exception e) {
+        e.printStackTrace();
+        return null;
+      }
+      finally {
+        httpClient.getConnectionManager().shutdown();
+      }
+      return responses;
     }
     catch (Exception e) {
       return JSONUtils.SimpleJSONError("Failed: " + e.getMessage());

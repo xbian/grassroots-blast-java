@@ -1,8 +1,8 @@
 <%@ include file="tgacHeader.jsp" %>
 <div class="breadcrumbs">&raquo; <a href="http://www.tgac.ac.uk/">Home</a> &raquo; <a
         href="http://www.tgac.ac.uk/grassroots-genomics/">Grassroots Genomics</a>
-    &raquo; <a href="<c:url value='/grassroot.jsp'/>">Blast Search</a></div>
-<h2>Grassroots Genomics Blast Search</h2>
+    &raquo; <a href="<c:url value='/wis-portal/blast'/>">Blast Search</a></div>
+<h2 id="blastTitle">Grassroots Genomics Blast Search </h2>
 <form id="blastSearchForm">
 <p/>
 Enter sequence below in FASTA format
@@ -60,6 +60,7 @@ Enter sequence below in FASTA format
 <hr/>
 <p/>
 <button type="button" onclick="doBlast();">Blast Search</button>
+    <button type="button" onclick="checkV0214();">Test connection</button>
 </form>
 
 <div id="blastStatus"></div>
@@ -282,11 +283,29 @@ Enter sequence below in FASTA format
                 {
                     'doOnSuccess': function (json) {
                         jQuery('#blastSearchForm').hide("slide", { direction: "up" }, 1000);
+                        jQuery('#blastTitle').append('Result');
                         jQuery('#blastResult').html(json.html);
                     }
                 }
         );
     };
+
+    function checkV0214(){
+        jQuery('#blastResult').html('<img src=\"/images/ajax-loader.gif\"/>');
+        Fluxion.doAjax(
+                'wisControllerHelperService',
+                'checkV0214',
+                {
+                    'url': ajaxurl
+                },
+                {
+                    'doOnSuccess': function (json) {
+                        jQuery('#blastResult').html(json.html.toString());
+                    }
+                }
+        );
+
+    }
 
     jQuery(document).ready(function () {
     });

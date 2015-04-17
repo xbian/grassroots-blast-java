@@ -19,7 +19,7 @@
     <div class="footer">
         <div class="lower_footer">
             <div class="footer_tgac">
-                The Genome Analysis Centre © Copyright 2012 - 2013 </div>
+                The Genome Analysis Centre &copy; Copyright 2012 - 2015 </div>
             <div class="footer_tgac">
                 Company Registration: 6855533</div>
             <div class="footer_tgac">
