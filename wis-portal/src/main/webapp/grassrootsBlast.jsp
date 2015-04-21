@@ -14,8 +14,8 @@
     <%--Or load it from disk--%>
     <%--<input type="file" name="SEQFILE">--%>
     <p/>
-    Set subsequence: From <input type="text" name="query_from" id="query_from" value="" size="10">
-    To <input type="text" name="query_to" id="query_to" value="" size="10">
+    Set subsequence: From <input type="text" name="query_from" id="query_from" value="0" size="10">
+    To <input type="text" name="query_to" id="query_to" value="0" size="10">
     <p/>
     <button type="button" onclick="doBlast();">Blast Search</button>
     <hr/>
