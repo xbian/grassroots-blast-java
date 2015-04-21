@@ -84,7 +84,7 @@
     </fieldset>
     <p/>
     <button type="button" onclick="doBlast();">Blast Search</button>
-    <button type="button" onclick="checkV0214();">Test connection</button>
+    <button type="button" onclick="sendBlastRequest();">Test connection</button>
 </form>
 
 <div id="blastStatus"></div>
@@ -298,7 +298,7 @@
         jQuery('#blastResult').html('<img src=\"/images/ajax-loader.gif\"/>');
         Fluxion.doAjax(
                 'wisControllerHelperService',
-                'blastSearch',
+                'displayBlastResult',
                 {
                     'dummy': blastdummy,
                     'form': jQuery('#blastSearchForm').serializeArray(),
@@ -314,11 +314,11 @@
         );
     }
 
-    function checkV0214() {
+    function sendBlastRequest() {
         jQuery('#blastResult').html('<img src=\"/images/ajax-loader.gif\"/>');
         Fluxion.doAjax(
                 'wisControllerHelperService',
-                'checkV0214',
+                'sendBlastRequest',
                 {
                     'form': jQuery('#blastSearchForm').serializeArray(),
                     'url': ajaxurl

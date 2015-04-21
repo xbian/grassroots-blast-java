@@ -89,7 +89,7 @@ public class WISControllerHelperService {
     }
   }
 
-  public JSONObject blastSearch(HttpSession session, JSONObject json) {
+  public JSONObject displayBlastResult(HttpSession session, JSONObject json) {
     JSONArray formJSON = JSONArray.fromObject(json.get("form"));
     JSONObject blastResultJSON = json.getJSONObject("dummy");
     JSONObject response = new JSONObject();
@@ -142,7 +142,7 @@ public class WISControllerHelperService {
   }
 
 
-  public JSONObject checkV0214(HttpSession session, JSONObject json) {
+  public JSONObject sendBlastRequest(HttpSession session, JSONObject json) {
     JSONArray formJSON = JSONArray.fromObject(json.get("form"));
     String sequence = "";
     String query_from = "0";
