@@ -145,44 +145,44 @@ public class WISControllerHelperService {
   public JSONObject checkV0214(HttpSession session, JSONObject json) {
     JSONArray formJSON = JSONArray.fromObject(json.get("form"));
     String sequence = "";
-    int query_from = 0;
-    int query_to = 0;
-    int max_target_sequences = 100;
-    Boolean short_queries = false;
-    int expect_threshold = 10;
-    int word_size = 28;
-    int max_matches_query_range = 0;
-    int match = 2;
-    int mismatch = -3;
+    String query_from = "0";
+    String query_to = "0";
+    String max_target_sequences = "100";
+    String short_queries = "false";
+    String expect_threshold = "10";
+    String word_size = "28";
+    String max_matches_query_range = "0";
+    String match = "2";
+    String mismatch = "-3";
 
     for (JSONObject j : (Iterable<JSONObject>) formJSON) {
       if (j.getString("name").equals("sequence")) {
         sequence = j.getString("value");
       }
       if (j.getString("name").equals("query_from")) {
-        query_from = j.getInt("value");
+        query_from = j.getString("value");
       }
       if (j.getString("name").equals("query_to")) {
-        query_to = j.getInt("value");
+        query_to = j.getString("value");
       }
       if (j.getString("name").equals("max_target_sequences")) {
-        max_target_sequences = j.getInt("value");
+        max_target_sequences = j.getString("value");
       }
       if (j.getString("name").equals("short_queries")) {
-        short_queries = j.getBoolean("value");
+        short_queries = j.getString("value");
       }
       if (j.getString("name").equals("expect_threshold")) {
-        expect_threshold = j.getInt("value");
+        expect_threshold = j.getString("value");
       }
       if (j.getString("name").equals("word_size")) {
-        word_size = j.getInt("value");
+        word_size = j.getString("value");
       }
       if (j.getString("name").equals("max_matches_query_range")) {
-        max_matches_query_range = j.getInt("value");
+        max_matches_query_range = j.getString("value");
       }if (j.getString("name").equals("match")) {
-        match = j.getInt("value");
+        match = j.getString("value");
       }if (j.getString("name").equals("mismatch")) {
-        mismatch = j.getInt("value");
+        mismatch = j.getString("value");
       }
     }
     String service = "{" +
