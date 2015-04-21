@@ -90,7 +90,7 @@ public class WISControllerHelperService {
   }
 
   public JSONObject blastSearch(HttpSession session, JSONObject json) {
-    JSONObject formJSON = json.getJSONObject("form");
+    JSONArray formJSON = JSONArray.fromObject(json.get("form"));
     JSONObject blastResultJSON = json.getJSONObject("dummy");
     JSONObject response = new JSONObject();
     StringBuilder sb = new StringBuilder();
@@ -360,6 +360,7 @@ public class WISControllerHelperService {
 
 
       HttpClient httpClient = new DefaultHttpClient();
+      System.out.println(service);
 
       try {
         HttpPost request = new HttpPost(url);
@@ -370,7 +371,7 @@ public class WISControllerHelperService {
 
         ResponseHandler<String> handler = new BasicResponseHandler();
         String body = handler.handleResponse(response);
-        System.out.println(response + "body" + body);
+        System.out.println(response + "<<<header:body>>>" + body);
 
 
         responses.put("html", body);

@@ -313,7 +313,6 @@
                 }
         );
     }
-    ;
 
     function checkV0214() {
         jQuery('#blastResult').html('<img src=\"/images/ajax-loader.gif\"/>');
