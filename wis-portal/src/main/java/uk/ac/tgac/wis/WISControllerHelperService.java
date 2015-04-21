@@ -17,12 +17,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 import javax.servlet.http.HttpSession;
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 
 /**
@@ -95,6 +90,7 @@ public class WISControllerHelperService {
   }
 
   public JSONObject blastSearch(HttpSession session, JSONObject json) {
+    JSONObject formJSON = json.getJSONObject("form");
     JSONObject blastResultJSON = json.getJSONObject("dummy");
     JSONObject response = new JSONObject();
     StringBuilder sb = new StringBuilder();
@@ -127,7 +123,7 @@ public class WISControllerHelperService {
         String midline = hit.getJSONArray("hsps").getJSONObject(0).getString("midline");
         String hseq = hit.getJSONArray("hsps").getJSONObject(0).getString("hseq");
         sb.append("<div class='blastResultBox ui-corner-all'>");
-        sb.append("<p><b>" + hit.getString("num") + ". Title</b>: " + title + " <a href=\"http://www.ensembl.org/Multi/Search/Results?q=" + id + "\">Ensembl</a></p>");
+        sb.append("<p><b>" + hit.getString("num") + ". Title</b>: " + title + " <a target=\"_blank\" href=\"http://www.ensembl.org/Multi/Search/Results?q=" + id + "\">Ensembl</a></p>");
         sb.append("<p><b>Sequence ID</b>: " + id + "</p>");
         sb.append("<p><b>Taxonomy ID</b>: " + taxid + " | <b>Scientific Name</b>: " + sciname + " | <b>Bit Score</b>: " + bit_score + "</p>");
         sb.append("<p><b>Score</b>: " + score + " | <b>Evalue</b>: " + evalue + " | <b>Identity</b>: " + identity + "</p><hr/>");
@@ -147,9 +143,117 @@ public class WISControllerHelperService {
 
 
   public JSONObject checkV0214(HttpSession session, JSONObject json) {
-    JSONObject dummy = JSONObject.fromObject("{  \"services\": [    {      \"services\": \"Blast service\",      \"run\": true,      \"parameter_set\": {        \"parameters\": [          {            \"param\": \"Input\",            \"current_value\": {              \"protocol\": \"\",              \"value\": \"\"            },            \"tag\": 1112100422,            \"type\": \"string\",            \"wheatis_type\": 7,            \"concise\": true          },          {            \"param\": \"Output\",            \"current_value\": {              \"protocol\": \"\",              \"value\": \"\"            },            \"tag\": 1112495430,            \"type\": \"string\",            \"wheatis_type\": 6,            \"concise\": true          },          {            \"param\": \"Query Sequence(s)\",            \"current_value\": \"qwefwefwefw\",            \"tag\": 1112626521,            \"type\": \"string\",            \"wheatis_type\": 5,            \"concise\": true          },          {            \"param\": \"Max target sequences\",            \"current_value\": 100,            \"tag\": 1112495430,            \"type\": \"integer\",            \"wheatis_type\": 2,            \"concise\": true          },          {            \"param\": \"Short queries\",            \"current_value\": false,            \"tag\": 1112754257,            \"type\": \"boolean\",            \"wheatis_type\": 0,            \"concise\": true          },          {            \"param\": \"Expect threshold\",            \"current_value\": 10,            \"tag\": 1111840852,            \"type\": \"integer\",            \"wheatis_type\": 2,            \"concise\": true          },          {            \"param\": \"Word size\",            \"current_value\": 28,            \"tag\": 1113015379,            \"type\": \"integer\",            \"wheatis_type\": 2,            \"concise\": true          },          {            \"param\": \"Max matches in a query range\",            \"current_value\": 0,            \"tag\": 1113015379,            \"type\": \"integer\",            \"wheatis_type\": 2,            \"concise\": true          }        ]      }    }  ]}");
-    String requestDummy = "{  \"services\": [    {      \"services\": \"Blast service\",      \"run\": true,      \"parameter_set\": {        \"parameters\": [          {            \"param\": \"Input\",            \"current_value\": {              \"protocol\": \"\",              \"value\": \"\"            },            \"tag\": 1112100422,            \"type\": \"string\",            \"wheatis_type\": 7,            \"concise\": true          },          {            \"param\": \"Output\",            \"current_value\": {              \"protocol\": \"\",              \"value\": \"\"            },            \"tag\": 1112495430,            \"type\": \"string\",            \"wheatis_type\": 6,            \"concise\": true          },          {            \"param\": \"Query Sequence(s)\",            \"current_value\": \"qwefwefwefw\",            \"tag\": 1112626521,            \"type\": \"string\",            \"wheatis_type\": 5,            \"concise\": true          },          {            \"param\": \"Max target sequences\",            \"current_value\": 100,            \"tag\": 1112495430,            \"type\": \"integer\",            \"wheatis_type\": 2,            \"concise\": true          },          {            \"param\": \"Short queries\",            \"current_value\": false,            \"tag\": 1112754257,            \"type\": \"boolean\",            \"wheatis_type\": 0,            \"concise\": true          },          {            \"param\": \"Expect threshold\",            \"current_value\": 10,            \"tag\": 1111840852,            \"type\": \"integer\",            \"wheatis_type\": 2,            \"concise\": true          },          {            \"param\": \"Word size\",            \"current_value\": 28,            \"tag\": 1113015379,            \"type\": \"integer\",            \"wheatis_type\": 2,            \"concise\": true          },          {            \"param\": \"Max matches in a query range\",            \"current_value\": 0,            \"tag\": 1113015379,            \"type\": \"integer\",            \"wheatis_type\": 2,            \"concise\": true          }        ]      }    }  ]}";
-    String service = "{  \"operations\": {    \"operationId\": 4  },  \"services\": [    \"Blast service\"  ]}";
+    JSONArray formJSON = JSONArray.fromObject(json.get("form"));
+    String sequence = "";
+    int max_target_sequences = 100;
+    Boolean short_queries = false;
+    int expect_threshold = 10;
+    int word_size = 28;
+    int max_matches_query_range = 0;
+
+    for (JSONObject j : (Iterable<JSONObject>) formJSON) {
+      if (j.getString("name").equals("sequence")) {
+        sequence = j.getString("value");
+      }
+      if (j.getString("name").equals("max_target_sequences")) {
+        max_target_sequences = j.getInt("value");
+      }
+      if (j.getString("name").equals("short_queries")) {
+        short_queries = j.getBoolean("value");
+      }
+      if (j.getString("name").equals("expect_threshold")) {
+        expect_threshold = j.getInt("value");
+      }
+      if (j.getString("name").equals("word_size")) {
+        word_size = j.getInt("value");
+      }
+      if (j.getString("name").equals("max_matches_query_range")) {
+        max_matches_query_range = j.getInt("value");
+      }
+    }
+    String service = "{\n" +
+                     "  \"services\": [\n" +
+                     "    {\n" +
+                     "      \"services\": \"Blast service\",\n" +
+                     "      \"run\": true,\n" +
+                     "      \"parameter_set\": {\n" +
+                     "        \"parameters\": [\n" +
+                     "          {\n" +
+                     "            \"param\": \"Input\",\n" +
+                     "            \"current_value\": {\n" +
+                     "              \"protocol\": \"\",\n" +
+                     "              \"value\": \"\"\n" +
+                     "            },\n" +
+                     "            \"tag\": 1112100422,\n" +
+                     "            \"type\": \"string\",\n" +
+                     "            \"wheatis_type\": 7,\n" +
+                     "            \"concise\": true\n" +
+                     "          },\n" +
+                     "          {\n" +
+                     "            \"param\": \"Output\",\n" +
+                     "            \"current_value\": {\n" +
+                     "              \"protocol\": \"\",\n" +
+                     "              \"value\": \"\"\n" +
+                     "            },\n" +
+                     "            \"tag\": 1112495430,\n" +
+                     "            \"type\": \"string\",\n" +
+                     "            \"wheatis_type\": 6,\n" +
+                     "            \"concise\": true\n" +
+                     "          },\n" +
+                     "          {\n" +
+                     "            \"param\": \"Query Sequence(s)\",\n" +
+                     "            \"current_value\": \""+sequence+"\",\n" +
+                     "            \"tag\": 1112626521,\n" +
+                     "            \"type\": \"string\",\n" +
+                     "            \"wheatis_type\": 5,\n" +
+                     "            \"concise\": true\n" +
+                     "          },\n" +
+                     "          {\n" +
+                     "            \"param\": \"Max target sequences\",\n" +
+                     "            \"current_value\": "+max_target_sequences+",\n" +
+                     "            \"tag\": 1112495430,\n" +
+                     "            \"type\": \"integer\",\n" +
+                     "            \"wheatis_type\": 2,\n" +
+                     "            \"concise\": true\n" +
+                     "          },\n" +
+                     "          {\n" +
+                     "            \"param\": \"Short queries\",\n" +
+                     "            \"current_value\": "+short_queries.toString()+",\n" +
+                     "            \"tag\": 1112754257,\n" +
+                     "            \"type\": \"boolean\",\n" +
+                     "            \"wheatis_type\": 0,\n" +
+                     "            \"concise\": true\n" +
+                     "          },\n" +
+                     "          {\n" +
+                     "            \"param\": \"Expect threshold\",\n" +
+                     "            \"current_value\": "+expect_threshold+",\n" +
+                     "            \"tag\": 1111840852,\n" +
+                     "            \"type\": \"integer\",\n" +
+                     "            \"wheatis_type\": 2,\n" +
+                     "            \"concise\": true\n" +
+                     "          },\n" +
+                     "          {\n" +
+                     "            \"param\": \"Word size\",\n" +
+                     "            \"current_value\": "+word_size+",\n" +
+                     "            \"tag\": 1113015379,\n" +
+                     "            \"type\": \"integer\",\n" +
+                     "            \"wheatis_type\": 2,\n" +
+                     "            \"concise\": true\n" +
+                     "          },\n" +
+                     "          {\n" +
+                     "            \"param\": \"Max matches in a query range\",\n" +
+                     "            \"current_value\": "+max_matches_query_range+",\n" +
+                     "            \"tag\": 1113015379,\n" +
+                     "            \"type\": \"integer\",\n" +
+                     "            \"wheatis_type\": 2,\n" +
+                     "            \"concise\": true\n" +
+                     "          }\n" +
+                     "        ]\n" +
+                     "      }\n" +
+                     "    }\n" +
+                     "  ]\n" +
+                     "}\n" +
+                     "\n";
     JSONObject responses = new JSONObject();
     try {
 
