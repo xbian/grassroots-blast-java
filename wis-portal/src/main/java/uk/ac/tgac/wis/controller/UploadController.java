@@ -57,14 +57,6 @@ public class UploadController {
       sb.append(". Please create this directory and ensure that it is writable.");
       throw new IOException(sb.toString());
     }
-    else {
-      if (attemptMkdir) {
-        log.info("Directory (" + path + ") exists.");
-      }
-      else {
-        log.info("Directory (" + path + ") OK.");
-      }
-    }
     return storageOk;
   }
 
