@@ -326,10 +326,30 @@
                 {
                     'doOnSuccess': function (json) {
                         jQuery('#blastResult').html(json.html.toString());
+                        setInterval(displayBlastResult(json.uuid),3000);
                     }
                 }
         );
 
+    }
+
+    function displayBlastResult(uuid) {
+        jQuery('#blastResult').html('<img src=\"/images/ajax-loader.gif\"/>');
+        Fluxion.doAjax(
+                'wisControllerHelperService',
+                'displayBlastResult',
+                {
+                    'uuid': uuid,
+                    'url': ajaxurl
+                },
+                {
+                    'doOnSuccess': function (json) {
+                        jQuery('#blastSearchForm').hide("slide", {direction: "up"}, 1000);
+                        jQuery('#blastTitle').append('Result');
+                        jQuery('#blastResult').html(json.html);
+                    }
+                }
+        );
     }
 
     jQuery(document).ready(function () {
