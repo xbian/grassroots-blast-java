@@ -89,59 +89,6 @@ public class WISControllerHelperService {
     }
   }
 
-  public JSONObject displayBlastResult(HttpSession session, JSONObject json) {
-    JSONArray formJSON = JSONArray.fromObject(json.get("form"));
-    JSONObject blastResultJSON = json.getJSONObject("dummy");
-    JSONObject response = new JSONObject();
-    StringBuilder sb = new StringBuilder();
-    try {
-      JSONArray resultsHits = blastResultJSON.getJSONObject("BlastOutput").getJSONObject("report")
-          .getJSONObject("results").getJSONObject("search").getJSONArray("hits");
-
-      for (JSONObject hit : (Iterable<JSONObject>) resultsHits) {
-        String id = hit.getJSONArray("description").getJSONObject(0).getString("id");
-        String title = hit.getJSONArray("description").getJSONObject(0).getString("title");
-        String taxid = hit.getJSONArray("description").getJSONObject(0).getString("taxid");
-        String sciname = hit.getJSONArray("description").getJSONObject(0).getString("sciname");
-
-
-        String bit_score = hit.getJSONArray("hsps").getJSONObject(0).getString("bit_score");
-        String score = hit.getJSONArray("hsps").getJSONObject(0).getString("score");
-        String evalue = hit.getJSONArray("hsps").getJSONObject(0).getString("evalue");
-        String identity = hit.getJSONArray("hsps").getJSONObject(0).getString("identity");
-
-
-        String query_from = hit.getJSONArray("hsps").getJSONObject(0).getString("query_from");
-        String query_to = hit.getJSONArray("hsps").getJSONObject(0).getString("query_to");
-        String hit_from = hit.getJSONArray("hsps").getJSONObject(0).getString("hit_from");
-        String hit_to = hit.getJSONArray("hsps").getJSONObject(0).getString("hit_to");
-
-        String query_strand = hit.getJSONArray("hsps").getJSONObject(0).getString("query_strand");
-        String hit_strand = hit.getJSONArray("hsps").getJSONObject(0).getString("hit_strand");
-
-        String qseq = hit.getJSONArray("hsps").getJSONObject(0).getString("qseq");
-        String midline = hit.getJSONArray("hsps").getJSONObject(0).getString("midline");
-        String hseq = hit.getJSONArray("hsps").getJSONObject(0).getString("hseq");
-        sb.append("<div class='blastResultBox ui-corner-all'>");
-        sb.append("<p><b>" + hit.getString("num") + ". Title</b>: " + title + " <a target=\"_blank\" href=\"http://www.ensembl.org/Multi/Search/Results?q=" + id + "\">Ensembl</a></p>");
-        sb.append("<p><b>Sequence ID</b>: " + id + "</p>");
-        sb.append("<p><b>Taxonomy ID</b>: " + taxid + " | <b>Scientific Name</b>: " + sciname + " | <b>Bit Score</b>: " + bit_score + "</p>");
-        sb.append("<p><b>Score</b>: " + score + " | <b>Evalue</b>: " + evalue + " | <b>Identity</b>: " + identity + "</p><hr/>");
-        sb.append("<p class='blastPosition'>Query from: " + query_from + " to: " + query_to + " Strand: " + query_strand + "</p>");
-        sb.append(blastResultFormatter(qseq, midline, hseq, 100));
-        sb.append("<p class='blastPosition'>Hit from: " + hit_from + " to: " + hit_to + " Strand: " + hit_strand + "</p>");
-        sb.append("<hr/>");
-        sb.append("</div>");
-      }
-      response.put("html", sb.toString());
-      return response;
-    }
-    catch (Exception e) {
-      return JSONUtils.SimpleJSONError("Failed: " + e.getMessage());
-    }
-  }
-
-
   public JSONObject sendBlastRequest(HttpSession session, JSONObject json) {
     JSONArray formJSON = JSONArray.fromObject(json.get("form"));
     String sequence = "";
@@ -356,7 +303,7 @@ public class WISControllerHelperService {
     JSONObject responses = new JSONObject();
     try {
 
-      String url = "http://n79610.nbi.ac.uk:8080/wheatis";
+      String url = "http://v0241.nbi.ac.uk/wheatis";
 
 
       HttpClient httpClient = new DefaultHttpClient();
@@ -383,6 +330,155 @@ public class WISControllerHelperService {
       finally {
         httpClient.getConnectionManager().shutdown();
       }
+
+//      return responses;
+      return JSONObject.fromObject("{" +
+                                   "  \"operations\": {" +
+                                   "    \"operationId\": 5" +
+                                   "  }," +
+                                   "  \"services\": [" +
+                                   "    \"702e00cc-ff7f-0000-88ce-dc7976fc45b5\"," +
+                                   "    \"702e00cc-ff7f-0000-f1dc-bb658a664f0d\"" +
+                                   "  ]" +
+                                   "}");
+    }
+    catch (Exception e) {
+      return JSONUtils.SimpleJSONError("Failed: " + e.getMessage());
+    }
+  }
+
+  public JSONObject checkBlastResult(HttpSession session, JSONObject json) {
+    JSONObject responses = new JSONObject();
+    String uuid = json.getString("uuid");
+    String url = "http://v0241.nbi.ac.uk/wheatis";
+    String result = "{" +
+                    "  \"operations\": {" +
+                    "    \"operationId\": 6" +
+                    "  }," +
+                    "  \"services\": [" +
+                    "    \""+uuid+"\"," +
+                    "  ]" +
+                    "}";
+
+    HttpClient httpClient = new DefaultHttpClient();
+
+    try {
+      HttpPost request = new HttpPost(url);
+      StringEntity params = new StringEntity(result);
+      request.addHeader("content-type", "application/x-www-form-urlencoded");
+      request.setEntity(params);
+      HttpResponse response = httpClient.execute(request);
+
+      ResponseHandler<String> handler = new BasicResponseHandler();
+      String body = handler.handleResponse(response);
+      // if 6 keep checking
+      JSONArray statusArray = JSONArray.fromObject(body);
+      int status = statusArray.getJSONObject(0).getInt("status");
+      if (status == 1){
+        responses.put("html", "Failed to start");
+      }
+      if (status == 2){
+        responses.put("html", "Job started");
+      }
+      if (status == 3){
+        responses.put("html", "Job finished");
+      }
+      if (status == 4){
+        responses.put("html", "Job failed");
+      }
+      if (status == 5){
+        responses.put("html", "Job succeeded");
+      }
+      responses.put("status", status);
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+      return null;
+    }
+    finally {
+      httpClient.getConnectionManager().shutdown();
+    }
+    return responses;
+  }
+
+  public JSONObject displayBlastResult(HttpSession session, JSONObject json) {
+    StringBuilder sb = new StringBuilder();
+    JSONObject responses = new JSONObject();
+    JSONObject rawResultJSON = new JSONObject();
+    String uuid = json.getString("uuid");
+    String url = "http://v0241.nbi.ac.uk/wheatis";
+    String result = "{" +
+                    "  \"operations\": {" +
+                    "    \"operationId\": 7" +
+                    "  }," +
+                    "  \"services\": [" +
+                    "    \""+uuid+"\"," +
+                    "  ]" +
+                    "}";
+
+    HttpClient httpClient = new DefaultHttpClient();
+
+    try {
+      HttpPost request = new HttpPost(url);
+      StringEntity params = new StringEntity(result);
+      request.addHeader("content-type", "application/x-www-form-urlencoded");
+      request.setEntity(params);
+      HttpResponse response = httpClient.execute(request);
+
+      ResponseHandler<String> handler = new BasicResponseHandler();
+      String body = handler.handleResponse(response);
+      JSONArray resultArray = JSONArray.fromObject(body);
+      //to be changed depends on result
+      rawResultJSON = resultArray.getJSONObject(0).getJSONObject("result");
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+      return null;
+    }
+    finally {
+      httpClient.getConnectionManager().shutdown();
+    }
+
+    try {
+      JSONArray resultsHits = rawResultJSON.getJSONObject("BlastOutput").getJSONObject("report")
+          .getJSONObject("results").getJSONObject("search").getJSONArray("hits");
+
+      for (JSONObject hit : (Iterable<JSONObject>) resultsHits) {
+        String id = hit.getJSONArray("description").getJSONObject(0).getString("id");
+        String title = hit.getJSONArray("description").getJSONObject(0).getString("title");
+        String taxid = hit.getJSONArray("description").getJSONObject(0).getString("taxid");
+        String sciname = hit.getJSONArray("description").getJSONObject(0).getString("sciname");
+
+
+        String bit_score = hit.getJSONArray("hsps").getJSONObject(0).getString("bit_score");
+        String score = hit.getJSONArray("hsps").getJSONObject(0).getString("score");
+        String evalue = hit.getJSONArray("hsps").getJSONObject(0).getString("evalue");
+        String identity = hit.getJSONArray("hsps").getJSONObject(0).getString("identity");
+
+
+        String query_from = hit.getJSONArray("hsps").getJSONObject(0).getString("query_from");
+        String query_to = hit.getJSONArray("hsps").getJSONObject(0).getString("query_to");
+        String hit_from = hit.getJSONArray("hsps").getJSONObject(0).getString("hit_from");
+        String hit_to = hit.getJSONArray("hsps").getJSONObject(0).getString("hit_to");
+
+        String query_strand = hit.getJSONArray("hsps").getJSONObject(0).getString("query_strand");
+        String hit_strand = hit.getJSONArray("hsps").getJSONObject(0).getString("hit_strand");
+
+        String qseq = hit.getJSONArray("hsps").getJSONObject(0).getString("qseq");
+        String midline = hit.getJSONArray("hsps").getJSONObject(0).getString("midline");
+        String hseq = hit.getJSONArray("hsps").getJSONObject(0).getString("hseq");
+        sb.append("<div class='blastResultBox ui-corner-all'>");
+        sb.append("<p><b>" + hit.getString("num") + ". Title</b>: " + title + " <a target=\"_blank\" href=\"http://www.ensembl.org/Multi/Search/Results?q=" + id + "\">Ensembl</a></p>");
+        sb.append("<p><b>Sequence ID</b>: " + id + "</p>");
+        sb.append("<p><b>Taxonomy ID</b>: " + taxid + " | <b>Scientific Name</b>: " + sciname + " | <b>Bit Score</b>: " + bit_score + "</p>");
+        sb.append("<p><b>Score</b>: " + score + " | <b>Evalue</b>: " + evalue + " | <b>Identity</b>: " + identity + "</p><hr/>");
+        sb.append("<p class='blastPosition'>Query from: " + query_from + " to: " + query_to + " Strand: " + query_strand + "</p>");
+        sb.append(blastResultFormatter(qseq, midline, hseq, 100));
+        sb.append("<p class='blastPosition'>Hit from: " + hit_from + " to: " + hit_to + " Strand: " + hit_strand + "</p>");
+        sb.append("<hr/>");
+        sb.append("</div>");
+      }
+      responses.put("html",sb.toString());
       return responses;
     }
     catch (Exception e) {

@@ -17,7 +17,7 @@
     Set subsequence: From <input type="text" name="query_from" id="query_from" value="0" size="10">
     To <input type="text" name="query_to" id="query_to" value="0" size="10">
     <p/>
-    <button type="button" onclick="doBlast();">Blast Search</button>
+    <button type="button" onclick="sendBlastRequest();">Blast Search</button>
     <hr/>
     <h3>Algorithm parameters</h3>
     <fieldset class="ui-corner-all">
@@ -83,8 +83,7 @@
         </table>
     </fieldset>
     <p/>
-    <button type="button" onclick="doBlast();">Blast Search</button>
-    <button type="button" onclick="sendBlastRequest();">Test connection</button>
+    <button type="button" onclick="sendBlastRequest();">Blast Search</button>
 </form>
 
 <div id="blastStatus"></div>
@@ -294,26 +293,6 @@
         }
     };
 
-    function doBlast() {
-        jQuery('#blastResult').html('<img src=\"/images/ajax-loader.gif\"/>');
-        Fluxion.doAjax(
-                'wisControllerHelperService',
-                'displayBlastResult',
-                {
-                    'dummy': blastdummy,
-                    'form': jQuery('#blastSearchForm').serializeArray(),
-                    'url': ajaxurl
-                },
-                {
-                    'doOnSuccess': function (json) {
-                        jQuery('#blastSearchForm').hide("slide", {direction: "up"}, 1000);
-                        jQuery('#blastTitle').append('Result');
-                        jQuery('#blastResult').html(json.html);
-                    }
-                }
-        );
-    }
-
     function sendBlastRequest() {
         jQuery('#blastResult').html('<img src=\"/images/ajax-loader.gif\"/>');
         Fluxion.doAjax(
@@ -325,28 +304,46 @@
                 },
                 {
                     'doOnSuccess': function (json) {
-                        jQuery('#blastResult').html(json.html.toString());
-                        setInterval(displayBlastResult(json.uuid),3000);
+                        for  (var uuid in json[services])
+                        {
+                            jQuery('#blastResult').html('<div id=\"' + uuid +'\">Job' + uuid +'Submitted <img src=\"/images/ajax-loader.gif\"/></div></br>');
+                            checkBlastResult(uuid);
+                        }
                     }
                 }
         );
 
     }
 
-    function displayBlastResult(uuid) {
+    function checkBlastResult(uuid) {
         jQuery('#blastResult').html('<img src=\"/images/ajax-loader.gif\"/>');
         Fluxion.doAjax(
                 'wisControllerHelperService',
-                'displayBlastResult',
+                'checkBlastResult',
                 {
                     'uuid': uuid,
                     'url': ajaxurl
                 },
                 {
                     'doOnSuccess': function (json) {
-                        jQuery('#blastSearchForm').hide("slide", {direction: "up"}, 1000);
-                        jQuery('#blastTitle').append('Result');
-                        jQuery('#blastResult').html(json.html);
+                        jQuery('#'+uuid).html(json.html);
+                        if (json.status == 5){
+                            Fluxion.doAjax(
+                                    'wisControllerHelperService',
+                                    'displayBlastResult',
+                                    {
+                                        'uuid': uuid,
+                                        'url': ajaxurl
+                                    },
+                                    {
+                                        'doOnSuccess': function (json) {
+                                            jQuery('#'+uuid).html(json.html);
+                                        }
+                                    }
+                            );
+                        } else if (json.status == 2 || json.status == 3){
+                            checkBlastResult(uuid);
+                        }
                     }
                 }
         );
