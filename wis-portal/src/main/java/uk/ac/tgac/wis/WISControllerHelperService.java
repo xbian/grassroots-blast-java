@@ -331,16 +331,16 @@ public class WISControllerHelperService {
         httpClient.getConnectionManager().shutdown();
       }
 
-//      return responses;
-      return JSONObject.fromObject("{" +
-                                   "  \"operations\": {" +
-                                   "    \"operationId\": 5" +
-                                   "  }," +
-                                   "  \"services\": [" +
-                                   "    \"702e00cc-ff7f-0000-88ce-dc7976fc45b5\"," +
-                                   "    \"702e00cc-ff7f-0000-f1dc-bb658a664f0d\"" +
-                                   "  ]" +
-                                   "}");
+      return responses;
+//      return JSONObject.fromObject("{" +
+//                                   "  \"operations\": {" +
+//                                   "    \"operationId\": 5" +
+//                                   "  }," +
+//                                   "  \"services\": [" +
+//                                   "    \"702e00cc-ff7f-0000-88ce-dc7976fc45b5\"," +
+//                                   "    \"702e00cc-ff7f-0000-f1dc-bb658a664f0d\"" +
+//                                   "  ]" +
+//                                   "}");
     }
     catch (Exception e) {
       return JSONUtils.SimpleJSONError("Failed: " + e.getMessage());

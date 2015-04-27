@@ -8,7 +8,7 @@
     <p/>
     Enter sequence below in FASTA format
     <br/>
-<textarea name="sequence" id="sequence" rows=6 cols=60>
+<textarea class="ui-corner-all pie_first-child" name="sequence" id="sequence" rows="10" cols="80">
 </textarea>
     <br/>
     <%--Or load it from disk--%>
@@ -304,10 +304,10 @@
                 },
                 {
                     'doOnSuccess': function (json) {
-                        for  (var uuid in json[services])
+                        for  (var uuid in json['services'])
                         {
                             jQuery('#blastResult').html('<div id=\"' + uuid +'\">Job' + uuid +'Submitted <img src=\"/images/ajax-loader.gif\"/></div></br>');
-                            checkBlastResult(uuid);
+                            setTimeout(checkBlastResult(uuid),5000);
                         }
                     }
                 }
