@@ -353,7 +353,7 @@ public class WISControllerHelperService {
     String url = "http://v0241.nbi.ac.uk/wheatis";
     String result = "{" +
                     "  \"operations\": {" +
-                    "    \"operationId\": 6" +
+                    "    \"operationId\": 5" +
                     "  }," +
                     "  \"services\": [" +
                     "    \""+uuid+"\"," +
@@ -409,7 +409,7 @@ public class WISControllerHelperService {
     String url = "http://v0241.nbi.ac.uk/wheatis";
     String result = "{" +
                     "  \"operations\": {" +
-                    "    \"operationId\": 7" +
+                    "    \"operationId\": 6" +
                     "  }," +
                     "  \"services\": [" +
                     "    \""+uuid+"\"," +
