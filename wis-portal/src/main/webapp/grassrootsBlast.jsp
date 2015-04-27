@@ -342,7 +342,7 @@
                                     }
                             );
                         } else if (json.status == 2 || json.status == 3){
-                            checkBlastResult(uuid);
+                            setTimeout(checkBlastResult(uuid),5000);
                         }
                     }
                 }
