@@ -1,6 +1,7 @@
 
 package uk.ac.tgac.wis;
 
+import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sourceforge.fluxion.ajax.Ajaxified;
@@ -14,10 +15,18 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
 import javax.servlet.http.HttpSession;
+import javax.xml.bind.Element;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.StringReader;
 import java.util.ArrayList;
 
 /**
@@ -401,7 +410,102 @@ public class WISControllerHelperService {
     return responses;
   }
 
-  public JSONObject displayBlastResult(HttpSession session, JSONObject json) {
+  public JSONObject displayXMLBlastResult(HttpSession session, JSONObject json) {
+    StringBuilder sb = new StringBuilder();
+    JSONObject responses = new JSONObject();
+    String rawResultString json.getString("raw");
+//    String uuid = json.getString("uuid");
+//    String url = "http://v0214.nbi.ac.uk/wheatis";
+//    String result = "{" +
+//                    "  \"operations\": {" +
+//                    "    \"operationId\": 6" +
+//                    "  }," +
+//                    "  \"services\": [" +
+//                    "    \""+uuid+"\"," +
+//                    "  ]" +
+//                    "}";
+//
+//    HttpClient httpClient = new DefaultHttpClient();
+//
+//    try {
+//      HttpPost request = new HttpPost(url);
+//      StringEntity params = new StringEntity(result);
+//      request.addHeader("content-type", "application/x-www-form-urlencoded");
+//      request.setEntity(params);
+//      HttpResponse response = httpClient.execute(request);
+//
+//      ResponseHandler<String> handler = new BasicResponseHandler();
+//      String body = handler.handleResponse(response);
+//      JSONArray resultArray = JSONArray.fromObject(body);
+//      //to be changed depends on result
+//      rawResultString = body;
+////          resultArray.getString("result");
+//    }
+//    catch (Exception e) {
+//      e.printStackTrace();
+//      return null;
+//    }
+//    finally {
+//      httpClient.getConnectionManager().shutdown();
+//    }
+
+    try {
+      DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+      DocumentBuilder builder;
+
+      builder = factory.newDocumentBuilder();
+      Document document = builder.parse(new InputSource(new StringReader(rawResultString)));
+
+      sb.append("<h5>"+document.getElementsByTagName("BlastOutput_db").item(0).getNodeValue()+"</h5>");
+
+      NodeList hitList = document.getElementsByTagName("Hit");
+      for (int i = 0; i < hitList.getLength(); ++i) {
+        Node hit = (Node) hitList.item(i);
+
+        String hit_num = hit.getChildNodes().item(0).getNodeValue();
+        String id = hit.getChildNodes().item(1).getNodeValue();
+        String accession = hit.getChildNodes().item(3).getNodeValue();
+        String length = hit.getChildNodes().item(4).getNodeValue();
+
+        Node hsp = hit.getChildNodes().item(5).getChildNodes().item(0);
+
+        String bit_score = hsp.getChildNodes().item(1).getNodeValue();
+        String score = hsp.getChildNodes().item(2).getNodeValue();
+        String evalue = hsp.getChildNodes().item(3).getNodeValue();
+        String identity = hsp.getChildNodes().item(10).getNodeValue();
+
+
+        String query_from = hsp.getChildNodes().item(4).getNodeValue();
+        String query_to = hsp.getChildNodes().item(5).getNodeValue();
+        String hit_from = hsp.getChildNodes().item(6).getNodeValue();
+        String hit_to = hsp.getChildNodes().item(7).getNodeValue();
+
+        String query_strand = hsp.getChildNodes().item(8).getNodeValue();
+        String hit_strand = hsp.getChildNodes().item(9).getNodeValue();
+
+        String qseq = hsp.getChildNodes().item(14).getNodeValue();
+        String midline = hsp.getChildNodes().item(16).getNodeValue();
+        String hseq = hsp.getChildNodes().item(15).getNodeValue();
+        sb.append("<div class='blastResultBox ui-corner-all'>");
+        sb.append("<p><b>" + hit_num + ". Title</b>: " + id + " <a target=\"_blank\" href=\"http://www.ensembl.org/Multi/Search/Results?q=" + accession + "\">Ensembl</a></p>");
+        sb.append("<p><b>Sequence ID</b>: " + id + "</p>");
+//        sb.append("<p><b>Taxonomy ID</b>: " + taxid + " | <b>Scientific Name</b>: " + sciname + " | <b>Bit Score</b>: " + bit_score + "</p>");
+        sb.append("<p><b>Score</b>: " + score + " | <b>Evalue</b>: " + evalue + " | <b>Identity</b>: " + identity + "</p><hr/>");
+        sb.append("<p class='blastPosition'>Query from: " + query_from + " to: " + query_to + " Strand: " + query_strand + "</p>");
+        sb.append(blastResultFormatter(qseq, midline, hseq, 100));
+        sb.append("<p class='blastPosition'>Hit from: " + hit_from + " to: " + hit_to + " Strand: " + hit_strand + "</p>");
+        sb.append("<hr/>");
+        sb.append("</div>");
+      }
+      responses.put("html", sb.toString());
+      return responses;
+    }
+    catch (Exception e) {
+      return JSONUtils.SimpleJSONError("Failed: " + e.getMessage());
+    }
+  }
+
+  public JSONObject displayJSONBlastResult(HttpSession session, JSONObject json) {
     StringBuilder sb = new StringBuilder();
     JSONObject responses = new JSONObject();
     JSONObject rawResultJSON = new JSONObject();
