@@ -744,7 +744,7 @@ public class WISControllerHelperService {
 
 
         sb.append("<div class='blastResultBox ui-corner-all'>");
-        sb.append("<p><b>" + hit_num + ". Title</b>: " + id + " <a target=\"_blank\" href=\"http://www.ensembl.org/Multi/Search/Results?q=" + accession + "\">Ensembl</a></p>");
+        sb.append("<p><b>" + hit_num + ". </b>: " + id + " <a target=\"_blank\" href=\"http://www.ensembl.org/Multi/Search/Results?q=" + accession + "\">Ensembl</a></p>");
 //        sb.append("<p><b>Sequence ID</b>: " + id + "</p>");
         sb.append("<b>Bit Score</b>: " + bit_score + "</p>");
         sb.append("<p><b>Score</b>: " + score + " | <b>Evalue</b>: " + evalue + " | <b>Identity</b>: " + identity + "</p><hr/>");
