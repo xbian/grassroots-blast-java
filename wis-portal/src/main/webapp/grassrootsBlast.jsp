@@ -294,7 +294,6 @@
             }
         }
     };
-    var rawXMLString = "";
 
     function doblastxml() {
         jQuery('#blastResult').html('<img src=\"/images/ajax-loader.gif\"/>');
@@ -302,7 +301,7 @@
                 'wisControllerHelperService',
                 'displayXMLBlastResult',
                 {
-                    'raw': rawXMLString,
+//                    'raw': rawXMLString,
                     'url': ajaxurl
                 },
                 {
@@ -325,8 +324,9 @@
                 },
                 {
                     'doOnSuccess': function (json) {
-                        for  (var uuid in json['response']['services'])
+                        for  (var job in json['response'])
                         {
+                            var uuid = job['service_uuid'];
                             jQuery('#blastResult').html('<div id=\"' + uuid +'\">Job' + uuid +'Submitted <img src=\"/images/ajax-loader.gif\"/></div></br>');
                             setTimeout(checkBlastResult(uuid),timedCall);
                         }
