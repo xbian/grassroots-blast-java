@@ -303,7 +303,7 @@ public class WISControllerHelperService {
     JSONObject responses = new JSONObject();
     try {
 
-      String url = "http://v0241.nbi.ac.uk/wheatis";
+      String url = "http://v0214.nbi.ac.uk/wheatis";
 
 
       HttpClient httpClient = new DefaultHttpClient();
@@ -350,7 +350,7 @@ public class WISControllerHelperService {
   public JSONObject checkBlastResult(HttpSession session, JSONObject json) {
     JSONObject responses = new JSONObject();
     String uuid = json.getString("uuid");
-    String url = "http://v0241.nbi.ac.uk/wheatis";
+    String url = "http://v0214.nbi.ac.uk/wheatis";
     String result = "{" +
                     "  \"operations\": {" +
                     "    \"operationId\": 5" +
@@ -406,7 +406,7 @@ public class WISControllerHelperService {
     JSONObject responses = new JSONObject();
     JSONObject rawResultJSON = new JSONObject();
     String uuid = json.getString("uuid");
-    String url = "http://v0241.nbi.ac.uk/wheatis";
+    String url = "http://v0214.nbi.ac.uk/wheatis";
     String result = "{" +
                     "  \"operations\": {" +
                     "    \"operationId\": 6" +

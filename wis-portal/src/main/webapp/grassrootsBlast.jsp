@@ -90,6 +90,7 @@
 <div id="blastResult"></div>
 
 <script type="text/javascript">
+    var timedCall = 5000;
     var blastdummy = {
         "BlastOutput": {
             "report": {
@@ -307,7 +308,7 @@
                         for  (var uuid in json['services'])
                         {
                             jQuery('#blastResult').html('<div id=\"' + uuid +'\">Job' + uuid +'Submitted <img src=\"/images/ajax-loader.gif\"/></div></br>');
-                            setTimeout(checkBlastResult(uuid),5000);
+                            setTimeout(checkBlastResult(uuid),timedCall);
                         }
                     }
                 }
@@ -342,7 +343,7 @@
                                     }
                             );
                         } else if (json.status == 2 || json.status == 3){
-                            setTimeout(checkBlastResult(uuid),5000);
+                            setTimeout(checkBlastResult(uuid),timedCall);
                         }
                     }
                 }
