@@ -305,7 +305,7 @@
                 },
                 {
                     'doOnSuccess': function (json) {
-                        for  (var uuid in json['services'])
+                        for  (var uuid in json['response']['services'])
                         {
                             jQuery('#blastResult').html('<div id=\"' + uuid +'\">Job' + uuid +'Submitted <img src=\"/images/ajax-loader.gif\"/></div></br>');
                             setTimeout(checkBlastResult(uuid),timedCall);

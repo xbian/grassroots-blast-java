@@ -321,7 +321,7 @@ public class WISControllerHelperService {
         System.out.println(response + "<<<header:body>>>" + body);
 
 
-        responses.put("html", body);
+        responses.put("response", body);
       }
       catch (Exception e) {
         e.printStackTrace();
