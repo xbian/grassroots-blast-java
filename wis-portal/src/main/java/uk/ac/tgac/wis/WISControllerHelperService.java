@@ -413,7 +413,8 @@ public class WISControllerHelperService {
   public JSONObject displayXMLBlastResult(HttpSession session, JSONObject json) {
     StringBuilder sb = new StringBuilder();
     JSONObject responses = new JSONObject();
-    String rawResultString = "<?xml version=\"1.0\"?>" +
+    String rawResultString;
+    String rawResultStringDummy = "<?xml version=\"1.0\"?>" +
                              "<!DOCTYPE BlastOutput PUBLIC \"-//NCBI//NCBI BlastOutput/EN\" \"http://www.ncbi.nlm.nih.gov/dtd/NCBI_BlastOutput.dtd\">" +
                              "<BlastOutput>" +
                              "  <BlastOutput_program>blastn</BlastOutput_program>" +
@@ -595,40 +596,40 @@ public class WISControllerHelperService {
                              "</Iteration>" +
                              "</BlastOutput_iterations>" +
                              "</BlastOutput>";
-//    String uuid = json.getString("uuid");
-//    String url = "http://v0214.nbi.ac.uk/wheatis";
-//    String result = "{" +
-//                    "  \"operations\": {" +
-//                    "    \"operationId\": 6" +
-//                    "  }," +
-//                    "  \"services\": [" +
-//                    "    \""+uuid+"\"," +
-//                    "  ]" +
-//                    "}";
-//
-//    HttpClient httpClient = new DefaultHttpClient();
-//
-//    try {
-//      HttpPost request = new HttpPost(url);
-//      StringEntity params = new StringEntity(result);
-//      request.addHeader("content-type", "application/x-www-form-urlencoded");
-//      request.setEntity(params);
-//      HttpResponse response = httpClient.execute(request);
-//
-//      ResponseHandler<String> handler = new BasicResponseHandler();
-//      String body = handler.handleResponse(response);
-//      JSONArray resultArray = JSONArray.fromObject(body);
-//      //to be changed depends on result
-//      rawResultString = body;
-////          resultArray.getString("result");
-//    }
-//    catch (Exception e) {
-//      e.printStackTrace();
-//      return null;
-//    }
-//    finally {
-//      httpClient.getConnectionManager().shutdown();
-//    }
+    String uuid = json.getString("uuid");
+    String url = "http://v0214.nbi.ac.uk/wheatis";
+    String result = "{" +
+                    "  \"operations\": {" +
+                    "    \"operationId\": 6" +
+                    "  }," +
+                    "  \"services\": [" +
+                    "    \""+uuid+"\"," +
+                    "  ]" +
+                    "}";
+
+    HttpClient httpClient = new DefaultHttpClient();
+
+    try {
+      HttpPost request = new HttpPost(url);
+      StringEntity params = new StringEntity(result);
+      request.addHeader("content-type", "application/x-www-form-urlencoded");
+      request.setEntity(params);
+      HttpResponse response = httpClient.execute(request);
+
+      ResponseHandler<String> handler = new BasicResponseHandler();
+      String body = handler.handleResponse(response);
+      JSONArray resultArray = JSONArray.fromObject(body);
+      //to be changed depends on result
+      rawResultString = body;
+//          resultArray.getString("result");
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+      return null;
+    }
+    finally {
+      httpClient.getConnectionManager().shutdown();
+    }
 
     try {
       DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -671,13 +672,12 @@ public class WISControllerHelperService {
       }
 
       for (int i = 0; i < limit; ++i) {
-        Node hit = (Node) hitList.item(i);
+//        Node hit = (Node) hitList.item(i);
 
         String hit_num = hit_numList.item(i).getTextContent();
         String id = idList.item(i).getTextContent();
         String accession = accessionList.item(i).getTextContent();
 
-        System.out.println(hit_num+id+accession);
 
         String bit_score = bit_scoreList.item(i).getTextContent();
         String score = scoreList.item(i).getTextContent();
@@ -685,25 +685,20 @@ public class WISControllerHelperService {
         String identity = identityList.item(i).getTextContent();
 
 
-        System.out.println(bit_score+score+evalue+identity);
-
         String query_from = query_fromList.item(i).getTextContent();
         String query_to = query_toList.item(i).getTextContent();
         String hit_from = hit_fromList.item(i).getTextContent();
         String hit_to = hit_toList.item(i).getTextContent();
 
-        System.out.println(query_from+query_to+hit_from+hit_to);
 
         String query_strand = query_strandList.item(i).getTextContent();
         String hit_strand = hit_strandList.item(i).getTextContent();
 
-        System.out.println(query_strand+hit_strand);
 
         String qseq = qseqList.item(i).getTextContent();
         String midline = midlineList.item(i).getTextContent();
         String hseq = hseqList.item(i).getTextContent();
 
-        System.out.println(qseq+midline+hseq);
 
 
 //        Node hit = (Node) hitList.item(i);
