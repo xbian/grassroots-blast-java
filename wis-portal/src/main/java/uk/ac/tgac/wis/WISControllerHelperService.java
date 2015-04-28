@@ -383,6 +383,7 @@ public class WISControllerHelperService {
       // if 6 keep checking
       JSONArray statusArray = JSONArray.fromObject(body);
       int status = statusArray.getJSONObject(0).getInt("status");
+      String name = statusArray.getJSONObject(0).getString("status");
       if (status == 1){
         responses.put("html", "Failed to start");
       }
@@ -398,6 +399,8 @@ public class WISControllerHelperService {
       if (status == 5){
         responses.put("html", "Job succeeded");
       }
+
+      responses.put("dbname", name);
       responses.put("status", status);
     }
     catch (Exception e) {

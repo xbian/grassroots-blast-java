@@ -327,7 +327,8 @@
                         for  (var job in json['response'])
                         {
                             var uuid = job['service_uuid'];
-                            jQuery('#blastResult').html('<div id=\"' + uuid +'\">Job' + uuid +'Submitted <img src=\"/images/ajax-loader.gif\"/></div></br>');
+                            jQuery('#blastResult').html(
+                                    '<div><b>'+job['name']+'</b><div id=\"' + uuid +'\">Job' + uuid +'Submitted <img src=\"/images/ajax-loader.gif\"/></div></div></br>');
                             setTimeout(checkBlastResult(uuid),timedCall);
                         }
                     }
