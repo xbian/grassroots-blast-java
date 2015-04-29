@@ -648,6 +648,7 @@ public class WISControllerHelperService {
       NodeList hit_numList = document.getElementsByTagName("Hit_num");
       NodeList idList = document.getElementsByTagName("Hit_id");
       NodeList accessionList = document.getElementsByTagName("Hit_accession");
+      NodeList lengthList = document.getElementsByTagName("Hit_len");
 
       NodeList bit_scoreList = document.getElementsByTagName("Hsp_bit-score");
       NodeList scoreList = document.getElementsByTagName("Hsp_score");
@@ -668,6 +669,8 @@ public class WISControllerHelperService {
       NodeList midlineList = document.getElementsByTagName("Hsp_midline");
       NodeList hseqList = document.getElementsByTagName("Hsp_hseq");
 
+      NodeList gapsList = document.getElementsByTagName("Hsp_gaps");
+
       int limit = 5;
 
       if (limit > hitList.getLength()){
@@ -680,27 +683,32 @@ public class WISControllerHelperService {
         String hit_num = hit_numList.item(i).getTextContent();
         String id = idList.item(i).getTextContent();
         String accession = accessionList.item(i).getTextContent();
-
+        String length = lengthList.item(i).getTextContent();
 
         String bit_score = bit_scoreList.item(i).getTextContent();
         String score = scoreList.item(i).getTextContent();
         String evalue = evalueList.item(i).getTextContent();
         String identity = identityList.item(i).getTextContent();
 
-
         String query_from = query_fromList.item(i).getTextContent();
         String query_to = query_toList.item(i).getTextContent();
         String hit_from = hit_fromList.item(i).getTextContent();
         String hit_to = hit_toList.item(i).getTextContent();
 
-
-        String query_strand = query_strandList.item(i).getTextContent();
-        String hit_strand = hit_strandList.item(i).getTextContent();
-
+        String query_strand = "plus";
+        if ("-1".equals(query_strandList.item(i).getTextContent())){
+          query_strand = "minus";
+        }
+        String hit_strand = "plus";
+        if ("-1".equals(hit_strandList.item(i).getTextContent())){
+          hit_strand = "minus";
+        }
 
         String qseq = qseqList.item(i).getTextContent();
         String midline = midlineList.item(i).getTextContent();
         String hseq = hseqList.item(i).getTextContent();
+
+        String gaps = gapsList.item(i).getTextContent();
 
 
 
@@ -744,9 +752,9 @@ public class WISControllerHelperService {
 
 
         sb.append("<div class='blastResultBox ui-corner-all'>");
-        sb.append("<p><b>" + hit_num + ". </b>: " + id + " | <a target=\"_blank\" href=\"http://www.ensembl.org/Multi/Search/Results?q=" + accession + "\">Ensembl Search</a></p>");
-//        sb.append("<p><b>Sequence ID</b>: " + id + "</p>");
-        sb.append("<b>Bit Score</b>: " + bit_score + "</p>");
+        sb.append("<p><b>" + hit_num + ". </b>" + id + " | <a target=\"_blank\" href=\"http://www.ensembl.org/Multi/Search/Results?q=" + accession + "\">Ensembl Search</a></p>");
+//        sb.append("<p><b>Hit Length</b>: " + length + "</p>");
+        sb.append("<b>Bit Score</b>: " + bit_score + " | <b>Hit Length</b>: " + length + " | <b>Gaps</b> "+gaps+"</p>");
         sb.append("<p><b>Score</b>: " + score + " | <b>Evalue</b>: " + evalue + " | <b>Identity</b>: " + identity + "</p><hr/>");
         sb.append("<p class='blastPosition'>Query from: " + query_from + " to: " + query_to + " Strand: " + query_strand + "</p>");
         sb.append(blastResultFormatter(qseq, midline, hseq, 100));

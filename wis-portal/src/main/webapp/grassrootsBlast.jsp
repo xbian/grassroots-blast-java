@@ -294,24 +294,24 @@
             }
         }
     };
-//
-//    function doblastxml() {
-//        jQuery('#blastResult').html('<img src=\"/images/ajax-loader.gif\"/>');
-//        Fluxion.doAjax(
-//                'wisControllerHelperService',
-//                'displayXMLBlastResult',
-//                {
-////                    'raw': rawXMLString,
-//                    'url': ajaxurl
-//                },
-//                {
-//                    'doOnSuccess': function (json) {
-//                            jQuery('#blastResult').html(json.html);
-//                    }
-//                }
-//        );
-//
-//    }
+
+    function doblastxml() {
+        jQuery('#blastResult').html('<img src=\"/images/ajax-loader.gif\"/>');
+        Fluxion.doAjax(
+                'wisControllerHelperService',
+                'displayXMLBlastResult',
+                {
+//                    'raw': rawXMLString,
+                    'url': ajaxurl
+                },
+                {
+                    'doOnSuccess': function (json) {
+                            jQuery('#blastResult').html(json.html);
+                    }
+                }
+        );
+
+    }
 
     function sendBlastRequest() {
         jQuery('#blastResult').html('<img src=\"/images/ajax-loader.gif\"/>');
