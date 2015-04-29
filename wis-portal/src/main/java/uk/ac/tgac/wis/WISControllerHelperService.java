@@ -141,6 +141,7 @@ public class WISControllerHelperService {
         mismatch = j.getString("value");
       }
     }
+    String getservice = "{  \"operations\": {    \"operationId\": 4  },  \"services\": [    \"Blast service\"  ]}";
     String service = "{" +
                      "  \"services\": [" +
                      "    {" +
@@ -245,16 +246,16 @@ public class WISControllerHelperService {
                      "            \"type\": \"boolean\"" +
                      "          }," +
                      "          {" +
-                     "            \"default\": 10.0," +
+                     "            \"default\": 10," +
                      "            \"name\": \"Expect threshold\"," +
                      "            \"param\": \"expect_threshold\"," +
                      "            \"group\": \"General Algorithm Parameters\"," +
-                     "            \"wheatis_type\": 4," +
+                     "            \"wheatis_type\": 2," +
                      "            \"current_value\": "+expect_threshold+"," +
                      "            \"tag\": 1111840852," +
                      "            \"level\": 7," +
                      "            \"description\": \"Expected number of chance matches in a random model\"," +
-                     "            \"type\": \"number\"" +
+                     "            \"type\": \"integer\"" +
                      "          }," +
                      "          {" +
                      "            \"default\": 28," +
@@ -327,7 +328,9 @@ public class WISControllerHelperService {
 
         ResponseHandler<String> handler = new BasicResponseHandler();
         String body = handler.handleResponse(response);
-        System.out.println(response + "<<<header:body>>>" + body);
+        System.out.println(response);
+        System.out.println("<<<header:body>>>");
+        System.out.println(body);
 
 
         responses.put("response", body);

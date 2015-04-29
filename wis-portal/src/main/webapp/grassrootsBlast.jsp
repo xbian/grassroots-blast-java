@@ -314,7 +314,7 @@
     }
 
     function sendBlastRequest() {
-        jQuery('#blastResult').html('<img src=\"/images/ajax-loader.gif\"/>');
+//        jQuery('#blastResult').html('<img src=\"/images/ajax-loader.gif\"/>');
         Fluxion.doAjax(
                 'wisControllerHelperService',
                 'sendBlastRequest',
@@ -324,12 +324,16 @@
                 },
                 {
                     'doOnSuccess': function (json) {
-                        for  (var job in json['response'])
+                        console.log(json);
+                        var response = json.response;
+                        console.log(response.length);
+                        for(var i = 0; i < response.length; i++)
                         {
+                            var job = response[i];
                             var uuid = job['service_uuid'];
-                            jQuery('#blastResult').html(
-                                    '<div><b>'+job['name']+'</b><div id=\"' + uuid +'\">Job' + uuid +'Submitted <img src=\"/images/ajax-loader.gif\"/></div></div></br>');
-                            setTimeout(checkBlastResult(uuid),timedCall);
+                            jQuery('#blastResult').append(
+                                    '<div><b>Database: '+job['name']+'</b> <div id=\"' + uuid +'\">Job ' + uuid +' Submitted <img src=\"/images/ajax-loader.gif\"/></div></div></br>');
+//                            setTimeout(checkBlastResult(uuid),timedCall);
                         }
                     }
                 }
