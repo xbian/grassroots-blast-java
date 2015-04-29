@@ -332,7 +332,7 @@
                             var job = response[i];
                             var uuid = job['service_uuid'];
                             jQuery('#blastResult').append(
-                                    '<div><b>Database: '+job['name']+'</b> <div id=\"' + uuid +'\">Job ' + uuid +' Submitted <img src=\"/images/ajax-loader.gif\"/></div></div></br>');
+                                    '<div><b>Database: '+job['name']+'</b><br/><b>Job ID: ' + uuid +'</b><div id=\"' + uuid +'\">Job Submitted <img src=\"/images/ajax-loader.gif\"/></div></div></br>');
 //                            setTimeout(checkBlastResult(uuid),timedCall);
                         }
                     }
