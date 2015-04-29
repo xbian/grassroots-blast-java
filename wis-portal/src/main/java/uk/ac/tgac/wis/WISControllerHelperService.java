@@ -331,7 +331,6 @@ public class WISControllerHelperService {
 
 
       HttpClient httpClient = new DefaultHttpClient();
-      System.out.println(service);
 
       try {
         HttpPost request = new HttpPost(url);
@@ -342,10 +341,6 @@ public class WISControllerHelperService {
 
         ResponseHandler<String> handler = new BasicResponseHandler();
         String body = handler.handleResponse(response);
-        System.out.println(response);
-        System.out.println("<<<header:body>>>");
-        System.out.println(body);
-
 
         responses.put("response", body);
       }
@@ -515,8 +510,6 @@ public class WISControllerHelperService {
       }
 
       for (int i = 0; i < limit; ++i) {
-//        Node hit = (Node) hitList.item(i);
-
         String hit_num = hit_numList.item(i).getTextContent();
         String id = idList.item(i).getTextContent();
         String accession = accessionList.item(i).getTextContent();
@@ -547,49 +540,8 @@ public class WISControllerHelperService {
 
         String gaps = gapsList.item(i).getTextContent();
 
-
-//        Node hit = (Node) hitList.item(i);
-//
-//        String hit_num = hit.getChildNodes().item(0).getTextContent();
-//        String id = hit.getChildNodes().item(1).getTextContent();
-//        String accession = hit.getChildNodes().item(3).getTextContent();
-////        String length = hit.getChildNodes().item(4).getTextContent();
-//
-//        Node hit_hsps = (Node) hit.getElementsByTagName("hit_hsps").item(0);
-//
-//        String bit_score = hsp.getChildNodes().item(1).getTextContent();
-//        String score = hsp.getChildNodes().item(2).getTextContent();
-//        String evalue = hsp.getChildNodes().item(3).getTextContent();
-//        String identity = hsp.getChildNodes().item(10).getTextContent();
-//
-//
-//        System.out.println(bit_score+score+evalue+identity);
-//
-//        String query_from = hsp.getChildNodes().item(4).getTextContent();
-//        String query_to = hsp.getChildNodes().item(5).getTextContent();
-//        String hit_from = hsp.getChildNodes().item(6).getTextContent();
-//        String hit_to = hsp.getChildNodes().item(7).getTextContent();
-//
-//
-//        System.out.println(query_from+query_to+hit_from+hit_to);
-//
-//        String query_strand = hsp.getChildNodes().item(8).getTextContent();
-//        String hit_strand = hsp.getChildNodes().item(9).getTextContent();
-//
-//
-//        System.out.println(query_strand+hit_strand);
-//
-//        String qseq = hsp.getChildNodes().item(14).getTextContent();
-//        String midline = hsp.getChildNodes().item(16).getTextContent();
-//        String hseq = hsp.getChildNodes().item(15).getTextContent();
-//
-//
-//        System.out.println(qseq+midline+hseq);
-
-
         sb.append("<div class='blastResultBox ui-corner-all'>");
         sb.append("<p><b>" + hit_num + ". </b>" + id + " | <a target=\"_blank\" href=\"http://www.ensembl.org/Multi/Search/Results?q=" + accession + "\">Ensembl Search</a></p>");
-//        sb.append("<p><b>Hit Length</b>: " + length + "</p>");
         sb.append("<b>Bit Score</b>: " + bit_score + " | <b>Hit Length</b>: " + length + " | <b>Gaps:</b> " + gaps + "</p>");
         sb.append("<p><b>Score</b>: " + score + " | <b>Evalue</b>: " + evalue + " | <b>Identity</b>: " + identity + "</p><hr/>");
         sb.append("<p class='blastPosition'>Query from: " + query_from + " to: " + query_to + " Strand: " + query_strand + "</p>");
