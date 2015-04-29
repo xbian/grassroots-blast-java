@@ -135,9 +135,11 @@ public class WISControllerHelperService {
       }
       if (j.getString("name").equals("max_matches_query_range")) {
         max_matches_query_range = j.getString("value");
-      }if (j.getString("name").equals("match")) {
+      }
+      if (j.getString("name").equals("match")) {
         match = j.getString("value");
-      }if (j.getString("name").equals("mismatch")) {
+      }
+      if (j.getString("name").equals("mismatch")) {
         mismatch = j.getString("value");
       }
     }
@@ -191,7 +193,7 @@ public class WISControllerHelperService {
                      "            \"param\": \"query_sequence\"," +
                      "            \"group\": \"Query Sequence Parameters\"," +
                      "            \"wheatis_type\": 5," +
-                     "            \"current_value\": \""+sequence+"\"," +
+                     "            \"current_value\": \"" + sequence + "\"," +
                      "            \"tag\": 1112626521," +
                      "            \"level\": 7," +
                      "            \"description\": \"Query sequence(s) to be used for a BLAST search should be pasted in the 'Search' text area. It accepts a number of different types of input and automatically determines the format or the input. To allow this feature there are certain conventions required with regard to the input of identifiers (e.g., accessions or gi's)\"," +
@@ -203,7 +205,7 @@ public class WISControllerHelperService {
                      "            \"param\": \"from\"," +
                      "            \"group\": \"Query Sequence Parameters\"," +
                      "            \"wheatis_type\": 2," +
-                     "            \"current_value\": "+query_from+"," +
+                     "            \"current_value\": " + query_from + "," +
                      "            \"tag\": 1112622674," +
                      "            \"level\": 6," +
                      "            \"description\": \"Coordinates for a subrange of the query sequence. The BLAST search will apply only to the residues in the range. Valid sequence coordinates are from 1 to the sequence length. Set either From or To to 0 to ignore the range. The range includes the residue at the To coordinate.\"," +
@@ -215,7 +217,7 @@ public class WISControllerHelperService {
                      "            \"param\": \"to\"," +
                      "            \"group\": \"Query Sequence Parameters\"," +
                      "            \"wheatis_type\": 2," +
-                     "            \"current_value\": "+query_to+"," +
+                     "            \"current_value\": " + query_to + "," +
                      "            \"tag\": 1112626255," +
                      "            \"level\": 6," +
                      "            \"description\": \"Coordinates for a subrange of the query sequence. The BLAST search will apply only to the residues in the range. Valid sequence coordinates are from 1 to the sequence length. Set either From or To to 0 to ignore the range. The range includes the residue at the To coordinate.\"," +
@@ -227,7 +229,7 @@ public class WISControllerHelperService {
                      "            \"param\": \"max_target_sequences\"," +
                      "            \"group\": \"General Algorithm Parameters\"," +
                      "            \"wheatis_type\": 2," +
-                     "            \"current_value\": "+max_target_sequences+"," +
+                     "            \"current_value\": " + max_target_sequences + "," +
                      "            \"tag\": 1112495430," +
                      "            \"level\": 7," +
                      "            \"description\": \"Select the maximum number of aligned sequences to display (the actual number of alignments may be greater than this).\"," +
@@ -239,7 +241,7 @@ public class WISControllerHelperService {
                      "            \"param\": \"short_queries\"," +
                      "            \"group\": \"General Algorithm Parameters\"," +
                      "            \"wheatis_type\": 0," +
-                     "            \"current_value\": "+short_queries+"," +
+                     "            \"current_value\": " + short_queries + "," +
                      "            \"tag\": 1112754257," +
                      "            \"level\": 7," +
                      "            \"description\": \"Automatically adjust parameters for short input sequences\"," +
@@ -251,7 +253,7 @@ public class WISControllerHelperService {
                      "            \"param\": \"expect_threshold\"," +
                      "            \"group\": \"General Algorithm Parameters\"," +
                      "            \"wheatis_type\": 2," +
-                     "            \"current_value\": "+expect_threshold+"," +
+                     "            \"current_value\": " + expect_threshold + "," +
                      "            \"tag\": 1111840852," +
                      "            \"level\": 7," +
                      "            \"description\": \"Expected number of chance matches in a random model\"," +
@@ -263,7 +265,7 @@ public class WISControllerHelperService {
                      "            \"param\": \"word_size\"," +
                      "            \"group\": \"General Algorithm Parameters\"," +
                      "            \"wheatis_type\": 2," +
-                     "            \"current_value\": "+word_size+"," +
+                     "            \"current_value\": " + word_size + "," +
                      "            \"tag\": 1113015379," +
                      "            \"level\": 7," +
                      "            \"description\": \"Expected number of chance matches in a random model\"," +
@@ -275,7 +277,7 @@ public class WISControllerHelperService {
                      "            \"param\": \"max_matches_in_a_query_range\"," +
                      "            \"group\": \"General Algorithm Parameters\"," +
                      "            \"wheatis_type\": 2," +
-                     "            \"current_value\": "+max_matches_query_range+"," +
+                     "            \"current_value\": " + max_matches_query_range + "," +
                      "            \"tag\": 1113015379," +
                      "            \"level\": 7," +
                      "            \"description\": \"Limit the number of matches to a query range. This option is useful if many strong matches to one part of a query may prevent BLAST from presenting weaker matches to another part of the query\"," +
@@ -287,7 +289,7 @@ public class WISControllerHelperService {
                      "            \"param\": \"match\"," +
                      "            \"group\": \"Scoring Parameters\"," +
                      "            \"wheatis_type\": 1," +
-                     "            \"current_value\": "+match+"," +
+                     "            \"current_value\": " + match + "," +
                      "            \"tag\": 1112364099," +
                      "            \"level\": 6," +
                      "            \"description\": \"Reward for a nucleotide match.\"," +
@@ -299,7 +301,7 @@ public class WISControllerHelperService {
                      "            \"param\": \"mismatch\"," +
                      "            \"group\": \"Scoring Parameters\"," +
                      "            \"wheatis_type\": 1," +
-                     "            \"current_value\": "+mismatch+"," +
+                     "            \"current_value\": " + mismatch + "," +
                      "            \"tag\": 1112363853," +
                      "            \"level\": 6," +
                      "            \"description\": \"Penalty for a nucleotide mismatch.\"," +
@@ -368,7 +370,7 @@ public class WISControllerHelperService {
                     "    \"operationId\": 5" +
                     "  }," +
                     "  \"services\": [" +
-                    "    \""+uuid+"\"," +
+                    "    \"" + uuid + "\"," +
                     "  ]" +
                     "}";
 
@@ -387,19 +389,19 @@ public class WISControllerHelperService {
       JSONArray statusArray = JSONArray.fromObject(body);
       int status = statusArray.getJSONObject(0).getInt("status");
       String name = statusArray.getJSONObject(0).getString("status");
-      if (status == 1){
+      if (status == 1) {
         responses.put("html", "Failed to start");
       }
-      if (status == 2){
+      if (status == 2) {
         responses.put("html", "Job started");
       }
-      if (status == 3){
+      if (status == 3) {
         responses.put("html", "Job finished");
       }
-      if (status == 4){
+      if (status == 4) {
         responses.put("html", "Job failed");
       }
-      if (status == 5){
+      if (status == 5) {
         responses.put("html", "Job succeeded");
       }
 
@@ -421,187 +423,187 @@ public class WISControllerHelperService {
     JSONObject responses = new JSONObject();
     String rawResultString;
     String rawResultStringDummy = "<?xml version=\"1.0\"?>" +
-                             "<!DOCTYPE BlastOutput PUBLIC \"-//NCBI//NCBI BlastOutput/EN\" \"http://www.ncbi.nlm.nih.gov/dtd/NCBI_BlastOutput.dtd\">" +
-                             "<BlastOutput>" +
-                             "  <BlastOutput_program>blastn</BlastOutput_program>" +
-                             "  <BlastOutput_version>BLASTN 2.2.30+</BlastOutput_version>" +
-                             "  <BlastOutput_reference>Zheng Zhang, Scott Schwartz, Lukas Wagner, and Webb Miller (2000), &quot;A greedy algorithm for aligning DNA sequences&quot;, J Comput Biol 2000; 7(1-2):203-14.</BlastOutput_reference>" +
-                             "  <BlastOutput_db>/tgac/public/databases/blast/triticum_aestivum/IWGSC/v2/IWGSCv2.0.00</BlastOutput_db>" +
-                             "  <BlastOutput_query-ID>Query_1</BlastOutput_query-ID>" +
-                             "  <BlastOutput_query-def>C_CSS_1AL_scaff_279</BlastOutput_query-def>" +
-                             "  <BlastOutput_query-len>317</BlastOutput_query-len>" +
-                             "  <BlastOutput_param>" +
-                             "    <Parameters>" +
-                             "      <Parameters_expect>10</Parameters_expect>" +
-                             "      <Parameters_sc-match>1</Parameters_sc-match>" +
-                             "      <Parameters_sc-mismatch>-2</Parameters_sc-mismatch>" +
-                             "      <Parameters_gap-open>0</Parameters_gap-open>" +
-                             "      <Parameters_gap-extend>0</Parameters_gap-extend>" +
-                             "      <Parameters_filter>L;m;</Parameters_filter>" +
-                             "    </Parameters>" +
-                             "  </BlastOutput_param>" +
-                             "<BlastOutput_iterations>" +
-                             "<Iteration>" +
-                             "  <Iteration_iter-num>1</Iteration_iter-num>" +
-                             "  <Iteration_query-ID>Query_1</Iteration_query-ID>" +
-                             "  <Iteration_query-def>C_CSS_1AL_scaff_279</Iteration_query-def>" +
-                             "  <Iteration_query-len>317</Iteration_query-len>" +
-                             "<Iteration_hits>" +
-                             "<Hit>" +
-                             "  <Hit_num>1</Hit_num>" +
-                             "  <Hit_id>IWGSC_CSS_1AL_scaff_279</Hit_id>" +
-                             "  <Hit_def>No definition line</Hit_def>" +
-                             "  <Hit_accession>IWGSC_CSS_1AL_scaff_279</Hit_accession>" +
-                             "  <Hit_len>317</Hit_len>" +
-                             "  <Hit_hsps>" +
-                             "    <Hsp>" +
-                             "      <Hsp_num>1</Hsp_num>" +
-                             "      <Hsp_bit-score>586.508</Hsp_bit-score>" +
-                             "      <Hsp_score>317</Hsp_score>" +
-                             "      <Hsp_evalue>3.05604e-165</Hsp_evalue>" +
-                             "      <Hsp_query-from>1</Hsp_query-from>" +
-                             "      <Hsp_query-to>317</Hsp_query-to>" +
-                             "      <Hsp_hit-from>1</Hsp_hit-from>" +
-                             "      <Hsp_hit-to>317</Hsp_hit-to>" +
-                             "      <Hsp_query-frame>1</Hsp_query-frame>" +
-                             "      <Hsp_hit-frame>1</Hsp_hit-frame>" +
-                             "      <Hsp_identity>317</Hsp_identity>" +
-                             "      <Hsp_positive>317</Hsp_positive>" +
-                             "      <Hsp_gaps>0</Hsp_gaps>" +
-                             "      <Hsp_align-len>317</Hsp_align-len>" +
-                             "      <Hsp_qseq>TGATCAAGTCTATCTATGAATAATATTTGAATCTTCTCTGAATTCTTTTATGTATTATTGGTTATCTTTGTAAGTCTCTTCGAATTATCAGTTTGGTTTTACTACATTGGTTGTTCTTGCCATGGTATAAGTGCTTAGCTTTGGGTTCGATCTTGCGGTGTCCTTTCCCAGTGACAGAAGGGGCAGGGCACGTATTGTATCATTGACATCGAGGATAACAAAATGGTTTTTTTTACCATATTGCATTAAACTATCCCTCTACATCATGTCATCTTGCTTAAGGTGTTACTCTGTTTTTAACTTAATACTCTAGATGC</Hsp_qseq>" +
-                             "      <Hsp_hseq>TGATCAAGTCTATCTATGAATAATATTTGAATCTTCTCTGAATTCTTTTATGTATTATTGGTTATCTTTGTAAGTCTCTTCGAATTATCAGTTTGGTTTTACTACATTGGTTGTTCTTGCCATGGTATAAGTGCTTAGCTTTGGGTTCGATCTTGCGGTGTCCTTTCCCAGTGACAGAAGGGGCAGGGCACGTATTGTATCATTGACATCGAGGATAACAAAATGGTTTTTTTTACCATATTGCATTAAACTATCCCTCTACATCATGTCATCTTGCTTAAGGTGTTACTCTGTTTTTAACTTAATACTCTAGATGC</Hsp_hseq>" +
-                             "      <Hsp_midline>|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>" +
-                             "    </Hsp>" +
-                             "  </Hit_hsps>" +
-                             "</Hit>" +
-                             "<Hit>" +
-                             "  <Hit_num>2</Hit_num>" +
-                             "  <Hit_id>IWGSC_CSS_2AL_scaff_6437413</Hit_id>" +
-                             "  <Hit_def>No definition line</Hit_def>" +
-                             "  <Hit_accession>IWGSC_CSS_2AL_scaff_6437413</Hit_accession>" +
-                             "  <Hit_len>4396</Hit_len>" +
-                             "  <Hit_hsps>" +
-                             "    <Hsp>" +
-                             "      <Hsp_num>1</Hsp_num>" +
-                             "      <Hsp_bit-score>459.089</Hsp_bit-score>" +
-                             "      <Hsp_score>248</Hsp_score>" +
-                             "      <Hsp_evalue>6.95101e-127</Hsp_evalue>" +
-                             "      <Hsp_query-from>1</Hsp_query-from>" +
-                             "      <Hsp_query-to>317</Hsp_query-to>" +
-                             "      <Hsp_hit-from>4358</Hsp_hit-from>" +
-                             "      <Hsp_hit-to>4035</Hsp_hit-to>" +
-                             "      <Hsp_query-frame>1</Hsp_query-frame>" +
-                             "      <Hsp_hit-frame>-1</Hsp_hit-frame>" +
-                             "      <Hsp_identity>301</Hsp_identity>" +
-                             "      <Hsp_positive>301</Hsp_positive>" +
-                             "      <Hsp_gaps>9</Hsp_gaps>" +
-                             "      <Hsp_align-len>325</Hsp_align-len>" +
-                             "      <Hsp_qseq>TGATCAAGTCTATCTATGAATAATATTTGAATCTTCTCTGAATTCTTTT-ATGTATTATTGGTTATCTTTGTAAGTCTCTTCGAATTATCAGTTTGGTTT----TACTACATTGGTTGTTCTTGCCATGGTATAAGTGCTTAGCTTTGGGTTCGATCTTGCGGTGTCCTTTCCCAGTGACAGAAGGGGCAG---GGCACGTATTGTATCATTGACATCGAGGATAACAAAATGGTTTTTTTTACCATATTGCATTAAACTATCCCTCTACATCATGTCATCTTGCTTAAGGTGTTACTCTGTTTTTAACTTAATACTCTAGATGC</Hsp_qseq>" +
-                             "      <Hsp_hseq>TGATCAAGTCTATCTATGAATAATATTTGAATCTTCTCTGAATTCTTTTTATGTATGATTGGTTATCTTTGCAAGTCTCTTCGAATTATCAGTTTGGTTTGGCCTACTAGATTGGTTGTTCTTGCCATGGGAGAAGTGCTTAACTTTGGGTTCGATCTTGTGGTGTCCTTTCATAGTGACAGAAGGGGCAGCAAGGCACGTATTGTATCGTTGCCATCGAGGATAACAAGATGGTTTTTTT-ATCATATTGCATGAAACTATCCCTCTACATCATGTCATCTTGCTTAAGGCGTTACTCTGTTTTTAACTTAATACTCTAGATGC</Hsp_hseq>" +
-                             "      <Hsp_midline>||||||||||||||||||||||||||||||||||||||||||||||||| |||||| |||||||||||||| ||||||||||||||||||||||||||||    ||||| |||||||||||||||||||| | ||||||||| ||||||||||||||||| |||||||||||  |||||||||||||||||   ||||||||||||||| ||| ||||||||||||||| ||||||||||| | |||||||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||||||</Hsp_midline>" +
-                             "    </Hsp>" +
-                             "  </Hit_hsps>" +
-                             "</Hit>" +
-                             "<Hit>" +
-                             "  <Hit_num>3</Hit_num>" +
-                             "  <Hit_id>IWGSC_CSS_3AS_scaff_3392338</Hit_id>" +
-                             "  <Hit_def>No definition line</Hit_def>" +
-                             "  <Hit_accession>IWGSC_CSS_3AS_scaff_3392338</Hit_accession>" +
-                             "  <Hit_len>870</Hit_len>" +
-                             "  <Hit_hsps>" +
-                             "    <Hsp>" +
-                             "      <Hsp_num>1</Hsp_num>" +
-                             "      <Hsp_bit-score>453.549</Hsp_bit-score>" +
-                             "      <Hsp_score>245</Hsp_score>" +
-                             "      <Hsp_evalue>3.23399e-125</Hsp_evalue>" +
-                             "      <Hsp_query-from>1</Hsp_query-from>" +
-                             "      <Hsp_query-to>317</Hsp_query-to>" +
-                             "      <Hsp_hit-from>474</Hsp_hit-from>" +
-                             "      <Hsp_hit-to>796</Hsp_hit-to>" +
-                             "      <Hsp_query-frame>1</Hsp_query-frame>" +
-                             "      <Hsp_hit-frame>1</Hsp_hit-frame>" +
-                             "      <Hsp_identity>300</Hsp_identity>" +
-                             "      <Hsp_positive>300</Hsp_positive>" +
-                             "      <Hsp_gaps>10</Hsp_gaps>" +
-                             "      <Hsp_align-len>325</Hsp_align-len>" +
-                             "      <Hsp_qseq>TGATCAAGTCTATCTATGAATAATATTTGAATCTTCTCTGAATTCTTTTATGTATTATTGGTTATCTTTGTAAGTCTCTTCGAATTATCAGTTTGGTTT----TACTACATTGGTTGTTCTTGCCATGGTATAAGTGCTTAGCTTTGGGTTCGATCTTGCGGTGTCCTTTCCCAGTGACAGAAGGGGCAG---GGCACGTATTGTATCATTGACATCGAGGATAACAAAATGG-TTTTTTTTACCATATTGCATTAAACTATCCCTCTACATCATGTCATCTTGCTTAAGGTGTTACTCTGTTTTTAACTTAATACTCTAGATGC</Hsp_qseq>" +
-                             "      <Hsp_hseq>TGATCCAGTCTATCTATGAATAATATTTGAATCTTCTCTGAATTCTTTTATGTATGATTGTTTTTCTTTGCAAGTCTCTTCGAATTATCAGTTTGGTTTGGCATACTAGATTGGTTGTTCTTGCCATGGGAGAAGTGCTTAGCTTTGGGTTCGATCTTGCGGTGTCCTTTCCCAGTGACAGAAGGGGCAGCAAGGCACGTATTGTATTGTTGCCATCGAGGATAACAAGATGGGGTTTTTATA--ATATTGCATGAAACTATCCCTCTACATCATGTCATCTTGCTTAAGGTGTTACTCTGTTTTTAACTTAATACTCTAGATGC</Hsp_hseq>" +
-                             "      <Hsp_midline>||||| ||||||||||||||||||||||||||||||||||||||||||||||||| |||| || |||||| ||||||||||||||||||||||||||||    ||||| |||||||||||||||||||| | ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||   ||||||||||||||  ||| ||||||||||||||| ||||  ||||| ||  ||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>" +
-                             "    </Hsp>" +
-                             "  </Hit_hsps>" +
-                             "</Hit>" +
-                             "<Hit>" +
-                             "  <Hit_num>4</Hit_num>" +
-                             "  <Hit_id>IWGSC_CSS_2DL_scaff_8000925</Hit_id>" +
-                             "  <Hit_def>No definition line</Hit_def>" +
-                             "  <Hit_accession>IWGSC_CSS_2DL_scaff_8000925</Hit_accession>" +
-                             "  <Hit_len>244</Hit_len>" +
-                             "  <Hit_hsps>" +
-                             "    <Hsp>" +
-                             "      <Hsp_num>1</Hsp_num>" +
-                             "      <Hsp_bit-score>451.703</Hsp_bit-score>" +
-                             "      <Hsp_score>244</Hsp_score>" +
-                             "      <Hsp_evalue>1.16315e-124</Hsp_evalue>" +
-                             "      <Hsp_query-from>60</Hsp_query-from>" +
-                             "      <Hsp_query-to>303</Hsp_query-to>" +
-                             "      <Hsp_hit-from>1</Hsp_hit-from>" +
-                             "      <Hsp_hit-to>244</Hsp_hit-to>" +
-                             "      <Hsp_query-frame>1</Hsp_query-frame>" +
-                             "      <Hsp_hit-frame>1</Hsp_hit-frame>" +
-                             "      <Hsp_identity>244</Hsp_identity>" +
-                             "      <Hsp_positive>244</Hsp_positive>" +
-                             "      <Hsp_gaps>0</Hsp_gaps>" +
-                             "      <Hsp_align-len>244</Hsp_align-len>" +
-                             "      <Hsp_qseq>GGTTATCTTTGTAAGTCTCTTCGAATTATCAGTTTGGTTTTACTACATTGGTTGTTCTTGCCATGGTATAAGTGCTTAGCTTTGGGTTCGATCTTGCGGTGTCCTTTCCCAGTGACAGAAGGGGCAGGGCACGTATTGTATCATTGACATCGAGGATAACAAAATGGTTTTTTTTACCATATTGCATTAAACTATCCCTCTACATCATGTCATCTTGCTTAAGGTGTTACTCTGTTTTTAACTT</Hsp_qseq>" +
-                             "      <Hsp_hseq>GGTTATCTTTGTAAGTCTCTTCGAATTATCAGTTTGGTTTTACTACATTGGTTGTTCTTGCCATGGTATAAGTGCTTAGCTTTGGGTTCGATCTTGCGGTGTCCTTTCCCAGTGACAGAAGGGGCAGGGCACGTATTGTATCATTGACATCGAGGATAACAAAATGGTTTTTTTTACCATATTGCATTAAACTATCCCTCTACATCATGTCATCTTGCTTAAGGTGTTACTCTGTTTTTAACTT</Hsp_hseq>" +
-                             "      <Hsp_midline>||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>" +
-                             "    </Hsp>" +
-                             "  </Hit_hsps>" +
-                             "</Hit>" +
-                             "<Hit>" +
-                             "  <Hit_num>5</Hit_num>" +
-                             "  <Hit_id>IWGSC_CSS_1AS_scaff_3294617</Hit_id>" +
-                             "  <Hit_def>No definition line</Hit_def>" +
-                             "  <Hit_accession>IWGSC_CSS_1AS_scaff_3294617</Hit_accession>" +
-                             "  <Hit_len>10985</Hit_len>" +
-                             "  <Hit_hsps>" +
-                             "    <Hsp>" +
-                             "      <Hsp_num>1</Hsp_num>" +
-                             "      <Hsp_bit-score>449.856</Hsp_bit-score>" +
-                             "      <Hsp_score>243</Hsp_score>" +
-                             "      <Hsp_evalue>4.18343e-124</Hsp_evalue>" +
-                             "      <Hsp_query-from>1</Hsp_query-from>" +
-                             "      <Hsp_query-to>316</Hsp_query-to>" +
-                             "      <Hsp_hit-from>10665</Hsp_hit-from>" +
-                             "      <Hsp_hit-to>10985</Hsp_hit-to>" +
-                             "      <Hsp_query-frame>1</Hsp_query-frame>" +
-                             "      <Hsp_hit-frame>1</Hsp_hit-frame>" +
-                             "      <Hsp_identity>298</Hsp_identity>" +
-                             "      <Hsp_positive>298</Hsp_positive>" +
-                             "      <Hsp_gaps>9</Hsp_gaps>" +
-                             "      <Hsp_align-len>323</Hsp_align-len>" +
-                             "      <Hsp_qseq>TGATCAAGTCTATCTATGAATAATATTTGAATCTTCTCTGAATTCTTTTATGTATTATTGGTTATCTTTGTAAGTCTCTTCGAATTATCAGTTTGGTTT----TACTACATTGGTTGTTCTTGCCATGGTATAAGTGCTTAGCTTTGGGTTCGATCTTGCGGTGTCCTTTCCCAGTGACAGAAGGGGCAG---GGCACGTATTGTATCATTGACATCGAGGATAACAAAATGGTTTTTTTTACCATATTGCATTAAACTATCCCTCTACATCATGTCATCTTGCTTAAGGTGTTACTCTGTTTTTAACTTAATACTCTAGATG</Hsp_qseq>" +
-                             "      <Hsp_hseq>TGATCAAGTCTATCTATGAATAATATTTGAATCTTCTCTGAATTCTTTTATGTATGATTGGTTATCTTTGCAAGTCTTTTCGAATTATCAGTTTGGTTTGGCCTACTAGATTGGTTTTTCTTGCCATGGGAGAAGTGCTTAGCTTTGGGTTCGATCTTGCGGTGTCCTTTCCCAGTGACAAAAGGGGCAGCAAGGCACGTATTGTATTGTTGCCATCGAGGATAACAAGATGGTTTTTTAT--CATATTGCGTGAAACTATCCCTCTACATCATGTCATCTTGCTTAAGGCGTTACTCTGTTTTTAACTTAATACTCTAGATG</Hsp_hseq>" +
-                             "      <Hsp_midline>||||||||||||||||||||||||||||||||||||||||||||||||||||||| |||||||||||||| |||||| |||||||||||||||||||||    ||||| ||||||| |||||||||||| | |||||||||||||||||||||||||||||||||||||||||||||||| |||||||||   ||||||||||||||  ||| ||||||||||||||| |||||||||| |  |||||||| | |||||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||||||||</Hsp_midline>" +
-                             "    </Hsp>" +
-                             "  </Hit_hsps>" +
-                             "</Hit>" +
-                             "</Iteration_hits>" +
-                             "  <Iteration_stat>" +
-                             "    <Statistics>" +
-                             "      <Statistics_db-num>4602498</Statistics_db-num>" +
-                             "      <Statistics_db-len>3955890449</Statistics_db-len>" +
-                             "      <Statistics_hsp-len>28</Statistics_hsp-len>" +
-                             "      <Statistics_eff-space>662074547365</Statistics_eff-space>" +
-                             "      <Statistics_kappa>0.46</Statistics_kappa>" +
-                             "      <Statistics_lambda>1.28</Statistics_lambda>" +
-                             "      <Statistics_entropy>0.85</Statistics_entropy>" +
-                             "    </Statistics>" +
-                             "  </Iteration_stat>" +
-                             "</Iteration>" +
-                             "</BlastOutput_iterations>" +
-                             "</BlastOutput>";
+                                  "<!DOCTYPE BlastOutput PUBLIC \"-//NCBI//NCBI BlastOutput/EN\" \"http://www.ncbi.nlm.nih.gov/dtd/NCBI_BlastOutput.dtd\">" +
+                                  "<BlastOutput>" +
+                                  "  <BlastOutput_program>blastn</BlastOutput_program>" +
+                                  "  <BlastOutput_version>BLASTN 2.2.30+</BlastOutput_version>" +
+                                  "  <BlastOutput_reference>Zheng Zhang, Scott Schwartz, Lukas Wagner, and Webb Miller (2000), &quot;A greedy algorithm for aligning DNA sequences&quot;, J Comput Biol 2000; 7(1-2):203-14.</BlastOutput_reference>" +
+                                  "  <BlastOutput_db>/tgac/public/databases/blast/triticum_aestivum/IWGSC/v2/IWGSCv2.0.00</BlastOutput_db>" +
+                                  "  <BlastOutput_query-ID>Query_1</BlastOutput_query-ID>" +
+                                  "  <BlastOutput_query-def>C_CSS_1AL_scaff_279</BlastOutput_query-def>" +
+                                  "  <BlastOutput_query-len>317</BlastOutput_query-len>" +
+                                  "  <BlastOutput_param>" +
+                                  "    <Parameters>" +
+                                  "      <Parameters_expect>10</Parameters_expect>" +
+                                  "      <Parameters_sc-match>1</Parameters_sc-match>" +
+                                  "      <Parameters_sc-mismatch>-2</Parameters_sc-mismatch>" +
+                                  "      <Parameters_gap-open>0</Parameters_gap-open>" +
+                                  "      <Parameters_gap-extend>0</Parameters_gap-extend>" +
+                                  "      <Parameters_filter>L;m;</Parameters_filter>" +
+                                  "    </Parameters>" +
+                                  "  </BlastOutput_param>" +
+                                  "<BlastOutput_iterations>" +
+                                  "<Iteration>" +
+                                  "  <Iteration_iter-num>1</Iteration_iter-num>" +
+                                  "  <Iteration_query-ID>Query_1</Iteration_query-ID>" +
+                                  "  <Iteration_query-def>C_CSS_1AL_scaff_279</Iteration_query-def>" +
+                                  "  <Iteration_query-len>317</Iteration_query-len>" +
+                                  "<Iteration_hits>" +
+                                  "<Hit>" +
+                                  "  <Hit_num>1</Hit_num>" +
+                                  "  <Hit_id>IWGSC_CSS_1AL_scaff_279</Hit_id>" +
+                                  "  <Hit_def>No definition line</Hit_def>" +
+                                  "  <Hit_accession>IWGSC_CSS_1AL_scaff_279</Hit_accession>" +
+                                  "  <Hit_len>317</Hit_len>" +
+                                  "  <Hit_hsps>" +
+                                  "    <Hsp>" +
+                                  "      <Hsp_num>1</Hsp_num>" +
+                                  "      <Hsp_bit-score>586.508</Hsp_bit-score>" +
+                                  "      <Hsp_score>317</Hsp_score>" +
+                                  "      <Hsp_evalue>3.05604e-165</Hsp_evalue>" +
+                                  "      <Hsp_query-from>1</Hsp_query-from>" +
+                                  "      <Hsp_query-to>317</Hsp_query-to>" +
+                                  "      <Hsp_hit-from>1</Hsp_hit-from>" +
+                                  "      <Hsp_hit-to>317</Hsp_hit-to>" +
+                                  "      <Hsp_query-frame>1</Hsp_query-frame>" +
+                                  "      <Hsp_hit-frame>1</Hsp_hit-frame>" +
+                                  "      <Hsp_identity>317</Hsp_identity>" +
+                                  "      <Hsp_positive>317</Hsp_positive>" +
+                                  "      <Hsp_gaps>0</Hsp_gaps>" +
+                                  "      <Hsp_align-len>317</Hsp_align-len>" +
+                                  "      <Hsp_qseq>TGATCAAGTCTATCTATGAATAATATTTGAATCTTCTCTGAATTCTTTTATGTATTATTGGTTATCTTTGTAAGTCTCTTCGAATTATCAGTTTGGTTTTACTACATTGGTTGTTCTTGCCATGGTATAAGTGCTTAGCTTTGGGTTCGATCTTGCGGTGTCCTTTCCCAGTGACAGAAGGGGCAGGGCACGTATTGTATCATTGACATCGAGGATAACAAAATGGTTTTTTTTACCATATTGCATTAAACTATCCCTCTACATCATGTCATCTTGCTTAAGGTGTTACTCTGTTTTTAACTTAATACTCTAGATGC</Hsp_qseq>" +
+                                  "      <Hsp_hseq>TGATCAAGTCTATCTATGAATAATATTTGAATCTTCTCTGAATTCTTTTATGTATTATTGGTTATCTTTGTAAGTCTCTTCGAATTATCAGTTTGGTTTTACTACATTGGTTGTTCTTGCCATGGTATAAGTGCTTAGCTTTGGGTTCGATCTTGCGGTGTCCTTTCCCAGTGACAGAAGGGGCAGGGCACGTATTGTATCATTGACATCGAGGATAACAAAATGGTTTTTTTTACCATATTGCATTAAACTATCCCTCTACATCATGTCATCTTGCTTAAGGTGTTACTCTGTTTTTAACTTAATACTCTAGATGC</Hsp_hseq>" +
+                                  "      <Hsp_midline>|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>" +
+                                  "    </Hsp>" +
+                                  "  </Hit_hsps>" +
+                                  "</Hit>" +
+                                  "<Hit>" +
+                                  "  <Hit_num>2</Hit_num>" +
+                                  "  <Hit_id>IWGSC_CSS_2AL_scaff_6437413</Hit_id>" +
+                                  "  <Hit_def>No definition line</Hit_def>" +
+                                  "  <Hit_accession>IWGSC_CSS_2AL_scaff_6437413</Hit_accession>" +
+                                  "  <Hit_len>4396</Hit_len>" +
+                                  "  <Hit_hsps>" +
+                                  "    <Hsp>" +
+                                  "      <Hsp_num>1</Hsp_num>" +
+                                  "      <Hsp_bit-score>459.089</Hsp_bit-score>" +
+                                  "      <Hsp_score>248</Hsp_score>" +
+                                  "      <Hsp_evalue>6.95101e-127</Hsp_evalue>" +
+                                  "      <Hsp_query-from>1</Hsp_query-from>" +
+                                  "      <Hsp_query-to>317</Hsp_query-to>" +
+                                  "      <Hsp_hit-from>4358</Hsp_hit-from>" +
+                                  "      <Hsp_hit-to>4035</Hsp_hit-to>" +
+                                  "      <Hsp_query-frame>1</Hsp_query-frame>" +
+                                  "      <Hsp_hit-frame>-1</Hsp_hit-frame>" +
+                                  "      <Hsp_identity>301</Hsp_identity>" +
+                                  "      <Hsp_positive>301</Hsp_positive>" +
+                                  "      <Hsp_gaps>9</Hsp_gaps>" +
+                                  "      <Hsp_align-len>325</Hsp_align-len>" +
+                                  "      <Hsp_qseq>TGATCAAGTCTATCTATGAATAATATTTGAATCTTCTCTGAATTCTTTT-ATGTATTATTGGTTATCTTTGTAAGTCTCTTCGAATTATCAGTTTGGTTT----TACTACATTGGTTGTTCTTGCCATGGTATAAGTGCTTAGCTTTGGGTTCGATCTTGCGGTGTCCTTTCCCAGTGACAGAAGGGGCAG---GGCACGTATTGTATCATTGACATCGAGGATAACAAAATGGTTTTTTTTACCATATTGCATTAAACTATCCCTCTACATCATGTCATCTTGCTTAAGGTGTTACTCTGTTTTTAACTTAATACTCTAGATGC</Hsp_qseq>" +
+                                  "      <Hsp_hseq>TGATCAAGTCTATCTATGAATAATATTTGAATCTTCTCTGAATTCTTTTTATGTATGATTGGTTATCTTTGCAAGTCTCTTCGAATTATCAGTTTGGTTTGGCCTACTAGATTGGTTGTTCTTGCCATGGGAGAAGTGCTTAACTTTGGGTTCGATCTTGTGGTGTCCTTTCATAGTGACAGAAGGGGCAGCAAGGCACGTATTGTATCGTTGCCATCGAGGATAACAAGATGGTTTTTTT-ATCATATTGCATGAAACTATCCCTCTACATCATGTCATCTTGCTTAAGGCGTTACTCTGTTTTTAACTTAATACTCTAGATGC</Hsp_hseq>" +
+                                  "      <Hsp_midline>||||||||||||||||||||||||||||||||||||||||||||||||| |||||| |||||||||||||| ||||||||||||||||||||||||||||    ||||| |||||||||||||||||||| | ||||||||| ||||||||||||||||| |||||||||||  |||||||||||||||||   ||||||||||||||| ||| ||||||||||||||| ||||||||||| | |||||||||| |||||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||||||</Hsp_midline>" +
+                                  "    </Hsp>" +
+                                  "  </Hit_hsps>" +
+                                  "</Hit>" +
+                                  "<Hit>" +
+                                  "  <Hit_num>3</Hit_num>" +
+                                  "  <Hit_id>IWGSC_CSS_3AS_scaff_3392338</Hit_id>" +
+                                  "  <Hit_def>No definition line</Hit_def>" +
+                                  "  <Hit_accession>IWGSC_CSS_3AS_scaff_3392338</Hit_accession>" +
+                                  "  <Hit_len>870</Hit_len>" +
+                                  "  <Hit_hsps>" +
+                                  "    <Hsp>" +
+                                  "      <Hsp_num>1</Hsp_num>" +
+                                  "      <Hsp_bit-score>453.549</Hsp_bit-score>" +
+                                  "      <Hsp_score>245</Hsp_score>" +
+                                  "      <Hsp_evalue>3.23399e-125</Hsp_evalue>" +
+                                  "      <Hsp_query-from>1</Hsp_query-from>" +
+                                  "      <Hsp_query-to>317</Hsp_query-to>" +
+                                  "      <Hsp_hit-from>474</Hsp_hit-from>" +
+                                  "      <Hsp_hit-to>796</Hsp_hit-to>" +
+                                  "      <Hsp_query-frame>1</Hsp_query-frame>" +
+                                  "      <Hsp_hit-frame>1</Hsp_hit-frame>" +
+                                  "      <Hsp_identity>300</Hsp_identity>" +
+                                  "      <Hsp_positive>300</Hsp_positive>" +
+                                  "      <Hsp_gaps>10</Hsp_gaps>" +
+                                  "      <Hsp_align-len>325</Hsp_align-len>" +
+                                  "      <Hsp_qseq>TGATCAAGTCTATCTATGAATAATATTTGAATCTTCTCTGAATTCTTTTATGTATTATTGGTTATCTTTGTAAGTCTCTTCGAATTATCAGTTTGGTTT----TACTACATTGGTTGTTCTTGCCATGGTATAAGTGCTTAGCTTTGGGTTCGATCTTGCGGTGTCCTTTCCCAGTGACAGAAGGGGCAG---GGCACGTATTGTATCATTGACATCGAGGATAACAAAATGG-TTTTTTTTACCATATTGCATTAAACTATCCCTCTACATCATGTCATCTTGCTTAAGGTGTTACTCTGTTTTTAACTTAATACTCTAGATGC</Hsp_qseq>" +
+                                  "      <Hsp_hseq>TGATCCAGTCTATCTATGAATAATATTTGAATCTTCTCTGAATTCTTTTATGTATGATTGTTTTTCTTTGCAAGTCTCTTCGAATTATCAGTTTGGTTTGGCATACTAGATTGGTTGTTCTTGCCATGGGAGAAGTGCTTAGCTTTGGGTTCGATCTTGCGGTGTCCTTTCCCAGTGACAGAAGGGGCAGCAAGGCACGTATTGTATTGTTGCCATCGAGGATAACAAGATGGGGTTTTTATA--ATATTGCATGAAACTATCCCTCTACATCATGTCATCTTGCTTAAGGTGTTACTCTGTTTTTAACTTAATACTCTAGATGC</Hsp_hseq>" +
+                                  "      <Hsp_midline>||||| ||||||||||||||||||||||||||||||||||||||||||||||||| |||| || |||||| ||||||||||||||||||||||||||||    ||||| |||||||||||||||||||| | ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||   ||||||||||||||  ||| ||||||||||||||| ||||  ||||| ||  ||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>" +
+                                  "    </Hsp>" +
+                                  "  </Hit_hsps>" +
+                                  "</Hit>" +
+                                  "<Hit>" +
+                                  "  <Hit_num>4</Hit_num>" +
+                                  "  <Hit_id>IWGSC_CSS_2DL_scaff_8000925</Hit_id>" +
+                                  "  <Hit_def>No definition line</Hit_def>" +
+                                  "  <Hit_accession>IWGSC_CSS_2DL_scaff_8000925</Hit_accession>" +
+                                  "  <Hit_len>244</Hit_len>" +
+                                  "  <Hit_hsps>" +
+                                  "    <Hsp>" +
+                                  "      <Hsp_num>1</Hsp_num>" +
+                                  "      <Hsp_bit-score>451.703</Hsp_bit-score>" +
+                                  "      <Hsp_score>244</Hsp_score>" +
+                                  "      <Hsp_evalue>1.16315e-124</Hsp_evalue>" +
+                                  "      <Hsp_query-from>60</Hsp_query-from>" +
+                                  "      <Hsp_query-to>303</Hsp_query-to>" +
+                                  "      <Hsp_hit-from>1</Hsp_hit-from>" +
+                                  "      <Hsp_hit-to>244</Hsp_hit-to>" +
+                                  "      <Hsp_query-frame>1</Hsp_query-frame>" +
+                                  "      <Hsp_hit-frame>1</Hsp_hit-frame>" +
+                                  "      <Hsp_identity>244</Hsp_identity>" +
+                                  "      <Hsp_positive>244</Hsp_positive>" +
+                                  "      <Hsp_gaps>0</Hsp_gaps>" +
+                                  "      <Hsp_align-len>244</Hsp_align-len>" +
+                                  "      <Hsp_qseq>GGTTATCTTTGTAAGTCTCTTCGAATTATCAGTTTGGTTTTACTACATTGGTTGTTCTTGCCATGGTATAAGTGCTTAGCTTTGGGTTCGATCTTGCGGTGTCCTTTCCCAGTGACAGAAGGGGCAGGGCACGTATTGTATCATTGACATCGAGGATAACAAAATGGTTTTTTTTACCATATTGCATTAAACTATCCCTCTACATCATGTCATCTTGCTTAAGGTGTTACTCTGTTTTTAACTT</Hsp_qseq>" +
+                                  "      <Hsp_hseq>GGTTATCTTTGTAAGTCTCTTCGAATTATCAGTTTGGTTTTACTACATTGGTTGTTCTTGCCATGGTATAAGTGCTTAGCTTTGGGTTCGATCTTGCGGTGTCCTTTCCCAGTGACAGAAGGGGCAGGGCACGTATTGTATCATTGACATCGAGGATAACAAAATGGTTTTTTTTACCATATTGCATTAAACTATCCCTCTACATCATGTCATCTTGCTTAAGGTGTTACTCTGTTTTTAACTT</Hsp_hseq>" +
+                                  "      <Hsp_midline>||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>" +
+                                  "    </Hsp>" +
+                                  "  </Hit_hsps>" +
+                                  "</Hit>" +
+                                  "<Hit>" +
+                                  "  <Hit_num>5</Hit_num>" +
+                                  "  <Hit_id>IWGSC_CSS_1AS_scaff_3294617</Hit_id>" +
+                                  "  <Hit_def>No definition line</Hit_def>" +
+                                  "  <Hit_accession>IWGSC_CSS_1AS_scaff_3294617</Hit_accession>" +
+                                  "  <Hit_len>10985</Hit_len>" +
+                                  "  <Hit_hsps>" +
+                                  "    <Hsp>" +
+                                  "      <Hsp_num>1</Hsp_num>" +
+                                  "      <Hsp_bit-score>449.856</Hsp_bit-score>" +
+                                  "      <Hsp_score>243</Hsp_score>" +
+                                  "      <Hsp_evalue>4.18343e-124</Hsp_evalue>" +
+                                  "      <Hsp_query-from>1</Hsp_query-from>" +
+                                  "      <Hsp_query-to>316</Hsp_query-to>" +
+                                  "      <Hsp_hit-from>10665</Hsp_hit-from>" +
+                                  "      <Hsp_hit-to>10985</Hsp_hit-to>" +
+                                  "      <Hsp_query-frame>1</Hsp_query-frame>" +
+                                  "      <Hsp_hit-frame>1</Hsp_hit-frame>" +
+                                  "      <Hsp_identity>298</Hsp_identity>" +
+                                  "      <Hsp_positive>298</Hsp_positive>" +
+                                  "      <Hsp_gaps>9</Hsp_gaps>" +
+                                  "      <Hsp_align-len>323</Hsp_align-len>" +
+                                  "      <Hsp_qseq>TGATCAAGTCTATCTATGAATAATATTTGAATCTTCTCTGAATTCTTTTATGTATTATTGGTTATCTTTGTAAGTCTCTTCGAATTATCAGTTTGGTTT----TACTACATTGGTTGTTCTTGCCATGGTATAAGTGCTTAGCTTTGGGTTCGATCTTGCGGTGTCCTTTCCCAGTGACAGAAGGGGCAG---GGCACGTATTGTATCATTGACATCGAGGATAACAAAATGGTTTTTTTTACCATATTGCATTAAACTATCCCTCTACATCATGTCATCTTGCTTAAGGTGTTACTCTGTTTTTAACTTAATACTCTAGATG</Hsp_qseq>" +
+                                  "      <Hsp_hseq>TGATCAAGTCTATCTATGAATAATATTTGAATCTTCTCTGAATTCTTTTATGTATGATTGGTTATCTTTGCAAGTCTTTTCGAATTATCAGTTTGGTTTGGCCTACTAGATTGGTTTTTCTTGCCATGGGAGAAGTGCTTAGCTTTGGGTTCGATCTTGCGGTGTCCTTTCCCAGTGACAAAAGGGGCAGCAAGGCACGTATTGTATTGTTGCCATCGAGGATAACAAGATGGTTTTTTAT--CATATTGCGTGAAACTATCCCTCTACATCATGTCATCTTGCTTAAGGCGTTACTCTGTTTTTAACTTAATACTCTAGATG</Hsp_hseq>" +
+                                  "      <Hsp_midline>||||||||||||||||||||||||||||||||||||||||||||||||||||||| |||||||||||||| |||||| |||||||||||||||||||||    ||||| ||||||| |||||||||||| | |||||||||||||||||||||||||||||||||||||||||||||||| |||||||||   ||||||||||||||  ||| ||||||||||||||| |||||||||| |  |||||||| | |||||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||||||||</Hsp_midline>" +
+                                  "    </Hsp>" +
+                                  "  </Hit_hsps>" +
+                                  "</Hit>" +
+                                  "</Iteration_hits>" +
+                                  "  <Iteration_stat>" +
+                                  "    <Statistics>" +
+                                  "      <Statistics_db-num>4602498</Statistics_db-num>" +
+                                  "      <Statistics_db-len>3955890449</Statistics_db-len>" +
+                                  "      <Statistics_hsp-len>28</Statistics_hsp-len>" +
+                                  "      <Statistics_eff-space>662074547365</Statistics_eff-space>" +
+                                  "      <Statistics_kappa>0.46</Statistics_kappa>" +
+                                  "      <Statistics_lambda>1.28</Statistics_lambda>" +
+                                  "      <Statistics_entropy>0.85</Statistics_entropy>" +
+                                  "    </Statistics>" +
+                                  "  </Iteration_stat>" +
+                                  "</Iteration>" +
+                                  "</BlastOutput_iterations>" +
+                                  "</BlastOutput>";
     String uuid = json.getString("uuid");
     String url = "http://v0214.nbi.ac.uk/wheatis";
     String result = "{" +
@@ -609,7 +611,7 @@ public class WISControllerHelperService {
                     "    \"operationId\": 6" +
                     "  }," +
                     "  \"services\": [" +
-                    "    \""+uuid+"\"," +
+                    "    \"" + uuid + "\"," +
                     "  ]" +
                     "}";
 
@@ -676,7 +678,7 @@ public class WISControllerHelperService {
 
       int limit = 5;
 
-      if (limit > hitList.getLength()){
+      if (limit > hitList.getLength()) {
         limit = hitList.getLength();
       }
 
@@ -699,11 +701,11 @@ public class WISControllerHelperService {
         String hit_to = hit_toList.item(i).getTextContent();
 
         String query_strand = "plus";
-        if ("-1".equals(query_strandList.item(i).getTextContent())){
+        if ("-1".equals(query_strandList.item(i).getTextContent())) {
           query_strand = "minus";
         }
         String hit_strand = "plus";
-        if ("-1".equals(hit_strandList.item(i).getTextContent())){
+        if ("-1".equals(hit_strandList.item(i).getTextContent())) {
           hit_strand = "minus";
         }
 
@@ -712,7 +714,6 @@ public class WISControllerHelperService {
         String hseq = hseqList.item(i).getTextContent();
 
         String gaps = gapsList.item(i).getTextContent();
-
 
 
 //        Node hit = (Node) hitList.item(i);
@@ -757,7 +758,7 @@ public class WISControllerHelperService {
         sb.append("<div class='blastResultBox ui-corner-all'>");
         sb.append("<p><b>" + hit_num + ". </b>" + id + " | <a target=\"_blank\" href=\"http://www.ensembl.org/Multi/Search/Results?q=" + accession + "\">Ensembl Search</a></p>");
 //        sb.append("<p><b>Hit Length</b>: " + length + "</p>");
-        sb.append("<b>Bit Score</b>: " + bit_score + " | <b>Hit Length</b>: " + length + " | <b>Gaps</b> "+gaps+"</p>");
+        sb.append("<b>Bit Score</b>: " + bit_score + " | <b>Hit Length</b>: " + length + " | <b>Gaps</b> " + gaps + "</p>");
         sb.append("<p><b>Score</b>: " + score + " | <b>Evalue</b>: " + evalue + " | <b>Identity</b>: " + identity + "</p><hr/>");
         sb.append("<p class='blastPosition'>Query from: " + query_from + " to: " + query_to + " Strand: " + query_strand + "</p>");
         sb.append(blastResultFormatter(qseq, midline, hseq, 100));
@@ -784,7 +785,7 @@ public class WISControllerHelperService {
                     "    \"operationId\": 6" +
                     "  }," +
                     "  \"services\": [" +
-                    "    \""+uuid+"\"," +
+                    "    \"" + uuid + "\"," +
                     "  ]" +
                     "}";
 
@@ -850,7 +851,7 @@ public class WISControllerHelperService {
         sb.append("<hr/>");
         sb.append("</div>");
       }
-      responses.put("html",sb.toString());
+      responses.put("html", sb.toString());
       return responses;
     }
     catch (Exception e) {

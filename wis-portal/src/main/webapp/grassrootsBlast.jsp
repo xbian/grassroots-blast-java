@@ -324,9 +324,7 @@
                 },
                 {
                     'doOnSuccess': function (json) {
-                        console.log(json);
                         var response = json.response;
-                        console.log(response.length);
                         for(var i = 0; i < response.length; i++)
                         {
                             var job = response[i];
@@ -342,7 +340,6 @@
     }
 
     function checkBlastResult(uuid) {
-        jQuery('#blastResult').html('<img src=\"/images/ajax-loader.gif\"/>');
         Fluxion.doAjax(
                 'wisControllerHelperService',
                 'checkBlastResult',
@@ -368,6 +365,7 @@
                                     }
                             );
                         } else if (json.status == 2 || json.status == 3){
+                            jQuery('#'+uuid).html(json.html);
                             setTimeout(checkBlastResult(uuid),timedCall);
                         }
                     }
