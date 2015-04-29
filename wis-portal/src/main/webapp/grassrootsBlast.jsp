@@ -84,7 +84,7 @@
     </fieldset>
     <p/>
     <button type="button" onclick="sendBlastRequest();">Blast Search</button>
-    <button type="button" onclick="doblastxml();">xml Test</button>
+    <%--<button type="button" onclick="doblastxml();">xml Test</button>--%>
 </form>
 
 <div id="blastStatus"></div>
@@ -294,24 +294,24 @@
             }
         }
     };
-
-    function doblastxml() {
-        jQuery('#blastResult').html('<img src=\"/images/ajax-loader.gif\"/>');
-        Fluxion.doAjax(
-                'wisControllerHelperService',
-                'displayXMLBlastResult',
-                {
-//                    'raw': rawXMLString,
-                    'url': ajaxurl
-                },
-                {
-                    'doOnSuccess': function (json) {
-                            jQuery('#blastResult').html(json.html);
-                    }
-                }
-        );
-
-    }
+//
+//    function doblastxml() {
+//        jQuery('#blastResult').html('<img src=\"/images/ajax-loader.gif\"/>');
+//        Fluxion.doAjax(
+//                'wisControllerHelperService',
+//                'displayXMLBlastResult',
+//                {
+////                    'raw': rawXMLString,
+//                    'url': ajaxurl
+//                },
+//                {
+//                    'doOnSuccess': function (json) {
+//                            jQuery('#blastResult').html(json.html);
+//                    }
+//                }
+//        );
+//
+//    }
 
     function sendBlastRequest() {
         jQuery('#blastResult').html('<img src=\"/images/ajax-loader.gif\"/>');

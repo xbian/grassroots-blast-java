@@ -641,7 +641,7 @@ public class WISControllerHelperService {
       builder = factory.newDocumentBuilder();
       Document document = builder.parse(new InputSource(new StringReader(rawResultString)));
 
-      sb.append("<h5>" + document.getElementsByTagName("BlastOutput_db").item(0).getTextContent() + "</h5>");
+      sb.append("<h5>Database: " + document.getElementsByTagName("BlastOutput_db").item(0).getTextContent() + "</h5>");
 
       NodeList hitList = document.getElementsByTagName("Hit");
 
@@ -744,7 +744,7 @@ public class WISControllerHelperService {
 
 
         sb.append("<div class='blastResultBox ui-corner-all'>");
-        sb.append("<p><b>" + hit_num + ". </b>: " + id + " <a target=\"_blank\" href=\"http://www.ensembl.org/Multi/Search/Results?q=" + accession + "\">Ensembl</a></p>");
+        sb.append("<p><b>" + hit_num + ". </b>: " + id + " | <a target=\"_blank\" href=\"http://www.ensembl.org/Multi/Search/Results?q=" + accession + "\">Ensembl Search</a></p>");
 //        sb.append("<p><b>Sequence ID</b>: " + id + "</p>");
         sb.append("<b>Bit Score</b>: " + bit_score + "</p>");
         sb.append("<p><b>Score</b>: " + score + " | <b>Evalue</b>: " + evalue + " | <b>Identity</b>: " + identity + "</p><hr/>");
