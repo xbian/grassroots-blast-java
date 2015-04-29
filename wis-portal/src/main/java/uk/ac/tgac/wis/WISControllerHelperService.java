@@ -145,172 +145,184 @@ public class WISControllerHelperService {
     }
     String getservice = "{  \"operations\": {    \"operationId\": 4  },  \"services\": [    \"Blast service\"  ]}";
     String service = "{" +
-                     "  \"services\": [" +
-                     "    {" +
-                     "      \"services\": \"Blast service\"," +
-                     "      \"run\": true," +
-                     "      \"parameter_set\": {" +
-                     "        \"parameters\": [" +
-                     "{" +
-                     "            \"default\": {" +
-                     "              \"value\": \"\"," +
-                     "              \"protocol\": \"\"" +
-                     "            }," +
-                     "            \"name\": \"Input\"," +
-                     "            \"param\": \"input\"," +
-                     "            \"group\": \"Query Sequence Parameters\"," +
-                     "            \"wheatis_type\": 7," +
-                     "            \"current_value\": {" +
-                     "              \"value\": \"\"," +
-                     "              \"protocol\": \"\"" +
-                     "            }," +
-                     "            \"tag\": 1112100422," +
-                     "            \"level\": 7," +
-                     "            \"description\": \"The input file to read\"," +
-                     "            \"type\": \"string\"" +
+                     "    \"services\": [" +
+                     "        {" +
+                     "            \"services\": \"Blast service\"," +
+                     "            \"run\": true," +
+                     "            \"parameter_set\": {" +
+                     "      \"parameters\": [" +
+                     "        {" +
+                     "          \"level\": 7," +
+                     "          \"param\": \"input\"," +
+                     "          \"current_value\": {" +
+                     "            \"protocol\": \"\"," +
+                     "            \"value\": \"\"" +
                      "          }," +
-                     "          {" +
-                     "            \"default\": {" +
-                     "              \"value\": \"\"," +
-                     "              \"protocol\": \"\"" +
-                     "            }," +
-                     "            \"name\": \"Output\"," +
-                     "            \"param\": \"output\"," +
-                     "            \"group\": \"Query Sequence Parameters\"," +
-                     "            \"wheatis_type\": 6," +
-                     "            \"current_value\": {" +
-                     "              \"value\": \"\"," +
-                     "              \"protocol\": \"\"" +
-                     "            }," +
-                     "            \"tag\": 1112495430," +
-                     "            \"level\": 7," +
-                     "            \"description\": \"The output file to write\"," +
-                     "            \"type\": \"string\"" +
+                     "          \"tag\": 1112100422," +
+                     "          \"wheatis_type\": 7," +
+                     "          \"default\": {" +
+                     "            \"protocol\": \"\"," +
+                     "            \"value\": \"\"" +
                      "          }," +
-                     "          {" +
-                     "            \"default\": \"\"," +
-                     "            \"name\": \"Query Sequence(s)\"," +
-                     "            \"param\": \"query_sequence\"," +
-                     "            \"group\": \"Query Sequence Parameters\"," +
-                     "            \"wheatis_type\": 5," +
-                     "            \"current_value\": \"" + sequence + "\"," +
-                     "            \"tag\": 1112626521," +
-                     "            \"level\": 7," +
-                     "            \"description\": \"Query sequence(s) to be used for a BLAST search should be pasted in the 'Search' text area. It accepts a number of different types of input and automatically determines the format or the input. To allow this feature there are certain conventions required with regard to the input of identifiers (e.g., accessions or gi's)\"," +
-                     "            \"type\": \"string\"" +
+                     "          \"type\": \"string\"," +
+                     "          \"description\": \"The input file to read\"," +
+                     "          \"name\": \"Input\"," +
+                     "          \"group\": \"Query Sequence Parameters\"" +
+                     "        }," +
+                     "        {" +
+                     "          \"level\": 7," +
+                     "          \"param\": \"output\"," +
+                     "          \"current_value\": {" +
+                     "            \"protocol\": \"\"," +
+                     "            \"value\": \"\"" +
                      "          }," +
-                     "          {" +
-                     "            \"default\": 0," +
-                     "            \"name\": \"From\"," +
-                     "            \"param\": \"from\"," +
-                     "            \"group\": \"Query Sequence Parameters\"," +
-                     "            \"wheatis_type\": 2," +
-                     "            \"current_value\": " + query_from + "," +
-                     "            \"tag\": 1112622674," +
-                     "            \"level\": 6," +
-                     "            \"description\": \"Coordinates for a subrange of the query sequence. The BLAST search will apply only to the residues in the range. Valid sequence coordinates are from 1 to the sequence length. Set either From or To to 0 to ignore the range. The range includes the residue at the To coordinate.\"," +
-                     "            \"type\": \"integer\"" +
+                     "          \"tag\": 1112495430," +
+                     "          \"wheatis_type\": 6," +
+                     "          \"default\": {" +
+                     "            \"protocol\": \"\"," +
+                     "            \"value\": \"\"" +
                      "          }," +
-                     "          {" +
-                     "            \"default\": 0," +
-                     "            \"name\": \"To\"," +
-                     "            \"param\": \"to\"," +
-                     "            \"group\": \"Query Sequence Parameters\"," +
-                     "            \"wheatis_type\": 2," +
-                     "            \"current_value\": " + query_to + "," +
-                     "            \"tag\": 1112626255," +
-                     "            \"level\": 6," +
-                     "            \"description\": \"Coordinates for a subrange of the query sequence. The BLAST search will apply only to the residues in the range. Valid sequence coordinates are from 1 to the sequence length. Set either From or To to 0 to ignore the range. The range includes the residue at the To coordinate.\"," +
-                     "            \"type\": \"integer\"" +
-                     "          }," +
-                     "          {" +
-                     "            \"default\": 100," +
-                     "            \"name\": \"Max target sequences\"," +
-                     "            \"param\": \"max_target_sequences\"," +
-                     "            \"group\": \"General Algorithm Parameters\"," +
-                     "            \"wheatis_type\": 2," +
-                     "            \"current_value\": " + max_target_sequences + "," +
-                     "            \"tag\": 1112495430," +
-                     "            \"level\": 7," +
-                     "            \"description\": \"Select the maximum number of aligned sequences to display (the actual number of alignments may be greater than this).\"," +
-                     "            \"type\": \"integer\"" +
-                     "          }," +
-                     "          {" +
-                     "            \"default\": true," +
-                     "            \"name\": \"Short queries\"," +
-                     "            \"param\": \"short_queries\"," +
-                     "            \"group\": \"General Algorithm Parameters\"," +
-                     "            \"wheatis_type\": 0," +
-                     "            \"current_value\": " + short_queries + "," +
-                     "            \"tag\": 1112754257," +
-                     "            \"level\": 7," +
-                     "            \"description\": \"Automatically adjust parameters for short input sequences\"," +
-                     "            \"type\": \"boolean\"" +
-                     "          }," +
-                     "          {" +
-                     "            \"default\": 10," +
-                     "            \"name\": \"Expect threshold\"," +
-                     "            \"param\": \"expect_threshold\"," +
-                     "            \"group\": \"General Algorithm Parameters\"," +
-                     "            \"wheatis_type\": 2," +
-                     "            \"current_value\": " + expect_threshold + "," +
-                     "            \"tag\": 1111840852," +
-                     "            \"level\": 7," +
-                     "            \"description\": \"Expected number of chance matches in a random model\"," +
-                     "            \"type\": \"integer\"" +
-                     "          }," +
-                     "          {" +
-                     "            \"default\": 28," +
-                     "            \"name\": \"Word size\"," +
-                     "            \"param\": \"word_size\"," +
-                     "            \"group\": \"General Algorithm Parameters\"," +
-                     "            \"wheatis_type\": 2," +
-                     "            \"current_value\": " + word_size + "," +
-                     "            \"tag\": 1113015379," +
-                     "            \"level\": 7," +
-                     "            \"description\": \"Expected number of chance matches in a random model\"," +
-                     "            \"type\": \"integer\"" +
-                     "          }," +
-                     "          {" +
-                     "            \"default\": 0," +
-                     "            \"name\": \"Max matches in a query range\"," +
-                     "            \"param\": \"max_matches_in_a_query_range\"," +
-                     "            \"group\": \"General Algorithm Parameters\"," +
-                     "            \"wheatis_type\": 2," +
-                     "            \"current_value\": " + max_matches_query_range + "," +
-                     "            \"tag\": 1113015379," +
-                     "            \"level\": 7," +
-                     "            \"description\": \"Limit the number of matches to a query range. This option is useful if many strong matches to one part of a query may prevent BLAST from presenting weaker matches to another part of the query\"," +
-                     "            \"type\": \"integer\"" +
-                     "          }," +
-                     "          {" +
-                     "            \"default\": 2," +
-                     "            \"name\": \"Match\"," +
-                     "            \"param\": \"match\"," +
-                     "            \"group\": \"Scoring Parameters\"," +
-                     "            \"wheatis_type\": 1," +
-                     "            \"current_value\": " + match + "," +
-                     "            \"tag\": 1112364099," +
-                     "            \"level\": 6," +
-                     "            \"description\": \"Reward for a nucleotide match.\"," +
-                     "            \"type\": \"integer\"" +
-                     "          }," +
-                     "          {" +
-                     "            \"default\": -3," +
-                     "            \"name\": \"Mismatch\"," +
-                     "            \"param\": \"mismatch\"," +
-                     "            \"group\": \"Scoring Parameters\"," +
-                     "            \"wheatis_type\": 1," +
-                     "            \"current_value\": " + mismatch + "," +
-                     "            \"tag\": 1112363853," +
-                     "            \"level\": 6," +
-                     "            \"description\": \"Penalty for a nucleotide mismatch.\"," +
-                     "            \"type\": \"integer\"" +
-                     "          }" +
-                     "        ]" +
-                     "      }" +
-                     "    }" +
-                     "  ]" +
+                     "          \"type\": \"string\"," +
+                     "          \"description\": \"The output file to write\"," +
+                     "          \"name\": \"Output\"," +
+                     "          \"group\": \"Query Sequence Parameters\"" +
+                     "        }," +
+                     "        {" +
+                     "          \"level\": 7," +
+                     "          \"param\": \"query_sequence\"," +
+                     "          \"current_value\": \""+sequence+"\"," +
+                     "          \"tag\": 1112626521," +
+                     "          \"wheatis_type\": 5," +
+                     "          \"default\": \"\"," +
+                     "          \"type\": \"string\"," +
+                     "          \"description\": \"Query sequence(s) to be used for a BLAST search should be pasted in the 'Search' text area. It accepts a number of different types of input and automatically determines the format or the input. To allow this feature there are certain conventions required with regard to the input of identifiers (e.g., accessions or gi's)\"," +
+                     "          \"name\": \"Query Sequence(s)\"," +
+                     "          \"group\": \"Query Sequence Parameters\"" +
+                     "        }," +
+                     "        {" +
+                     "          \"level\": 6," +
+                     "          \"param\": \"from\"," +
+                     "          \"current_value\": "+query_from+"," +
+                     "          \"tag\": 1112622674," +
+                     "          \"wheatis_type\": 2," +
+                     "          \"default\": 0," +
+                     "          \"type\": \"integer\"," +
+                     "          \"description\": \"Coordinates for a subrange of the query sequence. The BLAST search will apply only to the residues in the range. Valid sequence coordinates are from 1 to the sequence length. Set either From or To to 0 to ignore the range. The range includes the residue at the To coordinate.\"," +
+                     "          \"name\": \"From\"," +
+                     "          \"group\": \"Query Sequence Parameters\"" +
+                     "        }," +
+                     "        {" +
+                     "          \"level\": 6," +
+                     "          \"param\": \"to\"," +
+                     "          \"current_value\": "+query_to+"," +
+                     "          \"tag\": 1112626255," +
+                     "          \"wheatis_type\": 2," +
+                     "          \"default\": 0," +
+                     "          \"type\": \"integer\"," +
+                     "          \"description\": \"Coordinates for a subrange of the query sequence. The BLAST search will apply only to the residues in the range. Valid sequence coordinates are from 1 to the sequence length. Set either From or To to 0 to ignore the range. The range includes the residue at the To coordinate.\"," +
+                     "          \"name\": \"To\"," +
+                     "          \"group\": \"Query Sequence Parameters\"" +
+                     "        }," +
+                     "        {" +
+                     "          \"level\": 7," +
+                     "          \"param\": \"max_target_sequences\"," +
+                     "          \"current_value\": "+max_target_sequences+"," +
+                     "          \"tag\": 1112363857," +
+                     "          \"wheatis_type\": 2," +
+                     "          \"default\": 100," +
+                     "          \"type\": \"integer\"," +
+                     "          \"description\": \"Select the maximum number of aligned sequences to display (the actual number of alignments may be greater than this).\"," +
+                     "          \"name\": \"Max target sequences\"," +
+                     "          \"group\": \"General Algorithm Parameters\"" +
+                     "        }," +
+                     "        {" +
+                     "          \"level\": 7," +
+                     "          \"param\": \"short_queries\"," +
+                     "          \"current_value\": "+short_queries+"," +
+                     "          \"tag\": 1112754257," +
+                     "          \"wheatis_type\": 0," +
+                     "          \"default\": true," +
+                     "          \"type\": \"boolean\"," +
+                     "          \"description\": \"Automatically adjust parameters for short input sequences\"," +
+                     "          \"name\": \"Short queries\"," +
+                     "          \"group\": \"General Algorithm Parameters\"" +
+                     "        }," +
+                     "        {" +
+                     "          \"level\": 7," +
+                     "          \"param\": \"expect_threshold\"," +
+                     "          \"current_value\": "+expect_threshold+"," +
+                     "          \"tag\": 1111840852," +
+                     "          \"wheatis_type\": 2," +
+                     "          \"default\": 10," +
+                     "          \"type\": \"integer\"," +
+                     "          \"description\": \"Expected number of chance matches in a random model\"," +
+                     "          \"name\": \"Expect threshold\"," +
+                     "          \"group\": \"General Algorithm Parameters\"" +
+                     "        }," +
+                     "        {" +
+                     "          \"level\": 7," +
+                     "          \"param\": \"word_size\"," +
+                     "          \"current_value\": "+word_size+"," +
+                     "          \"tag\": 1113015379," +
+                     "          \"wheatis_type\": 2," +
+                     "          \"default\": 28," +
+                     "          \"type\": \"integer\"," +
+                     "          \"description\": \"Expected number of chance matches in a random model\"," +
+                     "          \"name\": \"Word size\"," +
+                     "          \"group\": \"General Algorithm Parameters\"" +
+                     "        }," +
+                     "        {" +
+                     "          \"level\": 7," +
+                     "          \"param\": \"max_matches_in_a_query_range\"," +
+                     "          \"current_value\": "+max_matches_query_range+"," +
+                     "          \"tag\": 1112363591," +
+                     "          \"wheatis_type\": 2," +
+                     "          \"default\": 0," +
+                     "          \"type\": \"integer\"," +
+                     "          \"description\": \"Limit the number of matches to a query range. This option is useful if many strong matches to one part of a query may prevent BLAST from presenting weaker matches to another part of the query\"," +
+                     "          \"name\": \"Max matches in a query range\"," +
+                     "          \"group\": \"General Algorithm Parameters\"" +
+                     "        }," +
+                     "        {" +
+                     "          \"level\": 7," +
+                     "          \"param\": \"output_format\"," +
+                     "          \"current_value\": 5," +
+                     "          \"tag\": 1111903572," +
+                     "          \"wheatis_type\": 2," +
+                     "          \"default\": 5," +
+                     "          \"type\": \"integer\"," +
+                     "          \"description\": \"The output format for the results\"," +
+                     "          \"name\": \"Output format\"," +
+                     "          \"group\": \"General Algorithm Parameters\"" +
+                     "        }," +
+                     "        {" +
+                     "          \"level\": 6," +
+                     "          \"param\": \"match\"," +
+                     "          \"current_value\": "+match+"," +
+                     "          \"tag\": 1112364099," +
+                     "          \"wheatis_type\": 1," +
+                     "          \"default\": 2," +
+                     "          \"type\": \"integer\"," +
+                     "          \"description\": \"Reward for a nucleotide match.\"," +
+                     "          \"name\": \"Match\"," +
+                     "          \"group\": \"Scoring Parameters\"" +
+                     "        }," +
+                     "        {" +
+                     "          \"level\": 6," +
+                     "          \"param\": \"mismatch\"," +
+                     "          \"current_value\": "+mismatch+"," +
+                     "          \"tag\": 1112363853," +
+                     "          \"wheatis_type\": 1," +
+                     "          \"default\": -3," +
+                     "          \"type\": \"integer\"," +
+                     "          \"description\": \"Penalty for a nucleotide mismatch.\"," +
+                     "          \"name\": \"Mismatch\"," +
+                     "          \"group\": \"Scoring Parameters\"" +
+                     "        }" +
+                     "      ]" +
+                     "            }" +
+                     "        }" +
+                     "    ]" +
                      "}";
     JSONObject responses = new JSONObject();
     try {
@@ -323,7 +335,7 @@ public class WISControllerHelperService {
 
       try {
         HttpPost request = new HttpPost(url);
-        StringEntity params = new StringEntity(service);
+        StringEntity params = new StringEntity(service.replaceAll("[\\t\\n\\r]", ""));
         request.addHeader("content-type", "application/x-www-form-urlencoded");
         request.setEntity(params);
         HttpResponse response = httpClient.execute(request);
@@ -346,15 +358,7 @@ public class WISControllerHelperService {
       }
 
       return responses;
-//      return JSONObject.fromObject("{" +
-//                                   "  \"operations\": {" +
-//                                   "    \"operationId\": 5" +
-//                                   "  }," +
-//                                   "  \"services\": [" +
-//                                   "    \"702e00cc-ff7f-0000-88ce-dc7976fc45b5\"," +
-//                                   "    \"702e00cc-ff7f-0000-f1dc-bb658a664f0d\"" +
-//                                   "  ]" +
-//                                   "}");
+
     }
     catch (Exception e) {
       return JSONUtils.SimpleJSONError("Failed: " + e.getMessage());
@@ -370,7 +374,7 @@ public class WISControllerHelperService {
                     "    \"operationId\": 5" +
                     "  }," +
                     "  \"services\": [" +
-                    "    \"" + uuid + "\"," +
+                    "    \"" + uuid + "\"" +
                     "  ]" +
                     "}";
 
@@ -386,11 +390,26 @@ public class WISControllerHelperService {
       ResponseHandler<String> handler = new BasicResponseHandler();
       String body = handler.handleResponse(response);
       // if 6 keep checking
-      JSONArray statusArray = JSONArray.fromObject(body);
+      JSONObject statusJSON = JSONObject.fromObject(body);
+      JSONArray  statusArray = statusJSON.getJSONArray("services");
+
       int status = statusArray.getJSONObject(0).getInt("status");
       String name = statusArray.getJSONObject(0).getString("status");
-      if (status == 1) {
+
+      if (status == -3) {
+        responses.put("html", "Job failed");
+      }
+      if (status == -2) {
         responses.put("html", "Failed to start");
+      }
+      if (status == -1) {
+        responses.put("html", "Job error");
+      }
+      if (status == 0) {
+        responses.put("html", "Job idle");
+      }
+      if (status == 1) {
+        responses.put("html", "Job pending");
       }
       if (status == 2) {
         responses.put("html", "Job started");
@@ -399,9 +418,6 @@ public class WISControllerHelperService {
         responses.put("html", "Job finished");
       }
       if (status == 4) {
-        responses.put("html", "Job failed");
-      }
-      if (status == 5) {
         responses.put("html", "Job succeeded");
       }
 
@@ -611,7 +627,7 @@ public class WISControllerHelperService {
                     "    \"operationId\": 6" +
                     "  }," +
                     "  \"services\": [" +
-                    "    \"" + uuid + "\"," +
+                    "    \"" + uuid + "\"" +
                     "  ]" +
                     "}";
 
@@ -626,10 +642,9 @@ public class WISControllerHelperService {
 
       ResponseHandler<String> handler = new BasicResponseHandler();
       String body = handler.handleResponse(response);
-      JSONArray resultArray = JSONArray.fromObject(body);
-      //to be changed depends on result
-      rawResultString = body;
-//          resultArray.getString("result");
+      JSONObject xmlJSON = JSONObject.fromObject(body);
+      JSONArray xmlJSONArray = xmlJSON.getJSONArray("services");
+      rawResultString = xmlJSONArray.getJSONObject(0).getString("data");
     }
     catch (Exception e) {
       e.printStackTrace();
@@ -646,7 +661,7 @@ public class WISControllerHelperService {
       builder = factory.newDocumentBuilder();
       Document document = builder.parse(new InputSource(new StringReader(rawResultString)));
 
-      sb.append("<h5>Database: " + document.getElementsByTagName("BlastOutput_db").item(0).getTextContent() + "</h5>");
+//      sb.append("<h5>Database: " + document.getElementsByTagName("BlastOutput_db").item(0).getTextContent() + "</h5>");
 
       NodeList hitList = document.getElementsByTagName("Hit");
 
@@ -758,7 +773,7 @@ public class WISControllerHelperService {
         sb.append("<div class='blastResultBox ui-corner-all'>");
         sb.append("<p><b>" + hit_num + ". </b>" + id + " | <a target=\"_blank\" href=\"http://www.ensembl.org/Multi/Search/Results?q=" + accession + "\">Ensembl Search</a></p>");
 //        sb.append("<p><b>Hit Length</b>: " + length + "</p>");
-        sb.append("<b>Bit Score</b>: " + bit_score + " | <b>Hit Length</b>: " + length + " | <b>Gaps</b> " + gaps + "</p>");
+        sb.append("<b>Bit Score</b>: " + bit_score + " | <b>Hit Length</b>: " + length + " | <b>Gaps:</b> " + gaps + "</p>");
         sb.append("<p><b>Score</b>: " + score + " | <b>Evalue</b>: " + evalue + " | <b>Identity</b>: " + identity + "</p><hr/>");
         sb.append("<p class='blastPosition'>Query from: " + query_from + " to: " + query_to + " Strand: " + query_strand + "</p>");
         sb.append(blastResultFormatter(qseq, midline, hseq, 100));

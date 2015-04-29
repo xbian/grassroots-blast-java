@@ -295,26 +295,26 @@
         }
     };
 
-    function doblastxml() {
-        jQuery('#blastResult').html('<img src=\"/images/ajax-loader.gif\"/>');
-        Fluxion.doAjax(
-                'wisControllerHelperService',
-                'displayXMLBlastResult',
-                {
-//                    'raw': rawXMLString,
-                    'url': ajaxurl
-                },
-                {
-                    'doOnSuccess': function (json) {
-                            jQuery('#blastResult').html(json.html);
-                    }
-                }
-        );
-
-    }
+//    function doblastxml() {
+//        jQuery('#blastResult').html('<img src=\"/images/ajax-loader.gif\"/>');
+//        Fluxion.doAjax(
+//                'wisControllerHelperService',
+//                'displayXMLBlastResult',
+//                {
+////                    'raw': rawXMLString,
+//                    'url': ajaxurl
+//                },
+//                {
+//                    'doOnSuccess': function (json) {
+//                            jQuery('#blastResult').html(json.html);
+//                    }
+//                }
+//        );
+//
+//    }
 
     function sendBlastRequest() {
-//        jQuery('#blastResult').html('<img src=\"/images/ajax-loader.gif\"/>');
+        jQuery('#blastResult').html('Job Submitted <img src=\"/images/ajax-loader.gif\"/>');
         Fluxion.doAjax(
                 'wisControllerHelperService',
                 'sendBlastRequest',
@@ -324,14 +324,15 @@
                 },
                 {
                     'doOnSuccess': function (json) {
+                        jQuery('#blastResult').html('');
                         var response = json.response;
                         for(var i = 0; i < response.length; i++)
                         {
                             var job = response[i];
                             var uuid = job['service_uuid'];
                             jQuery('#blastResult').append(
-                                    '<div><b>Database: '+job['name']+'</b><br/><b>Job ID: ' + uuid +'</b><div id=\"' + uuid +'\">Job Submitted <img src=\"/images/ajax-loader.gif\"/></div></div></br>');
-//                            setTimeout(checkBlastResult(uuid),timedCall);
+                                    '<div><b>Database: '+job['name']+'</b><br/><b>('+job['description']+')</b><br/><b>Job ID: ' + uuid +'</b><div id=\"' + uuid +'\">Job Submitted <img src=\"/images/ajax-loader.gif\"/></div></div></br>');
+                            setTimeout(checkBlastResult(uuid),timedCall);
                         }
                     }
                 }
@@ -350,7 +351,7 @@
                 {
                     'doOnSuccess': function (json) {
                         jQuery('#'+uuid).html(json.html);
-                        if (json.status == 5){
+                        if (json.status == 4){
                             Fluxion.doAjax(
                                     'wisControllerHelperService',
                                     'displayXMLBlastResult',
@@ -364,7 +365,7 @@
                                         }
                                     }
                             );
-                        } else if (json.status == 2 || json.status == 3){
+                        } else if (json.status == 0 || json.status == 1 || json.status == 2){
                             jQuery('#'+uuid).html(json.html);
                             setTimeout(checkBlastResult(uuid),timedCall);
                         }
