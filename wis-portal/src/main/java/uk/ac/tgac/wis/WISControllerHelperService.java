@@ -473,7 +473,13 @@ public class WISControllerHelperService {
       builder = factory.newDocumentBuilder();
       Document document = builder.parse(new InputSource(new StringReader(rawResultString)));
 
-//      sb.append("<h5>Database: " + document.getElementsByTagName("BlastOutput_db").item(0).getTextContent() + "</h5>");
+      String databaseString = document.getElementsByTagName("BlastOutput_db").item(0).getTextContent();
+
+      String databaseName = databaseString;
+      if (databaseString.contains("/")){
+        String[] databaseSplitString = databaseString.split("/");
+        databaseName = databaseSplitString[databaseSplitString.length-1];
+      }
 
       NodeList hitList = document.getElementsByTagName("Hit");
 
@@ -502,6 +508,10 @@ public class WISControllerHelperService {
       NodeList hseqList = document.getElementsByTagName("Hsp_hseq");
 
       NodeList gapsList = document.getElementsByTagName("Hsp_gaps");
+
+      if (hitList.getLength()==0){
+        sb.append("<p>No hits found</p>");
+      }
 
       int limit = 5;
 
@@ -540,14 +550,20 @@ public class WISControllerHelperService {
 
         String gaps = gapsList.item(i).getTextContent();
 
+        String alignmentDiv = id+hit_num;
+
         sb.append("<div class='blastResultBox ui-corner-all'>");
-        sb.append("<p><b>" + hit_num + ". </b>" + id + " | <a target=\"_blank\" href=\"http://www.ensembl.org/Multi/Search/Results?q=" + accession + "\">Ensembl Search</a></p>");
+        sb.append("<p><b>" + hit_num + ". </b>" + databaseName + " - " + id + " | <a target=\"_blank\" href=\"http://www.ensembl.org/Multi/Search/Results?q=" + accession + "\">Ensembl Search</a></p>");
         sb.append("<b>Bit Score</b>: " + bit_score + " | <b>Hit Length</b>: " + length + " | <b>Gaps:</b> " + gaps + "</p>");
-        sb.append("<p><b>Score</b>: " + score + " | <b>Evalue</b>: " + evalue + " | <b>Identity</b>: " + identity + "</p><hr/>");
+        sb.append("<p><b>Score</b>: " + score + " | <b>Evalue</b>: " + evalue + " | <b>Identity</b>: " + identity + "</p>");
+        sb.append("<div class=\"sectionDivider\" onclick=\"Utils.ui.toggleLeftInfo(jQuery('#"+alignmentDiv+"_arrowclick'), '"+alignmentDiv+"');\">Alignment view\n" +
+                  "        <div id=\""+alignmentDiv+"_arrowclick\" class=\"toggleLeft\"></div>" +
+                  "      </div>" +
+                  "      <div id=\""+alignmentDiv+"\" class=\"note\" style=\"display:none;\">");
         sb.append("<p class='blastPosition'>Query from: " + query_from + " to: " + query_to + " Strand: " + query_strand + "</p>");
         sb.append(blastResultFormatter(qseq, midline, hseq, 100));
         sb.append("<p class='blastPosition'>Hit from: " + hit_from + " to: " + hit_to + " Strand: " + hit_strand + "</p>");
-        sb.append("<hr/>");
+        sb.append("</div>");
         sb.append("</div>");
       }
       responses.put("html", sb.toString());

@@ -1496,3 +1496,57 @@ hr { display: block; height: 1px;
 .blastPosition {
     font-size: 11.5px;
 }
+
+div.sectionDivider {
+    text-align: right;
+    border-bottom: 1px solid #999;
+    margin-bottom: 5px;
+    padding-top: 12px;
+    background: #FFF;
+    font-weight: bold;
+    color: #666666;
+}
+
+div.sectionDivider:hover {
+    background: #cccccc;
+}
+
+div.sectionDivider a {
+    text-decoration: none;
+}
+
+.toggleLeft {
+    float: right;
+    margin-top: 3px;
+    margin-left: 4px;
+    width: 12px;
+    height: 12px;
+    background: url(../images/toggle-left.png) no-repeat;
+}
+
+.toggleRight {
+    float: left;
+    margin-top: 3px;
+    margin-right: 4px;
+    width: 12px;
+    height: 12px;
+    background: url(../images/toggle-right.png) no-repeat;
+}
+
+.toggleLeftDown {
+    float: right;
+    margin-top: 3px;
+    margin-left: 4px;
+    width: 12px;
+    height: 12px;
+    background: url(../images/toggle-down.png) no-repeat;
+}
+
+.toggleRightDown {
+    float: left;
+    margin-top: 3px;
+    margin-right: 4px;
+    width: 12px;
+    height: 12px;
+    background: url(../images/toggle-down.png) no-repeat;
+}

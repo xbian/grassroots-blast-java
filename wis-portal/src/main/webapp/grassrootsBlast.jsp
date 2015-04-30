@@ -330,8 +330,10 @@
                         {
                             var job = response[i];
                             var uuid = job['service_uuid'];
+                            var description =  job['description'].split(";",1);
                             jQuery('#blastResult').append(
-                                    '<div><b>Database: '+job['name']+'</b><br/><b>('+job['description']+')</b><br/><b>Job ID: ' + uuid +'</b><div id=\"' + uuid +'\">Job Submitted <img src=\"/images/ajax-loader.gif\"/></div></div></br>');
+                                    '<fieldset class="ui-corner-all"><legend class="ui-corner-all pie_first-child">'+description+'</legend><div><p><b>Job ID: '
+                                    + uuid +'</b></p><div id=\"' + uuid +'\">Job Submitted <img src=\"/images/ajax-loader.gif\"/></div></div></br></fieldset>');
                             setTimeout(checkBlastResult(uuid),timedCall);
                         }
                     }
