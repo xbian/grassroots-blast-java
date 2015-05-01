@@ -114,7 +114,7 @@
                             jQuery('#blastResult').append(
                                     '<fieldset class="ui-corner-all"><legend class="ui-corner-all pie_first-child">'+description+'</legend><div><p><b>Job ID: '
                                     + uuid +'</b></p><div id=\"' + uuid +'\">Job Submitted <img src=\"/images/ajax-loader.gif\"/></div></div></br></fieldset>');
-                            setTimeout(checkBlastResult(uuid),timedCall);
+                            checkBlastResult(uuid);
                         }
                     }
                 }
@@ -149,7 +149,9 @@
                             );
                         } else if (json.status == 0 || json.status == 1 || json.status == 2 || json.status == 3){
                             jQuery('#'+uuid).html(json.html);
-                            setTimeout(checkBlastResult(uuid),timedCall);
+                            var timer;
+                            timer =setTimeout(function() {checkBlastResult(uuid);},timedCall);
+                            clearTimeout(timer);
                         }
                     }
                 }
