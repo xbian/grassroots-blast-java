@@ -401,16 +401,16 @@ public class WISControllerHelperService {
         responses.put("html", "Job error");
       }
       if (status == 0) {
-        responses.put("html", "Job idle");
+        responses.put("html", "Job idle <img src=\"/images/ajax-loader.gif\">");
       }
       if (status == 1) {
-        responses.put("html", "Job pending");
+        responses.put("html", "Job pending <img src=\"/images/ajax-loader.gif\">");
       }
       if (status == 2) {
-        responses.put("html", "Job started");
+        responses.put("html", "Job started <img src=\"/images/ajax-loader.gif\">");
       }
       if (status == 3) {
-        responses.put("html", "Job finished");
+        responses.put("html", "Job finished <img src=\"/images/ajax-loader.gif\">");
       }
       if (status == 4) {
         responses.put("html", "Job succeeded");
