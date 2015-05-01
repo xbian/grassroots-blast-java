@@ -84,10 +84,8 @@
     </fieldset>
     <p/>
     <button type="button" onclick="sendBlastRequest();">Blast Search</button>
-    <%--<button type="button" onclick="doblastxml();">xml Test</button>--%>
 </form>
 
-<div id="blastStatus"></div>
 <div id="blastResult"></div>
 
 <script type="text/javascript">
@@ -150,8 +148,8 @@
                         } else if (json.status == 0 || json.status == 1 || json.status == 2 || json.status == 3){
                             jQuery('#'+uuid).html(json.html);
                             var timer;
-                            timer =setTimeout(function() {checkBlastResult(uuid);},timedCall);
                             clearTimeout(timer);
+                            timer =setTimeout(function() {checkBlastResult(uuid);},timedCall);
                         }
                     }
                 }
