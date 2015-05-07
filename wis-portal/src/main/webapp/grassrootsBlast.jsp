@@ -16,7 +16,12 @@
     <p/>
     Set subsequence: From <input type="text" name="query_from" id="query_from" value="0" size="10">
     To <input type="text" name="query_to" id="query_to" value="0" size="10">
+
     <p/>
+    <fieldset class="ui-corner-all">
+        <legend class="ui-corner-all pie_first-child">Blast Databases</legend>
+        <div id="blastDBs"></div>
+    </fieldset>
     <button type="button" onclick="sendBlastRequest();">Blast Search</button>
     <hr/>
     <h3>Algorithm parameters</h3>
@@ -77,7 +82,7 @@
             </tr>
             <tr>
                 <td><span class="blastFormTitle">Mismatch</span></td>
-                <td><input name="mismatch" id="mismatch" size="10" type="text" value="-3"/>
+                <td><input name="mismatch" id="mismatch" size="10" type="text" value="-3" param="test"/>
                 </td>
             </tr>
         </table>
@@ -89,7 +94,27 @@
 <div id="blastResult"></div>
 
 <script type="text/javascript">
-    var timedCall = 5000;
+
+    jQuery(document).ready(function () {
+        getBlastDBs();
+    });
+
+    function getBlastDBs() {
+        jQuery('#blastDBs').html('Getting available blast databases <img src=\"/images/ajax-loader.gif\"/>');
+        Fluxion.doAjax(
+                'wisControllerHelperService',
+                'getBlastService',
+                {
+                    'url': ajaxurl
+                },
+                {
+                    'doOnSuccess': function (json) {
+                        jQuery('#blastDBs').html(json.html);
+                    }
+                }
+        );
+
+    }
 
     function sendBlastRequest() {
         jQuery('#blastResult').html('Blast request submitted <img src=\"/images/ajax-loader.gif\"/>');
@@ -104,14 +129,13 @@
                     'doOnSuccess': function (json) {
                         jQuery('#blastResult').html('');
                         var response = json.response;
-                        for(var i = 0; i < response.length; i++)
-                        {
+                        for (var i = 0; i < response.length; i++) {
                             var job = response[i];
                             var uuid = job['service_uuid'];
-                            var description =  job['description'].split(";",1);
+                            var name = job['description'].split(";", 1);
                             jQuery('#blastResult').append(
-                                    '<fieldset class="ui-corner-all"><legend class="ui-corner-all pie_first-child">'+description+'</legend><div><p><b>Job ID: '
-                                    + uuid +'</b></p><div id=\"' + uuid +'\">Job Submitted <img src=\"/images/ajax-loader.gif\"/></div></div></br></fieldset>');
+                                    '<fieldset class="ui-corner-all"><legend class="ui-corner-all pie_first-child">' + name + '</legend><div><p><b>Job ID: '
+                                    + uuid + '</b></p><div id=\"' + uuid + '\">Job Submitted <img src=\"/images/ajax-loader.gif\"/></div></div></br></fieldset>');
                             checkBlastResult(uuid);
                         }
                     }
@@ -130,8 +154,8 @@
                 },
                 {
                     'doOnSuccess': function (json) {
-                        jQuery('#'+uuid).html(json.html);
-                        if (json.status == 4){
+                        jQuery('#' + uuid).html(json.html);
+                        if (json.status == 4) {
                             Fluxion.doAjax(
                                     'wisControllerHelperService',
                                     'displayXMLBlastResult',
@@ -141,23 +165,23 @@
                                     },
                                     {
                                         'doOnSuccess': function (json) {
-                                            jQuery('#'+uuid).html(json.html);
+                                            jQuery('#' + uuid).html(json.html);
                                         }
                                     }
                             );
-                        } else if (json.status == 0 || json.status == 1 || json.status == 2 || json.status == 3){
-                            jQuery('#'+uuid).html(json.html);
+                        }
+                        else if (json.status == 0 || json.status == 1 || json.status == 2 || json.status == 3) {
+                            jQuery('#' + uuid).html(json.html);
                             var timer;
                             clearTimeout(timer);
-                            timer =setTimeout(function() {checkBlastResult(uuid);},timedCall);
+                            timer = setTimeout(function () {
+                                checkBlastResult(uuid);
+                            }, 5000);
                         }
                     }
                 }
         );
     }
-
-    jQuery(document).ready(function () {
-    });
 </script>
 
 <%@ include file="tgacFooter.jsp" %>

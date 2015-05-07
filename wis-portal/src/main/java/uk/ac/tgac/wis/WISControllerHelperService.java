@@ -98,6 +98,53 @@ public class WISControllerHelperService {
     }
   }
 
+
+  public JSONObject getBlastService(HttpSession session, JSONObject json) {
+    StringBuilder dbHTML = new StringBuilder();
+    JSONObject responses = new JSONObject();
+    String url = "http://v0214.nbi.ac.uk/wheatis";
+    String result = "{  \"operations\": {    \"operationId\": 4  },  \"services\": [    \"Blast service\"  ]}";
+
+    HttpClient httpClient = new DefaultHttpClient();
+
+    try {
+      HttpPost request = new HttpPost(url);
+      StringEntity params = new StringEntity(result);
+      request.addHeader("content-type", "application/x-www-form-urlencoded");
+      request.setEntity(params);
+      HttpResponse response = httpClient.execute(request);
+
+      ResponseHandler<String> handler = new BasicResponseHandler();
+      String body = handler.handleResponse(response);
+
+      JSONArray serviceArray = JSONArray.fromObject(body);
+      JSONArray dbArray = new JSONArray();
+      JSONArray parametersArray = serviceArray.getJSONObject(0).getJSONObject("operations").getJSONObject("parameter_set").getJSONArray("parameters");
+
+      for (int i = 0; i < parametersArray.size(); i++) {
+        JSONObject parameter = parametersArray.getJSONObject(i);
+        if ("Available Databases".equals(parameter.getString("group"))) {
+          String name = parameter.getString("name").split(";")[0];
+          String param = parameter.getString("param");
+          String tag = parameter.getString("tag");
+          dbArray.add(parameter);
+          dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" checked=\"checked\" />" + name + "<br/>");
+        }
+      }
+
+      responses.put("blastdbs", parametersArray);
+      responses.put("html", dbHTML.toString());
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+      return null;
+    }
+    finally {
+      httpClient.getConnectionManager().shutdown();
+    }
+    return responses;
+  }
+
   public JSONObject sendBlastRequest(HttpSession session, JSONObject json) {
     JSONArray formJSON = JSONArray.fromObject(json.get("form"));
     String sequence = "";
@@ -110,6 +157,7 @@ public class WISControllerHelperService {
     String max_matches_query_range = "0";
     String match = "2";
     String mismatch = "-3";
+    StringBuilder databaseParameters = new StringBuilder();
 
     for (JSONObject j : (Iterable<JSONObject>) formJSON) {
       if (j.getString("name").equals("sequence")) {
@@ -142,8 +190,18 @@ public class WISControllerHelperService {
       if (j.getString("name").equals("mismatch")) {
         mismatch = j.getString("value");
       }
+      if (j.getString("name").equals("database")) {
+        String databasevalue = j.getString("value");
+        String[] databasevaluelist = databasevalue.split("\\^");
+        databaseParameters.append(",{");
+        databaseParameters.append("\"param\": \"" + databasevaluelist[0] + "\",");
+        databaseParameters.append("\"current_value\": true,");
+        databaseParameters.append("\"tag\": " + databasevaluelist[1] + ",");
+        databaseParameters.append("\"wheatis_type\": 0,");
+        databaseParameters.append("\"concise\": true");
+        databaseParameters.append("}");
+      }
     }
-    String getservice = "{  \"operations\": {    \"operationId\": 4  },  \"services\": [    \"Blast service\"  ]}";
     String service = "{" +
                      "    \"services\": [" +
                      "        {" +
@@ -190,7 +248,7 @@ public class WISControllerHelperService {
                      "        {" +
                      "          \"level\": 7," +
                      "          \"param\": \"query_sequence\"," +
-                     "          \"current_value\": \""+sequence+"\"," +
+                     "          \"current_value\": \"" + sequence + "\"," +
                      "          \"tag\": 1112626521," +
                      "          \"wheatis_type\": 5," +
                      "          \"default\": \"\"," +
@@ -202,7 +260,7 @@ public class WISControllerHelperService {
                      "        {" +
                      "          \"level\": 6," +
                      "          \"param\": \"from\"," +
-                     "          \"current_value\": "+query_from+"," +
+                     "          \"current_value\": " + query_from + "," +
                      "          \"tag\": 1112622674," +
                      "          \"wheatis_type\": 2," +
                      "          \"default\": 0," +
@@ -214,7 +272,7 @@ public class WISControllerHelperService {
                      "        {" +
                      "          \"level\": 6," +
                      "          \"param\": \"to\"," +
-                     "          \"current_value\": "+query_to+"," +
+                     "          \"current_value\": " + query_to + "," +
                      "          \"tag\": 1112626255," +
                      "          \"wheatis_type\": 2," +
                      "          \"default\": 0," +
@@ -226,7 +284,7 @@ public class WISControllerHelperService {
                      "        {" +
                      "          \"level\": 7," +
                      "          \"param\": \"max_target_sequences\"," +
-                     "          \"current_value\": "+max_target_sequences+"," +
+                     "          \"current_value\": " + max_target_sequences + "," +
                      "          \"tag\": 1112363857," +
                      "          \"wheatis_type\": 2," +
                      "          \"default\": 100," +
@@ -238,7 +296,7 @@ public class WISControllerHelperService {
                      "        {" +
                      "          \"level\": 7," +
                      "          \"param\": \"short_queries\"," +
-                     "          \"current_value\": "+short_queries+"," +
+                     "          \"current_value\": " + short_queries + "," +
                      "          \"tag\": 1112754257," +
                      "          \"wheatis_type\": 0," +
                      "          \"default\": true," +
@@ -250,7 +308,7 @@ public class WISControllerHelperService {
                      "        {" +
                      "          \"level\": 7," +
                      "          \"param\": \"expect_threshold\"," +
-                     "          \"current_value\": "+expect_threshold+"," +
+                     "          \"current_value\": " + expect_threshold + "," +
                      "          \"tag\": 1111840852," +
                      "          \"wheatis_type\": 2," +
                      "          \"default\": 10," +
@@ -262,7 +320,7 @@ public class WISControllerHelperService {
                      "        {" +
                      "          \"level\": 7," +
                      "          \"param\": \"word_size\"," +
-                     "          \"current_value\": "+word_size+"," +
+                     "          \"current_value\": " + word_size + "," +
                      "          \"tag\": 1113015379," +
                      "          \"wheatis_type\": 2," +
                      "          \"default\": 28," +
@@ -274,7 +332,7 @@ public class WISControllerHelperService {
                      "        {" +
                      "          \"level\": 7," +
                      "          \"param\": \"max_matches_in_a_query_range\"," +
-                     "          \"current_value\": "+max_matches_query_range+"," +
+                     "          \"current_value\": " + max_matches_query_range + "," +
                      "          \"tag\": 1112363591," +
                      "          \"wheatis_type\": 2," +
                      "          \"default\": 0," +
@@ -298,7 +356,7 @@ public class WISControllerHelperService {
                      "        {" +
                      "          \"level\": 6," +
                      "          \"param\": \"match\"," +
-                     "          \"current_value\": "+match+"," +
+                     "          \"current_value\": " + match + "," +
                      "          \"tag\": 1112364099," +
                      "          \"wheatis_type\": 1," +
                      "          \"default\": 2," +
@@ -310,7 +368,7 @@ public class WISControllerHelperService {
                      "        {" +
                      "          \"level\": 6," +
                      "          \"param\": \"mismatch\"," +
-                     "          \"current_value\": "+mismatch+"," +
+                     "          \"current_value\": " + mismatch + "," +
                      "          \"tag\": 1112363853," +
                      "          \"wheatis_type\": 1," +
                      "          \"default\": -3," +
@@ -319,6 +377,55 @@ public class WISControllerHelperService {
                      "          \"name\": \"Mismatch\"," +
                      "          \"group\": \"Scoring Parameters\"" +
                      "        }" +
+//                     "            ,{\"param\": \"/tgac/public/databases/blast/aegilops_tauschii/GCA_000347335.1/Aegilops_tauschii.GCA_000347335.1.26.dna.genome\"," +
+//                     "            \"current_value\": true," +
+//                     "            \"tag\": 1111752704," +
+//                     "              \"wheatis_type\": 0," +
+//                     "      \"concise\": true" +
+//                     "          }," +
+//                     "          {" +
+//                     "            \"param\": \"/tgac/public/databases/blast/triticum_aestivum/brenchley_CS42/allCdnaFinalAssemblyAllContigs_vs_TREPalle05_notHits_gt100bp\"," +
+//                     "            \"current_value\": true," +
+//                     "            \"tag\": 1111752705," +
+//                     "            \"wheatis_type\": 0," +
+//                     "      \"concise\": true" +
+//                     "          }," +
+//                     "          {" +
+//                     "            \"param\": \"/tgac/public/databases/blast/triticum_aestivum/brenchley_CS42/CS_5xDNA_all\"," +
+//                     "            \"current_value\": true," +
+//                     "            \"tag\": 1111752706," +
+//                     "            \"wheatis_type\": 0," +
+//                     "      \"concise\": true" +
+//                     "          }," +
+//                     "          {" +
+//                     "            \"param\": \"/tgac/public/databases/blast/triticum_aestivum/brenchley_CS42/subassemblies_TEcleaned_Hv80Bd75Sb70Os70_30aa_firstBestHit_assembly_ml40_mi99\"," +
+//                     "            \"current_value\": true," +
+//                     "            \"tag\": 1111752707," +
+//                     "            \"wheatis_type\": 0," +
+//                     "      \"concise\": true" +
+//                     "          }," +
+//                     "          {" +
+//                     "            \"param\": \"/tgac/public/databases/blast/triticum_aestivum/IWGSC/v2/IWGSCv2.0\"," +
+//                     "            \"current_value\": true," +
+//                     "            \"tag\": 1111752708," +
+//                     "            \"wheatis_type\": 0," +
+//                     "      \"concise\": true" +
+//                     "          }," +
+//                     "          {" +
+//                     "            \"param\": \"/tgac/public/databases/blast/triticum_aestivum/IWGSC/v2/Triticum_aestivum.IWGSC2.26.dna.genome\"," +
+//                     "            \"current_value\": true," +
+//                     "            \"tag\": 1111752709," +
+//                     "            \"wheatis_type\": 0," +
+//                     "      \"concise\": true" +
+//                     "          }," +
+//                     "          {" +
+//                     "            \"param\": \"/tgac/public/databases/blast/triticum_urartu/GCA_000347455.1/Triticum_urartu.GCA_000347455.1.26.dna.genome\"," +
+//                     "            \"current_value\": true," +
+//                     "            \"tag\": 1111752710," +
+//                     "            \"wheatis_type\": 0," +
+//                     "      \"concise\": true" +
+//                     "          }" +
+                     databaseParameters.toString() +
                      "      ]" +
                      "            }" +
                      "        }" +
@@ -334,8 +441,7 @@ public class WISControllerHelperService {
 
       try {
         HttpPost request = new HttpPost(url);
-//        StringEntity params = new StringEntity(service.replaceAll("[\\t\\n\\r]", ""));
-        StringEntity params = new StringEntity(service.replaceAll("\n","\\\\n"));
+        StringEntity params = new StringEntity(service.replaceAll("\n", "\\\\n"));
         request.addHeader("content-type", "application/x-www-form-urlencoded");
         request.setEntity(params);
         HttpResponse response = httpClient.execute(request);
@@ -387,7 +493,7 @@ public class WISControllerHelperService {
       String body = handler.handleResponse(response);
       // if 6 keep checking
       JSONObject statusJSON = JSONObject.fromObject(body);
-      JSONArray  statusArray = statusJSON.getJSONArray("services");
+      JSONArray statusArray = statusJSON.getJSONArray("services");
 
       int status = statusArray.getJSONObject(0).getInt("status");
 
@@ -477,9 +583,9 @@ public class WISControllerHelperService {
       String databaseString = document.getElementsByTagName("BlastOutput_db").item(0).getTextContent();
 
       String databaseName = databaseString;
-      if (databaseString.contains("/")){
+      if (databaseString.contains("/")) {
         String[] databaseSplitString = databaseString.split("/");
-        databaseName = databaseSplitString[databaseSplitString.length-1];
+        databaseName = databaseSplitString[databaseSplitString.length - 1];
       }
 
       NodeList hitList = document.getElementsByTagName("Hit");
@@ -510,7 +616,7 @@ public class WISControllerHelperService {
 
       NodeList gapsList = document.getElementsByTagName("Hsp_gaps");
 
-      if (hitList.getLength()==0){
+      if (hitList.getLength() == 0) {
         sb.append("<p>No hits found</p>");
       }
 
@@ -551,16 +657,16 @@ public class WISControllerHelperService {
 
         String gaps = gapsList.item(i).getTextContent();
 
-        String alignmentDiv = id+hit_num;
+        String alignmentDiv = id + hit_num;
 
         sb.append("<div class='blastResultBox ui-corner-all'>");
         sb.append("<p><b>" + hit_num + ". </b>" + databaseName + " - " + id + " | <a target=\"_blank\" href=\"http://www.ensembl.org/Multi/Search/Results?q=" + accession + "\">Ensembl Search</a></p>");
         sb.append("<b>Bit Score</b>: " + bit_score + " | <b>Hit Length</b>: " + length + " | <b>Gaps:</b> " + gaps + "</p>");
         sb.append("<p><b>Score</b>: " + score + " | <b>Evalue</b>: " + evalue + " | <b>Identity</b>: " + identity + "</p>");
-        sb.append("<div class=\"sectionDivider\" onclick=\"Utils.ui.toggleLeftInfo(jQuery('#"+alignmentDiv+"_arrowclick'), '"+alignmentDiv+"');\">Alignment view\n" +
-                  "        <div id=\""+alignmentDiv+"_arrowclick\" class=\"toggleLeft\"></div>" +
+        sb.append("<div class=\"sectionDivider\" onclick=\"Utils.ui.toggleLeftInfo(jQuery('#" + alignmentDiv + "_arrowclick'), '" + alignmentDiv + "');\">Alignment view" +
+                  "        <div id=\"" + alignmentDiv + "_arrowclick\" class=\"toggleLeft\"></div>" +
                   "      </div>" +
-                  "      <div id=\""+alignmentDiv+"\" class=\"note\" style=\"display:none;\">");
+                  "      <div id=\"" + alignmentDiv + "\" class=\"note\" style=\"display:none;\">");
         sb.append("<p class='blastPosition'>Query from: " + query_from + " to: " + query_to + " Strand: " + query_strand + "</p>");
         sb.append(blastResultFormatter(qseq, midline, hseq, 100));
         sb.append("<p class='blastPosition'>Hit from: " + hit_from + " to: " + hit_to + " Strand: " + hit_strand + "</p>");
