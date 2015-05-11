@@ -377,54 +377,6 @@ public class WISControllerHelperService {
                      "          \"name\": \"Mismatch\"," +
                      "          \"group\": \"Scoring Parameters\"" +
                      "        }" +
-//                     "            ,{\"param\": \"/tgac/public/databases/blast/aegilops_tauschii/GCA_000347335.1/Aegilops_tauschii.GCA_000347335.1.26.dna.genome\"," +
-//                     "            \"current_value\": true," +
-//                     "            \"tag\": 1111752704," +
-//                     "              \"wheatis_type\": 0," +
-//                     "      \"concise\": true" +
-//                     "          }," +
-//                     "          {" +
-//                     "            \"param\": \"/tgac/public/databases/blast/triticum_aestivum/brenchley_CS42/allCdnaFinalAssemblyAllContigs_vs_TREPalle05_notHits_gt100bp\"," +
-//                     "            \"current_value\": true," +
-//                     "            \"tag\": 1111752705," +
-//                     "            \"wheatis_type\": 0," +
-//                     "      \"concise\": true" +
-//                     "          }," +
-//                     "          {" +
-//                     "            \"param\": \"/tgac/public/databases/blast/triticum_aestivum/brenchley_CS42/CS_5xDNA_all\"," +
-//                     "            \"current_value\": true," +
-//                     "            \"tag\": 1111752706," +
-//                     "            \"wheatis_type\": 0," +
-//                     "      \"concise\": true" +
-//                     "          }," +
-//                     "          {" +
-//                     "            \"param\": \"/tgac/public/databases/blast/triticum_aestivum/brenchley_CS42/subassemblies_TEcleaned_Hv80Bd75Sb70Os70_30aa_firstBestHit_assembly_ml40_mi99\"," +
-//                     "            \"current_value\": true," +
-//                     "            \"tag\": 1111752707," +
-//                     "            \"wheatis_type\": 0," +
-//                     "      \"concise\": true" +
-//                     "          }," +
-//                     "          {" +
-//                     "            \"param\": \"/tgac/public/databases/blast/triticum_aestivum/IWGSC/v2/IWGSCv2.0\"," +
-//                     "            \"current_value\": true," +
-//                     "            \"tag\": 1111752708," +
-//                     "            \"wheatis_type\": 0," +
-//                     "      \"concise\": true" +
-//                     "          }," +
-//                     "          {" +
-//                     "            \"param\": \"/tgac/public/databases/blast/triticum_aestivum/IWGSC/v2/Triticum_aestivum.IWGSC2.26.dna.genome\"," +
-//                     "            \"current_value\": true," +
-//                     "            \"tag\": 1111752709," +
-//                     "            \"wheatis_type\": 0," +
-//                     "      \"concise\": true" +
-//                     "          }," +
-//                     "          {" +
-//                     "            \"param\": \"/tgac/public/databases/blast/triticum_urartu/GCA_000347455.1/Triticum_urartu.GCA_000347455.1.26.dna.genome\"," +
-//                     "            \"current_value\": true," +
-//                     "            \"tag\": 1111752710," +
-//                     "            \"wheatis_type\": 0," +
-//                     "      \"concise\": true" +
-//                     "          }" +
                      databaseParameters.toString() +
                      "      ]" +
                      "            }" +
