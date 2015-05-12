@@ -98,11 +98,12 @@ public class WISControllerHelperService {
     }
   }
 
+  String blastURL = "http://v0214.nbi.ac.uk:8880/wheatis";
 
   public JSONObject getBlastService(HttpSession session, JSONObject json) {
     StringBuilder dbHTML = new StringBuilder();
     JSONObject responses = new JSONObject();
-    String url = "http://v0214.nbi.ac.uk/wheatis";
+    String url = blastURL;
     String result = "{  \"operations\": {    \"operationId\": 4  },  \"services\": [    \"Blast service\"  ]}";
 
     HttpClient httpClient = new DefaultHttpClient();
@@ -386,7 +387,7 @@ public class WISControllerHelperService {
     JSONObject responses = new JSONObject();
     try {
 
-      String url = "http://v0214.nbi.ac.uk/wheatis";
+      String url = blastURL;
 
 
       HttpClient httpClient = new DefaultHttpClient();
