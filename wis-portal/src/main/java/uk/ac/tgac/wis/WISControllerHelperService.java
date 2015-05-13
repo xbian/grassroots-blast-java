@@ -1,7 +1,6 @@
 
 package uk.ac.tgac.wis;
 
-import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sourceforge.fluxion.ajax.Ajaxified;
