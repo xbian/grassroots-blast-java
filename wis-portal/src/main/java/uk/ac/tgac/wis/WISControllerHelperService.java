@@ -769,6 +769,40 @@ public class WISControllerHelperService {
     }
   }
 
+  public JSONObject stopJob(HttpSession session, JSONObject json) {
+    String uuid = json.getString("uuid");
+    String url = blastURL;
+    String result = "{" +
+                    "  \"operations\": {" +
+                    "    \"operationId\": 7" +
+                    "  }," +
+                    "  \"services\": [" +
+                    "    \"" + uuid + "\"," +
+                    "  ]" +
+                    "}";
+
+    HttpClient httpClient = new DefaultHttpClient();
+
+    try {
+      HttpPost request = new HttpPost(url);
+      StringEntity params = new StringEntity(result);
+      request.addHeader("content-type", "application/x-www-form-urlencoded");
+      request.setEntity(params);
+      HttpResponse response = httpClient.execute(request);
+
+      ResponseHandler<String> handler = new BasicResponseHandler();
+      System.out.println(handler.handleResponse(response));
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+      return null;
+    }
+    finally {
+      httpClient.getConnectionManager().shutdown();
+    }
+    return JSONUtils.SimpleJSONResponse("ok");
+  }
+
   public static ArrayList<String> splitEqually(String text, int size) {
     ArrayList<String> list = new ArrayList<String>((text.length() + size - 1) / size);
     for (int start = 0; start < text.length(); start += size) {

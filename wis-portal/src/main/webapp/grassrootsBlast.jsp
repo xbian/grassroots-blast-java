@@ -166,6 +166,7 @@
                                     {
                                         'doOnSuccess': function (json) {
                                             jQuery('#' + uuid).html(json.html);
+                                            stopJob(uuid);
                                         }
                                     }
                             );
@@ -178,9 +179,31 @@
                                 checkBlastResult(uuid);
                             }, 5000);
                         }
+                        else {
+                            stopJob(uuid);
+                        }
                     }
                 }
         );
+    }
+
+
+    function stopJob(uuid) {
+        jQuery('#blastDBs').html('Getting available blast databases <img src=\"/images/ajax-loader.gif\"/>');
+        Fluxion.doAjax(
+                'wisControllerHelperService',
+                'stopJob',
+                {
+                    'uuid': uuid,
+                    'url': ajaxurl
+                },
+                {
+                    'doOnSuccess': function (json) {
+                        console.log("Stopped job: "+ uuid);
+                    }
+                }
+        );
+
     }
 </script>
 
