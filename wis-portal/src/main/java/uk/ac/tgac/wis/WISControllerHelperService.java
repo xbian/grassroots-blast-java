@@ -93,7 +93,7 @@ public class WISControllerHelperService {
     }
   }
 
-  String blastURL = "http://v0214.nbi.ac.uk:8880/wheatis";
+  String blastURL = "http://v0214.nbi.ac.uk/wheatis";
 
   public JSONObject getBlastService(HttpSession session, JSONObject json) {
     StringBuilder dbHTML = new StringBuilder();
@@ -607,8 +607,38 @@ public class WISControllerHelperService {
 
         String alignmentDiv = id + hit_num;
 
+        String ensemblLink = "http://www.ensembl.org/Multi/Search/Results?q=";
+
+        String taestivumLink = "http://plants.ensembl.org/Triticum_aestivum/Search/Results?species=Triticum%20aestivum;idx=;q=";
+
+        String aegilopsTauschiiLink = "http://plants.ensembl.org/Aegilops_tauschii/Search/Results?species=Aegilops%20tauschii;idx=;q=";
+
+        String turartuLink = "http://plants.ensembl.org/Triticum_urartu/Search/Results?species=Triticum%20urartu;idx=;q=";
+
+        if ("Aegilops_tauschii.GCA_000347335.1.26.dna.genome".equals(databaseName)){
+          ensemblLink = aegilopsTauschiiLink;
+        }
+        if ("allCdnaFinalAssemblyAllContigs_vs_TREPalle05_notHits_gt100bp".equals(databaseName)){
+          ensemblLink =  taestivumLink;
+        }
+        if ("CS_5xDNA_all".equals(databaseName)){
+          ensemblLink =  taestivumLink;
+        }
+        if ("subassemblies_TEcleaned_Hv80Bd75Sb70Os70_30aa_firstBestHit_assembly_ml40_mi99".equals(databaseName)){
+          ensemblLink =  taestivumLink;
+        }
+        if ("IWGSCv2.0".equals(databaseName)){
+          ensemblLink =  taestivumLink;
+        }
+        if ("Triticum_urartu.GCA_000347455.1.26.dna.genome".equals(databaseName)){
+          ensemblLink = turartuLink;
+        }
+        if ("Triticum_aestivum.IWGSC2.26.dna.genome".equals(databaseName)){
+          ensemblLink =  taestivumLink;
+        }
+
         sb.append("<div class='blastResultBox ui-corner-all'>");
-        sb.append("<p><b>" + hit_num + ". </b>" + databaseName + " - " + id + " | <a target=\"_blank\" href=\"http://www.ensembl.org/Multi/Search/Results?q=" + accession + "\">Ensembl Search</a></p>");
+        sb.append("<p><b>" + hit_num + ". </b>" + databaseName + " - " + id + " | <a target=\"_blank\" href=\"" + ensemblLink + accession + "\">Ensembl Search</a></p>");
         sb.append("<b>Bit Score</b>: " + bit_score + " | <b>Hit Length</b>: " + length + " | <b>Gaps:</b> " + gaps + "</p>");
         sb.append("<p><b>Score</b>: " + score + " | <b>Evalue</b>: " + evalue + " | <b>Identity</b>: " + identity + "</p>");
         sb.append("<div class=\"sectionDivider\" onclick=\"Utils.ui.toggleLeftInfo(jQuery('#" + alignmentDiv + "_arrowclick'), '" + alignmentDiv + "');\">Alignment view" +
