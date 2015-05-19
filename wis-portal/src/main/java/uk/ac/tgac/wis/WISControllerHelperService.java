@@ -607,6 +607,8 @@ public class WISControllerHelperService {
 
         String alignmentDiv = id + hit_num;
 
+        String linktoensembl = "";
+
         String ensemblLink = "http://www.ensembl.org/Multi/Search/Results?q=";
 
         String taestivumLink = "http://plants.ensembl.org/Triticum_aestivum/Search/Results?species=Triticum%20aestivum;idx=;q=";
@@ -615,30 +617,33 @@ public class WISControllerHelperService {
 
         String turartuLink = "http://plants.ensembl.org/Triticum_urartu/Search/Results?species=Triticum%20urartu;idx=;q=";
 
-        if ("Aegilops_tauschii.GCA_000347335.1.26.dna.genome".equals(databaseName)){
+        if ("Aegilops_tauschii.GCA_000347335.1.26.dna.genome".equals(databaseName)) {
           ensemblLink = aegilopsTauschiiLink;
+          linktoensembl = " | <a target=\"_blank\" href=\"" + ensemblLink + accession + "\">Ensembl Search</a>";
         }
-        if ("allCdnaFinalAssemblyAllContigs_vs_TREPalle05_notHits_gt100bp".equals(databaseName)){
-          ensemblLink =  taestivumLink;
+        if ("allCdnaFinalAssemblyAllContigs_vs_TREPalle05_notHits_gt100bp".equals(databaseName)) {
+          ensemblLink = taestivumLink;
         }
-        if ("CS_5xDNA_all".equals(databaseName)){
-          ensemblLink =  taestivumLink;
+        if ("CS_5xDNA_all".equals(databaseName)) {
+          ensemblLink = taestivumLink;
         }
-        if ("subassemblies_TEcleaned_Hv80Bd75Sb70Os70_30aa_firstBestHit_assembly_ml40_mi99".equals(databaseName)){
-          ensemblLink =  taestivumLink;
+        if ("subassemblies_TEcleaned_Hv80Bd75Sb70Os70_30aa_firstBestHit_assembly_ml40_mi99".equals(databaseName)) {
+          ensemblLink = taestivumLink;
         }
-        if ("IWGSCv2.0".equals(databaseName)){
-          ensemblLink =  taestivumLink;
+        if ("IWGSCv2.0".equals(databaseName)) {
+          ensemblLink = taestivumLink;
+          linktoensembl = " | <a target=\"_blank\" href=\"" + ensemblLink + accession + "\">Ensembl Search</a>";
         }
-        if ("Triticum_urartu.GCA_000347455.1.26.dna.genome".equals(databaseName)){
+        if ("Triticum_urartu.GCA_000347455.1.26.dna.genome".equals(databaseName)) {
           ensemblLink = turartuLink;
+          linktoensembl = " | <a target=\"_blank\" href=\"" + ensemblLink + accession + "\">Ensembl Search</a>";
         }
-        if ("Triticum_aestivum.IWGSC2.26.dna.genome".equals(databaseName)){
-          ensemblLink =  taestivumLink;
+        if ("Triticum_aestivum.IWGSC2.26.dna.genome".equals(databaseName)) {
+          ensemblLink = taestivumLink;
         }
 
         sb.append("<div class='blastResultBox ui-corner-all'>");
-        sb.append("<p><b>" + hit_num + ". </b>" + databaseName + " - " + id + " | <a target=\"_blank\" href=\"" + ensemblLink + accession + "\">Ensembl Search</a></p>");
+        sb.append("<p><b>" + hit_num + ". </b>" + databaseName + " - " + id + " " + linktoensembl + "</p>");
         sb.append("<b>Bit Score</b>: " + bit_score + " | <b>Hit Length</b>: " + length + " | <b>Gaps:</b> " + gaps + "</p>");
         sb.append("<p><b>Score</b>: " + score + " | <b>Evalue</b>: " + evalue + " | <b>Identity</b>: " + identity + "</p>");
         sb.append("<div class=\"sectionDivider\" onclick=\"Utils.ui.toggleLeftInfo(jQuery('#" + alignmentDiv + "_arrowclick'), '" + alignmentDiv + "');\">Alignment view" +
