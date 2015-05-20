@@ -638,7 +638,7 @@ public class WISControllerHelperService {
           ensemblLink = turartuLink;
           linktoensembl = " | <a target=\"_blank\" href=\"" + ensemblLink + accession + "\">Ensembl Search</a>";
         }
-        if ("Triticum_aestivum.IWGSC2.26.dna.genome".equals(databaseName)) {
+        if ("w7984.meraculous.scaffolds.Mar28_contamination_removed".equals(databaseName)) {
           ensemblLink = taestivumLink;
         }
 
