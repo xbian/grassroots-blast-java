@@ -675,7 +675,7 @@ public class WISControllerHelperService {
                     "    \"operationId\": 6" +
                     "  }," +
                     "  \"services\": [" +
-                    "    \"" + uuid + "\"," +
+                    "    \"" + uuid + "\"" +
                     "  ]" +
                     "}";
 
@@ -777,7 +777,7 @@ public class WISControllerHelperService {
                     "    \"operationId\": 7" +
                     "  }," +
                     "  \"services\": [" +
-                    "    \"" + uuid + "\"," +
+                    "    \"" + uuid + "\"" +
                     "  ]" +
                     "}";
 

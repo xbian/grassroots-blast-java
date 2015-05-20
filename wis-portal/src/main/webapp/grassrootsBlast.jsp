@@ -1,8 +1,8 @@
 <%@ include file="tgacHeader.jsp" %>
 <div class="breadcrumbs">&raquo; <a href="http://www.tgac.ac.uk/">Home</a> &raquo; <a
         href="http://www.tgac.ac.uk/grassroots-genomics/">Grassroots Genomics</a>
-    &raquo; <a href="<c:url value='/wis-portal/blast'/>">Blast Search</a></div>
-<h2 id="blastTitle">Grassroots Genomics Blast Search </h2>
+    &raquo; <a href="<c:url value='/wis-portal/blast'/>">BLAST Search</a></div>
+<h2 id="blastTitle">Grassroots Genomics BLAST Search </h2>
 
 <form id="blastSearchForm">
     <p/>
@@ -19,10 +19,10 @@
 
     <p/>
     <fieldset class="ui-corner-all">
-        <legend class="ui-corner-all pie_first-child">Blast Databases</legend>
+        <legend class="ui-corner-all pie_first-child">BLAST Databases</legend>
         <div id="blastDBs"></div>
     </fieldset>
-    <button type="button" onclick="sendBlastRequest();">Blast Search</button>
+    <button type="button" onclick="sendBlastRequest();">BLAST Search</button>
     <hr/>
     <h3>Algorithm parameters</h3>
     <fieldset class="ui-corner-all">
@@ -88,7 +88,7 @@
         </table>
     </fieldset>
     <p/>
-    <button type="button" onclick="sendBlastRequest();">Blast Search</button>
+    <button type="button" onclick="sendBlastRequest();">BLAST Search</button>
 </form>
 
 <div id="blastResult"></div>
@@ -100,7 +100,7 @@
     });
 
     function getBlastDBs() {
-        jQuery('#blastDBs').html('Getting available blast databases <img src=\"/images/ajax-loader.gif\"/>');
+        jQuery('#blastDBs').html('Loading available BLAST databases <img src=\"/images/ajax-loader.gif\"/>');
         Fluxion.doAjax(
                 'wisControllerHelperService',
                 'getBlastService',
@@ -117,7 +117,7 @@
     }
 
     function sendBlastRequest() {
-        jQuery('#blastResult').html('Blast request submitted <img src=\"/images/ajax-loader.gif\"/>');
+        jQuery('#blastResult').html('BLAST request submitted <img src=\"/images/ajax-loader.gif\"/>');
         Fluxion.doAjax(
                 'wisControllerHelperService',
                 'sendBlastRequest',
