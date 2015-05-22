@@ -189,7 +189,6 @@
 
 
     function stopJob(uuid) {
-        jQuery('#blastDBs').html('Getting available blast databases <img src=\"/images/ajax-loader.gif\"/>');
         Fluxion.doAjax(
                 'wisControllerHelperService',
                 'stopJob',
