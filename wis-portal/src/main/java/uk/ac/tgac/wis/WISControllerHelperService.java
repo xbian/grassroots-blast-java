@@ -788,10 +788,9 @@ public class WISControllerHelperService {
       StringEntity params = new StringEntity(result);
       request.addHeader("content-type", "application/x-www-form-urlencoded");
       request.setEntity(params);
-      HttpResponse response = httpClient.execute(request);
-
-      ResponseHandler<String> handler = new BasicResponseHandler();
-      System.out.println(handler.handleResponse(response));
+//      HttpResponse response = httpClient.execute(request);
+//
+//      ResponseHandler<String> handler = new BasicResponseHandler();
     }
     catch (Exception e) {
       e.printStackTrace();
