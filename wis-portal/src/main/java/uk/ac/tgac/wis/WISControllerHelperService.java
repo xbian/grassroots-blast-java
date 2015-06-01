@@ -788,9 +788,6 @@ public class WISControllerHelperService {
       StringEntity params = new StringEntity(result);
       request.addHeader("content-type", "application/x-www-form-urlencoded");
       request.setEntity(params);
-//      HttpResponse response = httpClient.execute(request);
-//
-//      ResponseHandler<String> handler = new BasicResponseHandler();
     }
     catch (Exception e) {
       e.printStackTrace();
@@ -800,6 +797,36 @@ public class WISControllerHelperService {
       httpClient.getConnectionManager().shutdown();
     }
     return JSONUtils.SimpleJSONResponse("ok");
+  }
+
+  public JSONObject getEnsemblInfo(HttpSession session, JSONObject json) {
+    String species = json.getString("species");
+    String symbol = json.getString("symbol");
+    String url = blastURL;
+    String query = "http://rest.ensembl.org/lookup/symbol/" + species + "/" + symbol
+                   + "?content-type=application/json;expand=1";
+
+    String body;
+    HttpClient httpClient = new DefaultHttpClient();
+
+    try {
+      HttpPost request = new HttpPost(url);
+      StringEntity params = new StringEntity(query);
+      request.addHeader("content-type", "application/x-www-form-urlencoded");
+      request.setEntity(params);
+      HttpResponse response = httpClient.execute(request);
+
+      ResponseHandler<String> handler = new BasicResponseHandler();
+      body = handler.handleResponse(response);
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+      return null;
+    }
+    finally {
+      httpClient.getConnectionManager().shutdown();
+    }
+    return JSONUtils.SimpleJSONResponse(body);
   }
 
   public static ArrayList<String> splitEqually(String text, int size) {

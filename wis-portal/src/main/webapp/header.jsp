@@ -49,6 +49,9 @@
     <link rel="stylesheet" href="<c:url value='/scripts/jquery/colorbox/colorbox.css'/>"
           type="text/css">
 
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="<c:url value='/scripts/leaflet/leaflet.css'/>" />
+    <script src="<c:url value='/scripts/leaflet/leaflet.js'/>"></script>
 
     <!-- wis -->
     <script type="text/javascript" src="<c:url value='/scripts/wis.js?ts=${timestamp.time}'/>"></script>
