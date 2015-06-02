@@ -7,6 +7,7 @@ import net.sourceforge.fluxion.ajax.Ajaxified;
 import net.sourceforge.fluxion.ajax.util.JSONUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
@@ -14,6 +15,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
@@ -800,33 +802,26 @@ public class WISControllerHelperService {
   }
 
   public JSONObject getEnsemblInfo(HttpSession session, JSONObject json) {
+    HttpClient httpclient = new DefaultHttpClient();
     String species = json.getString("species");
     String symbol = json.getString("symbol");
-    String url = blastURL;
     String query = "http://rest.ensemblgenomes.org/symbol/" + species + "/" + symbol
                    + "?content-type=application/json;expand=1";
 
-    String body;
-    HttpClient httpClient = new DefaultHttpClient();
-
+    HttpGet httpget = new HttpGet(query);
     try {
-      HttpPost request = new HttpPost(url);
-      StringEntity params = new StringEntity(query);
-      request.addHeader("content-type", "application/x-www-form-urlencoded");
-      request.setEntity(params);
-      HttpResponse response = httpClient.execute(request);
-
-      ResponseHandler<String> handler = new BasicResponseHandler();
-      body = handler.handleResponse(response);
+      HttpResponse response = httpclient.execute(httpget);
+      String out = parseEntity(response.getEntity());
+      JSONObject j = JSONObject.fromObject(out);
+        return j;
     }
-    catch (Exception e) {
+    catch (ClientProtocolException e) {
       e.printStackTrace();
-      return null;
     }
-    finally {
-      httpClient.getConnectionManager().shutdown();
+    catch (IOException e) {
+      e.printStackTrace();
     }
-    return JSONUtils.SimpleJSONResponse(body);
+    return null;
   }
 
   public static ArrayList<String> splitEqually(String text, int size) {
@@ -835,5 +830,14 @@ public class WISControllerHelperService {
       list.add(text.substring(start, Math.min(text.length(), start + size)));
     }
     return list;
+  }
+
+  private String parseEntity(HttpEntity entity) throws IOException {
+    if (entity != null) {
+      return EntityUtils.toString(entity, "UTF-8");
+    }
+    else {
+      throw new IOException("Null entity in REST response");
+    }
   }
 }
