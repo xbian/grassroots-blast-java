@@ -103,6 +103,7 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li ><a href="<c:url value='/'/>">Portal Home</a></li>
+                <li><a href="<c:url value='/geo.jsp'/>">GeoJSON-Leaflet</a></li>
                 <li><a href="<c:url value='/about.jsp'/>">About</a></li>
                 <li><a href="<c:url value='/contact.jsp'/>">Contact</a></li>
                 <%--<li class="dropdown">--%>

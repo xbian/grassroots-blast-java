@@ -803,7 +803,7 @@ public class WISControllerHelperService {
     String species = json.getString("species");
     String symbol = json.getString("symbol");
     String url = blastURL;
-    String query = "http://rest.ensembl.org/lookup/symbol/" + species + "/" + symbol
+    String query = "http://rest.ensemblgenomes.org/symbol/" + species + "/" + symbol
                    + "?content-type=application/json;expand=1";
 
     String body;
