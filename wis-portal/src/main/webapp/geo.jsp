@@ -19,7 +19,7 @@
     jQuery(document).ready(function () {
     });
 
-    var map = L.map('map').setView([52.621615, 1.219470], 13);
+    var map = L.map('map').setView([52.621615, 1.219470], 12);
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="http://mapbox.com">Mapbox</a>',
@@ -27,17 +27,40 @@
         id: 'mapbox.streets',
         accessToken: 'pk.eyJ1IjoiYmlhbnhpbmdkb25nIiwiYSI6ImUyY2YxYzZkYzk4MGMwMTNmOTg3ZDk4NmRhZWMxMTgwIn0.NUz8YeHedm4Jqm9fcq-f7A'
     }).addTo(map);
-    var marker = L.marker([52.621615, 1.219470]).addTo(map);
+
+    var marker = L.marker([52.621615, 1.219]).addTo(map);
+
     var circle = L.circle([52.621615, 1.20], 500, {
         color: 'red',
         fillColor: '#f03',
         fillOpacity: 0.5
     }).addTo(map);
+
     var circle1 = L.circle([52.621615, 1.23], 200, {
         color: 'green',
         fillColor: 'green',
         fillOpacity: 0.5
     }).addTo(map);
+
+    var polygon = L.polygon([
+        [52.61, 1.19],
+        [52.61, 1.22],
+        [52.59, 1.205]
+    ]).addTo(map);
+
+    var square = L.rectangle([
+        [52.66, 1.19],
+        [52.66, 1.22],
+        [52.64, 1.19],
+        [52.64, 1.22]
+    ]).addTo(map);
+
+
+    marker.bindPopup("TGAC");
+    circle.bindPopup("West of TGAC");
+    circle1.bindPopup("East of TGAC");
+    polygon.bindPopup("South of TGAC");
+    square.bindPopup("North of TGAC");
 
 </script>
 
