@@ -3,7 +3,7 @@
 <div class="container center-block">
 
     <div class="jumbotron">
-        <h2>Wheat Information System GeoJSON and Leaflet</h2>
+        <h2>GeoJSON and Leaflet</h2>
 
         <p></p>
 
@@ -21,11 +21,11 @@
 
     var map = L.map('map').setView([52.621615, 1.219470], 12);
 
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    L.tileLayer('http://otile1.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="http://mapbox.com">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox.streets',
-        accessToken: 'pk.eyJ1IjoiYmlhbnhpbmdkb25nIiwiYSI6ImUyY2YxYzZkYzk4MGMwMTNmOTg3ZDk4NmRhZWMxMTgwIn0.NUz8YeHedm4Jqm9fcq-f7A'
+        maxZoom: 18
+//        id: 'mapbox.streets',
+//        accessToken: 'pk.eyJ1IjoiYmlhbnhpbmdkb25nIiwiYSI6ImUyY2YxYzZkYzk4MGMwMTNmOTg3ZDk4NmRhZWMxMTgwIn0.NUz8YeHedm4Jqm9fcq-f7A'
     }).addTo(map);
 
     var marker = L.marker([52.621615, 1.219]).addTo(map);
