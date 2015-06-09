@@ -4,6 +4,8 @@
     &raquo; <a href="<c:url value='/wis-portal/blast'/>">BLAST Search</a></div>
 <h2 id="blastTitle">Grassroots Genomics BLAST Search </h2>
 
+<p><small>This is a proof of concept</small></p>
+
 <form id="blastSearchForm">
     <p/>
     Enter sequence below in FASTA format
@@ -22,7 +24,7 @@
         <legend class="ui-corner-all pie_first-child">BLAST Databases</legend>
         <div id="blastDBs"></div>
     </fieldset>
-    <button type="button" onclick="sendBlastRequest();">BLAST Search</button>
+    <button id="blastButton1" type="button" onclick="sendBlastRequest();">BLAST Search</button>
     <hr/>
     <h3>Algorithm parameters</h3>
     <fieldset class="ui-corner-all">
@@ -88,7 +90,7 @@
         </table>
     </fieldset>
     <p/>
-    <button type="button" onclick="sendBlastRequest();">BLAST Search</button>
+    <button id="blastButton2" type="button" onclick="sendBlastRequest();">BLAST Search</button>
 </form>
 
 <div id="blastResult"></div>
@@ -118,6 +120,8 @@
 
     function sendBlastRequest() {
         jQuery('#blastResult').html('BLAST request submitted <img src=\"/images/ajax-loader.gif\"/>');
+        Utils.ui.disableButton('blastButton1');
+        Utils.ui.disableButton('blastButton2');
         Fluxion.doAjax(
                 'wisControllerHelperService',
                 'sendBlastRequest',
