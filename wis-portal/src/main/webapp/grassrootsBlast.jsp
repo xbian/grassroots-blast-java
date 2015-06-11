@@ -4,7 +4,7 @@
     &raquo; <a href="<c:url value='/wis-portal/blast'/>">BLAST Search</a></div>
 <h2 id="blastTitle">Grassroots Genomics BLAST Search </h2>
 
-<p><small>This is a proof of concept</small></p>
+<p><small>This is a proof of concept, there are might be hiccups please bear with us and we will keep this system updated..</small></p>
 
 <form id="blastSearchForm">
     <p/>
@@ -103,6 +103,8 @@
 
     function getBlastDBs() {
         jQuery('#blastDBs').html('Loading available BLAST databases <img src=\"/images/ajax-loader.gif\"/>');
+        Utils.ui.disableButton('blastButton1');
+        Utils.ui.disableButton('blastButton2');
         Fluxion.doAjax(
                 'wisControllerHelperService',
                 'getBlastService',
@@ -112,6 +114,8 @@
                 {
                     'doOnSuccess': function (json) {
                         jQuery('#blastDBs').html(json.html);
+                        Utils.ui.reenableButton('blastButton1', 'BLAST Search');
+                        Utils.ui.reenableButton('blastButton2', 'BLAST Search');
                     }
                 }
         );
