@@ -840,4 +840,34 @@ public class WISControllerHelperService {
       throw new IOException("Null entity in REST response");
     }
   }
+
+  public JSONObject insertYRExcel(HttpSession session, JSONObject json) {
+    String uuid = json.getString("uuid");
+    String url = blastURL;
+    String result = "{" +
+                    "  \"operations\": {" +
+                    "    \"operationId\": 7" +
+                    "  }," +
+                    "  \"services\": [" +
+                    "    \"" + uuid + "\"" +
+                    "  ]" +
+                    "}";
+
+    HttpClient httpClient = new DefaultHttpClient();
+
+    try {
+      HttpPost request = new HttpPost(url);
+      StringEntity params = new StringEntity(result);
+      request.addHeader("content-type", "application/x-www-form-urlencoded");
+      request.setEntity(params);
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+      return null;
+    }
+    finally {
+      httpClient.getConnectionManager().shutdown();
+    }
+    return JSONUtils.SimpleJSONResponse("ok");
+  }
 }
