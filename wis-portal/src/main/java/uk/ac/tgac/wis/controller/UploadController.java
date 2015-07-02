@@ -1,6 +1,7 @@
 package uk.ac.tgac.wis.controller;
 
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -110,11 +111,11 @@ public class UploadController {
     }
   }
 
-  public File getNewFile(Class type, String qualifier, String fileName) throws IOException {
+  public File getNewFile(String qualifier, String fileName) throws IOException {
     return getFile(qualifier, fileName, true);
   }
 
-  public File getFile(Class type, String qualifier, String fileName) throws IOException {
+  public File getFile(String qualifier, String fileName) throws IOException {
     return getFile(qualifier, fileName, false);
   }
 
@@ -138,99 +139,57 @@ public class UploadController {
   }
 
   public static JSONArray preProcessYRSheetImport(File inPath) throws Exception {
-    if (inPath.getName().endsWith(".xlsx")) {
+    if (inPath.getName().endsWith(".xlsx") || inPath.getName().endsWith(".xls")) {
       XSSFWorkbook wb = new XSSFWorkbook(new FileInputStream(inPath));
       JSONArray jsonArray = new JSONArray();
       XSSFSheet sheet = wb.getSheetAt(0);
       int rows = sheet.getPhysicalNumberOfRows();
-      for (int ri = 5; ri < rows; ri++) {
+      for (int ri = 1; ri < rows; ri++) {
         XSSFRow row = sheet.getRow(ri);
-        XSSFCell sampleAliasCell = row.getCell(3);
-        if (getCellValueAsString(sampleAliasCell) != null) {
-          String salias = getCellValueAsString(sampleAliasCell);
 
-        }
-        else {
-          break;
-        }
+        XSSFCell cellID = row.getCell(0);
+        XSSFCell cellUKCPVSID = row.getCell(1);
+        XSSFCell cellDate = row.getCell(2);
+        XSSFCell cellName = row.getCell(3);
+        XSSFCell cellCompany = row.getCell(4);
+        XSSFCell cellCountry = row.getCell(5);
+        XSSFCell cellCounty = row.getCell(6);
+        XSSFCell cellTown = row.getCell(7);
+        XSSFCell cellPostCode = row.getCell(8);
+        XSSFCell cellGPS = row.getCell(9);
+        XSSFCell cellFurtherLocationInformation = row.getCell(10);
+        XSSFCell cellRustType = row.getCell(11);
+        XSSFCell cellHost = row.getCell(12);
+        XSSFCell cellVariety = row.getCell(13);
+        XSSFCell cellKASP = row.getCell(14);
+        XSSFCell cellRNAseq = row.getCell(15);
+        XSSFCell cellLibName = row.getCell(16);
+        XSSFCell cellPublicComments = row.getCell(17);
+        XSSFCell cellPrivateComments = row.getCell(18);
+        JSONObject rowJSON = new JSONObject();
 
-        //sample OK - good to go
-        if (s != null) {
-          JSONArray sampleArray = new JSONArray();
+        rowJSON.put("ID", getCellValueAsString(cellID));
+        rowJSON.put("UKCPVS_ID", getCellValueAsString(cellUKCPVSID));
+        rowJSON.put("Date", getCellValueAsString(cellDate));
+        rowJSON.put("Name", getCellValueAsString(cellName));
+        rowJSON.put("Company", getCellValueAsString(cellCompany));
+        rowJSON.put("Country", getCellValueAsString(cellCountry));
+        rowJSON.put("County", getCellValueAsString(cellCounty));
+        rowJSON.put("Town", getCellValueAsString(cellTown));
+        rowJSON.put("Post_Code", getCellValueAsString(cellPostCode));
+        rowJSON.put("GPS", getCellValueAsString(cellGPS));
+        rowJSON.put("Further_Location_Information", getCellValueAsString(cellFurtherLocationInformation));
+        rowJSON.put("Rust", getCellValueAsString(cellRustType));
+        rowJSON.put("Host", getCellValueAsString(cellHost));
+        rowJSON.put("Variety", getCellValueAsString(cellVariety));
+        rowJSON.put("KASP_assays", getCellValueAsString(cellKASP));
+        rowJSON.put("RNA-seq", getCellValueAsString(cellRNAseq));
+        rowJSON.put("Library_name", getCellValueAsString(cellLibName));
+        rowJSON.put("Public_Comments", getCellValueAsString(cellPublicComments));
+        rowJSON.put("Private_comments", getCellValueAsString(cellPrivateComments));
 
-          XSSFCell projectNameCell = row.getCell(0);
-          XSSFCell projectAliasCell = row.getCell(1);
-          XSSFCell sampleNameCell = row.getCell(2);
-          XSSFCell wellCell = row.getCell(4);
-          XSSFCell adaptorCell = row.getCell(5);
-          XSSFCell qcPassedCell = row.getCell(13);
+        jsonArray.add(rowJSON);
 
-          sampleArray.add(getCellValueAsString(projectNameCell));
-          sampleArray.add(getCellValueAsString(projectAliasCell));
-          sampleArray.add(getCellValueAsString(sampleNameCell));
-          sampleArray.add(getCellValueAsString(sampleAliasCell));
-          sampleArray.add(getCellValueAsString(wellCell));
-          if ((getCellValueAsString(adaptorCell)) != null) {
-            sampleArray.add(getCellValueAsString(adaptorCell));
-          }
-          else {
-            sampleArray.add("");
-
-          }
-
-          XSSFCell qcResultCell = null;
-
-
-
-            if (!"NA".equals(getCellValueAsString(row.getCell(6)))) {
-              qcResultCell = row.getCell(6);
-            }
-            else if (!"NA".equals(getCellValueAsString(row.getCell(7)))) {
-              qcResultCell = row.getCell(7);
-            }
-
-
-          XSSFCell rinCell = row.getCell(8);
-          XSSFCell sample260280Cell = row.getCell(9);
-          XSSFCell sample260230Cell = row.getCell(10);
-          Date date = new Date();
-
-          try {
-            if (getCellValueAsString(qcResultCell) != null && !"NA".equals(getCellValueAsString(qcResultCell))) {
-
-              sampleArray.add(Double.valueOf(getCellValueAsString(qcResultCell)));
-              if (getCellValueAsString(qcPassedCell) != null) {
-                if ("Y".equals(getCellValueAsString(qcPassedCell)) || "y".equals(getCellValueAsString(qcPassedCell))) {
-                  sampleArray.add("true");
-                }
-                else if ("N".equals(getCellValueAsString(qcPassedCell)) || "n".equals(getCellValueAsString(qcPassedCell))) {
-                  sampleArray.add("false");
-                }
-
-              }
-            }
-            else {
-              sampleArray.add("");
-              sampleArray.add("");
-            }
-
-            StringBuilder noteSB = new StringBuilder();
-            if (getCellValueAsString(rinCell) != null && !"".equals(getCellValueAsString(rinCell)) && !"NA".equals(getCellValueAsString(rinCell))) {
-              noteSB.append("RIN:" + getCellValueAsString(rinCell) + ";");
-            }
-            if (getCellValueAsString(sample260280Cell) != null && !"".equals(getCellValueAsString(sample260280Cell))) {
-              noteSB.append("260/280:" + getCellValueAsString(sample260280Cell) + ";");
-            }
-            if (getCellValueAsString(sample260230Cell) != null && !"".equals(getCellValueAsString(sample260230Cell))) {
-              noteSB.append("260/230:" + getCellValueAsString(sample260230Cell) + ";");
-            }
-            sampleArray.add(noteSB.toString());
-          }
-          catch (NumberFormatException nfe) {
-            throw new Exception("invalid", nfe);
-          }
-          jsonArray.add(sampleArray);
-        }
       }
       return jsonArray;
     }
@@ -238,9 +197,6 @@ public class UploadController {
       throw new UnsupportedOperationException("Cannot process bulk input files other than xls, xlsx, and ods.");
     }
   }
-
-
-}
 
   private static String getCellValueAsString(XSSFCell cell) {
     if (cell != null) {
