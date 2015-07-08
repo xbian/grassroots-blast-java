@@ -25,17 +25,13 @@ import java.util.*;
 public class UploadController {
 
   public void uploadFile(String qualifier, MultipartFile fileItem) throws IOException {
-    File dir = new File("/storage/wheatis");
+    File dir = new File("/storage/wheatis" + File.separator + qualifier);
     if (checkDirectory(dir, true)) {
       fileItem.transferTo(new File(dir + File.separator + fileItem.getOriginalFilename().replaceAll("\\s", "_")));
     }
     else {
       throw new IOException("Cannot upload file - check that the directory specified in miso.properties exists and is writable");
     }
-  }
-
-  public void uploadFile(Object type, String qualifier, MultipartFile fileItem) throws IOException {
-    uploadFile(type.getClass(), qualifier, fileItem);
   }
 
 
@@ -82,7 +78,7 @@ public class UploadController {
   }
 
   protected File getFile(String qualifier, String fileName, boolean createIfNotExist) throws IOException {
-    File path = new File("/storage/wheatis" + "/" + qualifier + "/");
+    File path = new File("/storage/wheatis/" + qualifier + "/");
     File file = new File(path, fileName);
     if (path.exists()) {
       if (file.exists()) {

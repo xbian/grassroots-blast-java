@@ -29,11 +29,11 @@
         <div id="statusdiv"></div>
     </div>
 
-        <p></p>
+    <p></p>
 
-        <div id="map"></div>
+    <div id="map"></div>
 
-    </div>
+</div>
 </div>
 
 </div>
@@ -52,7 +52,8 @@
         jQuery('#sheetformdiv').css("display", "none");
     }
 
-    function processSheetUpload(frameId){
+    function processSheetUpload(frameId) {
+        jQuery('#statusdiv').html("Processing...done");
 
         var iframe = document.getElementById(frameId);
         var iframedoc = iframe.document;
@@ -61,7 +62,7 @@
         else if (iframe.contentWindow)
             iframedoc = iframe.contentWindow.document;
         var response = jQuery(iframedoc).contents().find('body:first').find('#uploadresponsebody').val();
-        jQuery('#result').html(response.toString());
+        jQuery('#statusdiv').html(response.toString());
 
     }
 
