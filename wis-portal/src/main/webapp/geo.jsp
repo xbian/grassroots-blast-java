@@ -14,7 +14,7 @@
                               id='sheet_upload_form'
                               action='<c:url value="/wis-portal/upload/importyr/sheet"/>'
                               enctype="multipart/form-data"
-                              target="form_target_upload"
+                              target="uploadYRSheet"
                               onsubmit="Utils.fileUpload.fileUploadProgress('sheet_upload_form', 'statusdiv', sheetUploadSuccess);">
                             <input type="file" name="file"/>
                             <button type="submit" class="br-button ui-state-default ui-corner-all">Upload</button>
@@ -62,7 +62,14 @@
         else if (iframe.contentWindow)
             iframedoc = iframe.contentWindow.document;
         var response = jQuery(iframedoc).contents().find('body:first').find('#uploadresponsebody').val();
-        jQuery('#statusdiv').html(response.toString());
+        if (!Utils.validation.isNullCheck(response)) {
+            jQuery('#statusdiv').html(response.toString());
+        }
+        else {
+            setTimeout(function () {
+                processSheetUpload(frameId)
+            }, 2000);
+        }
 
     }
 

@@ -428,6 +428,38 @@ Utils.alert = {
         }
       );
     }
+  },
+
+  Utils.validation = {
+  //_base64 : XRegExp('^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$'),
+  _unicodeWord: XRegExp('^[\\p{L}0-9_\\^\\-\\.\\s]+$'),
+
+  isNullCheck: function (value) {
+    return (value === "" || value === " " || value === "undefined" || value === "&nbsp;" || value === undefined);
+  },
+
+  validate_input_field: function (field, name, okstatus) {
+    var self = this;
+    var errormsg = '';
+    //if (!jQuery(field).val().match(/^[a-zA-Z0-9_\^\-\.\s]+$/)) {
+    if (!self._unicodeWord.test(jQuery(field).val())) {
+      okstatus = false;
+      errormsg = "In the " + name + " " + jQuery(field).attr("id") +
+                 " field you CAN use alpha numeric values with the following symbols:\n" +
+                 "^ - _ .\n" +
+                 "but you CANNOT use slashes, comma, brackets, single or double quotes, and it CANNOT end with a space or be empty\n\n";
+    }
+    return {"okstatus": okstatus, "errormsg": errormsg};
+  },
+
+  base64Check: function (str) {
+    var base64 = new RegExp('^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$');
+    if (base64.test(str)) {
+      return Utils.codec.base64_decode(str);
+    }
+    else {
+      return str;
+    }
   }
 };
 

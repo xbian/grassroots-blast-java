@@ -36,5 +36,8 @@
     <context:component-scan annotation-config="true" base-package="uk.ac.tgac.wis.controller"/>
     <context:component-scan annotation-config="true" base-package="net.sourceforge.fluxion.ajax"/>
 
+    <bean id="multipartResolver" class="uk.ac.tgac.wis.spring.ajax.multipart.AjaxMultipartResolver">
+        <property name="maxUploadSize" value="10000000"/>
+    </bean>
 
 </beans>
