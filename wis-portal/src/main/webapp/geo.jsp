@@ -4,14 +4,15 @@
 
     <div class="jumbotron">
         <h2>Yellow Rust Map</h2>
-
-
-
     </div>
 
     <p></p>
 
-    <div><i class="fa fa-map"></i></div>
+    <div>
+        <button class="btn btn-default" onclick="addPoint();">Add Random Pointer</button>
+    <br/><br/>
+
+    </div>
     <div id="map"></div>
 
 </div>
@@ -63,6 +64,12 @@
 //        accessToken: 'pk.eyJ1IjoiYmlhbnhpbmdkb25nIiwiYSI6ImUyY2YxYzZkYzk4MGMwMTNmOTg3ZDk4NmRhZWMxMTgwIn0.NUz8YeHedm4Jqm9fcq-f7A'
     }).addTo(map);
 
+
+    function addPoint(){
+
+        L.marker([randomIntFromInterval(45,60), randomIntFromInterval(0,25)]).addTo(map).bindPopup("TGAC");
+    }
+
     var marker = L.marker([52.621615, 1.219]).addTo(map);
     var marker1 = L.marker([52.622616, 1.219]).addTo(map);
     var marker2 = L.marker([52.623617, 1.219]).addTo(map);
@@ -103,6 +110,12 @@
     circle1.bindPopup("East of TGAC");
     polygon.bindPopup("South of TGAC");
     square.bindPopup("North of TGAC");
+
+
+    function randomIntFromInterval(min,max)
+    {
+        return Math.floor(Math.random()*(max-min+1)+min);
+    }
     
     
     var yrsheet = [
