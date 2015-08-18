@@ -11,6 +11,8 @@
     <div>
         <button class="btn btn-default" onclick="addRamdomPointer();">Add Random Pointer</button>
         <button class="btn btn-default" onclick="removePointers();">Remove Pointers</button>
+        <input type="text" class="form-control" size="20" style="width:150px;float:left;margin-right:5px;"
+               placeholder="Search"/>
 
         <br/><br/>
 
