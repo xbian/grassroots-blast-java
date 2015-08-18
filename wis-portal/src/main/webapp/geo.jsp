@@ -20,8 +20,8 @@
 
             <div class="input-group">
             <span class="input-group-btn">
-                <button class="btn btn-default" onclick="addRamdomPointer();">Add Random Pointer</button>
-                <button class="btn btn-default" onclick="removePointers();">Remove Pointers</button>
+                <button type="button" class="btn btn-default" onclick="addRandomPointer();">Add Random Pointer</button>
+                <button type="button" class="btn btn-default" onclick="removePointers();">Remove Pointers</button>
             </span>
                 <input type="text" class="form-control" size="20"
                        placeholder="Search"/>
@@ -88,7 +88,7 @@
     }).addTo(map);
 
 
-    function addRamdomPointer() {
+    function addRandomPointer() {
         var la = randomIntFromInterval(45, 60);
         var lo = randomIntFromInterval(0, 25);
 
