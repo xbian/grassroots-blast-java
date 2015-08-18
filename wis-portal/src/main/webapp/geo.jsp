@@ -6,17 +6,30 @@
         <h2>Yellow Rust Map</h2>
     </div>
 
-    <p></p>
-
-    <div>
-        <button class="btn btn-default" onclick="addRamdomPointer();">Add Random Pointer</button>
-        <button class="btn btn-default" onclick="removePointers();">Remove Pointers</button>
-        <input type="text" class="form-control" size="20" style="width:150px;float:left;margin-right:5px;"
-               placeholder="Search"/>
-
-        <br/><br/>
-
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <input type="checkbox" value="2014"/> 2014
+                <input type="checkbox" value="2015"/> 2015
+            </div>
+        </div>
     </div>
+    <br/>
+    <div class="row">
+        <div class="col-lg-6">
+
+            <div class="input-group">
+            <span class="input-group-btn">
+                <button class="btn btn-default" onclick="addRamdomPointer();">Add Random Pointer</button>
+                <button class="btn btn-default" onclick="removePointers();">Remove Pointers</button>
+            </span>
+                <input type="text" class="form-control" size="20"
+                       placeholder="Search"/>
+            </div>
+        </div>
+    </div>
+    <br/><br/>
+
     <div id="map"></div>
 
 </div>
