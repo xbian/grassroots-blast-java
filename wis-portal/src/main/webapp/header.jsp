@@ -24,6 +24,9 @@
     <script src="<c:url value='/scripts/bootstrap/bootstrap.min.js?ts=${timestamp.time}'/>" type="text/javascript"></script>
     <link href="<c:url value='/scripts/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet" type="text/css">
 
+    <!-- font awesome -->
+    <link href="<c:url value='/scripts/fontawesome/css/font-awesome.min.css'/>" rel="stylesheet" type="text/css">
+
     <!--Scriptaculous JS scripts below -->
     <script type="text/javascript" src="<c:url value='/scripts/scriptaculous/scriptaculous.js'/>"></script>
     <script type="text/javascript" src="<c:url value='/scripts/scriptaculous/activityInput.js'/>"></script>
