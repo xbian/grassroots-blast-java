@@ -104,9 +104,9 @@
             <a class="navbar-brand" href="#">Wheat Information System</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            <li class="nav navbar-nav">
+            <ul class="nav navbar-nav">
                 <li ><a href="<c:url value='/'/>">Portal Home</a></li>
-                <li><a href="<c:url value='/wis-portal/blast'/>">Grassroots Genomics Blast Search</a></li>
+                <%--<li><a href="<c:url value='/wis-portal/blast'/>">Grassroots Genomics Blast Search</a></li>--%>
                 <li><a href="<c:url value='/wis-portal/yellowrustmap'/>">Yellow Rust Map</a></li>
                 <li><a href="<c:url value='/wis-portal/indexer'/>">Solr &amp; Elasticsearch</a></li>
                 <li><a href="<c:url value='/wis-portal/about'/>">About</a></li>
