@@ -106,9 +106,10 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li ><a href="<c:url value='/'/>">Portal Home</a></li>
-                <li><a href="<c:url value='/geo.jsp'/>">Yellow Rust Map</a></li>
-                <li><a href="<c:url value='/about.jsp'/>">About</a></li>
-                <li><a href="<c:url value='/contact.jsp'/>">Contact</a></li>
+                <li><a href="<c:url value='/wis-portal/yellowrustmap'/>">Yellow Rust Map</a></li>
+                <li><a href="<c:url value='/wis-portal/indexer'/>">Solr &amp; Elasticsearch</a></li>
+                <li><a href="<c:url value='/wis-portal/about'/>">About</a></li>
+                <li><a href="<c:url value='/wis-portal/contact'/>">Contact</a></li>
                 <%--<li class="dropdown">--%>
                     <%--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>--%>
                     <%--<ul class="dropdown-menu" role="menu">--%>

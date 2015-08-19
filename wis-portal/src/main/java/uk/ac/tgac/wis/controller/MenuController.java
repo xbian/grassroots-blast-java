@@ -45,8 +45,29 @@ public class MenuController implements ServletContextAware {
   }
 
 
+  @RequestMapping("/about")
+  public String about() {
+    return "/about.jsp";
+  }
+
+  @RequestMapping("/contact")
+  public String contact() {
+    return "/contact.jsp";
+  }
+
+  @RequestMapping("/indexer")
+  public String indexer() {
+    return "/indexer.jsp";
+  }
+
+
   @RequestMapping("/blast")
   public String grassRootBlast() {
     return "/grassrootsBlast.jsp";
+  }
+
+  @RequestMapping("/yellowrustmap")
+  public String yellowRustMap() {
+    return "/geo.jsp";
   }
 }
