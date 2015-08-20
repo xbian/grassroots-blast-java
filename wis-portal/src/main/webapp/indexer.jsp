@@ -3,7 +3,7 @@
 <div class="container center-block">
 
     <div class="jumbotron">
-        <h2>Wheat Information System</h2>
+        <h2>Solr &amp; Elasticsearch</h2>
 
         <p>Search Literature Data</p>
 

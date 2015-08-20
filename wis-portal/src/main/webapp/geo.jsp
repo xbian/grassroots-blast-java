@@ -2,36 +2,38 @@
 
 <div class="container center-block">
 
-    <div class="jumbotron">
+    <%--<div class="jumbotron">--%>
         <h2>Yellow Rust Map</h2>
-    </div>
 
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="input-group">
-                <input type="checkbox" value="2014"/> 2014
-                <input type="checkbox" value="2015"/> 2015
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="input-group">
+                    <input type="checkbox" value="2014"/> 2014
+                    <input type="checkbox" value="2015"/> 2015
+                </div>
             </div>
         </div>
-    </div>
-    <br/>
-    <div class="row">
-        <div class="col-lg-6">
+        <br/>
 
-            <div class="input-group">
+        <div class="row">
+            <div class="col-lg-6">
+
+                <div class="input-group">
             <span class="input-group-btn">
                 <button type="button" class="btn btn-default" onclick="addRandomPointer();">Add Random Pointer</button>
                 <button type="button" class="btn btn-default" onclick="removePointers();">Remove Pointers</button>
             </span>
-                <input type="text" class="form-control" size="20"
-                       placeholder="Search"/>
+                    <input type="text" class="form-control" size="20"
+                           placeholder="Search"/>
+                </div>
             </div>
         </div>
-    </div>
-    <br/><br/>
+        <br/><br/>
 
-    <div id="map"></div>
+        <div id="map"></div>
 
+
+    <%--</div>--%>
 </div>
 </div>
 
