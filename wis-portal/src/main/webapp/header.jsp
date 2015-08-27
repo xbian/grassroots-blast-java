@@ -56,6 +56,11 @@
     <link rel="stylesheet" href="<c:url value='/scripts/leaflet/leaflet.css'/>" />
     <script src="<c:url value='/scripts/leaflet/leaflet.js'/>"></script>
 
+    <!-- Leaflet markercluster -->
+    <link rel="stylesheet" href="<c:url value='/scripts/leaflet.markercluster/MarkerCluster.css'/>" />
+    <link rel="stylesheet" href="<c:url value='/scripts/leaflet.markercluster/MarkerCluster.Default.css'/>" />
+    <script src="<c:url value='/scripts/leaflet.markercluster/leaflet.markercluster.js'/>"></script>
+
     <!-- wis -->
     <script type="text/javascript" src="<c:url value='/scripts/wis.js?ts=${timestamp.time}'/>"></script>
     <script type="text/javascript" src="<c:url value='/scripts/external.js?ts=${timestamp.time}'/>"></script>

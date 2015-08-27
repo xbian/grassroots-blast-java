@@ -31,18 +31,16 @@
                 </button>
             </span>
             </div>
-            </div>
-            <div class="col-lg-6">
-                <input type="text" class="form-control" size="20"
-                       placeholder="Search"/>
-            </div>
+        </div>
+        <div class="col-lg-6">
+            <input type="text" class="form-control" size="20"
+                   placeholder="Search"/>
+        </div>
     </div>
-<br/><br/>
+    <br/><br/>
 
-<div id="map"></div>
+    <div id="map"></div>
 
-
-<%--</div>--%>
 </div>
 </div>
 
@@ -53,8 +51,9 @@
     jQuery(document).ready(function () {
     });
 
-
     var markers = new Array();
+
+    var markersGroup = new L.MarkerClusterGroup();
 
     var map = L.map('map').setView([52.621615, 10.219470], 5);
 
@@ -77,14 +76,18 @@
     function addPointer(la, lo, note) {
         var markerLayer = L.marker([la, lo]).bindPopup(note);
         markers.push(markerLayer);
-        map.addLayer(markerLayer);
+//        map.addLayer(markerLayer);
+        markersGroup.addLayer(markerLayer);
+        map.addLayer(markersGroup);
     }
 
     function removePointers() {
-        for (i = 0; i < markers.length; i++) {
-            map.removeLayer(markers[i]);
-        }
-        markers = [];
+//        for (i = 0; i < markers.length; i++) {
+//            map.removeLayer(markers[i]);
+//        }
+//        markers = [];
+        map.removeLayer(markersGroup);
+        markersGroup = new L.MarkerClusterGroup();
     }
 
     function popup(msg) {
