@@ -65,10 +65,10 @@
     }).addTo(map);
 
     function addRandomPointer() {
-        var la = randomIntFromInterval(45, 60);
-        var lo = randomIntFromInterval(0, 25);
+        var la = randomNumberFromInterval(45, 60);
+        var lo = randomNumberFromInterval(0, 25);
 
-        addPointer(la, lo, "Hey, random!");
+        addPointer(la, lo, "Hey, random! la: "+la+" lo: "+lo);
     }
 
     //    var marker = L.marker([la, lo]).addTo(map).bindPopup(note);
@@ -136,8 +136,8 @@
     polygon.bindPopup("South of TGAC");
     square.bindPopup("North of TGAC");
 
-    function randomIntFromInterval(min, max) {
-        return Math.floor(Math.random() * (max - min + 1) + min);
+    function randomNumberFromInterval(min, max) {
+        return Math.random() * (max - min + 1) + min;
     }
 
 </script>
