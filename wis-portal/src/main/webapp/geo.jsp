@@ -79,12 +79,13 @@
 
     function displayYRLocationsNoDetails() {
         var results = location_list['results'];
-        console.log(results);
+        var samples = sample_list['results'];
         for (i = 0; i < results.length; i++) {
             var la = results[i]['location']['latitude'];
             var lo = results[i]['location']['longitude'];
+            var note = samples[i];
 
-            addPointer(la, lo, "YR la: " + la + " lo: " + lo);
+            addPointer(la, lo, JSON.stringify(note));
         }
     }
 
@@ -3268,6 +3269,3703 @@
             }
         ]
     };
+    var sample_list = {
+                "results": [
+                    {
+                        "_id": {
+                            "$oid": "55f052a76ca5bb47f62bdd02"
+                        },
+                        "Library name": "LIB10868",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Novosevovie",
+                        "ID": "14.0001",
+                        "Date collected": 20140521,
+                        "Country": "Croatia",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Town": "Osisek",
+                        "Company": "-"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052aa6ca5bb47f62bdd04"
+                        },
+                        "Private comments": "vaclav.sklenar@basf.com ZZS Kujavy",
+                        "Library name": "LIB10870",
+                        "Variety": "Tilman",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Tilman - B",
+                        "ID": "14.0003",
+                        "Date collected": 20140612,
+                        "Country": "Czech Republic",
+                        "Town": "Kujavy",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Failed",
+                        "Company": "BASF",
+                        "Further Location information": "ZZS Kujavy, Kujavy 48, 742 44 Kujavy",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ab6ca5bb47f62bdd06"
+                        },
+                        "Library name": "LIB10871",
+                        "Variety": "Glasgow",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "J-C Talbourdet",
+                        "ID": "14.0004",
+                        "Date collected": 20140616,
+                        "Country": "France",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Public comments": "Non-traite",
+                        "Town": "Marchélepot",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ab6ca5bb47f62bdd08"
+                        },
+                        "Library name": "LIB10872",
+                        "Variety": "Trapez",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "J-C Talbourdet",
+                        "ID": "14.0005",
+                        "Date collected": 20140616,
+                        "Country": "France",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Public comments": "Non-traite",
+                        "Town": "Marchélepot",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ab6ca5bb47f62bdd0a"
+                        },
+                        "Library name": "LIB10873",
+                        "Variety": "Bergoumo",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "J-C Talbourdet",
+                        "ID": "14.0006",
+                        "Date collected": 20140616,
+                        "Country": "France",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Public comments": "Non-traite",
+                        "Town": "Marchélepot",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ab6ca5bb47f62bdd0c"
+                        },
+                        "Private comments": "Peu virulent",
+                        "Library name": "LIB10874",
+                        "Variety": "Trapez",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "BRIARD",
+                        "ID": "14.0007",
+                        "Date collected": 20140610,
+                        "Country": "France",
+                        "Town": "PONTFAVERGER",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "BASF",
+                        "Further Location information": "SCA ferme de Vauroisy 51490 PONTFAVERGER",
+                        "Public comments": "Peu virulent",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ab6ca5bb47f62bdd0e"
+                        },
+                        "Private comments": "via Alison NIAB",
+                        "Library name": "LIB10875",
+                        "Variety": "Sax",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Susanne Kirchmaier",
+                        "ID": "14.0008",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Date collected": 20140519,
+                        "Country": "Austria",
+                        "Company": "Raiffeisen Ware Austria RWA AG",
+                        "GPS": "48,098662, 14,901602",
+                        "Further Location information": "2301 GroB Enzersdorf 48,098662, 14,901602 Austria"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ab6ca5bb47f62bdd10"
+                        },
+                        "Private comments": "via Alison NIAB",
+                        "Library name": "LIB10876",
+                        "Variety": "Sax",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Susanne Kirchmaier",
+                        "ID": "14.0009",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Date collected": 20140522,
+                        "Country": "Austria",
+                        "Company": "Raiffeisen Ware Austria RWA AG",
+                        "GPS": "48,098662, 14.901602",
+                        "Further Location information": "3300 GieBhubl 48,098662, 14.901602 Austria"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ac6ca5bb47f62bdd12"
+                        },
+                        "Private comments": "via Alison NIAB",
+                        "Library name": "LIB10877",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Zofia Banaszak",
+                        "ID": "14.0010",
+                        "Date collected": 20140522,
+                        "Country": "Poland",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Town": "Choryn",
+                        "Company": "-"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ac6ca5bb47f62bdd14"
+                        },
+                        "Library name": "LIB10878",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Alison Bentley",
+                        "ID": "14.0011",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Date collected": 20140513,
+                        "Country": "Croatia",
+                        "Company": "-",
+                        "Further Location information": "MV"
+                    },
+                    {
+                        "Private comments": "Date refers to transfer of sample to RNA later from dried leaf",
+                        "_id": {
+                            "$oid": "55f052ac6ca5bb47f62bdd16"
+                        },
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Alison Bentley",
+                        "ID": "14.0012",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Country": "Croatia",
+                        "Date collected": 20140511,
+                        "Company": "-"
+                    },
+                    {
+                        "Private comments": "Date refers to transfer of sample to RNA later from dried leaf",
+                        "_id": {
+                            "$oid": "55f052ac6ca5bb47f62bdd18"
+                        },
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Alison Bentley",
+                        "ID": "14.0013",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Country": "Croatia",
+                        "Date collected": 20140511,
+                        "Company": "-"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ac6ca5bb47f62bdd1a"
+                        },
+                        "Library name": "LIB10879",
+                        "Variety": "Altigo",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "GRELLIER",
+                        "ID": "14.0014",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Date collected": 20140602,
+                        "Country": "France",
+                        "Town": "Gourhel",
+                        "Company": "BASF",
+                        "Further Location information": "Gourhel (56800)",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ad6ca5bb47f62bdd1c"
+                        },
+                        "Library name": "LIB10880",
+                        "Variety": "expert",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "GRELLIER",
+                        "ID": "14.0015",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Date collected": 20140604,
+                        "Country": "France",
+                        "Town": "Guegon",
+                        "Company": "BASF",
+                        "Further Location information": "Guegon (56120)",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b76ca5bb47f62bdd5a"
+                        },
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Ruth Bryant",
+                        "ID": "14.0051",
+                        "Date collected": 20140626,
+                        "Country": "France",
+                        "Host": "Wheat",
+                        "Public comments": "Stage: grain filling",
+                        "Town": "Louville",
+                        "Company": "RAGT"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ad6ca5bb47f62bdd1e"
+                        },
+                        "Library name": "LIB10881",
+                        "Variety": "Alixan",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "GRELLIER",
+                        "ID": "14.0016",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Date collected": 20140604,
+                        "Country": "France",
+                        "Town": "Loyat",
+                        "Company": "BASF",
+                        "Further Location information": "Loyat (56800)",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ad6ca5bb47f62bdd20"
+                        },
+                        "Private comments": "14/18",
+                        "Library name": "LIB10882",
+                        "Variety": "Victo",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Amelia Hubbard",
+                        "ID": "14.0017",
+                        "UKCPVS ID": "14/18",
+                        "Date collected": 20140221,
+                        "Country": "UK",
+                        "Town": "Sutton Scotney",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ad6ca5bb47f62bdd22"
+                        },
+                        "Private comments": "14/19",
+                        "Library name": "LIB10883",
+                        "Variety": "Oakley",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Amelia Hubbard",
+                        "ID": "14.0018",
+                        "UKCPVS ID": "14/19",
+                        "Date collected": 20140221,
+                        "Country": "UK",
+                        "Town": "Sutton Scotney",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b16ca5bb47f62bdd24"
+                        },
+                        "Library name": "LIB10888",
+                        "Variety": "Kobra",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Marcin Lanski",
+                        "ID": "14.0024",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Date collected": 20140605,
+                        "Country": "Poland",
+                        "Town": "Kwidzyn",
+                        "Company": "BASF",
+                        "Further Location information": "Gurcz 23 82-500 Kwidzyn",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b16ca5bb47f62bdd26"
+                        },
+                        "Library name": "LIB10889",
+                        "Variety": "Arkadia",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Marcin Lanski",
+                        "ID": "14.0025",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Date collected": 20140605,
+                        "Country": "Poland",
+                        "Town": "Kwidzyn",
+                        "Company": "BASF",
+                        "Further Location information": "Gurcz 23 82-500 Kwidzyn",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b16ca5bb47f62bdd28"
+                        },
+                        "Library name": "LIB10890",
+                        "Variety": "Legenda",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Szymon Laczny",
+                        "ID": "14.0026",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Date collected": 20140606,
+                        "Country": "Poland",
+                        "Town": "Sroda Wielko",
+                        "Company": "BASF",
+                        "Further Location information": "Jaroslawiec 63-000 Sroda Wielko",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b16ca5bb47f62bdd2a"
+                        },
+                        "Library name": "LIB10891",
+                        "Variety": "Princeps",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Szymon Laczny",
+                        "ID": "14.0027",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Date collected": 20140606,
+                        "Country": "Poland",
+                        "Town": "Sroda Wielko",
+                        "Company": "BASF",
+                        "Further Location information": "Jaroslawiec 63-000 Sroda Wielko",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b16ca5bb47f62bdd2c"
+                        },
+                        "Variety": "Naridana",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Szymon Laczny",
+                        "ID": "14.0028",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "selected",
+                        "Date collected": 20140606,
+                        "Country": "Poland",
+                        "Town": "Sroda Wielko",
+                        "Company": "BASF",
+                        "Further Location information": "Jaroslawiec 63-000 Sroda Wielko",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b26ca5bb47f62bdd2e"
+                        },
+                        "Private comments": "Dave: 2A. Sequencing id: 1",
+                        "Variety": "Line?",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Dave Hodson",
+                        "ID": "14.0029",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Complete",
+                        "Host": "Wheat",
+                        "Country": "Ethiopia",
+                        "Date collected": 20140516,
+                        "Public comments": "Dave: 2A.",
+                        "Company": "-",
+                        "Further Location information": "Kulumsa Agricultural Research Center"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b26ca5bb47f62bdd30"
+                        },
+                        "Private comments": "Dave: 2B. Sequencing id: 2",
+                        "Variety": "Line?",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Dave Hodson",
+                        "ID": "14.0030",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Complete",
+                        "Host": "Wheat",
+                        "Country": "Ethiopia",
+                        "Date collected": 20140516,
+                        "Public comments": "Dave: 2B.",
+                        "Company": "-",
+                        "Further Location information": "Kulumsa Agricultural Research Center"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b26ca5bb47f62bdd32"
+                        },
+                        "Private comments": "Dave: 1A. Sequencing id: 3",
+                        "Variety": "Kingbird",
+                        "Rust (YR/SR/LR)": "SR",
+                        "Name/Collector": "Dave Hodson",
+                        "ID": "14.0031",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Complete",
+                        "Host": "Wheat",
+                        "Country": "Ethiopia",
+                        "Date collected": 20140516,
+                        "Public comments": "Dave: 1A.",
+                        "Company": "-",
+                        "Further Location information": "Kulumsa Agricultural Research Center"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b26ca5bb47f62bdd34"
+                        },
+                        "Private comments": "Dave: 1B. Sequencing id: 4",
+                        "Variety": "Kingbird",
+                        "Rust (YR/SR/LR)": "SR",
+                        "Name/Collector": "Dave Hodson",
+                        "ID": "14.0032",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Complete",
+                        "Host": "Wheat",
+                        "Country": "Ethiopia",
+                        "Date collected": 20140516,
+                        "Public comments": "Dave: 1B.",
+                        "Company": "-",
+                        "Further Location information": "Kulumsa Agricultural Research Center"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b26ca5bb47f62bdd36"
+                        },
+                        "Private comments": "Dave: 3. Sequencing id: 5",
+                        "Variety": "Digalu",
+                        "Rust (YR/SR/LR)": "SR",
+                        "Name/Collector": "Dave Hodson",
+                        "ID": "14.0033",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Complete",
+                        "Host": "Wheat",
+                        "Country": "Ethiopia",
+                        "Date collected": 20140516,
+                        "Public comments": "Dave: 3.",
+                        "Company": "-",
+                        "Further Location information": "Kulumsa Agricultural Research Center"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b36ca5bb47f62bdd38"
+                        },
+                        "Private comments": "Sequencing id: 6",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Novosevovie",
+                        "ID": "14.0034",
+                        "Date collected": 20140521,
+                        "Country": "Croatia",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Complete",
+                        "Host": "Wheat",
+                        "Town": "Osisek",
+                        "Company": "-"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b36ca5bb47f62bdd3a"
+                        },
+                        "Library name": "LIB10892",
+                        "Variety": "Aktuer",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Prochnow: Rosie Bryson",
+                        "ID": "14.0035",
+                        "Date collected": 20140610,
+                        "Country": "Germany",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Public comments": "BASF ref: 12",
+                        "Town": "Moselursch",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b36ca5bb47f62bdd3c"
+                        },
+                        "Library name": "LIB10893",
+                        "Variety": "JB Asano",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Prochnow: Rosie Bryson",
+                        "ID": "14.0036",
+                        "Date collected": 20140613,
+                        "Country": "Germany",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Public comments": "BASF ref: 13",
+                        "Town": "Etzdorf",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b36ca5bb47f62bdd3e"
+                        },
+                        "Library name": "LIB10894",
+                        "Variety": "Kometus",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Prochnow: Rosie Bryson",
+                        "ID": "14.0037",
+                        "Date collected": 20140613,
+                        "Country": "Germany",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Public comments": "BASF ref: 14",
+                        "Town": "Etzdorf",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b46ca5bb47f62bdd40"
+                        },
+                        "Library name": "LIB10895",
+                        "Variety": "Akteur",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Prochnow: Rosie Bryson",
+                        "ID": "14.0038",
+                        "Date collected": 20140613,
+                        "Country": "Germany",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Failed",
+                        "Host": "Wheat",
+                        "Public comments": "BASF ref: 15",
+                        "Town": "Etzdorf",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b46ca5bb47f62bdd42"
+                        },
+                        "Library name": "LIB10896",
+                        "Variety": "Opal",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Prochnow: Rosie Bryson",
+                        "ID": "14.0039",
+                        "Date collected": 20140616,
+                        "Country": "Germany",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Public comments": "BASF ref: 16",
+                        "Town": "Hingste",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b46ca5bb47f62bdd44"
+                        },
+                        "Library name": "LIB10897",
+                        "Variety": "Akteur",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Prochnow: Rosie Bryson",
+                        "ID": "14.0040",
+                        "Date collected": 20140616,
+                        "Country": "Germany",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Public comments": "BASF ref: 17",
+                        "Town": "Hingste",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b46ca5bb47f62bdd46"
+                        },
+                        "Library name": "LIB10898",
+                        "Variety": "Contur",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Prochnow: Rosie Bryson",
+                        "ID": "14.0041",
+                        "Date collected": 20140616,
+                        "Country": "Germany",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Public comments": "BASF ref: 18",
+                        "Town": "Hingste Inokluiert",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b56ca5bb47f62bdd48"
+                        },
+                        "Library name": "LIB10899",
+                        "Variety": "Loft",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Prochnow: Rosie Bryson",
+                        "ID": "14.0042",
+                        "Date collected": 20140617,
+                        "Country": "Germany",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Public comments": "BASF ref: 19",
+                        "Town": "Dunau",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b56ca5bb47f62bdd4a"
+                        },
+                        "Library name": "LIB10900",
+                        "Variety": "JB Asano",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Prochnow: Rosie Bryson",
+                        "ID": "14.0043",
+                        "Date collected": 20140623,
+                        "Country": "Germany",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Public comments": "BASF ref: 20",
+                        "Town": "Grucking",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b56ca5bb47f62bdd4c"
+                        },
+                        "Library name": "LIB10901",
+                        "Variety": "Akteur",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Prochnow: Rosie Bryson",
+                        "ID": "14.0044",
+                        "Date collected": 20140623,
+                        "Country": "Germany",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Public comments": "BASF ref: 21",
+                        "Town": "Kirchmatting",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b56ca5bb47f62bdd4e"
+                        },
+                        "Library name": "LIB10902",
+                        "Variety": "Bohemia",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Slezak",
+                        "ID": "14.0045",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Failed",
+                        "Date collected": 20140704,
+                        "Country": "Czech Republic",
+                        "Town": "Chrudim",
+                        "Company": "BASF",
+                        "Further Location information": "Tunechody by Chrudim, 537 01 Chrudim, CZAECH REP.",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b66ca5bb47f62bdd50"
+                        },
+                        "Library name": "LIB10903",
+                        "Variety": "Hysun",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Hamon",
+                        "ID": "14.0046",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Date collected": 20140625,
+                        "Country": "France",
+                        "Town": "BUCY SAINT LIPHARD",
+                        "Company": "BASF",
+                        "Further Location information": "BASF Agro, La Corbilliere, Route de Saint Peravy, 45140 BUCY SAINT LIPHARD",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b66ca5bb47f62bdd52"
+                        },
+                        "Library name": "LIB10904",
+                        "Variety": "Karur",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Hamon",
+                        "ID": "14.0047",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Date collected": 20140625,
+                        "Country": "France",
+                        "Town": "BUCY SAINT LIPHARD",
+                        "Company": "BASF",
+                        "Further Location information": "BASF Agro, La Corbilliere, Route de Saint Peravy, 45140 BUCY SAINT LIPHARD",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b66ca5bb47f62bdd54"
+                        },
+                        "Library name": "LIB10905",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "1",
+                        "ID": "14.0048",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Failed",
+                        "Date collected": 20140617,
+                        "Country": "Poland",
+                        "Company": "BASF",
+                        "Further Location information": "46-100",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b66ca5bb47f62bdd56"
+                        },
+                        "Library name": "LIB14890",
+                        "Variety": "Zeppelin",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "2",
+                        "ID": "14.0049",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Failed",
+                        "Date collected": 20140617,
+                        "Country": "Poland",
+                        "Company": "BASF",
+                        "Further Location information": "46-113",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b66ca5bb47f62bdd58"
+                        },
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "3",
+                        "ID": "14.0050",
+                        "Date collected": 20140615,
+                        "Country": "Poland",
+                        "Host": "Wheat",
+                        "Company": "BASF",
+                        "Further Location information": "48-210",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b76ca5bb47f62bdd5c"
+                        },
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Ruth Bryant",
+                        "ID": "14.0052",
+                        "Date collected": 20140623,
+                        "Country": "France",
+                        "Host": "Triticale",
+                        "Public comments": "Stage: grain filling: rust in spikelets",
+                        "Town": "Druelle",
+                        "Company": "RAGT"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b76ca5bb47f62bdd5e"
+                        },
+                        "Library name": "LIB14885",
+                        "Variety": "Tobak/Estivus cross",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Ruth Bryant",
+                        "ID": "14.0053",
+                        "Date collected": 20140704,
+                        "Country": "Germany",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Failed",
+                        "Host": "Wheat",
+                        "Public comments": "Stage: grain filling",
+                        "Town": "Silstedt",
+                        "Company": "RAGT"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b76ca5bb47f62bdd60"
+                        },
+                        "Library name": "LIB14891",
+                        "Variety": "Robigus",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Ruth Bryant",
+                        "ID": "14.0054",
+                        "Date collected": 20140626,
+                        "Country": "France",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Failed",
+                        "Host": "Wheat",
+                        "Public comments": "Stage: grain filling",
+                        "Town": "Louville",
+                        "Company": "RAGT"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b86ca5bb47f62bdd62"
+                        },
+                        "Variety": "Accroc",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Ruth Bryant",
+                        "ID": "14.0055",
+                        "Date collected": 20140626,
+                        "Country": "France",
+                        "Host": "Wheat",
+                        "Public comments": "Stage: grain filling",
+                        "Town": "Louville",
+                        "Company": "RAGT"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b86ca5bb47f62bdd64"
+                        },
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Ruth Bryant",
+                        "ID": "14.0056",
+                        "Date collected": 20140704,
+                        "Country": "Germany",
+                        "Host": "Wheat",
+                        "Public comments": "Stage: grain filling",
+                        "Town": "Silstedt",
+                        "Company": "RAGT"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b86ca5bb47f62bdd66"
+                        },
+                        "Variety": "KWS Crosby",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Ruth Bryant",
+                        "ID": "14.0057",
+                        "Date collected": 20140626,
+                        "Country": "France",
+                        "Host": "Wheat",
+                        "Public comments": "Stage: grain filling",
+                        "Town": "Louville",
+                        "Company": "RAGT"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b86ca5bb47f62bdd68"
+                        },
+                        "Library name": "LIB14886",
+                        "Variety": "Warrior",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Ruth Bryant",
+                        "ID": "14.0058",
+                        "Date collected": 20140626,
+                        "Country": "France",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Failed",
+                        "Host": "Wheat",
+                        "Public comments": "Stage: grain filling",
+                        "Town": "Louville",
+                        "Company": "RAGT"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b86ca5bb47f62bdd6a"
+                        },
+                        "Library name": "LIB12419",
+                        "Variety": "Perenial grass",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Ruth Bryant",
+                        "ID": "14.0059",
+                        "Date collected": 20140619,
+                        "Country": "Czech Republic",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Public comments": "Stage: grain filling",
+                        "Town": "Olomouc",
+                        "Company": "RAGT"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b96ca5bb47f62bdd6c"
+                        },
+                        "Library name": "LIB12420",
+                        "Variety": "NIC08-108",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Ruth Bryant",
+                        "ID": "14.0060",
+                        "Date collected": 20140619,
+                        "Country": "Czech Republic",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Public comments": "Stage: grain filling",
+                        "Town": "Olomouc",
+                        "Company": "RAGT"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b96ca5bb47f62bdd6e"
+                        },
+                        "Library name": "LIB14887",
+                        "Variety": "Turandot/ Baryton cross",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Ruth Bryant",
+                        "ID": "14.0061",
+                        "Date collected": 20140619,
+                        "Country": "Czech Republic",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Public comments": "Stage: grain filling",
+                        "Town": "Olomouc",
+                        "Company": "RAGT"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b96ca5bb47f62bdd70"
+                        },
+                        "Library name": "LIB12422",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Ruth Bryant",
+                        "ID": "14.0062",
+                        "Date collected": 20140623,
+                        "Country": "France",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Triticale",
+                        "Public comments": "Stage: grain filling",
+                        "Town": "Druelle",
+                        "Company": "RAGT"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b96ca5bb47f62bdd72"
+                        },
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Ruth Bryant",
+                        "ID": "14.0063",
+                        "Date collected": 20140623,
+                        "Country": "France",
+                        "Host": "Triticale",
+                        "Public comments": "Stage: grain filling: rust in spikelets",
+                        "Town": "Druelle",
+                        "Company": "RAGT"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052b96ca5bb47f62bdd74"
+                        },
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Ruth Bryant",
+                        "ID": "14.0064",
+                        "Date collected": 20140626,
+                        "Country": "France",
+                        "Public comments": "Stage: grain filling",
+                        "Town": "Louville",
+                        "Company": "RAGT"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ba6ca5bb47f62bdd76"
+                        },
+                        "Private comments": "CAME ON DRY ICE!!!",
+                        "Variety": "Asano",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Bosdiyk",
+                        "ID": "14.0065",
+                        "Date collected": 20140616,
+                        "Country": "Netherlands",
+                        "Host": "Wheat",
+                        "Town": "Neerijnen",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Failed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ba6ca5bb47f62bdd78"
+                        },
+                        "Private comments": "CAME ON DRY ICE",
+                        "Variety": "expert",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Bergmay",
+                        "ID": "14.0066",
+                        "Date collected": 20140616,
+                        "Country": "Netherlands",
+                        "Host": "Wheat",
+                        "Town": "Werkendm",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Failed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ba6ca5bb47f62bdd7a"
+                        },
+                        "Private comments": "CAME ON DRY ICE",
+                        "Variety": "Asano",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "I Westhoff",
+                        "ID": "14.0067",
+                        "Date collected": 20140613,
+                        "Country": "Netherlands",
+                        "Host": "Wheat",
+                        "Town": "Biddinghuizen",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Failed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ba6ca5bb47f62bdd7c"
+                        },
+                        "Private comments": "CAME ON DRY ICE",
+                        "Variety": "expert",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "II Westhoff",
+                        "ID": "14.0068",
+                        "Date collected": 20140613,
+                        "Country": "Netherlands",
+                        "Host": "Wheat",
+                        "Town": "Lelystad",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Failed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052bb6ca5bb47f62bdd7e"
+                        },
+                        "Library name": "LIB12429",
+                        "Variety": "Massari",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "A. Resweber",
+                        "ID": "14.0076",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Date collected": 20140521,
+                        "Country": "Italy",
+                        "Town": "Ozzano",
+                        "Company": "BASF",
+                        "Further Location information": "Ozzano (BO)",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052bb6ca5bb47f62bdd80"
+                        },
+                        "Library name": "LIB14892",
+                        "Variety": "Irnerio",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "A. Resweber",
+                        "ID": "14.0077",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Date collected": 20140521,
+                        "Country": "Italy",
+                        "Town": "Conselice",
+                        "Company": "BASF",
+                        "Further Location information": "Conselice (RA)",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052bb6ca5bb47f62bdd82"
+                        },
+                        "Library name": "LIB12431",
+                        "Variety": "Victo",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "A. Resweber",
+                        "ID": "14.0078",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Date collected": 20140604,
+                        "Country": "Germany",
+                        "Town": "Ruchheim",
+                        "Company": "BASF",
+                        "Further Location information": "Ruchheim",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052bb6ca5bb47f62bdd84"
+                        },
+                        "Library name": "LIB12432",
+                        "Variety": "Volunteer wheat - unknown",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "A. Resweber",
+                        "ID": "14.0079",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Date collected": 20140617,
+                        "Country": "Germany",
+                        "Town": "Bohl Bauch",
+                        "Company": "BASF",
+                        "Further Location information": "Bohl Bauch 10",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052bb6ca5bb47f62bdd86"
+                        },
+                        "Library name": "LIB12433",
+                        "Variety": "Victo",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "A. Resweber",
+                        "ID": "14.0080",
+                        "Date collected": 20140617,
+                        "Country": "Germany",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Failed",
+                        "Host": "Wheat",
+                        "Town": "Ruchheim",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052bc6ca5bb47f62bdd88"
+                        },
+                        "Library name": "LIB12434",
+                        "Variety": "JB Asano",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Prochnow",
+                        "ID": "14.0081",
+                        "Date collected": 20140513,
+                        "Country": "Germany",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Town": "Gommershoven",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052bc6ca5bb47f62bdd8a"
+                        },
+                        "Library name": "LIB14893",
+                        "Variety": "Primus",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Prochnow",
+                        "ID": "14.0082",
+                        "Date collected": 20140513,
+                        "Country": "Germany",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Failed",
+                        "Host": "Wheat",
+                        "Town": "Gommershoven",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052bc6ca5bb47f62bdd8c"
+                        },
+                        "Library name": "LIB12436",
+                        "Variety": "Akteur",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Prochnow",
+                        "ID": "14.0083",
+                        "Date collected": 20140528,
+                        "Country": "Germany",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Failed",
+                        "Host": "Wheat",
+                        "Town": "Bohl-Iggelheim",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052bc6ca5bb47f62bdd8e"
+                        },
+                        "Library name": "LIB14894",
+                        "Variety": "Kometus",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Prochnow",
+                        "ID": "14.0084",
+                        "Date collected": 20140528,
+                        "Country": "Germany",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Town": "Groitzsch",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052bc6ca5bb47f62bdd90"
+                        },
+                        "Library name": "LIB12438",
+                        "Variety": "Akteur",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Prochnow",
+                        "ID": "14.0085",
+                        "Date collected": 20140603,
+                        "Country": "Germany",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Town": "Groitzsch",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052bd6ca5bb47f62bdd92"
+                        },
+                        "Library name": "LIB12439",
+                        "Variety": "Ritmo",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Prochnow",
+                        "ID": "14.0086",
+                        "Date collected": 20140603,
+                        "Country": "Germany",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Town": "WeiBensee",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052bd6ca5bb47f62bdd94"
+                        },
+                        "Library name": "LIB12440",
+                        "Variety": "JB Asano",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Prochnow",
+                        "ID": "14.0087",
+                        "Date collected": 20140603,
+                        "Country": "Germany",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Town": "WeiBensee",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052bd6ca5bb47f62bdd96"
+                        },
+                        "Library name": "LIB12441",
+                        "Variety": "Akteur",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Prochnow",
+                        "ID": "14.0088",
+                        "Date collected": 20140603,
+                        "Country": "Germany",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Town": "WeiBensee",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052bd6ca5bb47f62bdd98"
+                        },
+                        "Library name": "LIB12442",
+                        "Variety": "Kometus",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Prochnow",
+                        "ID": "14.0089",
+                        "Date collected": 20140604,
+                        "Country": "Germany",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Town": "Tachenhausen",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052be6ca5bb47f62bdd9a"
+                        },
+                        "Library name": "LIB12443",
+                        "Variety": "Hermann",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Prochnow",
+                        "ID": "14.0090",
+                        "Date collected": 20140605,
+                        "Country": "Germany",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Town": "Huttendorf",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052be6ca5bb47f62bdd9c"
+                        },
+                        "Library name": "LIB12444",
+                        "Variety": "Kometus",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Prochnow",
+                        "ID": "14.0091",
+                        "Date collected": 20140605,
+                        "Country": "Germany",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Town": "Huttendorf",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052be6ca5bb47f62bdd9e"
+                        },
+                        "Private comments": "via Alison NIAB: RBA Viglas - Pstrusa",
+                        "Library name": "LIB12445",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Andrea Hankova",
+                        "ID": "14.0092",
+                        "Date collected": 20140526,
+                        "Country": "Slovakia",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Town": "Detva",
+                        "Company": "NPPC"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c36ca5bb47f62bddc6"
+                        },
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Viktor",
+                        "ID": "14.0114",
+                        "Date collected": 20140701,
+                        "Country": "Germany",
+                        "Company": "KWS",
+                        "Town": "Werbig",
+                        "Further Location information": "Werbig",
+                        "Host": "Rye"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052be6ca5bb47f62bdda0"
+                        },
+                        "Private comments": "via Alison NIAB: RBA Viglas - Pstrusa",
+                        "Library name": "LIB12446",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Andrea Hankova",
+                        "ID": "14.0093",
+                        "Date collected": 20140526,
+                        "Country": "Slovakia",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Town": "Detva",
+                        "Company": "NPPC"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052bf6ca5bb47f62bdda2"
+                        },
+                        "Library name": "LIB12447",
+                        "Variety": "Rosario",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Bazelaine",
+                        "ID": "14.0094",
+                        "Date collected": 20140603,
+                        "Country": "France",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Town": "Fame de P'epoisse",
+                        "Company": "BASF",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052bf6ca5bb47f62bdda4"
+                        },
+                        "Library name": "LIB12448",
+                        "Variety": "JB Asano",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Yves Decroos",
+                        "ID": "14.0095",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Date collected": 20140602,
+                        "Country": "Belgium",
+                        "Town": "Koksijde Belgium",
+                        "Company": "BASF",
+                        "Further Location information": "8670 Koksijde Belgium",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052bf6ca5bb47f62bdda6"
+                        },
+                        "Library name": "LIB12449",
+                        "Variety": "JB Asano",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Yves Decroos",
+                        "ID": "14.0096",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Date collected": 20140602,
+                        "Country": "Belgium",
+                        "Town": "Zwevegem",
+                        "Company": "BASF",
+                        "Further Location information": "8554 Zwevegem",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052bf6ca5bb47f62bdda8"
+                        },
+                        "Library name": "LIB12450",
+                        "Variety": "JB Asano",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Yves Decroos",
+                        "ID": "14.0097",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Date collected": 20140602,
+                        "Country": "Belgium",
+                        "Town": "Avelgem",
+                        "Company": "BASF",
+                        "Further Location information": "8580 Avelgem",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052bf6ca5bb47f62bddaa"
+                        },
+                        "Library name": "LIB12451",
+                        "Variety": "Torch",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Yves Decroos",
+                        "ID": "14.0098",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Date collected": 20140602,
+                        "Country": "Belgium",
+                        "Town": "Mignault",
+                        "Company": "BASF",
+                        "Further Location information": "7070 Mignault",
+                        "KASP assays? (Selected/In progress/Completed/Failed)": "Completed"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c06ca5bb47f62bddac"
+                        },
+                        "Private comments": "Received leaves - we then put them in RNA later. Two samples taken - this is sample 1: Alison NIAB contact?",
+                        "Library name": "LIB12453",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Dario",
+                        "ID": "14.0101",
+                        "Date collected": 20140524,
+                        "Country": "Turkey",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Company": "-",
+                        "Further Location information": "-"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c06ca5bb47f62bddae"
+                        },
+                        "Private comments": "Above - this is sample 2",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Dario",
+                        "ID": "14.0102",
+                        "Date collected": 20140524,
+                        "Country": "Turkey",
+                        "Host": "Wheat",
+                        "Company": "-",
+                        "Further Location information": "-"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c06ca5bb47f62bddb0"
+                        },
+                        "Private comments": "Received leaves - we then put them in RNA later. 28 samples taken, this is sample 1: Alison NIAB contact? Had 14 sets of leaves just selected two samples from two different leaf sets but have the remainder in RNA later. SRB1",
+                        "Library name": "LIB12454",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Dario",
+                        "ID": "14.0103",
+                        "Date collected": 20140524,
+                        "Country": "Serbia",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Company": "-",
+                        "Further Location information": "-"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c16ca5bb47f62bddb2"
+                        },
+                        "Private comments": "Above. This is sample 2. SRB2",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Dario",
+                        "ID": "14.0104",
+                        "Date collected": 20140524,
+                        "Country": "Serbia",
+                        "Host": "Wheat",
+                        "Company": "-",
+                        "Further Location information": "-"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c16ca5bb47f62bddb4"
+                        },
+                        "Private comments": "Three samples were taken from the same wheat plant brough in by James. This had previously been fungicide treated and then had recovered. Rep. 1",
+                        "Library name": "LIB12455",
+                        "Variety": "Kranich",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "James Brown",
+                        "ID": "14.0105",
+                        "Date collected": 20140613,
+                        "Country": "UK",
+                        "Town": "Morley",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "JIC",
+                        "Further Location information": "Morley"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c16ca5bb47f62bddb6"
+                        },
+                        "Private comments": "Rep. 2",
+                        "Variety": "Kranich",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "James Brown",
+                        "ID": "14.0106",
+                        "Date collected": 20140613,
+                        "Country": "UK",
+                        "Town": "Morley",
+                        "Company": "JIC",
+                        "Further Location information": "Morley",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c26ca5bb47f62bddb8"
+                        },
+                        "Private comments": "Rep. 3",
+                        "Variety": "Kranich",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "James Brown",
+                        "ID": "14.0107",
+                        "Date collected": 20140613,
+                        "Country": "UK",
+                        "Town": "Morley",
+                        "Company": "JIC",
+                        "Further Location information": "Morley",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c26ca5bb47f62bddba"
+                        },
+                        "Library name": "LIB12456",
+                        "Variety": "Luminur",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Claude Pope",
+                        "ID": "14.0108",
+                        "Date collected": 20140611,
+                        "Country": "France",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Durum Wheat",
+                        "Public comments": "J14542",
+                        "Company": "INRA",
+                        "Further Location information": "France - 85"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c26ca5bb47f62bddbc"
+                        },
+                        "Variety": "Luminur",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Claude Pope",
+                        "ID": "14.0109",
+                        "Date collected": 20140611,
+                        "Country": "France",
+                        "Host": "Durum Wheat",
+                        "Public comments": "J14542 - repeat of above",
+                        "Company": "INRA",
+                        "Further Location information": "France - 85"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c26ca5bb47f62bddbe"
+                        },
+                        "Variety": "Luminur",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Claude Pope",
+                        "ID": "14.0110",
+                        "Date collected": 20140611,
+                        "Country": "France",
+                        "Host": "Durum Wheat",
+                        "Public comments": "J14542 - repeat of above",
+                        "Company": "INRA",
+                        "Further Location information": "France - 85"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c26ca5bb47f62bddc0"
+                        },
+                        "Variety": "Luminur",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Claude Pope",
+                        "ID": "14.0111",
+                        "Date collected": 20140611,
+                        "Country": "France",
+                        "Host": "Durum Wheat",
+                        "Public comments": "J14542 - repeat of above",
+                        "Company": "INRA",
+                        "Further Location information": "France - 85"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c36ca5bb47f62bddc2"
+                        },
+                        "Variety": "Luminur",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Claude Pope",
+                        "ID": "14.0112",
+                        "Date collected": 20140611,
+                        "Country": "France",
+                        "Host": "Durum Wheat",
+                        "Public comments": "J14542 - repeat of above",
+                        "Company": "INRA",
+                        "Further Location information": "France - 85"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c36ca5bb47f62bddc4"
+                        },
+                        "Variety": "Luminur",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Claude Pope",
+                        "ID": "14.0113",
+                        "Date collected": 20140611,
+                        "Country": "France",
+                        "Host": "Durum Wheat",
+                        "Public comments": "J14542 - repeat of above",
+                        "Company": "INRA",
+                        "Further Location information": "France - 85"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c36ca5bb47f62bddc8"
+                        },
+                        "Private comments": "repeat of above",
+                        "Library name": "LIB12457",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Viktor",
+                        "ID": "14.0115",
+                        "Date collected": 20140701,
+                        "Country": "Germany",
+                        "Town": "Werbig",
+                        "Host": "Rye",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "KWS",
+                        "Further Location information": "Werbig"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c36ca5bb47f62bddca"
+                        },
+                        "Private comments": "repeat of above",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Viktor",
+                        "ID": "14.0116",
+                        "Date collected": 20140701,
+                        "Country": "Germany",
+                        "Town": "Werbig",
+                        "Company": "KWS",
+                        "Further Location information": "Werbig",
+                        "Host": "Rye"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c46ca5bb47f62bddcc"
+                        },
+                        "Private comments": "repeat of above",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Viktor",
+                        "ID": "14.0117",
+                        "Date collected": 20140701,
+                        "Country": "Germany",
+                        "Town": "Werbig",
+                        "Company": "KWS",
+                        "Further Location information": "Werbig",
+                        "Host": "Rye"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c46ca5bb47f62bddce"
+                        },
+                        "Private comments": "repeat of above",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Viktor",
+                        "ID": "14.0118",
+                        "Date collected": 20140701,
+                        "Country": "Germany",
+                        "Town": "Werbig",
+                        "Company": "KWS",
+                        "Further Location information": "Werbig",
+                        "Host": "Rye"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c46ca5bb47f62bddd0"
+                        },
+                        "Private comments": "repeat of above",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Viktor",
+                        "ID": "14.0119",
+                        "Date collected": 20140701,
+                        "Country": "Germany",
+                        "Town": "Werbig",
+                        "Company": "KWS",
+                        "Further Location information": "Werbig",
+                        "Host": "Rye"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c46ca5bb47f62bddd2"
+                        },
+                        "Private comments": "repeat of above",
+                        "Library name": "LIB12458",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Viktor",
+                        "ID": "14.0120",
+                        "Date collected": 20140701,
+                        "Country": "Germany",
+                        "Town": "Werbig",
+                        "Host": "Rye",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "KWS",
+                        "Further Location information": "Werbig"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c46ca5bb47f62bddd4"
+                        },
+                        "Private comments": "repeat of above",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Viktor",
+                        "ID": "14.0121",
+                        "Date collected": 20140701,
+                        "Country": "Germany",
+                        "Town": "Werbig",
+                        "Company": "KWS",
+                        "Further Location information": "Werbig",
+                        "Host": "Rye"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c56ca5bb47f62bddd6"
+                        },
+                        "Private comments": "repeat of above",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Viktor",
+                        "ID": "14.0122",
+                        "Date collected": 20140701,
+                        "Country": "Germany",
+                        "Town": "Werbig",
+                        "Company": "KWS",
+                        "Further Location information": "Werbig",
+                        "Host": "Rye"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c56ca5bb47f62bddd8"
+                        },
+                        "Private comments": "repeat of above",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Viktor",
+                        "ID": "14.0123",
+                        "Date collected": 20140701,
+                        "Country": "Germany",
+                        "Town": "Werbig",
+                        "Company": "KWS",
+                        "Further Location information": "Werbig",
+                        "Host": "Rye"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c56ca5bb47f62bddda"
+                        },
+                        "Private comments": "repeat of above",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Viktor",
+                        "ID": "14.0124",
+                        "Date collected": 20140701,
+                        "Country": "Germany",
+                        "Town": "Werbig",
+                        "Company": "KWS",
+                        "Further Location information": "Werbig",
+                        "Host": "Rye"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c56ca5bb47f62bdddc"
+                        },
+                        "Private comments": "repeat of above",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Viktor",
+                        "ID": "14.0125",
+                        "Date collected": 20140701,
+                        "Country": "Germany",
+                        "Town": "Werbig",
+                        "Company": "KWS",
+                        "Further Location information": "Werbig",
+                        "Host": "Rye"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c56ca5bb47f62bddde"
+                        },
+                        "Private comments": "NIAB: 14/601, Wales",
+                        "Further Location information": "Llampha Farm, Bridgend",
+                        "Library name": "LIB12459",
+                        "Variety": "Vuka",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0126",
+                        "UKCPVS ID": "14/601",
+                        "Date collected": 20140601,
+                        "Country": "UK",
+                        "Town": "Bridgend",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "Agrii"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c66ca5bb47f62bdde0"
+                        },
+                        "Private comments": "NIAB: 14/603",
+                        "ID": "14.0128",
+                        "Further Location information": "East Yorkshire, Bishop burton, Beverley",
+                        "UKCPVS ID": "14/603",
+                        "Date collected": 20140801,
+                        "Country": "UK",
+                        "Town": "Bishop burton",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "Agrii",
+                        "County": "East Yorkshire",
+                        "Library name": "LIB12461",
+                        "Variety": "Vuka",
+                        "Rust (YR/SR/LR)": "YR"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c76ca5bb47f62bdde2"
+                        },
+                        "Private comments": "NIAB: 14/97",
+                        "ID": "14.0131",
+                        "Further Location information": "Wolferton",
+                        "UKCPVS ID": "14/97",
+                        "Date collected": 20140618,
+                        "Country": "UK",
+                        "Town": "Wolferton",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Failed",
+                        "Company": "NIAB",
+                        "County": "Norfolk",
+                        "Library name": "LIB12464",
+                        "Variety": "Solstice",
+                        "Rust (YR/SR/LR)": "YR"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c76ca5bb47f62bdde4"
+                        },
+                        "Private comments": "NIAB: 14/98",
+                        "ID": "14.0132",
+                        "Further Location information": "Wolferton",
+                        "UKCPVS ID": "14/98",
+                        "Date collected": 20140618,
+                        "Country": "UK",
+                        "Town": "Wolferton",
+                        "Company": "NIAB",
+                        "County": "Norfolk",
+                        "Variety": "KWS Cashel",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c76ca5bb47f62bdde6"
+                        },
+                        "Private comments": "NIAB: 14/125",
+                        "ID": "14.0133",
+                        "UKCPVS ID": "14/125",
+                        "Further Location information": "Gilchriston farm, Nr Humbie, East lothian, EH41 4JR",
+                        "Postal code": "EH41 4JR",
+                        "Date collected": 20140623,
+                        "Country": "UK",
+                        "Town": "East lothian",
+                        "Company": "NIAB",
+                        "County": "East Lothian",
+                        "Variety": "Icon",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c76ca5bb47f62bdde8"
+                        },
+                        "Private comments": "NIAB: 14/107",
+                        "ID": "14.0134",
+                        "UKCPVS ID": "14/107",
+                        "Further Location information": "Alkerton, Oxfordshire, OX15 6EP",
+                        "Postal code": "OX15 6EP",
+                        "Date collected": 20140623,
+                        "Country": "UK",
+                        "Town": "Alkerton",
+                        "Company": "NIAB",
+                        "County": "Oxfordshire",
+                        "Variety": "Viscount",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c76ca5bb47f62bddea"
+                        },
+                        "Private comments": "NIAB: 14/126",
+                        "ID": "14.0135",
+                        "UKCPVS ID": "14/126",
+                        "Further Location information": "Gilchriston farm, Nr Humbie, East lothian, EH41 4JR",
+                        "Postal code": "EH41 4JR",
+                        "Date collected": 20140623,
+                        "Country": "UK",
+                        "Town": "Nr Humbie",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "East Lothian",
+                        "Library name": "LIB12468",
+                        "Variety": "KWS Kielder",
+                        "Rust (YR/SR/LR)": "YR"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c86ca5bb47f62bddec"
+                        },
+                        "Private comments": "NIAB: 14/123",
+                        "ID": "14.0136",
+                        "UKCPVS ID": "14/123",
+                        "Further Location information": "Gilchriston farm, Nr Humbie, East lothian, EH41 4JR",
+                        "Postal code": "EH41 4JR",
+                        "Date collected": 20140623,
+                        "Country": "UK",
+                        "Town": "Nr Humbie",
+                        "Company": "NIAB",
+                        "County": "East Lothian",
+                        "Variety": "Panorama",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c86ca5bb47f62bddee"
+                        },
+                        "Private comments": "NIAB: 14/99",
+                        "ID": "14.0137",
+                        "Further Location information": "Wolferton",
+                        "UKCPVS ID": "14/99",
+                        "Date collected": 20140618,
+                        "Country": "UK",
+                        "Town": "Wolferton",
+                        "Company": "NIAB",
+                        "County": "Norfolk",
+                        "Variety": "JB Diego",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c86ca5bb47f62bddf0"
+                        },
+                        "Private comments": "NIAB: 14/119",
+                        "ID": "14.0139",
+                        "Further Location information": "Wolferton",
+                        "UKCPVS ID": "14/119",
+                        "Date collected": 20140623,
+                        "Country": "UK",
+                        "Town": "Wolferton",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Norfolk",
+                        "Library name": "LIB12472",
+                        "Variety": "Jorvik",
+                        "Rust (YR/SR/LR)": "YR"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c86ca5bb47f62bddf2"
+                        },
+                        "Private comments": "NIAB: 14/127",
+                        "ID": "14.0140",
+                        "UKCPVS ID": "14/127",
+                        "Further Location information": "Gilchriston farm, Nr Humbie, East lothian, EH41 4JR",
+                        "Postal code": "EH41 4JR",
+                        "Date collected": 20140623,
+                        "Country": "UK",
+                        "Town": "Nr Humbie",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "East Lothian",
+                        "Library name": "LIB12473",
+                        "Variety": "LGW65 (Energise)",
+                        "Rust (YR/SR/LR)": "YR"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c96ca5bb47f62bddf4"
+                        },
+                        "Private comments": "NIAB: 14/118",
+                        "ID": "14.0141",
+                        "Further Location information": "Wolferton",
+                        "UKCPVS ID": "14/118",
+                        "Date collected": 20140623,
+                        "Country": "UK",
+                        "Town": "Wolferton",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Norfolk",
+                        "Library name": "LIB12474",
+                        "Variety": "KWS Santiago",
+                        "Rust (YR/SR/LR)": "YR"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c96ca5bb47f62bddf6"
+                        },
+                        "Private comments": "NIAB: 14/124",
+                        "ID": "14.0142",
+                        "UKCPVS ID": "14/124",
+                        "Further Location information": "Gilchriston farm, Nr Humbie, East lothian, EH41 4JR",
+                        "Postal code": "EH41 4JR",
+                        "Date collected": 20140623,
+                        "Country": "UK",
+                        "Town": "Nr Humbie",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "East Lothian",
+                        "Library name": "LIB12475",
+                        "Variety": "JB Diego",
+                        "Rust (YR/SR/LR)": "YR"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c96ca5bb47f62bddf8"
+                        },
+                        "Private comments": "NIAB: 14/117",
+                        "ID": "14.0143",
+                        "Further Location information": "Morley",
+                        "UKCPVS ID": "14/117",
+                        "Date collected": 20140623,
+                        "Country": "UK",
+                        "Town": "Morley",
+                        "Company": "NIAB",
+                        "County": "Norfolk",
+                        "Variety": "KWS Cashel",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052c96ca5bb47f62bddfa"
+                        },
+                        "Private comments": "NIAB: 14/104",
+                        "ID": "14.0144",
+                        "UKCPVS ID": "14/104",
+                        "Further Location information": "Alkerton, Oxfordshire, OX15 6EP",
+                        "Postal code": "OX15 6EP",
+                        "Date collected": 20140623,
+                        "Country": "UK",
+                        "Town": "Alkerton",
+                        "Company": "NIAB",
+                        "County": "Oxfordshire",
+                        "Variety": "Cougar",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ca6ca5bb47f62bddfc"
+                        },
+                        "Private comments": "NIAB: 14/30",
+                        "Library name": "LIB12477",
+                        "Variety": "Solstice",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0145",
+                        "UKCPVS ID": "14/30",
+                        "Date collected": 20140428,
+                        "Country": "UK",
+                        "Town": "York",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "North Yorkshire"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ca6ca5bb47f62bddfe"
+                        },
+                        "Private comments": "NIAB: 14/29",
+                        "Library name": "LIB12478",
+                        "Variety": "KWS Kielder",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0146",
+                        "UKCPVS ID": "14/29",
+                        "Date collected": 20140428,
+                        "Country": "UK",
+                        "Town": "York",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "North Yorkshire"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ca6ca5bb47f62bde00"
+                        },
+                        "Private comments": "NIAB: TS14/1",
+                        "Variety": "Divimar",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0147",
+                        "UKCPVS ID": "TS14/1",
+                        "Date collected": 20140404,
+                        "Country": "UK",
+                        "Town": "Wandlebury",
+                        "Company": "NIAB",
+                        "Host": "Spelta"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ca6ca5bb47f62bde02"
+                        },
+                        "Private comments": "NIAB: 14/26 Repeat",
+                        "Variety": "Victo",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0149",
+                        "UKCPVS ID": "14/26",
+                        "Date collected": 20140401,
+                        "Country": "UK",
+                        "Town": "Wymondham",
+                        "Company": "NIAB",
+                        "County": "Norfolk",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ca6ca5bb47f62bde04"
+                        },
+                        "Private comments": "NIAB: 14/05",
+                        "Variety": "JB Diego",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0150",
+                        "UKCPVS ID": "14/05",
+                        "Date collected": 20131201,
+                        "Country": "UK",
+                        "Town": "Boxworth",
+                        "Company": "NIAB",
+                        "County": "Cambridgeshire",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052cb6ca5bb47f62bde06"
+                        },
+                        "Private comments": "NIAB: 14/15",
+                        "Library name": "LIB14888",
+                        "Variety": "Oakley",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0151",
+                        "UKCPVS ID": "14/15",
+                        "Date collected": 20140123,
+                        "Country": "UK",
+                        "Town": "Caythorpe",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Lincolnshire"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052cb6ca5bb47f62bde08"
+                        },
+                        "Private comments": "NIAB: 14/16",
+                        "Library name": "LIB14889",
+                        "Variety": "Victo",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0152",
+                        "UKCPVS ID": "14/16",
+                        "Date collected": 20140123,
+                        "Country": "UK",
+                        "Town": "Caythorpe",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Lincolnshire"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052cb6ca5bb47f62bde0a"
+                        },
+                        "Private comments": "NIAB: 14/11",
+                        "Library name": "LIB12484",
+                        "Variety": "Claire",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0153",
+                        "UKCPVS ID": "14/11",
+                        "Date collected": 20140113,
+                        "Country": "UK",
+                        "Town": "Titchmarsh Oundle",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Northamptonshire"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052cb6ca5bb47f62bde0c"
+                        },
+                        "Private comments": "NIAB 14/08 2 of 2",
+                        "Variety": "Hereward",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0154",
+                        "UKCPVS ID": "14/08",
+                        "Date collected": 20131201,
+                        "Country": "UK",
+                        "Town": "Haddon",
+                        "Company": "NIAB",
+                        "County": "Cambridgeshire",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052cc6ca5bb47f62bde0e"
+                        },
+                        "Private comments": "NIAB: 14/07",
+                        "Library name": "LIB12486",
+                        "Variety": "KWS Kielder",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0155",
+                        "UKCPVS ID": "14/07",
+                        "Date collected": 20131201,
+                        "Country": "UK",
+                        "Town": "Wallingford",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Oxfordshire"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052cc6ca5bb47f62bde10"
+                        },
+                        "Private comments": "NIAB: 14/08 1 of 2",
+                        "Variety": "Hereward",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0157",
+                        "UKCPVS ID": "14/08",
+                        "Date collected": 20131201,
+                        "Country": "UK",
+                        "Town": "Haddon",
+                        "Company": "NIAB",
+                        "County": "Cambridgeshire",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052cc6ca5bb47f62bde12"
+                        },
+                        "Private comments": "NIAB: 14/06",
+                        "Library name": "LIB12488",
+                        "Variety": "Solstice",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0158",
+                        "UKCPVS ID": "14/06",
+                        "Date collected": 20131201,
+                        "Country": "UK",
+                        "Town": "Streatley",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Oxfordshire"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052cc6ca5bb47f62bde14"
+                        },
+                        "Private comments": "NIAB: 14/14",
+                        "Library name": "LIB12489",
+                        "Variety": "Claire",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0159",
+                        "UKCPVS ID": "14/14",
+                        "Date collected": 20140123,
+                        "Country": "UK",
+                        "Town": "Caythorpe",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Lincolnshire"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052cd6ca5bb47f62bde16"
+                        },
+                        "Private comments": "NIAB: 14/13",
+                        "Library name": "LIB12490",
+                        "Variety": "Robigus",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0160",
+                        "UKCPVS ID": "14/13",
+                        "Date collected": 20140123,
+                        "Country": "UK",
+                        "Town": "Caythorpe",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Lincolnshire"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052cd6ca5bb47f62bde18"
+                        },
+                        "Private comments": "NIAB: 14/17",
+                        "Variety": "Solstice",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0161",
+                        "UKCPVS ID": "14/17",
+                        "Date collected": 20140123,
+                        "Country": "UK",
+                        "Town": "Caythorpe",
+                        "Company": "NIAB",
+                        "County": "Lincolnshire",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052cd6ca5bb47f62bde1a"
+                        },
+                        "Private comments": "NIAB: 14/12",
+                        "Library name": "LIB12492",
+                        "Variety": "Timber",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0162",
+                        "UKCPVS ID": "14/12",
+                        "Date collected": 20140123,
+                        "Country": "UK",
+                        "Town": "Caythorpe",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Failed",
+                        "Company": "NIAB",
+                        "County": "Lincolnshire"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052cd6ca5bb47f62bde1c"
+                        },
+                        "Private comments": "NIAB: 14/55",
+                        "ID": "14.0163",
+                        "Further Location information": "Wadden Hall Farm , CT4 5PX",
+                        "Postal code": "CT4 5PX",
+                        "UKCPVS ID": "14/55",
+                        "Date collected": 20140523,
+                        "Country": "UK",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Kent",
+                        "Library name": "LIB12493",
+                        "Variety": "Cordiale",
+                        "Rust (YR/SR/LR)": "YR"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052cd6ca5bb47f62bde1e"
+                        },
+                        "Private comments": "NIAB: 14/33",
+                        "ID": "14.0164",
+                        "Further Location information": "HH LS24 9NT",
+                        "Postal code": "LS24 9NT",
+                        "UKCPVS ID": "14/33",
+                        "Date collected": 20140506,
+                        "Country": "UK",
+                        "Company": "NIAB",
+                        "County": "North Yorkshire",
+                        "Variety": "Victo",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ce6ca5bb47f62bde20"
+                        },
+                        "Private comments": "NIAB: 14/51",
+                        "ID": "14.0165",
+                        "Further Location information": "Wadden Hall Farm , CT4 5PX",
+                        "Postal code": "CT4 5PX",
+                        "UKCPVS ID": "14/51",
+                        "Date collected": 20140523,
+                        "Country": "UK",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Kent",
+                        "Library name": "LIB12494",
+                        "Variety": "Solstice",
+                        "Rust (YR/SR/LR)": "YR"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ce6ca5bb47f62bde22"
+                        },
+                        "Private comments": "NIAB: 14/40",
+                        "Library name": "LIB12495",
+                        "Variety": "Solstice",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0166",
+                        "UKCPVS ID": "14/40",
+                        "Date collected": 20140506,
+                        "Country": "UK",
+                        "Town": "Caythorpe",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Lincolnshire"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ce6ca5bb47f62bde24"
+                        },
+                        "Private comments": "NIAB: 14/39",
+                        "Library name": "LIB12496",
+                        "Variety": "Robigus",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0167",
+                        "UKCPVS ID": "14/39",
+                        "Date collected": 20140506,
+                        "Country": "UK",
+                        "Town": "Caythorpe",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Lincolnshire"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052ce6ca5bb47f62bde26"
+                        },
+                        "Private comments": "NIAB: 14/58",
+                        "ID": "14.0168",
+                        "Further Location information": "Wadden Hall Farm , CT4 5PX",
+                        "Postal code": "CT4 5PX",
+                        "UKCPVS ID": "14/58",
+                        "Date collected": 20140523,
+                        "Country": "UK",
+                        "Company": "NIAB",
+                        "County": "Kent",
+                        "Variety": "Timber",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052cf6ca5bb47f62bde28"
+                        },
+                        "Private comments": "NIAB: 14/49",
+                        "ID": "14.0170",
+                        "Further Location information": "Wadden Hall Farm , CT4 5PX",
+                        "Postal code": "CT4 5PX",
+                        "UKCPVS ID": "14/49",
+                        "Date collected": 20140523,
+                        "Country": "UK",
+                        "Company": "NIAB",
+                        "County": "Kent",
+                        "Variety": "Victo",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052cf6ca5bb47f62bde2a"
+                        },
+                        "Private comments": "NIAB: 14/46",
+                        "Library name": "LIB12498",
+                        "Variety": "KWS Kielder",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0171",
+                        "UKCPVS ID": "14/46",
+                        "Date collected": 20140516,
+                        "Country": "UK",
+                        "Town": "Telford",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Failed",
+                        "Company": "NIAB",
+                        "County": "Shropshire"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052cf6ca5bb47f62bde2c"
+                        },
+                        "Private comments": "NIAB: 14/44",
+                        "ID": "14.0172",
+                        "UKCPVS ID": "14/44",
+                        "Postal code": "CM23 5HN",
+                        "Date collected": 20140513,
+                        "Country": "UK",
+                        "Town": "Dunmow",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Hertfordshire",
+                        "Library name": "LIB12499",
+                        "Variety": "Scout",
+                        "Rust (YR/SR/LR)": "YR"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052cf6ca5bb47f62bde2e"
+                        },
+                        "Private comments": "NIAB: 14/47",
+                        "ID": "14.0174",
+                        "Further Location information": "Sturminster, Newton",
+                        "UKCPVS ID": "14/47",
+                        "Date collected": 20140516,
+                        "Country": "UK",
+                        "Town": "Sturminster Newton",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Dorset",
+                        "Library name": "LIB12501",
+                        "Variety": "Solstice",
+                        "Rust (YR/SR/LR)": "YR"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d06ca5bb47f62bde30"
+                        },
+                        "Private comments": "NIAB: 14/53",
+                        "ID": "14.0175",
+                        "Further Location information": "Wadden Hall Farm , CT4 5PX",
+                        "Postal code": "CT4 5PX",
+                        "UKCPVS ID": "14/53",
+                        "Date collected": 20140523,
+                        "Country": "UK",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Kent",
+                        "Library name": "LIB12502",
+                        "Variety": "Claire",
+                        "Rust (YR/SR/LR)": "YR"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d06ca5bb47f62bde32"
+                        },
+                        "Private comments": "NIAB: 14/45, spring wheat",
+                        "ID": "14.0176",
+                        "Further Location information": "Keisby nr Bourne",
+                        "UKCPVS ID": "14/45",
+                        "Date collected": 20140516,
+                        "Country": "UK",
+                        "Town": "Keisby",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Lincolnshire",
+                        "Library name": "LIB12503",
+                        "Variety": "Belvoir",
+                        "Rust (YR/SR/LR)": "YR"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d06ca5bb47f62bde34"
+                        },
+                        "Private comments": "NIAB: T14/4 2 of 2",
+                        "Postal code": "SO21 3NE",
+                        "Variety": "Grenado",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0177",
+                        "UKCPVS ID": "T14/4",
+                        "Date collected": 20140501,
+                        "Country": "UK",
+                        "Company": "NIAB",
+                        "Host": "Triticale"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d06ca5bb47f62bde36"
+                        },
+                        "Private comments": "NIAB: T14/4 1 of 2",
+                        "Postal code": "SO21 3NE",
+                        "Library name": "LIB12504",
+                        "Variety": "Grenado",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0178",
+                        "UKCPVS ID": "T14/4",
+                        "Date collected": 20140501,
+                        "Country": "UK",
+                        "Host": "Triticale",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Failed",
+                        "Company": "NIAB"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d06ca5bb47f62bde38"
+                        },
+                        "Private comments": "NIAB: 14/54",
+                        "ID": "14.0179",
+                        "Further Location information": "Wadden Hall Farm , CT4 5PX",
+                        "Postal code": "CT4 5PX",
+                        "UKCPVS ID": "14/54",
+                        "Date collected": 20140523,
+                        "Country": "UK",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Kent",
+                        "Library name": "LIB12505",
+                        "Variety": "KWS Sterling",
+                        "Rust (YR/SR/LR)": "YR"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d16ca5bb47f62bde3a"
+                        },
+                        "Private comments": "NIAB:14/57",
+                        "ID": "14.0180",
+                        "Further Location information": "Wadden Hall Farm , CT4 5PX",
+                        "Postal code": "CT4 5PX",
+                        "UKCPVS ID": "14/57",
+                        "Date collected": 20140523,
+                        "Country": "UK",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Kent",
+                        "Library name": "LIB12506",
+                        "Variety": "Robigus",
+                        "Rust (YR/SR/LR)": "YR"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d16ca5bb47f62bde3c"
+                        },
+                        "Private comments": "NIAB: 14/34",
+                        "ID": "14.0181",
+                        "Further Location information": "HH LS24 9NT",
+                        "Postal code": "LS24 9NT",
+                        "UKCPVS ID": "14/34",
+                        "Date collected": 20140506,
+                        "Country": "UK",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "North Yorkshire",
+                        "Library name": "LIB12507",
+                        "Variety": "Oakley",
+                        "Rust (YR/SR/LR)": "YR"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d16ca5bb47f62bde3e"
+                        },
+                        "Private comments": "NIAB: 14/59",
+                        "ID": "14.0182",
+                        "Further Location information": "Nr royston",
+                        "UKCPVS ID": "14/59",
+                        "Date collected": 20140523,
+                        "Country": "UK",
+                        "Town": "Royston",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Cambridgeshire",
+                        "Library name": "LIB14054",
+                        "Variety": "Oakley",
+                        "Rust (YR/SR/LR)": "YR"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d16ca5bb47f62bde40"
+                        },
+                        "Private comments": "NIAB: 14/50",
+                        "ID": "14.0183",
+                        "Further Location information": "Wadden Hall Farm , CT4 5PX",
+                        "Postal code": "CT4 5PX",
+                        "UKCPVS ID": "14/50",
+                        "Date collected": 20140523,
+                        "Country": "UK",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Kent",
+                        "Library name": "LIB14873",
+                        "Variety": "Oakley",
+                        "Rust (YR/SR/LR)": "YR"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d16ca5bb47f62bde42"
+                        },
+                        "Private comments": "NIAB: 14/48",
+                        "ID": "14.0184",
+                        "Further Location information": "Chatteris PE16 6JP",
+                        "Postal code": "PE16 6JP",
+                        "UKCPVS ID": "14/48",
+                        "Date collected": 20140523,
+                        "Country": "UK",
+                        "Company": "NIAB",
+                        "County": "Cambridgeshire",
+                        "Variety": "unknown",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d26ca5bb47f62bde44"
+                        },
+                        "Private comments": "NIAB: TS 14/2",
+                        "Further Location information": "Up Sydling, Nr Dorchester",
+                        "Library name": "LIB14874",
+                        "Variety": "Divimar",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0186",
+                        "UKCPVS ID": "14/2",
+                        "Date collected": 20140516,
+                        "Country": "UK",
+                        "Town": "Up Sydling",
+                        "Host": "Spelta",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Failed",
+                        "Company": "NIAB"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d26ca5bb47f62bde46"
+                        },
+                        "Private comments": "NIAB: TS 14/2 (duplicate of above???)",
+                        "Further Location information": "Up Sydling, Nr Dorchester",
+                        "Variety": "Divimar",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0187",
+                        "UKCPVS ID": "14/2",
+                        "Date collected": 20140501,
+                        "Country": "UK",
+                        "Town": "Up Sydling",
+                        "Company": "NIAB",
+                        "Host": "Spelta"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d36ca5bb47f62bde48"
+                        },
+                        "Private comments": "NIAB: 14/47",
+                        "ID": "14.0189",
+                        "Further Location information": "Sturminster, Newton",
+                        "UKCPVS ID": "14/47",
+                        "Date collected": 20140501,
+                        "Country": "UK",
+                        "Town": "Sturminster Newton",
+                        "Company": "NIAB",
+                        "County": "Dorset",
+                        "Variety": "Solstice",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d36ca5bb47f62bde4a"
+                        },
+                        "Private comments": "NIAB: 14/52",
+                        "ID": "14.0190",
+                        "Further Location information": "Wadden Hall Farm , CT4 5PX",
+                        "Postal code": "CT4 5PX",
+                        "UKCPVS ID": "14/52",
+                        "Date collected": 20140523,
+                        "Country": "UK",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Kent",
+                        "Library name": "LIB14876",
+                        "Variety": "Warrior",
+                        "Rust (YR/SR/LR)": "YR"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d36ca5bb47f62bde4c"
+                        },
+                        "Private comments": "NIAB: 14/41",
+                        "Further Location information": "Caythorpe",
+                        "Library name": "LIB14877",
+                        "Variety": "Oakley",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0191",
+                        "UKCPVS ID": "14/41",
+                        "Date collected": 20140506,
+                        "Country": "UK",
+                        "Town": "Caythorpe",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d36ca5bb47f62bde4e"
+                        },
+                        "Private comments": "NIAB: 14/42",
+                        "Further Location information": "Caythorpe",
+                        "Variety": "Victo",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0192",
+                        "UKCPVS ID": "14/42",
+                        "Date collected": 20140506,
+                        "Country": "UK",
+                        "Town": "Caythorpe",
+                        "Company": "NIAB",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d36ca5bb47f62bde50"
+                        },
+                        "Private comments": "NIAB: 14/56",
+                        "ID": "14.0193",
+                        "Further Location information": "Wadden Hall Farm , CT4 5PX",
+                        "Postal code": "CT4 5PX",
+                        "UKCPVS ID": "14/56",
+                        "Date collected": 20140523,
+                        "Country": "UK",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Kent",
+                        "Library name": "LIB14878",
+                        "Variety": "Relay",
+                        "Rust (YR/SR/LR)": "YR"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d46ca5bb47f62bde52"
+                        },
+                        "Private comments": "NIAB: 14/69",
+                        "Library name": "LIB14061",
+                        "Variety": "Galiant",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0195",
+                        "UKCPVS ID": "14/69",
+                        "Date collected": 20140501,
+                        "Country": "UK",
+                        "Town": "Fulbourn",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Cambridgeshire"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d46ca5bb47f62bde54"
+                        },
+                        "Private comments": "NIAB: 14/87",
+                        "Further Location information": "Noon folly - plot 4",
+                        "Variety": "unknown breeding line SPRING WHEAT",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0196",
+                        "UKCPVS ID": "14/87",
+                        "Date collected": 20140605,
+                        "Country": "UK",
+                        "Company": "NIAB",
+                        "County": "Cambridgeshire",
+                        "Host": "Spring Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d46ca5bb47f62bde56"
+                        },
+                        "Private comments": "NIAB: 14/77",
+                        "ID": "14.0197",
+                        "UKCPVS ID": "14/77",
+                        "Further Location information": "Norton, Sutton Scotney, Wincester SO21 3NE",
+                        "Postal code": "SO21 3NE",
+                        "Date collected": 20140602,
+                        "Country": "UK",
+                        "Town": "Sutton Scotney",
+                        "Company": "NIAB",
+                        "County": "Hampshire",
+                        "Variety": "Timber",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d46ca5bb47f62bde58"
+                        },
+                        "Private comments": "NIAB: 14/79",
+                        "Variety": "Delphi (prob rogue)",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0198",
+                        "UKCPVS ID": "14/79",
+                        "Date collected": 20140602,
+                        "Country": "UK",
+                        "Company": "NIAB",
+                        "Host": "Wheat",
+                        "County": "Hertfordshire"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d56ca5bb47f62bde5a"
+                        },
+                        "Private comments": "NIAB: 14/86",
+                        "Further Location information": "plot 3/NLT2",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0199",
+                        "UKCPVS ID": "14/86",
+                        "Date collected": 20140606,
+                        "Country": "UK",
+                        "Company": "NIAB",
+                        "County": "Kent",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d56ca5bb47f62bde5c"
+                        },
+                        "Private comments": "NIAB: T14/5",
+                        "ID": "14.0201",
+                        "Further Location information": "Fulbourn",
+                        "UKCPVS ID": "T14/5",
+                        "Date collected": 20140602,
+                        "Country": "UK",
+                        "Town": "Fulbourn",
+                        "Company": "NIAB",
+                        "County": "Cambridgeshire",
+                        "Variety": "Benetto",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Host": "Triticale"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d56ca5bb47f62bde5e"
+                        },
+                        "Private comments": "NIAB: 14/71",
+                        "ID": "14.0202",
+                        "UKCPVS ID": "14/71",
+                        "Further Location information": "Norton, Sutton Scotney, Wincester SO21 3NE",
+                        "Postal code": "SO21 3NE",
+                        "Date collected": 20140602,
+                        "Country": "UK",
+                        "Town": "Sutton Scotney",
+                        "Company": "NIAB",
+                        "County": "Hampshire",
+                        "Variety": "Victo",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d56ca5bb47f62bde60"
+                        },
+                        "Private comments": "NIAB: 14/75",
+                        "ID": "14.0203",
+                        "UKCPVS ID": "14/75",
+                        "Further Location information": "Norton, Sutton Scotney, Wincester SO21 3NE",
+                        "Postal code": "SO21 3NE",
+                        "Date collected": 20140602,
+                        "Country": "UK",
+                        "Town": "Sutton Scotney",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Hampshire",
+                        "Library name": "LIB14879",
+                        "Variety": "KWS Sterling",
+                        "Rust (YR/SR/LR)": "YR"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d66ca5bb47f62bde62"
+                        },
+                        "Private comments": "NIAB: 14/89",
+                        "ID": "14.0204",
+                        "UKCPVS ID": "14/89",
+                        "Further Location information": "Morley, NR18 9DF",
+                        "Postal code": "NR18 9DF",
+                        "Date collected": 20140609,
+                        "Country": "UK",
+                        "Town": "Morley",
+                        "Company": "NIAB",
+                        "County": "Norfolk",
+                        "Variety": "Panacea",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d66ca5bb47f62bde64"
+                        },
+                        "Private comments": "NIAB: 14/64",
+                        "ID": "14.0205",
+                        "Further Location information": "Morley",
+                        "UKCPVS ID": "14/64",
+                        "Date collected": 20140501,
+                        "Country": "UK",
+                        "Town": "Morley",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Norfolk",
+                        "Library name": "LIB14880",
+                        "Variety": "Solstice",
+                        "Rust (YR/SR/LR)": "YR"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d66ca5bb47f62bde66"
+                        },
+                        "Private comments": "NIAB: 14/501, Re-isolate from our inoculated tunnel trial",
+                        "Further Location information": "F36, tunnels",
+                        "Variety": "Crusoe",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0206",
+                        "UKCPVS ID": "14/501",
+                        "Date collected": 20140602,
+                        "Country": "UK",
+                        "Company": "NIAB",
+                        "County": "Cambridgeshire",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d76ca5bb47f62bde68"
+                        },
+                        "Private comments": "NIAB: T14/5",
+                        "ID": "14.0207",
+                        "Further Location information": "Fulbourn",
+                        "UKCPVS ID": "T14/5",
+                        "Date collected": 20140529,
+                        "Country": "UK",
+                        "Town": "Fulbourn",
+                        "Company": "NIAB",
+                        "County": "Cambridgeshire",
+                        "Variety": "Benetto",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Host": "Triticale"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d76ca5bb47f62bde6a"
+                        },
+                        "Private comments": "NIAB: 14/74",
+                        "ID": "14.0208",
+                        "UKCPVS ID": "14/74",
+                        "Further Location information": "Norton, Sutton Scotney, Wincester SO21 3NE",
+                        "Postal code": "SO21 3NE",
+                        "Date collected": 20140602,
+                        "Country": "UK",
+                        "Town": "Sutton Scotney",
+                        "Company": "NIAB",
+                        "County": "Hampshire",
+                        "Variety": "Cordiale",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d76ca5bb47f62bde6c"
+                        },
+                        "Private comments": "NIAB: 14/76",
+                        "ID": "14.0209",
+                        "UKCPVS ID": "14/76",
+                        "Further Location information": "Norton, Sutton Scotney, Wincester SO21 3NE",
+                        "Postal code": "SO21 3NE",
+                        "Date collected": 20140602,
+                        "Country": "UK",
+                        "Town": "Sutton Scotney",
+                        "Company": "NIAB",
+                        "County": "Hampshire",
+                        "Variety": "Relay",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d76ca5bb47f62bde6e"
+                        },
+                        "Private comments": "NIAB: 14/84",
+                        "Library name": "LIB14881",
+                        "Variety": "Relay",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0210",
+                        "UKCPVS ID": "14/84",
+                        "Date collected": 20140602,
+                        "Country": "UK",
+                        "Town": "Headley Hall",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "North Yorkshire"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d86ca5bb47f62bde70"
+                        },
+                        "Private comments": "NIAB: 14/61 B",
+                        "Variety": "Timber",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0211",
+                        "UKCPVS ID": "14/61",
+                        "Date collected": 20140501,
+                        "Country": "UK",
+                        "Town": "Morley",
+                        "Company": "NIAB",
+                        "County": "Norfolk",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d86ca5bb47f62bde72"
+                        },
+                        "Private comments": "NIAB: 14/73",
+                        "ID": "14.0213",
+                        "UKCPVS ID": "14/73",
+                        "Further Location information": "Norton, Sutton Scotney, Wincester SO21 3NE",
+                        "Postal code": "SO21 3NE",
+                        "Date collected": 20140602,
+                        "Country": "UK",
+                        "Town": "Sutton Scotney",
+                        "Company": "NIAB",
+                        "County": "Hampshire",
+                        "Variety": "Claire",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d86ca5bb47f62bde74"
+                        },
+                        "Private comments": "NIAB: 14/61 A",
+                        "Variety": "Timber",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0214",
+                        "UKCPVS ID": "14/61",
+                        "Date collected": 20140501,
+                        "Country": "UK",
+                        "Town": "Morley",
+                        "Company": "NIAB",
+                        "County": "Norfolk",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d96ca5bb47f62bde76"
+                        },
+                        "Private comments": "NIAB: 14/60",
+                        "Library name": "LIB14895",
+                        "Variety": "Warrior",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0215",
+                        "UKCPVS ID": "14/60",
+                        "Date collected": 20140501,
+                        "Country": "UK",
+                        "Town": "Morley",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Norfolk"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d96ca5bb47f62bde78"
+                        },
+                        "Private comments": "NIAB: 14/65",
+                        "Library name": "LIB14070",
+                        "Variety": "Oakley",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0216",
+                        "UKCPVS ID": "14/65",
+                        "Date collected": 20140501,
+                        "Country": "UK",
+                        "Town": "Morley",
+                        "Host": "Wheat",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Company": "NIAB",
+                        "County": "Norfolk"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052d96ca5bb47f62bde7a"
+                        },
+                        "Private comments": "NIAB: 14/70",
+                        "ID": "14.0217",
+                        "UKCPVS ID": "14/70",
+                        "Further Location information": "Twyford, Bicester, OX27 9AY",
+                        "Postal code": "OX27 9AY",
+                        "Date collected": 20140529,
+                        "Country": "UK",
+                        "Town": "Twyford",
+                        "Company": "NIAB",
+                        "County": "Oxfordshire",
+                        "Variety": "Cocoon",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052da6ca5bb47f62bde7c"
+                        },
+                        "Private comments": "NIAB: 14/72",
+                        "ID": "14.0219",
+                        "UKCPVS ID": "14/72",
+                        "Further Location information": "Norton, Sutton Scotney, Wincester SO21 3NE",
+                        "Postal code": "SO21 3NE",
+                        "Date collected": 20140602,
+                        "Country": "UK",
+                        "Town": "Sutton Scotney",
+                        "Company": "NIAB",
+                        "County": "Hampshire",
+                        "Variety": "Warrior",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052da6ca5bb47f62bde7e"
+                        },
+                        "Private comments": "NIAB: 14/85",
+                        "Further Location information": "Birchanger??",
+                        "Variety": "unknown (not Relay)",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0220",
+                        "UKCPVS ID": "14/85",
+                        "Date collected": 20140603,
+                        "Country": "UK",
+                        "Company": "NIAB",
+                        "County": "Cambridgeshire",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052da6ca5bb47f62bde80"
+                        },
+                        "Private comments": "NIAB: 14/81",
+                        "Variety": "Timber",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0221",
+                        "UKCPVS ID": "14/81",
+                        "Date collected": 20140602,
+                        "Country": "UK",
+                        "Company": "NIAB",
+                        "Host": "Wheat",
+                        "County": "Hertfordshire"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052da6ca5bb47f62bde82"
+                        },
+                        "Private comments": "NIAB: 14/62",
+                        "ID": "14.0222",
+                        "Further Location information": "Morley",
+                        "UKCPVS ID": "14/62",
+                        "Date collected": 20140501,
+                        "Country": "UK",
+                        "Town": "Morley",
+                        "Company": "NIAB",
+                        "County": "Norfolk",
+                        "Variety": "Robigus",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052db6ca5bb47f62bde84"
+                        },
+                        "Variety": "AC Barrie",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Rosemary Bayles",
+                        "Postal code": "LD8 2NT",
+                        "ID": "14.0223",
+                        "Host": "Wheat",
+                        "Country": "UK",
+                        "Date collected": 20140701,
+                        "Public comments": "half of a stripe",
+                        "Company": "-"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052db6ca5bb47f62bde86"
+                        },
+                        "Variety": "AC Barrie",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Rosemary Bayles",
+                        "Postal code": "LD8 2NT",
+                        "ID": "14.0224",
+                        "Host": "Wheat",
+                        "Country": "UK",
+                        "Date collected": 20140701,
+                        "Public comments": "other half of above stripe",
+                        "Company": "-"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052db6ca5bb47f62bde88"
+                        },
+                        "Library name": "LIB14078",
+                        "Rust (YR/SR/LR)": "?",
+                        "Name/Collector": "Diane Saunders",
+                        "Postal code": "NR2 2DP",
+                        "ID": "14.0228",
+                        "Date collected": 20140821,
+                        "Country": "UK",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Failed",
+                        "Host": "Grass",
+                        "Company": "-"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052db6ca5bb47f62bde8a"
+                        },
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0228a",
+                        "Country": "Germany",
+                        "Date collected": 20140506,
+                        "Public comments": "Sample A 1 of 4"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052db6ca5bb47f62bde8c"
+                        },
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0229",
+                        "Country": "Germany",
+                        "Date collected": 20140506,
+                        "Public comments": "Sample A 2 of 4"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052dc6ca5bb47f62bde8e"
+                        },
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0230",
+                        "Country": "Germany",
+                        "Date collected": 20140506,
+                        "Public comments": "Sample A 3 of 4"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052dc6ca5bb47f62bde90"
+                        },
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0231",
+                        "Country": "Germany",
+                        "Date collected": 20140506,
+                        "Public comments": "Sample A 4 of 4"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052dc6ca5bb47f62bde92"
+                        },
+                        "Library name": "LIB14884",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0232",
+                        "Country": "Germany",
+                        "Date collected": 20140506,
+                        "Public comments": "Sample B 1 of 4"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052dc6ca5bb47f62bde94"
+                        },
+                        "Library name": "LIB14083",
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0233",
+                        "Country": "Germany",
+                        "Date collected": 20140506,
+                        "Public comments": "Sample B 2 of 4"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052dc6ca5bb47f62bde96"
+                        },
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0234",
+                        "Country": "Germany",
+                        "Date collected": 20140506,
+                        "Public comments": "Sample B 3 of 4"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052dd6ca5bb47f62bde98"
+                        },
+                        "Rust (YR/SR/LR)": "YR",
+                        "ID": "14.0235",
+                        "Country": "Germany",
+                        "Date collected": 20140506,
+                        "Public comments": "Sample B 4 of 4"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052dd6ca5bb47f62bde9a"
+                        },
+                        "Library name": "LIB14655",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Dave Hodson",
+                        "ID": "14.0236",
+                        "Date collected": 20141201,
+                        "Country": "Ethiopia",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Town": "Sinanars",
+                        "Further Location information": "Sinanars",
+                        "Public comments": "4E YR 1"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052dd6ca5bb47f62bde9c"
+                        },
+                        "Library name": "LIB14656",
+                        "Variety": "Digalu",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Dave Hodson",
+                        "ID": "14.0237",
+                        "Date collected": 20141209,
+                        "Country": "Ethiopia",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Public comments": "4E YR 2",
+                        "Town": "Sembo",
+                        "Further Location information": "Sembo"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052dd6ca5bb47f62bde9e"
+                        },
+                        "Library name": "LIB14657",
+                        "Variety": "Hidasse",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Dave Hodson",
+                        "ID": "14.0238",
+                        "Date collected": 20141201,
+                        "Country": "Ethiopia",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Host": "Wheat",
+                        "Public comments": "4E YR 3",
+                        "Town": "Sinanars",
+                        "Further Location information": "Sinanars"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052dd6ca5bb47f62bdea0"
+                        },
+                        "Further Location information": "Sinanars",
+                        "Library name": "LIB14658",
+                        "Variety": "Henkolo",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Dave Hodson",
+                        "ID": "14.0239",
+                        "Date collected": 20141201,
+                        "Country": "Ethiopia",
+                        "Town": "Sinanars",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Public comments": "4E YR 4"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052de6ca5bb47f62bdea2"
+                        },
+                        "Further Location information": "Sinanars",
+                        "Library name": "LIB14659",
+                        "Variety": "Sanate",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Dave Hodson",
+                        "ID": "14.0240",
+                        "Date collected": 20141201,
+                        "Country": "Ethiopia",
+                        "Town": "Sinanars",
+                        "RNA-seq? (Selected/In progress/Completed/Failed)": "Completed",
+                        "Public comments": "4E YR 5"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052de6ca5bb47f62bdea4"
+                        },
+                        "Variety": "Malt",
+                        "Rust (YR/SR/LR)": "SR",
+                        "Name/Collector": "Dave Hodson",
+                        "ID": "14.0241",
+                        "Date collected": 20141202,
+                        "Country": "Ethiopia",
+                        "Host": "Barley",
+                        "Town": "Sinanars",
+                        "Further Location information": "Sinanars"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052de6ca5bb47f62bdea6"
+                        },
+                        "Variety": "Food",
+                        "Rust (YR/SR/LR)": "SR",
+                        "Name/Collector": "Dave Hodson",
+                        "ID": "14.0242",
+                        "Date collected": 20141202,
+                        "Country": "Ethiopia",
+                        "Host": "Barley",
+                        "Town": "Sinanars",
+                        "Further Location information": "Sinanars"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052de6ca5bb47f62bdea8"
+                        },
+                        "Further Location information": "Ali",
+                        "Variety": "Kakasa",
+                        "Rust (YR/SR/LR)": "SR",
+                        "Name/Collector": "Dave Hodson",
+                        "ID": "14.0243",
+                        "Date collected": 20141202,
+                        "Country": "Ethiopia",
+                        "Town": "Ali"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052de6ca5bb47f62bdeaa"
+                        },
+                        "Further Location information": "Robe",
+                        "Variety": "Sufumer",
+                        "Rust (YR/SR/LR)": "SR",
+                        "Name/Collector": "Dave Hodson",
+                        "ID": "14.0244",
+                        "Date collected": 20141202,
+                        "Country": "Ethiopia",
+                        "Town": "Robe"
+                    },
+                    {
+                        "Private comments": "11/08",
+                        "_id": {
+                            "$oid": "55f052df6ca5bb47f62bdeac"
+                        },
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Clare Lewis",
+                        "Further Location information": "JIC, Burkhard",
+                        "Postal code": "NR4 7UH",
+                        "ID": "14.0245",
+                        "UKCPVS ID": "11/08",
+                        "Country": "UK",
+                        "Date collected": 20140108,
+                        "Host": "Wheat"
+                    },
+                    {
+                        "Private comments": "11/13",
+                        "_id": {
+                            "$oid": "55f052df6ca5bb47f62bdeae"
+                        },
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Clare Lewis",
+                        "Further Location information": "JIC, Burkhard",
+                        "Postal code": "NR4 7UH",
+                        "ID": "14.0246",
+                        "UKCPVS ID": "11/13",
+                        "Country": "UK",
+                        "Date collected": 20140108,
+                        "Host": "Wheat"
+                    },
+                    {
+                        "Private comments": "11/75",
+                        "_id": {
+                            "$oid": "55f052df6ca5bb47f62bdeb0"
+                        },
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Clare Lewis",
+                        "Further Location information": "JIC, Burkhard",
+                        "Postal code": "NR4 7UH",
+                        "ID": "14.0247",
+                        "UKCPVS ID": "11/75",
+                        "Country": "UK",
+                        "Date collected": 20140108,
+                        "Host": "Wheat"
+                    },
+                    {
+                        "Private comments": "11/128",
+                        "_id": {
+                            "$oid": "55f052df6ca5bb47f62bdeb2"
+                        },
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Clare Lewis",
+                        "Further Location information": "JIC, Burkhard",
+                        "Postal code": "NR4 7UH",
+                        "ID": "14.0248",
+                        "UKCPVS ID": "11/128",
+                        "Country": "UK",
+                        "Date collected": 20140108,
+                        "Host": "Wheat"
+                    },
+                    {
+                        "Private comments": "11/140",
+                        "_id": {
+                            "$oid": "55f052e06ca5bb47f62bdeb4"
+                        },
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Clare Lewis",
+                        "Further Location information": "JIC, Burkhard",
+                        "Postal code": "NR4 7UH",
+                        "ID": "14.0249",
+                        "UKCPVS ID": "11/140",
+                        "Country": "UK",
+                        "Date collected": 20140108,
+                        "Host": "Wheat"
+                    },
+                    {
+                        "Private comments": "12/86",
+                        "_id": {
+                            "$oid": "55f052e06ca5bb47f62bdeb6"
+                        },
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Clare Lewis",
+                        "Further Location information": "JIC, Burkhard",
+                        "Postal code": "NR4 7UH",
+                        "ID": "14.0250",
+                        "UKCPVS ID": "12/86",
+                        "Country": "UK",
+                        "Date collected": 20140108,
+                        "Host": "Wheat"
+                    },
+                    {
+                        "Private comments": "01/34",
+                        "_id": {
+                            "$oid": "55f052e06ca5bb47f62bdeb8"
+                        },
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Clare Lewis",
+                        "Further Location information": "JIC, Burkhard",
+                        "Postal code": "NR4 7UH",
+                        "ID": "14.0251",
+                        "UKCPVS ID": "01/34",
+                        "Country": "UK",
+                        "Date collected": 20140110,
+                        "Host": "Wheat"
+                    },
+                    {
+                        "_id": {
+                            "$oid": "55f052e06ca5bb47f62bdeba"
+                        },
+                        "Private comments": "78-66 SS1",
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Clare Lewis",
+                        "Further Location information": "JIC, Burkhard",
+                        "Postal code": "NR4 7UH",
+                        "ID": "14.0252",
+                        "Host": "Wheat",
+                        "Country": "UK",
+                        "Date collected": 20140110
+                    },
+                    {
+                        "Private comments": "12/83",
+                        "_id": {
+                            "$oid": "55f052e06ca5bb47f62bdebc"
+                        },
+                        "Rust (YR/SR/LR)": "YR",
+                        "Name/Collector": "Clare Lewis",
+                        "Further Location information": "JIC, Burkhard",
+                        "Postal code": "NR4 7UH",
+                        "ID": "14.0253",
+                        "UKCPVS ID": "12/83",
+                        "Country": "UK",
+                        "Date collected": 20140108,
+                        "Host": "Wheat"
+                    }
+                ]}
+
+
+            ;
 </script>
 
 <%@ include file="footer.jsp" %>
