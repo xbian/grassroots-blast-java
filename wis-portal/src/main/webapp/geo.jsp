@@ -44,6 +44,7 @@
             <div class="input-group">
             <span class="input-group-btn">
                 <button type="button" class="btn btn-default" onclick="displayYRLocationsNoDetails();">Magic</button>
+                <button type="button" class="btn btn-default" onclick="makeYRJSON();">produce JSON</button>
             </span>
             </div>
         </div>
@@ -78,15 +79,29 @@
     }).addTo(map);
 
     function displayYRLocationsNoDetails() {
-        var results = location_list['results'];
-        var samples = sample_list['results'];
-        for (i = 0; i < results.length; i++) {
-            var la = results[i]['location']['latitude'];
-            var lo = results[i]['location']['longitude'];
-            var note = samples[i];
+//        for (i = 0; i < location_list.length; i++) {
+//            var la = location_list[i]['location']['latitude'];
+//            var lo = location_list[i]['location']['longitude'];
+//            var note = sample_list[i];
+//
+//            addPointer(la, lo, JSON.stringify(note));
+//        }
+        makeYRJSON();
+        for (i = 0; i < location_list.length; i++) {
+            var la = sample_list[i]['location']['latitude'];
+            var lo = sample_list[i]['location']['longitude'];
+            var note = sample_list[i];
 
             addPointer(la, lo, JSON.stringify(note));
         }
+    }
+
+    function makeYRJSON() {
+
+        for (i = 0; i < location_list.length; i++) {
+           sample_list[i]['location'] = location_list[i]['location'];
+        }
+        console.log(sample_list);
     }
 
     function addRandomPointer() {
@@ -165,8 +180,8 @@
     }
 
 
-    var location_list = {
-        "results": [
+
+    var location_list = [
             {
                 "_id": {
                     "$oid": "55f052a66ca5bb47f62bdd01"
@@ -3267,10 +3282,8 @@
                     "west_bound": 1.218157
                 }
             }
-        ]
-    };
-    var sample_list = {
-                "results": [
+        ];
+    var sample_list = [
                     {
                         "_id": {
                             "$oid": "55f052a76ca5bb47f62bdd02"
@@ -6962,10 +6975,7 @@
                         "Date collected": 20140108,
                         "Host": "Wheat"
                     }
-                ]}
-
-
-            ;
+                ];
 </script>
 
 <%@ include file="footer.jsp" %>

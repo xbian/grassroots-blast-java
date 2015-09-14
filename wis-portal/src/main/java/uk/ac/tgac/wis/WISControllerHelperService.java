@@ -814,7 +814,7 @@ public class WISControllerHelperService {
       HttpResponse response = httpclient.execute(httpget);
       String out = parseEntity(response.getEntity());
       JSONObject j = JSONObject.fromObject(out);
-        return j;
+      return j;
     }
     catch (ClientProtocolException e) {
       e.printStackTrace();
