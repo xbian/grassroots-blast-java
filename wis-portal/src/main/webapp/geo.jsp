@@ -6,60 +6,59 @@
 
 <div class="container center-block">
 
-    <%--<div class="jumbotron">--%>
     <h2>Yellow Rust Map</h2>
-
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="input-group">
-                <input type="checkbox" value="2014" checked="checked"/> 2014
-                <input type="checkbox" value="2015"/> 2015
-            </div>
-        </div>
-    </div>
-    <br/>
-
-    <div class="row">
-        <div class="col-lg-6">
-
-            <div class="input-group">
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-default" onclick="addRandomPointer();">Add Random Pointer</button>
-                <button type="button" class="btn btn-default" onclick="removePointers();">Remove Pointers</button>
-                <button type="button" class="btn btn-default" onclick="popup('hello! this is a popup.');">Popup</button>
-                <button type="button" class="btn btn-default"
-                        onclick="mapFitBounds([[49.781264,-7.910156],[61.100789, -0.571289]]);">Bound UK
-                </button>
-                <button type="button" class="btn btn-default"
-                        onclick="mapFitBounds([[36.738884,-14.765625],[56.656226, 32.34375]]);">Bound Europe
-                </button>
-            </span>
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <input type="text" class="form-control" size="20"
-                   placeholder="Search"/>
-        </div>
-    </div>
-    <br/>
-
-    <div class="row">
-        <div class="col-lg-6">
-
-            <div class="input-group">
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-default" onclick="displayYRLocations();">Magic</button>
-                <%--<button type="button" class="btn btn-default" onclick="makeTable();">Table</button>--%>
-            </span>
-            </div>
-        </div>
-        <div class="col-lg-6">
-        </div>
-    </div>
-    <br/><br/>
 
     <div id="map"></div>
     <br/>
+
+    <%--<div class="row">--%>
+        <%--<div class="col-lg-6">--%>
+            <%--<div class="input-group">--%>
+                <%--<input type="checkbox" value="2014" checked="checked"/> 2014--%>
+                <%--<input type="checkbox" value="2015"/> 2015--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+    <%--<br/>--%>
+
+    <%--<div class="row">--%>
+        <%--<div class="col-lg-6">--%>
+
+            <%--<div class="input-group">--%>
+            <%--<span class="input-group-btn">--%>
+                <%--<button type="button" class="btn btn-default" onclick="addRandomPointer();">Add Random Pointer</button>--%>
+                <%--<button type="button" class="btn btn-default" onclick="removePointers();">Remove Pointers</button>--%>
+                <%--<button type="button" class="btn btn-default" onclick="popup('hello! this is a popup.');">Popup</button>--%>
+                <%--<button type="button" class="btn btn-default"--%>
+                        <%--onclick="mapFitBounds([[49.781264,-7.910156],[61.100789, -0.571289]]);">Bound UK--%>
+                <%--</button>--%>
+                <%--<button type="button" class="btn btn-default"--%>
+                        <%--onclick="mapFitBounds([[36.738884,-14.765625],[56.656226, 32.34375]]);">Bound Europe--%>
+                <%--</button>--%>
+            <%--</span>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <%--<div class="col-lg-6">--%>
+            <%--<input type="text" class="form-control" size="20"--%>
+                   <%--placeholder="Search"/>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+    <%--<br/>--%>
+
+    <%--<div class="row">--%>
+        <%--<div class="col-lg-6">--%>
+
+            <%--<div class="input-group">--%>
+            <%--<span class="input-group-btn">--%>
+                <%--<button type="button" class="btn btn-default" onclick="displayYRLocations();">Magic</button>--%>
+                <%--&lt;%&ndash;<button type="button" class="btn btn-default" onclick="makeTable();">Table</button>&ndash;%&gt;--%>
+            <%--</span>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <%--<div class="col-lg-6">--%>
+        <%--</div>--%>
+    <%--</div>--%>
+    <%--<br/>--%>
 
     <div id="tableWrapper">
         <table id="resultTable"></table>
@@ -71,7 +70,39 @@
 <script type="text/javascript">
 
     jQuery(document).ready(function () {
+
+        displayYRLocations();
+        var yrtable = jQuery('#resultTable').dataTable({
+            data: sample_list,
+            "columns": [
+                {data: "ID", title: "ID"},
+                {data: "Rust (YR/SR/LR)", title: "Rust (YR/SR/LR)", "sDefaultContent": "Unknown"},
+                {data: "Name/Collector", title: "Name/Collector", "sDefaultContent": ""},
+                {data: "Further Location information", title: "Further Location information", "sDefaultContent": ""},
+                {data: "Postal code", title: "Postal code", "sDefaultContent": ""},
+                {data: "UKCPVS ID", title: "UKCPVS ID", "sDefaultContent": ""},
+                {data: "Country", title: "Country", "sDefaultContent": ""},
+                {data: "Date collected", title: "Date collected", "sDefaultContent": ""},
+                {data: "Host", title: "Host", "sDefaultContent": ""},
+                {data: "RNA-seq? (Selected/In progress/Completed/Failed)", title: "RNA-seq", "sDefaultContent": ""},
+                {data: "location.latitude", title: "Latitude"},
+                {data: "location.longitude", title: "Longitude"}
+            ]
+        });
+        jQuery('#resultTable').on('search.dt', function () {
+            removePointers();
+            var api = yrtable.api();
+            //uppercase used for case insensitive search
+            var searchTerm = api.search().toUpperCase();
+            var filteredData = api.data()
+                    .filter(function (value, index) {
+                                return value.toString().toUpperCase().indexOf(searchTerm) !== -1;
+                            }).toArray();
+            displayYRLocationsFiltered(filteredData);
+            console.log(filteredData);
+        });
     });
+
 
     var markers = new Array();
 
@@ -83,6 +114,27 @@
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
         maxZoom: 18
     }).addTo(map);
+
+    function displayYRLocationsFiltered(array) {
+        for (i = 0; i < array.length; i++) {
+            var la = array[i]['location']['latitude'];
+            var lo = array[i]['location']['longitude'];
+            var note = '<b>ID: </b>' + sample_list[i]['ID'] + '<br/>'
+                       + '<b>Rust (YR/SR/LR): </b>' + sample_list[i]['Rust (YR/SR/LR)'] + '<br/>'
+                       + '<b>Name/Collector: </b>' + sample_list[i]['Name/Collector'] + '<br/>'
+                       + '<b>Postal code: </b>' + sample_list[i]['Postal code'] + '<br/>'
+                       + '<b>UKCPVS ID: </b>' + sample_list[i]['UKCPVS ID'] + '<br/>'
+                       + '<b>Country: </b>' + sample_list[i]['Country'] + '<br/>'
+                       + '<b>Date collected: </b>' + sample_list[i]['Date collected'] + '<br/>'
+                       + '<b>Host: </b>' + sample_list[i]['Host'] + '<br/>'
+                       + '<b>RNA-seq: </b>' + sample_list[i]['RNA-seq? (Selected/In progress/Completed/Failed)'] + '<br/>'
+                       + '<b>Coordinates: </b>' + sample_list[i]['location']['latitude'] + ', ' + sample_list[i]['location']['longitude'] + '<br/>'
+                       + '<b>Further Location information: </b>' + sample_list[i]['Further Location information'];
+
+            addPointer(la, lo, note);
+        }
+//        makeYRDatatable(sample_list);
+    }
 
     function displayYRLocations() {
         makeYRJSON();
@@ -97,12 +149,13 @@
                        + '<b>Country: </b>' + sample_list[i]['Country'] + '<br/>'
                        + '<b>Date collected: </b>' + sample_list[i]['Date collected'] + '<br/>'
                        + '<b>Host: </b>' + sample_list[i]['Host'] + '<br/>'
-                       + '<b>Coordinates: </b>' + sample_list[i]['location']['latitude'] + ' + ' + sample_list[i]['location']['longitude'] + '<br/>'
+                       + '<b>RNA-seq: </b>' + sample_list[i]['RNA-seq? (Selected/In progress/Completed/Failed)'] + '<br/>'
+                       + '<b>Coordinates: </b>' + sample_list[i]['location']['latitude'] + ', ' + sample_list[i]['location']['longitude'] + '<br/>'
                        + '<b>Further Location information: </b>' + sample_list[i]['Further Location information'];
 
             addPointer(la, lo, note);
         }
-        makeYRDatatable(sample_list);
+//        makeYRDatatable(sample_list);
     }
 
     function makeTable() {
@@ -111,7 +164,7 @@
     }
 
     function makeYRDatatable(array) {
-        jQuery('#resultTable').dataTable({
+        yrtable = jQuery('#resultTable').dataTable({
             data: array,
             "columns": [
                 {data: "ID", title: "ID"},
@@ -123,12 +176,35 @@
                 {data: "Country", title: "Country", "sDefaultContent": ""},
                 {data: "Date collected", title: "Date collected", "sDefaultContent": ""},
                 {data: "Host", title: "Host", "sDefaultContent": ""},
+                {data: "RNA-seq? (Selected/In progress/Completed/Failed)", title: "RNA-seq", "sDefaultContent": ""},
                 {data: "location.latitude", title: "location.latitude"},
                 {data: "location.longitude", title: "location.longitude"}
             ],
             destroy: true
         });
 
+    }
+
+    function filteredData(){
+        jQuery.fn.dataTableExt.oApi.fnGetFilteredData = function ( oSettings ) {
+            var a = [];
+            for ( var i=0, iLen=oSettings.aiDisplay.length ; i<iLen ; i++ ) {
+                a.push(oSettings.aoData[ oSettings.aiDisplay[i] ]._aData);
+            }
+            return a;
+        }
+    }
+
+    function getDate(yyyymmdd) {
+        console.log(yyyymmdd);
+        if (yyyymmdd == undefined || yyyymmdd.length <7){
+            return "Not Known"
+        } else {
+            var dt = yyyymmdd.substring(6, 7);
+            var mon = yyyymmdd.substring(4, 5);
+            var yr = yyyymmdd.substring(0, 3);
+            return yr + '-' + mon + '-' + dt;
+        }
     }
 
     function makeYRJSON() {
@@ -154,6 +230,9 @@
     function removePointers() {
         map.removeLayer(markersGroup);
         markersGroup = new L.MarkerClusterGroup();
+    }
+
+    function removeTable(){
         jQuery('#resultTable').dataTable().fnDestroy();
         jQuery('#tableWrapper').html('<table id="resultTable"></table>');
     }
