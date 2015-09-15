@@ -70,13 +70,13 @@
 <script type="text/javascript">
 
     jQuery(document).ready(function () {
-
+        makeYRJSON();
         displayYRLocations();
         var yrtable = jQuery('#resultTable').dataTable({
             data: sample_list,
             "columns": [
                 {data: "ID", title: "ID"},
-                {data: "Rust (YR/SR/LR)", title: "Rust (YR/SR/LR)", "sDefaultContent": "Unknown"},
+                {data: "Rust (YR/SR/LR)", title: "Rust (YR/SR/LR)", "sDefaultContent": ""},
                 {data: "Name/Collector", title: "Name/Collector", "sDefaultContent": ""},
                 {data: "Further Location information", title: "Further Location information", "sDefaultContent": ""},
                 {data: "Postal code", title: "Postal code", "sDefaultContent": ""},
@@ -96,10 +96,9 @@
             var searchTerm = api.search().toUpperCase();
             var filteredData = api.data()
                     .filter(function (value, index) {
-                                return value.toString().toUpperCase().indexOf(searchTerm) !== -1;
+                                return JSON.stringify(value).toString().toUpperCase().indexOf(searchTerm) !== -1;
                             }).toArray();
             displayYRLocationsFiltered(filteredData);
-            console.log(filteredData);
         });
     });
 
@@ -133,11 +132,9 @@
 
             addPointer(la, lo, note);
         }
-//        makeYRDatatable(sample_list);
     }
 
     function displayYRLocations() {
-        makeYRJSON();
         for (i = 0; i < location_list.length; i++) {
             var la = sample_list[i]['location']['latitude'];
             var lo = sample_list[i]['location']['longitude'];
@@ -155,7 +152,6 @@
 
             addPointer(la, lo, note);
         }
-//        makeYRDatatable(sample_list);
     }
 
     function makeTable() {
