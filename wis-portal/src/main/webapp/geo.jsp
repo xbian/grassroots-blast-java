@@ -60,7 +60,10 @@
 
     <div id="map"></div>
     <br/>
-        <div id="tableWrapper"><table id="resultTable"></table></div>
+
+    <div id="tableWrapper">
+        <table id="resultTable"></table>
+    </div>
 </div>
 
 </div>
@@ -86,9 +89,18 @@
         for (i = 0; i < location_list.length; i++) {
             var la = sample_list[i]['location']['latitude'];
             var lo = sample_list[i]['location']['longitude'];
-            var note = sample_list[i];
+            var note = '<b>ID: </b>' + sample_list[i]['ID'] + '<br/>'
+                       + '<b>Rust (YR/SR/LR): </b>' + sample_list[i]['Rust (YR/SR/LR)'] + '<br/>'
+                       + '<b>Name/Collector: </b>' + sample_list[i]['Name/Collector'] + '<br/>'
+                       + '<b>Postal code: </b>' + sample_list[i]['Postal code'] + '<br/>'
+                       + '<b>UKCPVS ID: </b>' + sample_list[i]['UKCPVS ID'] + '<br/>'
+                       + '<b>Country: </b>' + sample_list[i]['Country'] + '<br/>'
+                       + '<b>Date collected: </b>' + sample_list[i]['Date collected'] + '<br/>'
+                       + '<b>Host: </b>' + sample_list[i]['Host'] + '<br/>'
+                       + '<b>Coordinates: </b>' + sample_list[i]['location']['latitude'] + ' + ' + sample_list[i]['location']['longitude'] + '<br/>'
+                       + '<b>Further Location information: </b>' + sample_list[i]['Further Location information'];
 
-            addPointer(la, lo, JSON.stringify(note));
+            addPointer(la, lo, note);
         }
         makeYRDatatable(sample_list);
     }
@@ -103,7 +115,7 @@
             data: array,
             "columns": [
                 {data: "ID", title: "ID"},
-                {data: "Rust (YR/SR/LR)", title: "Rust (YR/SR/LR)", "sDefaultContent": "YR"},
+                {data: "Rust (YR/SR/LR)", title: "Rust (YR/SR/LR)", "sDefaultContent": "Unknown"},
                 {data: "Name/Collector", title: "Name/Collector", "sDefaultContent": ""},
                 {data: "Further Location information", title: "Further Location information", "sDefaultContent": ""},
                 {data: "Postal code", title: "Postal code", "sDefaultContent": ""},
