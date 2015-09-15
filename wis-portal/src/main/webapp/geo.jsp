@@ -60,7 +60,7 @@
 
     <div id="map"></div>
     <br/>
-    <table class="display" cellspacing="0" width="100%" id="resultTable"></table>
+        <div id="tableWrapper"><table id="resultTable"></table></div>
 </div>
 
 </div>
@@ -96,7 +96,6 @@
     function makeTable() {
         makeYRJSON();
         makeYRDatatable(sample_list);
-
     }
 
     function makeYRDatatable(array) {
@@ -104,14 +103,14 @@
             data: array,
             "columns": [
                 {data: "ID", title: "ID"},
-                {data: "Rust (YR/SR/LR)", title: "Rust (YR/SR/LR)"},
-                {data: "Name/Collector", title: "Name/Collector"},
-                {data: "Further Location information", title: "Further Location information"},
-                {data: "Postal code", title: "Postal code"},
-                {data: "UKCPVS ID", title: "UKCPVS ID"},
-                {data: "Country", title: "Country"},
-                {data: "Date collected", title: "Date collected"},
-                {data: "Host", title: "Host"},
+                {data: "Rust (YR/SR/LR)", title: "Rust (YR/SR/LR)", "sDefaultContent": "YR"},
+                {data: "Name/Collector", title: "Name/Collector", "sDefaultContent": ""},
+                {data: "Further Location information", title: "Further Location information", "sDefaultContent": ""},
+                {data: "Postal code", title: "Postal code", "sDefaultContent": ""},
+                {data: "UKCPVS ID", title: "UKCPVS ID", "sDefaultContent": ""},
+                {data: "Country", title: "Country", "sDefaultContent": ""},
+                {data: "Date collected", title: "Date collected", "sDefaultContent": ""},
+                {data: "Host", title: "Host", "sDefaultContent": ""},
                 {data: "location.latitude", title: "location.latitude"},
                 {data: "location.longitude", title: "location.longitude"}
             ],
@@ -144,6 +143,7 @@
         map.removeLayer(markersGroup);
         markersGroup = new L.MarkerClusterGroup();
         jQuery('#resultTable').dataTable().fnDestroy();
+        jQuery('#tableWrapper').html('<table id="resultTable"></table>');
     }
 
     function popup(msg) {
