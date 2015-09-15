@@ -12,51 +12,51 @@
     <br/>
 
     <%--<div class="row">--%>
-        <%--<div class="col-lg-6">--%>
-            <%--<div class="input-group">--%>
-                <%--<input type="checkbox" value="2014" checked="checked"/> 2014--%>
-                <%--<input type="checkbox" value="2015"/> 2015--%>
-            <%--</div>--%>
-        <%--</div>--%>
+    <%--<div class="col-lg-6">--%>
+    <%--<div class="input-group">--%>
+    <%--<input type="checkbox" value="2014" checked="checked"/> 2014--%>
+    <%--<input type="checkbox" value="2015"/> 2015--%>
+    <%--</div>--%>
+    <%--</div>--%>
     <%--</div>--%>
     <%--<br/>--%>
 
     <%--<div class="row">--%>
-        <%--<div class="col-lg-6">--%>
+    <%--<div class="col-lg-6">--%>
 
-            <%--<div class="input-group">--%>
-            <%--<span class="input-group-btn">--%>
-                <%--<button type="button" class="btn btn-default" onclick="addRandomPointer();">Add Random Pointer</button>--%>
-                <%--<button type="button" class="btn btn-default" onclick="removePointers();">Remove Pointers</button>--%>
-                <%--<button type="button" class="btn btn-default" onclick="popup('hello! this is a popup.');">Popup</button>--%>
-                <%--<button type="button" class="btn btn-default"--%>
-                        <%--onclick="mapFitBounds([[49.781264,-7.910156],[61.100789, -0.571289]]);">Bound UK--%>
-                <%--</button>--%>
-                <%--<button type="button" class="btn btn-default"--%>
-                        <%--onclick="mapFitBounds([[36.738884,-14.765625],[56.656226, 32.34375]]);">Bound Europe--%>
-                <%--</button>--%>
-            <%--</span>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="col-lg-6">--%>
-            <%--<input type="text" class="form-control" size="20"--%>
-                   <%--placeholder="Search"/>--%>
-        <%--</div>--%>
+    <%--<div class="input-group">--%>
+    <%--<span class="input-group-btn">--%>
+    <%--<button type="button" class="btn btn-default" onclick="addRandomPointer();">Add Random Pointer</button>--%>
+    <%--<button type="button" class="btn btn-default" onclick="removePointers();">Remove Pointers</button>--%>
+    <%--<button type="button" class="btn btn-default" onclick="popup('hello! this is a popup.');">Popup</button>--%>
+    <%--<button type="button" class="btn btn-default"--%>
+    <%--onclick="mapFitBounds([[49.781264,-7.910156],[61.100789, -0.571289]]);">Bound UK--%>
+    <%--</button>--%>
+    <%--<button type="button" class="btn btn-default"--%>
+    <%--onclick="mapFitBounds([[36.738884,-14.765625],[56.656226, 32.34375]]);">Bound Europe--%>
+    <%--</button>--%>
+    <%--</span>--%>
+    <%--</div>--%>
+    <%--</div>--%>
+    <%--<div class="col-lg-6">--%>
+    <%--<input type="text" class="form-control" size="20"--%>
+    <%--placeholder="Search"/>--%>
+    <%--</div>--%>
     <%--</div>--%>
     <%--<br/>--%>
 
     <%--<div class="row">--%>
-        <%--<div class="col-lg-6">--%>
+    <%--<div class="col-lg-6">--%>
 
-            <%--<div class="input-group">--%>
-            <%--<span class="input-group-btn">--%>
-                <%--<button type="button" class="btn btn-default" onclick="displayYRLocations();">Magic</button>--%>
-                <%--&lt;%&ndash;<button type="button" class="btn btn-default" onclick="makeTable();">Table</button>&ndash;%&gt;--%>
-            <%--</span>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="col-lg-6">--%>
-        <%--</div>--%>
+    <%--<div class="input-group">--%>
+    <%--<span class="input-group-btn">--%>
+    <%--<button type="button" class="btn btn-default" onclick="displayYRLocations();">Magic</button>--%>
+    <%--&lt;%&ndash;<button type="button" class="btn btn-default" onclick="makeTable();">Table</button>&ndash;%&gt;--%>
+    <%--</span>--%>
+    <%--</div>--%>
+    <%--</div>--%>
+    <%--<div class="col-lg-6">--%>
+    <%--</div>--%>
     <%--</div>--%>
     <%--<br/>--%>
 
@@ -118,7 +118,7 @@
         for (i = 0; i < array.length; i++) {
             var la = array[i]['location']['latitude'];
             var lo = array[i]['location']['longitude'];
-            var note = '<b>ID: </b>' + sample_list[i]['ID'] + '<br/>'
+            var note = '<b>ID: </b>' + sample_list[i]['ID'] + ' la: ' + la + ' lo: ' + lo + '<br/>'
                        + '<b>Rust (YR/SR/LR): </b>' + sample_list[i]['Rust (YR/SR/LR)'] + '<br/>'
                        + '<b>Name/Collector: </b>' + sample_list[i]['Name/Collector'] + '<br/>'
                        + '<b>Postal code: </b>' + sample_list[i]['Postal code'] + '<br/>'
@@ -138,7 +138,7 @@
         for (i = 0; i < location_list.length; i++) {
             var la = sample_list[i]['location']['latitude'];
             var lo = sample_list[i]['location']['longitude'];
-            var note = '<b>ID: </b>' + sample_list[i]['ID'] + '<br/>'
+            var note = '<b>ID: </b>' + sample_list[i]['ID'] + la + lo + '<br/>'
                        + '<b>Rust (YR/SR/LR): </b>' + sample_list[i]['Rust (YR/SR/LR)'] + '<br/>'
                        + '<b>Name/Collector: </b>' + sample_list[i]['Name/Collector'] + '<br/>'
                        + '<b>Postal code: </b>' + sample_list[i]['Postal code'] + '<br/>'
@@ -181,11 +181,11 @@
 
     }
 
-    function filteredData(){
-        jQuery.fn.dataTableExt.oApi.fnGetFilteredData = function ( oSettings ) {
+    function filteredData() {
+        jQuery.fn.dataTableExt.oApi.fnGetFilteredData = function (oSettings) {
             var a = [];
-            for ( var i=0, iLen=oSettings.aiDisplay.length ; i<iLen ; i++ ) {
-                a.push(oSettings.aoData[ oSettings.aiDisplay[i] ]._aData);
+            for (var i = 0, iLen = oSettings.aiDisplay.length; i < iLen; i++) {
+                a.push(oSettings.aoData[oSettings.aiDisplay[i]]._aData);
             }
             return a;
         }
@@ -193,9 +193,10 @@
 
     function getDate(yyyymmdd) {
         console.log(yyyymmdd);
-        if (yyyymmdd == undefined || yyyymmdd.length <7){
+        if (yyyymmdd == undefined || yyyymmdd.length < 7) {
             return "Not Known"
-        } else {
+        }
+        else {
             var dt = yyyymmdd.substring(6, 7);
             var mon = yyyymmdd.substring(4, 5);
             var yr = yyyymmdd.substring(0, 3);
@@ -204,8 +205,11 @@
     }
 
     function makeYRJSON() {
-        for (i = 0; i < location_list.length; i++) {
-            sample_list[i]['location'] = location_list[i]['location'];
+        for (i = 0; i < sample_list.length; i++) {
+            for (j = 0; j < location_list.length; j++)
+                if (sample_list[i]['ID'] == location_list[j]['ID']) {
+                    sample_list[i]['location'] = location_list[j]['location'];
+                }
         }
     }
 
@@ -228,7 +232,7 @@
         markersGroup = new L.MarkerClusterGroup();
     }
 
-    function removeTable(){
+    function removeTable() {
         jQuery('#resultTable').dataTable().fnDestroy();
         jQuery('#tableWrapper').html('<table id="resultTable"></table>');
     }
