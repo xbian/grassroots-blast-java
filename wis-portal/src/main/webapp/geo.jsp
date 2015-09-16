@@ -15,14 +15,14 @@
         <div class="col-lg-6">
 
             <div class="input-group">
-    <span class="input-group-btn">
-    <button type="button" class="btn btn-default"
-            onclick="mapFitBounds([[49.781264,-7.910156],[61.100789, -0.571289]]);">Zoom UK
-    </button>
-    <button type="button" class="btn btn-default"
-            onclick="mapFitBounds([[36.738884,-14.765625],[56.656226, 32.34375]]);">Zoom Europe
-    </button>
-    </span>
+               <span class="input-group-btn">
+                   <button type="button" class="btn btn-default"
+                           onclick="mapFitBounds([[49.781264,-7.910156],[61.100789, -0.571289]]);">Zoom UK
+                   </button>
+                   <button type="button" class="btn btn-default"
+                           onclick="mapFitBounds([[36.738884,-14.765625],[56.656226, 32.34375]]);">Zoom Europe
+                   </button>
+               </span>
             </div>
         </div>
     </div>
@@ -31,8 +31,6 @@
     <div id="tableWrapper">
         <table id="resultTable"></table>
     </div>
-</div>
-
 </div>
 
 <script type="text/javascript">
@@ -90,9 +88,9 @@
         for (i = 0; i < array.length; i++) {
             var la = array[i]['location']['latitude'];
             var lo = array[i]['location']['longitude'];
-            var note = '<b>Country: </b>' + sample_list[i]['Country'] + '<br/>'
+            var note = '<b>ID: </b>' + sample_list[i]['ID'] + '<br/>'
                        + '<b>UKCPVS ID: </b>' + sample_list[i]['UKCPVS ID'] + '<br/>'
-                       + '<b>ID: </b>' + sample_list[i]['ID'] + ' la: ' + la + ' lo: ' + lo + '<br/>'
+                       + '<b>Country: </b>' + sample_list[i]['Country'] + '<br/>'
                        + '<b>Rust (YR/SR/LR): </b>' + sample_list[i]['Rust (YR/SR/LR)'] + '<br/>'
                        + '<b>Name/Collector: </b>' + sample_list[i]['Name/Collector'] + '<br/>'
                        + '<b>Postal code: </b>' + sample_list[i]['Postal code'] + '<br/>'
@@ -101,7 +99,6 @@
                        + '<b>RNA-seq: </b>' + sample_list[i]['RNA-seq? (Selected/In progress/Completed/Failed)'] + '<br/>'
                        + '<b>Coordinates: </b>' + sample_list[i]['location']['latitude'] + ', ' + sample_list[i]['location']['longitude'] + '<br/>'
                        + '<b>Further Location information: </b>' + sample_list[i]['Further Location information'];
-
             addPointer(la, lo, note);
         }
     }
@@ -167,40 +164,6 @@
     function mapFitBounds(list) {
         map.fitBounds(list);
     }
-
-
-    //    var marker = L.marker([52.621615, 1.219]).addTo(map);
-    //
-    //    var circle = L.circle([52.621615, 1.20], 500, {
-    //        color: 'red',
-    //        fillColor: '#f03',
-    //        fillOpacity: 0.5
-    //    }).addTo(map);
-    //
-    //    var circle1 = L.circle([52.621615, 1.23], 200, {
-    //        color: 'green',
-    //        fillColor: 'green',
-    //        fillOpacity: 0.5
-    //    }).addTo(map);
-    //
-    //    var polygon = L.polygon([
-    //        [52.61, 1.19],
-    //        [52.61, 1.22],
-    //        [52.59, 1.205]
-    //    ]).addTo(map);
-    //
-    //    var square = L.rectangle([
-    //        [52.66, 1.19],
-    //        [52.66, 1.22],
-    //        [52.64, 1.19],
-    //        [52.64, 1.22]
-    //    ]).addTo(map);
-    //
-    //    marker.bindPopup("TGAC, Cannot be removed!");
-    //    circle.bindPopup("West of TGAC");
-    //    circle1.bindPopup("East of TGAC");
-    //    polygon.bindPopup("South of TGAC");
-    //    square.bindPopup("North of TGAC");
 
     function randomNumberFromInterval(min, max) {
         return Math.random() * (max - min + 1) + min;
