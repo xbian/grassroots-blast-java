@@ -11,54 +11,22 @@
     <div id="map"></div>
     <br/>
 
-    <%--<div class="row">--%>
-    <%--<div class="col-lg-6">--%>
-    <%--<div class="input-group">--%>
-    <%--<input type="checkbox" value="2014" checked="checked"/> 2014--%>
-    <%--<input type="checkbox" value="2015"/> 2015--%>
-    <%--</div>--%>
-    <%--</div>--%>
-    <%--</div>--%>
-    <%--<br/>--%>
+    <div class="row">
+        <div class="col-lg-6">
 
-    <%--<div class="row">--%>
-    <%--<div class="col-lg-6">--%>
-
-    <%--<div class="input-group">--%>
-    <%--<span class="input-group-btn">--%>
-    <%--<button type="button" class="btn btn-default" onclick="addRandomPointer();">Add Random Pointer</button>--%>
-    <%--<button type="button" class="btn btn-default" onclick="removePointers();">Remove Pointers</button>--%>
-    <%--<button type="button" class="btn btn-default" onclick="popup('hello! this is a popup.');">Popup</button>--%>
-    <%--<button type="button" class="btn btn-default"--%>
-    <%--onclick="mapFitBounds([[49.781264,-7.910156],[61.100789, -0.571289]]);">Bound UK--%>
-    <%--</button>--%>
-    <%--<button type="button" class="btn btn-default"--%>
-    <%--onclick="mapFitBounds([[36.738884,-14.765625],[56.656226, 32.34375]]);">Bound Europe--%>
-    <%--</button>--%>
-    <%--</span>--%>
-    <%--</div>--%>
-    <%--</div>--%>
-    <%--<div class="col-lg-6">--%>
-    <%--<input type="text" class="form-control" size="20"--%>
-    <%--placeholder="Search"/>--%>
-    <%--</div>--%>
-    <%--</div>--%>
-    <%--<br/>--%>
-
-    <%--<div class="row">--%>
-    <%--<div class="col-lg-6">--%>
-
-    <%--<div class="input-group">--%>
-    <%--<span class="input-group-btn">--%>
-    <%--<button type="button" class="btn btn-default" onclick="displayYRLocations();">Magic</button>--%>
-    <%--&lt;%&ndash;<button type="button" class="btn btn-default" onclick="makeTable();">Table</button>&ndash;%&gt;--%>
-    <%--</span>--%>
-    <%--</div>--%>
-    <%--</div>--%>
-    <%--<div class="col-lg-6">--%>
-    <%--</div>--%>
-    <%--</div>--%>
-    <%--<br/>--%>
+            <div class="input-group">
+    <span class="input-group-btn">
+    <button type="button" class="btn btn-default"
+            onclick="mapFitBounds([[49.781264,-7.910156],[61.100789, -0.571289]]);">Zoom UK
+    </button>
+    <button type="button" class="btn btn-default"
+            onclick="mapFitBounds([[36.738884,-14.765625],[56.656226, 32.34375]]);">Zoom Europe
+    </button>
+    </span>
+            </div>
+        </div>
+    </div>
+    <br/>
 
     <div id="tableWrapper">
         <table id="resultTable"></table>
@@ -71,22 +39,26 @@
 
     jQuery(document).ready(function () {
         makeYRJSON();
-        displayYRLocations();
+        displayYRLocations(sample_list);
         var yrtable = jQuery('#resultTable').dataTable({
             data: sample_list,
             "columns": [
                 {data: "ID", title: "ID"},
-                {data: "Rust (YR/SR/LR)", title: "Rust (YR/SR/LR)", "sDefaultContent": ""},
+                {data: "Country", title: "Country", "sDefaultContent": ""},
+                {data: "UKCPVS ID", title: "UKCPVS ID", "sDefaultContent": ""},
+                {data: "Rust (YR/SR/LR)", title: "Rust (YR/SR/LR)", "sDefaultContent": "Unknown"},
                 {data: "Name/Collector", title: "Name/Collector", "sDefaultContent": ""},
                 {data: "Further Location information", title: "Further Location information", "sDefaultContent": ""},
                 {data: "Postal code", title: "Postal code", "sDefaultContent": ""},
-                {data: "UKCPVS ID", title: "UKCPVS ID", "sDefaultContent": ""},
-                {data: "Country", title: "Country", "sDefaultContent": ""},
                 {data: "Date collected", title: "Date collected", "sDefaultContent": ""},
                 {data: "Host", title: "Host", "sDefaultContent": ""},
                 {data: "RNA-seq? (Selected/In progress/Completed/Failed)", title: "RNA-seq", "sDefaultContent": ""},
-                {data: "location.latitude", title: "Latitude"},
-                {data: "location.longitude", title: "Longitude"}
+                {
+                    title: "Coordinates",
+                    "render": function (data, type, full, meta) {
+                        return full.location.latitude + ', ' + full.location.longitude;
+                    }
+                }
             ]
         });
         jQuery('#resultTable').on('search.dt', function () {
@@ -98,7 +70,7 @@
                     .filter(function (value, index) {
                                 return JSON.stringify(value).toString().toUpperCase().indexOf(searchTerm) !== -1;
                             }).toArray();
-            displayYRLocationsFiltered(filteredData);
+            displayYRLocations(filteredData);
         });
     });
 
@@ -114,36 +86,16 @@
         maxZoom: 18
     }).addTo(map);
 
-    function displayYRLocationsFiltered(array) {
+    function displayYRLocations(array) {
         for (i = 0; i < array.length; i++) {
             var la = array[i]['location']['latitude'];
             var lo = array[i]['location']['longitude'];
-            var note = '<b>ID: </b>' + sample_list[i]['ID'] + ' la: ' + la + ' lo: ' + lo + '<br/>'
+            var note = '<b>Country: </b>' + sample_list[i]['Country'] + '<br/>'
+                       + '<b>UKCPVS ID: </b>' + sample_list[i]['UKCPVS ID'] + '<br/>'
+                       + '<b>ID: </b>' + sample_list[i]['ID'] + ' la: ' + la + ' lo: ' + lo + '<br/>'
                        + '<b>Rust (YR/SR/LR): </b>' + sample_list[i]['Rust (YR/SR/LR)'] + '<br/>'
                        + '<b>Name/Collector: </b>' + sample_list[i]['Name/Collector'] + '<br/>'
                        + '<b>Postal code: </b>' + sample_list[i]['Postal code'] + '<br/>'
-                       + '<b>UKCPVS ID: </b>' + sample_list[i]['UKCPVS ID'] + '<br/>'
-                       + '<b>Country: </b>' + sample_list[i]['Country'] + '<br/>'
-                       + '<b>Date collected: </b>' + sample_list[i]['Date collected'] + '<br/>'
-                       + '<b>Host: </b>' + sample_list[i]['Host'] + '<br/>'
-                       + '<b>RNA-seq: </b>' + sample_list[i]['RNA-seq? (Selected/In progress/Completed/Failed)'] + '<br/>'
-                       + '<b>Coordinates: </b>' + sample_list[i]['location']['latitude'] + ', ' + sample_list[i]['location']['longitude'] + '<br/>'
-                       + '<b>Further Location information: </b>' + sample_list[i]['Further Location information'];
-
-            addPointer(la, lo, note);
-        }
-    }
-
-    function displayYRLocations() {
-        for (i = 0; i < location_list.length; i++) {
-            var la = sample_list[i]['location']['latitude'];
-            var lo = sample_list[i]['location']['longitude'];
-            var note = '<b>ID: </b>' + sample_list[i]['ID'] + la + lo + '<br/>'
-                       + '<b>Rust (YR/SR/LR): </b>' + sample_list[i]['Rust (YR/SR/LR)'] + '<br/>'
-                       + '<b>Name/Collector: </b>' + sample_list[i]['Name/Collector'] + '<br/>'
-                       + '<b>Postal code: </b>' + sample_list[i]['Postal code'] + '<br/>'
-                       + '<b>UKCPVS ID: </b>' + sample_list[i]['UKCPVS ID'] + '<br/>'
-                       + '<b>Country: </b>' + sample_list[i]['Country'] + '<br/>'
                        + '<b>Date collected: </b>' + sample_list[i]['Date collected'] + '<br/>'
                        + '<b>Host: </b>' + sample_list[i]['Host'] + '<br/>'
                        + '<b>RNA-seq: </b>' + sample_list[i]['RNA-seq? (Selected/In progress/Completed/Failed)'] + '<br/>'
@@ -157,38 +109,6 @@
     function makeTable() {
         makeYRJSON();
         makeYRDatatable(sample_list);
-    }
-
-    function makeYRDatatable(array) {
-        yrtable = jQuery('#resultTable').dataTable({
-            data: array,
-            "columns": [
-                {data: "ID", title: "ID"},
-                {data: "Rust (YR/SR/LR)", title: "Rust (YR/SR/LR)", "sDefaultContent": "Unknown"},
-                {data: "Name/Collector", title: "Name/Collector", "sDefaultContent": ""},
-                {data: "Further Location information", title: "Further Location information", "sDefaultContent": ""},
-                {data: "Postal code", title: "Postal code", "sDefaultContent": ""},
-                {data: "UKCPVS ID", title: "UKCPVS ID", "sDefaultContent": ""},
-                {data: "Country", title: "Country", "sDefaultContent": ""},
-                {data: "Date collected", title: "Date collected", "sDefaultContent": ""},
-                {data: "Host", title: "Host", "sDefaultContent": ""},
-                {data: "RNA-seq? (Selected/In progress/Completed/Failed)", title: "RNA-seq", "sDefaultContent": ""},
-                {data: "location.latitude", title: "location.latitude"},
-                {data: "location.longitude", title: "location.longitude"}
-            ],
-            destroy: true
-        });
-
-    }
-
-    function filteredData() {
-        jQuery.fn.dataTableExt.oApi.fnGetFilteredData = function (oSettings) {
-            var a = [];
-            for (var i = 0, iLen = oSettings.aiDisplay.length; i < iLen; i++) {
-                a.push(oSettings.aoData[oSettings.aiDisplay[i]]._aData);
-            }
-            return a;
-        }
     }
 
     function getDate(yyyymmdd) {
@@ -1533,8 +1453,8 @@
             "ID": "14.0105",
             "location": {
                 "east_bound": -85.4354029,
-                "latitude": 43.4908606,
-                "longitude": -85.4439283,
+                "latitude": 53.744513,
+                "longitude": -1.598045,
                 "south_bound": 43.483625,
                 "north_bound": 43.4980229,
                 "west_bound": -85.455566
@@ -1547,8 +1467,8 @@
             "ID": "14.0106",
             "location": {
                 "east_bound": -85.4354029,
-                "latitude": 43.4908606,
-                "longitude": -85.4439283,
+                "latitude": 53.744513,
+                "longitude": -1.598045,
                 "south_bound": 43.483625,
                 "north_bound": 43.4980229,
                 "west_bound": -85.455566
@@ -1561,8 +1481,8 @@
             "ID": "14.0107",
             "location": {
                 "east_bound": -85.4354029,
-                "latitude": 43.4908606,
-                "longitude": -85.4439283,
+                "latitude": 53.744513,
+                "longitude": -1.598045,
                 "south_bound": 43.483625,
                 "north_bound": 43.4980229,
                 "west_bound": -85.455566
