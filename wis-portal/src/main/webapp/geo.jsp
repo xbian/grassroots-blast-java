@@ -46,7 +46,7 @@
                 {data: "UKCPVS ID", title: "UKCPVS ID", "sDefaultContent": ""},
                 {data: "Rust (YR/SR/LR)", title: "Rust (YR/SR/LR)", "sDefaultContent": "Unknown"},
                 {data: "Name/Collector", title: "Name/Collector", "sDefaultContent": ""},
-                {data: "Further Location information", title: "Further Location information", "sDefaultContent": ""},
+                {data: "Further Location information", title: "Further Location info", "sDefaultContent": ""},
                 {data: "Postal code", title: "Postal code", "sDefaultContent": ""},
                 {data: "Date collected", title: "Date collected", "sDefaultContent": ""},
                 {data: "Host", title: "Host", "sDefaultContent": ""},
@@ -89,8 +89,8 @@
             var la = array[i]['location']['latitude'];
             var lo = array[i]['location']['longitude'];
             var note = '<b>ID: </b>' + sample_list[i]['ID'] + '<br/>'
-                       + '<b>UKCPVS ID: </b>' + sample_list[i]['UKCPVS ID'] + '<br/>'
                        + '<b>Country: </b>' + sample_list[i]['Country'] + '<br/>'
+                       + '<b>UKCPVS ID: </b>' + sample_list[i]['UKCPVS ID'] + '<br/>'
                        + '<b>Rust (YR/SR/LR): </b>' + sample_list[i]['Rust (YR/SR/LR)'] + '<br/>'
                        + '<b>Name/Collector: </b>' + sample_list[i]['Name/Collector'] + '<br/>'
                        + '<b>Postal code: </b>' + sample_list[i]['Postal code'] + '<br/>'
@@ -98,7 +98,7 @@
                        + '<b>Host: </b>' + sample_list[i]['Host'] + '<br/>'
                        + '<b>RNA-seq: </b>' + sample_list[i]['RNA-seq? (Selected/In progress/Completed/Failed)'] + '<br/>'
                        + '<b>Coordinates: </b>' + sample_list[i]['location']['latitude'] + ', ' + sample_list[i]['location']['longitude'] + '<br/>'
-                       + '<b>Further Location information: </b>' + sample_list[i]['Further Location information'];
+                       + '<b>Further Location info: </b>' + sample_list[i]['Further Location information'];
             addPointer(la, lo, note);
         }
     }
