@@ -174,6 +174,8 @@
                                     {
                                         'doOnSuccess': function (json) {
                                             jQuery('#' + uuid).html(json.html);
+                                            Utils.ui.reenableButton('blastButton1', 'BLAST Search');
+                                            Utils.ui.reenableButton('blastButton2', 'BLAST Search');
                                             stopJob(uuid);
                                         }
                                     }
@@ -188,6 +190,8 @@
                             }, 5000);
                         }
                         else {
+                            Utils.ui.reenableButton('blastButton1', 'BLAST Search');
+                            Utils.ui.reenableButton('blastButton2', 'BLAST Search');
                             stopJob(uuid);
                         }
                     }
