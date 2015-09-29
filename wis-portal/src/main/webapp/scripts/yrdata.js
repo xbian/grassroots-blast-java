@@ -6795,10 +6795,10 @@ var sample_list = [
 ];
 var sample_phenotyping = [
   {
-    "aBatch": "2",
+    "Batch": "2",
     "": "",
     "No of isols tested": "1",
-    "Isolate": "14.001",
+    "Isolate": "14/1",
     "Library": "",
     "Host": "JB Diego",
     "Chinese 166 Gene:1": "3.1",
@@ -6852,7 +6852,7 @@ var sample_phenotyping = [
     "Stigg": "0.0"
   },
   {
-    "aBatch": "2",
+    "Batch": "2",
     "": "",
     "No of isols tested": "2",
     "Isolate": "14/7",
@@ -6909,7 +6909,7 @@ var sample_phenotyping = [
     "Stigg": "0.0"
   },
   {
-    "aBatch": "1",
+    "Batch": "1",
     "": "",
     "No of isols tested": "3",
     "Isolate": "14/08",
@@ -6966,7 +6966,7 @@ var sample_phenotyping = [
     "Stigg": "-"
   },
   {
-    "aBatch": "2",
+    "Batch": "2",
     "": "",
     "No of isols tested": "4",
     "Isolate": "14/12",
@@ -7023,7 +7023,7 @@ var sample_phenotyping = [
     "Stigg": "0.0"
   },
   {
-    "aBatch": "3",
+    "Batch": "3",
     "": "",
     "No of isols tested": "5",
     "Isolate": "14/13",
@@ -7080,7 +7080,7 @@ var sample_phenotyping = [
     "Stigg": "-"
   },
   {
-    "aBatch": "3",
+    "Batch": "3",
     "": "",
     "No of isols tested": "6",
     "Isolate": "14/16",
@@ -7137,7 +7137,7 @@ var sample_phenotyping = [
     "Stigg": "-"
   },
   {
-    "aBatch": "2",
+    "Batch": "2",
     "": "",
     "No of isols tested": "7",
     "Isolate": "14/22",
@@ -7194,7 +7194,7 @@ var sample_phenotyping = [
     "Stigg": "0.0"
   },
   {
-    "aBatch": "5",
+    "Batch": "5",
     "": "",
     "No of isols tested": "8",
     "Isolate": "14/36",
@@ -7251,7 +7251,7 @@ var sample_phenotyping = [
     "Stigg": ""
   },
   {
-    "aBatch": "4",
+    "Batch": "4",
     "": "",
     "No of isols tested": "9",
     "Isolate": "14/44",
@@ -7308,7 +7308,7 @@ var sample_phenotyping = [
     "Stigg": "-"
   },
   {
-    "aBatch": "5",
+    "Batch": "5",
     "": "",
     "No of isols tested": "10",
     "Isolate": "14/46",
@@ -7365,7 +7365,7 @@ var sample_phenotyping = [
     "Stigg": ""
   },
   {
-    "aBatch": "5",
+    "Batch": "5",
     "": "",
     "No of isols tested": "11",
     "Isolate": "14/56",
@@ -7422,7 +7422,7 @@ var sample_phenotyping = [
     "Stigg": ""
   },
   {
-    "aBatch": "4",
+    "Batch": "4",
     "": "",
     "No of isols tested": "12",
     "Isolate": "14/63",
@@ -7479,7 +7479,7 @@ var sample_phenotyping = [
     "Stigg": "-"
   },
   {
-    "aBatch": "4",
+    "Batch": "4",
     "": "",
     "No of isols tested": "13",
     "Isolate": "14/72",
@@ -7536,7 +7536,7 @@ var sample_phenotyping = [
     "Stigg": "-"
   },
   {
-    "aBatch": "5",
+    "Batch": "5",
     "": "",
     "No of isols tested": "14",
     "Isolate": "14/83",
@@ -7593,7 +7593,7 @@ var sample_phenotyping = [
     "Stigg": ""
   },
   {
-    "aBatch": "5",
+    "Batch": "5",
     "": "",
     "No of isols tested": "15",
     "Isolate": "14/84",
@@ -7650,7 +7650,7 @@ var sample_phenotyping = [
     "Stigg": ""
   },
   {
-    "aBatch": "5",
+    "Batch": "5",
     "": "",
     "No of isols tested": "16",
     "Isolate": "14/501",
@@ -7707,7 +7707,7 @@ var sample_phenotyping = [
     "Stigg": ""
   },
   {
-    "aBatch": "6",
+    "Batch": "6",
     "": "",
     "No of isols tested": "17",
     "Isolate": "14/91",
@@ -7764,7 +7764,7 @@ var sample_phenotyping = [
     "Stigg": ""
   },
   {
-    "aBatch": "6",
+    "Batch": "6",
     "": "",
     "No of isols tested": "18",
     "Isolate": "14/120",
@@ -7821,7 +7821,7 @@ var sample_phenotyping = [
     "Stigg": ""
   },
   {
-    "aBatch": "7",
+    "Batch": "7",
     "": "",
     "No of isols tested": "19",
     "Isolate": "14/108",
@@ -7878,7 +7878,7 @@ var sample_phenotyping = [
     "Stigg": ""
   },
   {
-    "aBatch": "7",
+    "Batch": "7",
     "": "",
     "No of isols tested": "20",
     "Isolate": "14/118",
@@ -7935,7 +7935,7 @@ var sample_phenotyping = [
     "Stigg": ""
   },
   {
-    "aBatch": "7",
+    "Batch": "7",
     "": "",
     "No of isols tested": "21",
     "Isolate": "14/103",
@@ -7992,7 +7992,7 @@ var sample_phenotyping = [
     "Stigg": "whole test had pale leaves"
   },
   {
-    "aBatch": "7",
+    "Batch": "7",
     "": "",
     "No of isols tested": "22",
     "Isolate": "14/106",
@@ -8049,7 +8049,7 @@ var sample_phenotyping = [
     "Stigg": ""
   },
   {
-    "aBatch": "7",
+    "Batch": "7",
     "": "",
     "No of isols tested": "23",
     "Isolate": "14/119",
@@ -8106,7 +8106,7 @@ var sample_phenotyping = [
     "Stigg": ""
   },
   {
-    "aBatch": "7",
+    "Batch": "7",
     "": "",
     "No of isols tested": "24",
     "Isolate": "14/117",
@@ -8163,7 +8163,7 @@ var sample_phenotyping = [
     "Stigg": ""
   },
   {
-    "aBatch": "7",
+    "Batch": "7",
     "": "",
     "No of isols tested": "25",
     "Isolate": "14/128",
@@ -8220,7 +8220,7 @@ var sample_phenotyping = [
     "Stigg": ""
   },
   {
-    "aBatch": "7",
+    "Batch": "7",
     "": "",
     "No of isols tested": "26",
     "Isolate": "14/105",
@@ -8277,7 +8277,7 @@ var sample_phenotyping = [
     "Stigg": ""
   },
   {
-    "aBatch": "8",
+    "Batch": "8",
     "": "",
     "No of isols tested": "27",
     "Isolate": "14/125",
@@ -8334,7 +8334,7 @@ var sample_phenotyping = [
     "Stigg": ""
   },
   {
-    "aBatch": "2",
+    "Batch": "2",
     "": "",
     "No of isols tested": "1",
     "Isolate": "T14/1",
@@ -8391,7 +8391,7 @@ var sample_phenotyping = [
     "Stigg": "0.0"
   },
   {
-    "aBatch": "2",
+    "Batch": "2",
     "": "",
     "No of isols tested": "2",
     "Isolate": "T14/2",
@@ -8448,7 +8448,7 @@ var sample_phenotyping = [
     "Stigg": "0.0"
   },
   {
-    "aBatch": "2",
+    "Batch": "2",
     "": "",
     "No of isols tested": "3",
     "Isolate": "T14/3",
@@ -8505,7 +8505,7 @@ var sample_phenotyping = [
     "Stigg": "0.0"
   },
   {
-    "aBatch": "4",
+    "Batch": "4",
     "": "",
     "No of isols tested": "4",
     "Isolate": "T14/4",
@@ -8562,7 +8562,7 @@ var sample_phenotyping = [
     "Stigg": ""
   },
   {
-    "aBatch": "4",
+    "Batch": "4",
     "": "",
     "No of isols tested": "5",
     "Isolate": "T14/5",
@@ -8619,7 +8619,7 @@ var sample_phenotyping = [
     "Stigg": ""
   },
   {
-    "aBatch": "6",
+    "Batch": "6",
     "": "",
     "No of isols tested": "6",
     "Isolate": "T14/6",
@@ -8676,7 +8676,7 @@ var sample_phenotyping = [
     "Stigg": ""
   },
   {
-    "aBatch": "6",
+    "Batch": "6",
     "": "",
     "No of isols tested": "7",
     "Isolate": "T14/7",
@@ -8733,7 +8733,7 @@ var sample_phenotyping = [
     "Stigg": ""
   },
   {
-    "aBatch": "4",
+    "Batch": "4",
     "": "",
     "No of isols tested": "1",
     "Isolate": "TS14/2",
@@ -8790,7 +8790,7 @@ var sample_phenotyping = [
     "Stigg": ""
   },
   {
-    "aBatch": "8",
+    "Batch": "8",
     "": "",
     "No of isols tested": "2",
     "Isolate": "TS14/1",
