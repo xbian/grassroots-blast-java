@@ -155,7 +155,7 @@
                                      + '<b>Suwon Omar Gene:Yr(Su): </b>' + sample_phenotyping[i]['Suwon Omar Gene:Yr(Su)'] + '<br/>'
                                      + '<b>Avocet Yr5 Gene:Yr5: </b>' + sample_phenotyping[i]['Avocet Yr5 Gene:Yr5'] + '<br/>'
                                      + '<b>Avocet Yr6 Gene:Yr6: </b>' + sample_phenotyping[i]['Avocet Yr6 Gene:Yr6'] + '<br/>'
-                                     + '<b>"Moro Gene:Yr10: </b>' + sample_phenotyping[i]['"Moro Gene:Yr10'] + '<br/>'
+                                     + '<b>Moro Gene:Yr10: </b>' + sample_phenotyping[i]['Moro Gene:Yr10'] + '<br/>'
                                      + '<b>Avocet Yr24 Gene:Yr24: </b>' + sample_phenotyping[i]['Avocet Yr24 Gene:Yr24'] + '<br/>'
                                      + '<b>Opata Gene:Yr27+: </b>' + sample_phenotyping[i]['Opata Gene:Yr27+'] + '<br/>'
                                      + '<b>Strubes Dickkopf Gene:YrSd Yr25: </b>' + sample_phenotyping[i]['Strubes Dickkopf Gene:YrSd Yr25'] + '<br/>'
