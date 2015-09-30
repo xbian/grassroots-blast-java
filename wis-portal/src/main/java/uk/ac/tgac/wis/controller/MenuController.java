@@ -70,4 +70,9 @@ public class MenuController implements ServletContextAware {
   public String yellowRustMap() {
     return "/geo.jsp";
   }
+
+  @RequestMapping("/phenotype")
+  public String phenotype() {
+    return "/phenotype.jsp";
+  }
 }

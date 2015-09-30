@@ -4,7 +4,6 @@
 <script src="<c:url value='/scripts/jquery/datatables/js/jquery.dataTables.min.js'/>" type="text/javascript"></script>
 <link href="<c:url value='/scripts/jquery/datatables/css/jquery.dataTables.css'/>" rel="stylesheet" type="text/css">
 
-
 <script src="<c:url value='/scripts/yrdata.js'/>" type="text/javascript"></script>
 
 <div class="container center-block">
@@ -34,6 +33,8 @@
     <div id="tableWrapper">
         <table id="resultTable"></table>
     </div>
+
+    <a href="<c:url value='/wis-portal/phenotype'/>">Phenotype Data</a>
 </div>
 
 <script type="text/javascript">
@@ -149,7 +150,7 @@
                                      + '<b>KWS-Sterling Gene:Ste\': </b>' + sample_phenotyping[i]['KWS-Sterling Gene:Ste\''] + '<br/>'
                                      + '<b>Cadenza Gene:6 7: </b>' + sample_phenotyping[i]['Cadenza Gene:6 7'] + '<br/>'
                                      + '<b>Claire Gene:Claire: </b>' + sample_phenotyping[i]['Claire Gene:Claire'] + '<br/>'
-                                     + '<b>Crusoe Gene:Crusoe: </b>' + sample_phenotyping[i][''] + '<br/>'
+                                     + '<b>Crusoe Gene:Crusoe: </b>' + sample_phenotyping[i]['Crusoe Gene:Crusoe'] + '<br/>'
                                      + '<b>Ambition Gene:Amb\': </b>' + sample_phenotyping[i]['Ambition Gene:Amb\''] + '<br/>'
                                      + '<b>Heines VII Gene:Yr2 Yr25+: </b>' + sample_phenotyping[i]['Heines VII Gene:Yr2 Yr25+'] + '<br/>'
                                      + '<b>Suwon Omar Gene:Yr(Su): </b>' + sample_phenotyping[i]['Suwon Omar Gene:Yr(Su)'] + '<br/>'
@@ -170,10 +171,8 @@
                                      + '<b>Dublet: </b>' + sample_phenotyping[i]['Dublet'] + '<br/>'
                                      + '<b>KWS Fido: </b>' + sample_phenotyping[i]['KWS Fido'] + '<br/>'
                                      + '<b>Brigadier: </b>' + sample_phenotyping[i]['Brigadier'] + '<br/>'
-                                     + '<b>Stigg: </b>' + sample_phenotyping[i]['Stigg'] + '<br/>'
-                    ;
+                                     + '<b>Stigg: </b>' + sample_phenotyping[i]['Stigg'] + '<br/>';
 
-                    jQuery.colorbox({width: "80%", html: phynotype_data});
                 }
             }
         }
