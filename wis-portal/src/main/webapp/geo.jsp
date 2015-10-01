@@ -91,17 +91,17 @@
         for (i = 0; i < array.length; i++) {
             var la = array[i]['location']['latitude'];
             var lo = array[i]['location']['longitude'];
-            var note = '<b>ID: </b>' + sample_list[i]['ID'] + '<br/>'
-                       + '<b>Country: </b>' + sample_list[i]['Country'] + '<br/>'
-                       + '<b>UKCPVS ID: </b><u onclick="phenotype(\'' + sample_list[i]['UKCPVS ID'] + '\');" style="cursor: pointer;">' + sample_list[i]['UKCPVS ID'] + '</u><br/>'
-                       + '<b>Rust (YR/SR/LR): </b>' + sample_list[i]['Rust (YR/SR/LR)'] + '<br/>'
-                       + '<b>Name/Collector: </b>' + sample_list[i]['Name/Collector'] + '<br/>'
-                       + '<b>Date collected: </b>' + sample_list[i]['Date collected'] + '<br/>'
-                       + '<b>Host: </b>' + sample_list[i]['Host'] + '<br/>'
-                       + '<b>RNA-seq: </b>' + sample_list[i]['RNA-seq? (Selected/In progress/Completed/Failed)'] + '<br/>'
-                       + '<b>Coordinates: </b>' + sample_list[i]['location']['latitude'] + ', ' + sample_list[i]['location']['longitude'] + '<br/>'
-                       + '<b>Postal code: </b>' + sample_list[i]['Postal code'] + '<br/>'
-                       + '<b>Further Location info: </b>' + sample_list[i]['Further Location information'];
+            var note = '<b>ID: </b>' + array[i]['ID'] + '<br/>'
+                       + '<b>Country: </b>' + array[i]['Country'] + '<br/>'
+                       + '<b>UKCPVS ID: </b><u onclick="phenotype(\'' + array[i]['UKCPVS ID'] + '\');" style="cursor: pointer;">' + array[i]['UKCPVS ID'] + '</u><br/>'
+                       + '<b>Rust (YR/SR/LR): </b>' + array[i]['Rust (YR/SR/LR)'] + '<br/>'
+                       + '<b>Name/Collector: </b>' + array[i]['Name/Collector'] + '<br/>'
+                       + '<b>Date collected: </b>' + array[i]['Date collected'] + '<br/>'
+                       + '<b>Host: </b>' + array[i]['Host'] + '<br/>'
+                       + '<b>RNA-seq: </b>' + array[i]['RNA-seq? (Selected/In progress/Completed/Failed)'] + '<br/>'
+                       + '<b>Coordinates: </b>' + array[i]['location']['latitude'] + ', ' + array[i]['location']['longitude'] + '<br/>'
+                       + '<b>Postal code: </b>' + array[i]['Postal code'] + '<br/>'
+                       + '<b>Further Location info: </b>' + array[i]['Further Location information'];
             addPointer(la, lo, note);
         }
     }
