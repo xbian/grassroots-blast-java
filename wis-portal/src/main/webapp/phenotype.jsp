@@ -11,7 +11,7 @@
 
 
     <div id="tableWrapper">
-        <table id="resultTable"></table>
+        <table id="resultTable" class="phenotype"></table>
     </div>
 </div>
 <script type="text/javascript">
@@ -28,11 +28,17 @@
                     title: "Chinese 166 Gene:1",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -41,11 +47,17 @@
                     title: "Kalyansona Gene:2",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).class("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -54,11 +66,17 @@
                     title: "Vilmorin 23 Gene:3a+",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -67,22 +85,34 @@
                     title: "Nord Desprez Gene:3a+",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
                 {
                     data: "Hybrid 46 Gene:(3b)4b", title: "Hybrid 46 Gene:(3b)4b", "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -91,11 +121,17 @@
                     title: "Heines Kolben Gene:2,6",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -104,11 +140,17 @@
                     title: "Heines Peko Gene:2,6",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -117,11 +159,17 @@
                     title: "Lee Gene:7",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -130,11 +178,17 @@
                     title: "Av x Yr7 NIL Gene:7",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -143,11 +197,17 @@
                     title: "Compair Gene:8",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -156,11 +216,17 @@
                     title: "Kavkaz x 4 Fed Gene:9",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -169,11 +235,17 @@
                     title: "Clement Gene:9",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -182,11 +254,17 @@
                     title: "AVS x Yr 15 Gene:15",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -195,11 +273,17 @@
                     title: "VPM 1 Gene:17",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -208,11 +292,17 @@
                     title: "Rendezvous Gene:17",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -221,11 +311,17 @@
                     title: "Av x Yr17 Gene:17",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -234,11 +330,17 @@
                     title: "Carstens V Gene:32",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -247,11 +349,17 @@
                     title: "Talon Gene:32",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -260,11 +368,17 @@
                     title: "Av x Yr32 Gene:32",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -273,11 +387,17 @@
                     title: "Spaldings Prolific Gene:sp",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -286,11 +406,17 @@
                     title: "Robigus Gene:Rob'",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -299,11 +425,17 @@
                     title: "Solstice Gene:\'Sol\'",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -312,11 +444,17 @@
                     title: "Timber Gene:\'Tim\'",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -325,11 +463,17 @@
                     title: "Warrior Gene:War\'",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -338,11 +482,17 @@
                     title: "KWS-Sterling Gene:Ste\'",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -351,11 +501,17 @@
                     title: "Cadenza Gene:6 7",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -364,11 +520,17 @@
                     title: "Claire Gene:Claire",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -377,11 +539,17 @@
                     title: "Crusoe Gene:Crusoe",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -390,11 +558,17 @@
                     title: "Ambition Gene:Amb\'",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -403,11 +577,17 @@
                     title: "Heines VII Gene:Yr2 Yr25+",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -416,11 +596,17 @@
                     title: "Suwon Omar Gene:Yr(Su)",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -429,11 +615,17 @@
                     title: "Avocet Yr5 Gene:Yr5",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -442,11 +634,17 @@
                     title: "Avocet Yr6 Gene:Yr6",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -455,11 +653,17 @@
                     title: "Moro Gene:Yr10",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -468,11 +672,17 @@
                     title: "Avocet Yr24 Gene:Yr24",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -481,11 +691,17 @@
                     title: "Opata Gene:Yr27+",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -494,11 +710,17 @@
                     title: "Strubes Dickkopf Gene:YrSd Yr25",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -507,11 +729,17 @@
                     title: "Avocet Yr27 Gene:Yr27",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -520,11 +748,17 @@
                     title: "Apache Gene:7 17",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -533,11 +767,17 @@
                     title: "Vuka",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -546,11 +786,17 @@
                     title: "Grenado",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -559,11 +805,17 @@
                     title: "Benetto",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -572,11 +824,17 @@
                     title: "Tradiro",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -585,11 +843,17 @@
                     title: "Tribeca",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -598,11 +862,17 @@
                     title: "Tulus",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -611,11 +881,17 @@
                     title: "Dublet",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -624,11 +900,17 @@
                     title: "KWS Fido",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
@@ -637,22 +919,34 @@
                     title: "Brigadier",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 },
                 {
                     data: "Stigg", title: "Stigg", "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        if (parseFloat(cellData) < 2) {
-                            jQuery(cell).css('background-color', 'green');
+                        if (parseFloat(cellData) < 1) {
+                            jQuery(cell).addClass("pheno_1");
                         }
-                        if (parseFloat(cellData) >= 2) {
-                            jQuery(cell).css('background-color', 'red');
+                        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+                            jQuery(cell).addClass("pheno_12");
+                        }
+                        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+                            jQuery(cell).addClass("pheno_23");
+                        }
+                        if (parseFloat(cellData) >= 3) {
+                            jQuery(cell).addClass("pheno_3");
                         }
                     }
                 }
