@@ -110,7 +110,7 @@
     function phenotype(id) {
         var phynotype_data = "No Phynotype Data";
         if (id != '' && id != undefined && id != 'undefined') {
-            for (i = 0; i < sample_list.length; i++) {
+            for (i = 0; i < sample_phenotyping.length; i++) {
 //                if ()
                 if (id == sample_phenotyping[i]['Isolate']) {
                     phynotype_data = '<b>Batch: </b>' + sample_phenotyping[i]['Batch'] + '<br/>'
