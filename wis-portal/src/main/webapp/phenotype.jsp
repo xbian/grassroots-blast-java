@@ -26,7 +26,7 @@
                 {data: "Chinese 166 Gene:1", title: "Chinese 166 Gene:1", "sDefaultContent": ""},
                 {data: "Kalyansona Gene:2", title: "Kalyansona Gene:2", "sDefaultContent": ""},
                 {data: "Vilmorin 23 Gene:3a+", title: "Vilmorin 23 Gene:3a+", "sDefaultContent": ""},
-                {data: "Nord Desprez Gene:3a", title: "Nord Desprez Gene:3a", "sDefaultContent": ""},
+                {data: "Nord Desprez Gene:3a+", title: "Nord Desprez Gene:3a+", "sDefaultContent": ""},
                 {data: "Hybrid 46 Gene:(3b)4b", title: "Hybrid 46 Gene:(3b)4b", "sDefaultContent": ""},
                 {data: "Heines Kolben Gene:2,6", title: "Heines Kolben Gene:2,6", "sDefaultContent": ""},
                 {data: "Heines Peko Gene:2,6", title: "Heines Peko Gene:2,6", "sDefaultContent": ""},
@@ -76,7 +76,24 @@
                 {data: "KWS Fido", title: "KWS Fido", "sDefaultContent": ""},
                 {data: "Brigadier", title: "Brigadier", "sDefaultContent": ""},
                 {data: "Stigg", title: "Stigg", "sDefaultContent": ""}
-            ]
+            ],
+//            "createdCell": function (cell, cellData, rowData, rowIndex, colIndex) {
+//                console.log(cell);
+//                if ( parseFloat(cellData) < 2 ) {
+//                    jQuery(cell).css('background-color','green');
+//                }
+//                if ( jQuery(cell).html()== '3' ) {
+//                    jQuery(cell).css('background-color','red');
+//                }
+//            }
+            "createdRow": function ( row, data, index) {
+                if (parseFloat(data['Hybrid 46 Gene:(3b)4b']) < 2) {
+                    jQuery('td', row).eq(8).css('background-color','green');
+                }
+                if (parseFloat(data['Hybrid 46 Gene:(3b)4b']) >= 2) {
+                    jQuery('td', row).eq(8).css('background-color','red');
+                }
+            }
         });
     });
 
