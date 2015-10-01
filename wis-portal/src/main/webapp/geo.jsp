@@ -70,13 +70,7 @@
         });
         jQuery('#resultTable').on('search.dt', function () {
             removePointers();
-            var api = yrtable.api();
-            //uppercase used for case insensitive search
-            var searchTerm = api.search().toUpperCase();
-            var filteredData = api.data()
-                    .filter(function (value, index) {
-                                return JSON.stringify(value).toString().toUpperCase().indexOf(searchTerm) !== -1;
-                            }).toArray();
+            var filteredData = yrtable._('tr', {"filter":"applied"});
             displayYRLocations(filteredData);
         });
     });
