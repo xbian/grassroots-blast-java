@@ -1244,8 +1244,8 @@ var location_list = [
     "ID": "14.0105",
     "location": {
       "east_bound": -85.4354029,
-      "latitude": 53.744513,
-      "longitude": -1.598045,
+      "latitude": 52.5539247,
+      "longitude": 1.029127,
       "south_bound": 43.483625,
       "north_bound": 43.4980229,
       "west_bound": -85.455566
@@ -1258,8 +1258,8 @@ var location_list = [
     "ID": "14.0106",
     "location": {
       "east_bound": -85.4354029,
-      "latitude": 53.744513,
-      "longitude": -1.598045,
+      "latitude": 52.5539247,
+      "longitude": 1.029127,
       "south_bound": 43.483625,
       "north_bound": 43.4980229,
       "west_bound": -85.455566
@@ -1272,8 +1272,8 @@ var location_list = [
     "ID": "14.0107",
     "location": {
       "east_bound": -85.4354029,
-      "latitude": 53.744513,
-      "longitude": -1.598045,
+      "latitude": 52.5539247,
+      "longitude": 1.029127,
       "south_bound": 43.483625,
       "north_bound": 43.4980229,
       "west_bound": -85.455566
