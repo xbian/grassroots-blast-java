@@ -28,7 +28,7 @@
                     title: "Chinese 166 Gene:1",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -36,7 +36,7 @@
                     title: "Kalyansona Gene:2",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -44,7 +44,7 @@
                     title: "Vilmorin 23 Gene:3a+",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -52,13 +52,13 @@
                     title: "Nord Desprez Gene:3a+",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
                     data: "Hybrid 46 Gene:(3b)4b", title: "Hybrid 46 Gene:(3b)4b", "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -66,7 +66,7 @@
                     title: "Heines Kolben Gene:2,6",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -74,7 +74,7 @@
                     title: "Heines Peko Gene:2,6",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -82,7 +82,7 @@
                     title: "Lee Gene:7",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -90,7 +90,7 @@
                     title: "Av x Yr7 NIL Gene:7",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -98,7 +98,7 @@
                     title: "Compair Gene:8",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -106,7 +106,7 @@
                     title: "Kavkaz x 4 Fed Gene:9",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -114,7 +114,7 @@
                     title: "Clement Gene:9",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -122,7 +122,7 @@
                     title: "AVS x Yr 15 Gene:15",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -130,7 +130,7 @@
                     title: "VPM 1 Gene:17",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -138,7 +138,7 @@
                     title: "Rendezvous Gene:17",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -146,7 +146,7 @@
                     title: "Av x Yr17 Gene:17",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -154,7 +154,7 @@
                     title: "Carstens V Gene:32",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -162,7 +162,7 @@
                     title: "Talon Gene:32",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -170,7 +170,7 @@
                     title: "Av x Yr32 Gene:32",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -178,7 +178,7 @@
                     title: "Spaldings Prolific Gene:sp",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -186,7 +186,7 @@
                     title: "Robigus Gene:Rob'",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -194,7 +194,7 @@
                     title: "Solstice Gene:\'Sol\'",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -202,7 +202,7 @@
                     title: "Timber Gene:\'Tim\'",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -210,7 +210,7 @@
                     title: "Warrior Gene:War\'",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -218,7 +218,7 @@
                     title: "KWS-Sterling Gene:Ste\'",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -226,7 +226,7 @@
                     title: "Cadenza Gene:6 7",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -234,7 +234,7 @@
                     title: "Claire Gene:Claire",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -242,7 +242,7 @@
                     title: "Crusoe Gene:Crusoe",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -250,7 +250,7 @@
                     title: "Ambition Gene:Amb\'",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -258,7 +258,7 @@
                     title: "Heines VII Gene:Yr2 Yr25+",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -266,7 +266,7 @@
                     title: "Suwon Omar Gene:Yr(Su)",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -274,7 +274,7 @@
                     title: "Avocet Yr5 Gene:Yr5",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -282,7 +282,7 @@
                     title: "Avocet Yr6 Gene:Yr6",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -290,7 +290,7 @@
                     title: "Moro Gene:Yr10",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -298,7 +298,7 @@
                     title: "Avocet Yr24 Gene:Yr24",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -306,7 +306,7 @@
                     title: "Opata Gene:Yr27+",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -314,7 +314,7 @@
                     title: "Strubes Dickkopf Gene:YrSd Yr25",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -322,7 +322,7 @@
                     title: "Avocet Yr27 Gene:Yr27",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -330,7 +330,7 @@
                     title: "Apache Gene:7 17",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -338,7 +338,7 @@
                     title: "Vuka",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -346,7 +346,7 @@
                     title: "Grenado",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -354,7 +354,7 @@
                     title: "Benetto",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -362,7 +362,7 @@
                     title: "Tradiro",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -370,7 +370,7 @@
                     title: "Tribeca",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -378,7 +378,7 @@
                     title: "Tulus",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -386,7 +386,7 @@
                     title: "Dublet",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -394,7 +394,7 @@
                     title: "KWS Fido",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
@@ -402,47 +402,27 @@
                     title: "Brigadier",
                     "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 },
                 {
                     data: "Stigg", title: "Stigg", "sDefaultContent": "",
                     createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-                        color_coding(cellData,cell);
+                        color_coding(cellData, cell);
                     }
                 }
             ]
-//            ,
-//            createdCell: function (cell, cellData, rowData, rowIndex, colIndex) {
-//                console.log(cellData);
-//                if ( parseFloat(cellData) < 2 ) {
-//                    jQuery(cell).css('background-color','green');
-
-//                }
-//                if ( cellData == '3' ) {
-//                    console.log('yes');
-//                    jQuery(cell).css('background-color','red');
-//                }
-//            }
-//            "createdRow": function ( row, data, index) {
-//                if (parseFloat(data['Hybrid 46 Gene:(3b)4b']) < 2) {
-//                    jQuery('td', row).eq(8).css('background-color','green');
-//                }
-//                if (parseFloat(data['Hybrid 46 Gene:(3b)4b']) >= 2) {
-//                    jQuery('td', row).eq(8).css('background-color','red');
-//                }
-//            }
         });
     });
 
-    function color_coding(cellData,cell){
+    function color_coding(cellData, cell) {
         if (parseFloat(cellData) < 1) {
             jQuery(cell).addClass("pheno_1");
         }
-        if (parseFloat(cellData) >=1 && parseFloat(cellData) <2) {
+        if (parseFloat(cellData) >= 1 && parseFloat(cellData) < 2) {
             jQuery(cell).addClass("pheno_12");
         }
-        if (parseFloat(cellData) >=2 && parseFloat(cellData) <3) {
+        if (parseFloat(cellData) >= 2 && parseFloat(cellData) < 3) {
             jQuery(cell).addClass("pheno_23");
         }
         if (parseFloat(cellData) >= 3) {

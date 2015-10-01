@@ -70,7 +70,7 @@
         });
         jQuery('#resultTable').on('search.dt', function () {
             removePointers();
-            var filteredData = yrtable._('tr', {"filter":"applied"});
+            var filteredData = yrtable._('tr', {"filter": "applied"});
             displayYRLocations(filteredData);
         });
     });
@@ -178,16 +178,16 @@
 
     function divbgcolor(value) {
         if (parseFloat(value) < 1) {
-            return "<span class='pheno_1 in_box'>"+ value +"</span>";
+            return "<span class='pheno_1 in_box'>" + value + "</span>";
         }
-        if (parseFloat(value) >=1 && parseFloat(value) <2) {
-            return "<span class='pheno_12 in_box'>"+ value +"</span>";
+        if (parseFloat(value) >= 1 && parseFloat(value) < 2) {
+            return "<span class='pheno_12 in_box'>" + value + "</span>";
         }
-        if (parseFloat(value) >=2 && parseFloat(value) <3) {
-            return "<span class='pheno_23 in_box'>"+ value +"</span>";
+        if (parseFloat(value) >= 2 && parseFloat(value) < 3) {
+            return "<span class='pheno_23 in_box'>" + value + "</span>";
         }
         if (parseFloat(value) >= 3) {
-            return "<span class='pheno_3 in_box'>"+ value +"</span>";
+            return "<span class='pheno_3 in_box'>" + value + "</span>";
         }
     }
 
