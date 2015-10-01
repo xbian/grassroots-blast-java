@@ -111,7 +111,6 @@
         var phynotype_data = "No Phynotype Data";
         if (id != '' && id != undefined && id != 'undefined') {
             for (i = 0; i < sample_phenotyping.length; i++) {
-//                if ()
                 if (id == sample_phenotyping[i]['Isolate']) {
                     phynotype_data = '<div style="margin:20px;"><b>Batch: </b>' + sample_phenotyping[i]['Batch'] + '<br/>'
                                      + '<b>No of isols tested: </b>' + sample_phenotyping[i]['No of isols tested'] + '<br/>'
