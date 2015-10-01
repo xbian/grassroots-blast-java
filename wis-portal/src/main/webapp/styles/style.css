@@ -13,15 +13,19 @@ body {
 }
 #map { height: 600px; }
 
-td.pheno_1 {
+.pheno_1 {
     background-color: rgba(52, 128, 23, 0.7);
 }
-td.pheno_12 {
+.pheno_12 {
     background-color: rgba(65, 163, 23, 0.7);
 }
-td.pheno_23 {
+.pheno_23 {
     background-color: rgba(247, 93, 89, 0.7);
 }
-td.pheno_3 {
+.pheno_3 {
     background-color: rgba(246, 40, 23, 0.7);
+}
+. in_box{
+    padding-left:10px;
+    padding-right:10px;
 }
