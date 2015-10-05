@@ -60,10 +60,15 @@ public class MenuController implements ServletContextAware {
     return "/indexer.jsp";
   }
 
+  @RequestMapping("/services")
+  public String services() {
+    return "/services.jsp";
+  }
+
 
   @RequestMapping("/blast")
   public String grassRootBlast() {
-    return "/grassrootsBlast.jsp";
+    return "/blast.jsp";
   }
 
   @RequestMapping("/yellowrustmap")

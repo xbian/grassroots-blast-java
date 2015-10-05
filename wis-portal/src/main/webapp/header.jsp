@@ -15,7 +15,6 @@
     <%-- timestamp to force browser to reload javascript --%>
     <jsp:useBean id="timestamp" class="java.util.Date" scope="request"/>
 
-    <link rel="stylesheet" href="<c:url value='/styles/style.css?ts=${timestamp.time}'/>" type="text/css">
     <title>Wheat Information System Portal <c:if test="${not empty title}">- ${title}</c:if></title>
     <script type="text/javascript" src="<c:url value='/scripts/scriptaculous/prototype.js'/>"></script>
     <script type="text/javascript" src="<c:url value='/scripts/fluxion-ajax/fluxion-ajax-compiled.js?ts=${timestamp.time}'/>"></script>
@@ -24,6 +23,7 @@
     <script src="<c:url value='/scripts/bootstrap/bootstrap.min.js?ts=${timestamp.time}'/>" type="text/javascript"></script>
     <link href="<c:url value='/scripts/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet" type="text/css">
 
+    <link rel="stylesheet" href="<c:url value='/styles/style.css?ts=${timestamp.time}'/>" type="text/css">
     <!-- font awesome -->
     <link href="<c:url value='/scripts/fontawesome/css/font-awesome.min.css'/>" rel="stylesheet" type="text/css">
 
@@ -106,17 +106,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Wheat Information System</a>
+            <a class="navbar-brand" href="#">Grassroots Infrastructure</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li ><a href="<c:url value='/'/>">Portal Home</a></li>
-                <%--<li><a href="<c:url value='/wis-portal/blast'/>">Grassroots Genomics Blast Search</a></li>--%>
-                <li><a href="<c:url value='/wis-portal/yellowrustmap'/>">Yellow Rust Map</a></li>
-                <li><a href="<c:url value='/wis-portal/indexer'/>">Solr &amp; Elasticsearch</a></li>
-                <li><a href="<c:url value='/wis-portal/about'/>">About</a></li>
-                <li><a href="<c:url value='/wis-portal/contact'/>">Contact</a></li>
-                <li><a href="http://wheatis.tgac.ac.uk/wheatis-dev-docs/">API</a></li>
+                <li ><a href="<c:url value='/'/>">Home</a></li>
+                <li><a href="<c:url value='/grassroots-portal/services'/>">Services</a></li>
+                <li><a href="<c:url value='/grassroots-portal/indexer'/>">Search</a></li>
+                <%--<li><a href="<c:url value='/grassroots-portal/about'/>">About</a></li>--%>
+                <li><a href="<c:url value='/grassroots-portal/contact'/>">Contact</a></li>
+                <li><a href="http://wheatis.tgac.ac.uk/grassroots/api/">Grassroots API</a></li>
                 <%--<li class="dropdown">--%>
                     <%--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>--%>
                     <%--<ul class="dropdown-menu" role="menu">--%>

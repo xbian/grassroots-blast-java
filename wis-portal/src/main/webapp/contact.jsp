@@ -3,9 +3,9 @@
 <div class="container center-block">
 
     <div class="jumbotron">
-        <h2>Wheat Information System</h2>
+        <h2>Grassroots Infrastructure</h2>
 
-        <p></p>
+        <p><a href="http://www.tgac.ac.uk/contact-us/">http://www.tgac.ac.uk/contact-us/</a></p>
 
     </div>
 </div>
