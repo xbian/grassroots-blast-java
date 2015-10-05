@@ -9,25 +9,23 @@
     <p/>
     Enter sequence below in FASTA format
     <br/>
-<textarea class="ui-corner-all pie_first-child" name="sequence" id="sequence" rows="10" cols="80">
+<textarea class="ui-corner-all" name="sequence" id="sequence" rows="10" cols="80">
 </textarea>
     <br/>
-    <%--Or load it from disk--%>
-    <%--<input type="file" name="SEQFILE">--%>
     <p/>
     Set subsequence: From <input type="text" name="query_from" id="query_from" value="0" size="10">
     To <input type="text" name="query_to" id="query_to" value="0" size="10">
 
     <p/>
     <fieldset class="ui-corner-all">
-        <legend class="ui-corner-all pie_first-child">BLAST Databases</legend>
+        <legend class="ui-corner-all">BLAST Databases</legend>
         <div id="blastDBs"></div>
     </fieldset>
     <button id="blastButton1" type="button" onclick="sendBlastRequest();">BLAST Search</button>
     <hr/>
     <h3>Algorithm parameters</h3>
     <fieldset class="ui-corner-all">
-        <legend class="ui-corner-all pie_first-child">General Parameters</legend>
+        <legend class="ui-corner-all">General Parameters</legend>
         <table border="0">
             <tr>
                 <td><span class="blastFormTitle">Max target sequences non-default value</span></td>
@@ -141,7 +139,7 @@
                             var uuid = job['service_uuid'];
                             var name = job['description'].split(";", 1);
                             jQuery('#blastResult').append(
-                                    '<fieldset class="ui-corner-all"><legend class="ui-corner-all pie_first-child">' + name + '</legend><div><p><b>Job ID: '
+                                    '<fieldset class="ui-corner-all"><legend class="ui-corner-all">' + name + '</legend><div><p><b>Job ID: '
                                     + uuid + '</b></p><div id=\"' + uuid + '\">Job Submitted <img src=\"/images/ajax-loader.gif\"/></div></div></br></fieldset>');
                             checkBlastResult(uuid);
                         }
