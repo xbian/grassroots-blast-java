@@ -34,7 +34,7 @@
         <table id="resultTable"></table>
     </div>
 
-    <a href="<c:url value='/wis-portal/phenotype'/>">Phenotype Data</a>
+    <a href="<c:url value='/grassroots-portal/phenotype'/>">Phenotype Data</a>
 </div>
 
 <script type="text/javascript">
