@@ -4,26 +4,19 @@
 
     <div class="jumbotron">
         <h2>Grassroots Infrastructure Services</h2>
+        <p>The Grassroots Infrastructure has been developed to expose a number of important and powerful technologies that can benefit
+        researchers and developers to realise their data management needs.</p>
 
-        <p>Services provide the ability to perform one or more operations.
-            The Services are completely self-describing, the Server has no prior knowledge or
-            need any configuration changes when installing a Service. Simply copy the service
-            module into the services directory and it will be available for use straight away.</p>
-
-        <p>Available services:</p>
+        <p>Existing services:</p>
 
         <ul>
             <li><a href="<c:url value='/grassroots-portal/blast'/>">Blast searches on HPC</a></li>
             <li>iRODS file management</li>
-            <li>Solr indexer</li>
-            <li>Elasticsearch indexer</li>
+            <li>Solr / ElasticSearch indexers</li>
             <li>Geo-location information</li>
-
         </ul>
 
     </div>
-</div>
-
 </div>
 
 <script type="text/javascript">
