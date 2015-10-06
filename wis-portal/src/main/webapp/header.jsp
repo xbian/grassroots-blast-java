@@ -63,8 +63,8 @@
 
     <!-- wis -->
     <script type="text/javascript" src="<c:url value='/scripts/wis.js?ts=${timestamp.time}'/>"></script>
-    <script type="text/javascript" src="<c:url value='/scripts/external.js?ts=${timestamp.time}'/>"></script>
-    <script type="text/javascript" src="<c:url value='/scripts/search.js?ts=${timestamp.time}'/>"></script>
+    <%--<script type="text/javascript" src="<c:url value='/scripts/external.js?ts=${timestamp.time}'/>"></script>--%>
+    <%--<script type="text/javascript" src="<c:url value='/scripts/search.js?ts=${timestamp.time}'/>"></script>--%>
 
     <!--CryptoJS-->
     <script type="text/javascript" src="<c:url value='/scripts/sha1.js'/>"></script>
@@ -80,7 +80,7 @@
 
     <!--drop down menu -->
 
-    <script src="<c:url value='/scripts/menus.js?ts=${timestamp.time}'/>" type="text/javascript"></script>
+    <%--<script src="<c:url value='/scripts/menus.js?ts=${timestamp.time}'/>" type="text/javascript"></script>--%>
 
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
