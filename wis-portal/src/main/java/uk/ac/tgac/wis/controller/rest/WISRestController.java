@@ -35,7 +35,7 @@ public class WISRestController {
               "   \"results\": [\n" +
               "     {\n" +
               "       \"protocol\": \"http\",\n" +
-              "       \"value\": \"http://wheatis.tgac.ac.uk/wis-portal/rest/searchsolr/query\"\n" +
+              "       \"value\": \"https://wheatis.tgac.ac.uk/grassroots-portal/rest/searchsolr/query\"\n" +
               "     }\n" +
               "   ]\n" +
               " }");
@@ -45,7 +45,7 @@ public class WISRestController {
               "   \"results\": [\n" +
               "     {\n" +
               "       \"protocol\": \"http\",\n" +
-              "       \"value\": \"http://wheatis.tgac.ac.uk/wis-portal/rest/searchelasticsearch/name/value\"\n" +
+              "       \"value\": \"https://wheatis.tgac.ac.uk/grassroots-portal/rest/searchelasticsearch/name/value\"\n" +
               "     }\n" +
               "   ]\n" +
               " }");
