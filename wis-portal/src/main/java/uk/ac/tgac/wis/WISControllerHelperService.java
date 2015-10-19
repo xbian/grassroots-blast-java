@@ -608,7 +608,7 @@ public class WISControllerHelperService {
 
         String gaps = gapsList.item(i).getTextContent();
 
-        String alignmentDiv = id + hit_num;
+        String alignmentDiv = Long.toHexString(Double.doubleToLongBits(Math.random()));;
 
         String linktoensembl = "";
 
@@ -871,4 +871,6 @@ public class WISControllerHelperService {
     }
     return JSONUtils.SimpleJSONResponse("ok");
   }
+
+
 }
