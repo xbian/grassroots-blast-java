@@ -65,19 +65,9 @@ public class MenuController implements ServletContextAware {
     return "/services.jsp";
   }
 
-
   @RequestMapping("/blast")
   public String grassRootBlast() {
     return "/blast.jsp";
   }
 
-  @RequestMapping("/yellowrustmap")
-  public String yellowRustMap() {
-    return "/geo.jsp";
-  }
-
-  @RequestMapping("/phenotype")
-  public String phenotype() {
-    return "/phenotype.jsp";
-  }
 }

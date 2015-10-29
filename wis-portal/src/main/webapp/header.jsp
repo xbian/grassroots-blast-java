@@ -16,7 +16,6 @@
     <jsp:useBean id="timestamp" class="java.util.Date" scope="request"/>
 
     <title>Wheat Information System Portal <c:if test="${not empty title}">- ${title}</c:if></title>
-    <script type="text/javascript" src="<c:url value='/scripts/scriptaculous/prototype.js'/>"></script>
     <script type="text/javascript" src="<c:url value='/scripts/fluxion-ajax/fluxion-ajax-compiled.js?ts=${timestamp.time}'/>"></script>
 
     <!-- bootstrap -->
@@ -26,17 +25,6 @@
     <link rel="stylesheet" href="<c:url value='/styles/style.css?ts=${timestamp.time}'/>" type="text/css">
     <!-- font awesome -->
     <link href="<c:url value='/scripts/fontawesome/css/font-awesome.min.css'/>" rel="stylesheet" type="text/css">
-
-    <!--Scriptaculous JS scripts below -->
-    <script type="text/javascript" src="<c:url value='/scripts/scriptaculous/scriptaculous.js'/>"></script>
-    <script type="text/javascript" src="<c:url value='/scripts/scriptaculous/activityInput.js'/>"></script>
-    <script type="text/javascript" src="<c:url value='/scripts/scriptaculous/effects.js'/>"></script>
-    <script type="text/javascript" src="<c:url value='/scripts/scriptaculous/unittest.js'/>"></script>
-    <script type="text/javascript" src="<c:url value='/scripts/scriptaculous/dragdrop.js'/>"></script>
-    <script type="text/javascript" src="<c:url value='/scripts/scriptaculous/slider.js'/>"></script>
-    <script type="text/javascript" src="<c:url value='/scripts/scriptaculous/builder.js'/>"></script>
-    <script type="text/javascript" src="<c:url value='/scripts/scriptaculous/sound.js'/>"></script>
-    <script type="text/javascript" src="<c:url value='/scripts/scriptaculous/controls.js'/>"></script>
 
     <!-- jQuery -->
     <script type="text/javascript" src="<c:url value='/scripts/jquery/js/jquery-1.11.3.min.js'/>"></script>
@@ -63,24 +51,9 @@
 
     <!-- wis -->
     <script type="text/javascript" src="<c:url value='/scripts/wis.js?ts=${timestamp.time}'/>"></script>
-    <%--<script type="text/javascript" src="<c:url value='/scripts/external.js?ts=${timestamp.time}'/>"></script>--%>
-    <%--<script type="text/javascript" src="<c:url value='/scripts/search.js?ts=${timestamp.time}'/>"></script>--%>
-
-    <!--CryptoJS-->
-    <script type="text/javascript" src="<c:url value='/scripts/sha1.js'/>"></script>
-    <script type="text/javascript" src="<c:url value='/scripts/enc-base64-min.js'/>"></script>
-
-
-    <!-- give $ back to prototype -->
-    <script type="text/javascript">jQuery.noConflict();</script>
 
     <script type="text/javascript" src="<c:url value='/scripts/multi_select_drag_drop.js?ts=${timestamp.time}'/>"></script>
 
-    <%--<link rel="shortcut icon" href="<c:url value='/styles/images/favicon.ico'/>" type="image/x-icon"/>--%>
-
-    <!--drop down menu -->
-
-    <%--<script src="<c:url value='/scripts/menus.js?ts=${timestamp.time}'/>" type="text/javascript"></script>--%>
 
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
