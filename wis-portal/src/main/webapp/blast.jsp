@@ -12,6 +12,8 @@
 <textarea name="sequence" id="sequence" rows="10" cols="80">
 </textarea>
     <br/>
+    <%--Or load it from disk--%>
+    <%--<input type="file" name="seqfile" id="seqfile">--%>
     <p/>
     Set subsequence: From <input type="text" name="query_from" id="query_from" value="0" size="10">
     To <input type="text" name="query_to" id="query_to" value="0" size="10">
