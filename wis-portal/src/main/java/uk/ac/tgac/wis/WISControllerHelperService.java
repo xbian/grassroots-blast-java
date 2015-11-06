@@ -145,6 +145,7 @@ public class WISControllerHelperService {
   }
 
   public JSONObject sendBlastRequest(HttpSession session, JSONObject json) {
+    String blastfile = json.getString("blastfile");
     JSONArray formJSON = JSONArray.fromObject(json.get("form"));
     String sequence = "";
     String query_from = "0";
@@ -160,7 +161,12 @@ public class WISControllerHelperService {
 
     for (JSONObject j : (Iterable<JSONObject>) formJSON) {
       if (j.getString("name").equals("sequence")) {
+
         sequence = j.getString("value");
+
+        if ("".equals(sequence) && !"".equals(blastfile)){
+          sequence = blastfile;
+        }
       }
       if (j.getString("name").equals("query_from")) {
         query_from = j.getString("value");

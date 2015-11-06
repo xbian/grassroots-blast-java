@@ -12,8 +12,8 @@
 <textarea name="sequence" id="sequence" rows="10" cols="80">
 </textarea>
     <br/>
-    <%--Or load it from disk--%>
-    <%--<input type="file" name="seqfile" id="seqfile">--%>
+    Or load it from disk
+    <input type="file" name="seqfile" onchange="readSingleFile();" id="seqfile"/>
     <p/>
     Set subsequence: From <input type="text" name="query_from" id="query_from" value="0" size="10">
     To <input type="text" name="query_to" id="query_to" value="0" size="10">
@@ -99,6 +99,7 @@
     jQuery(document).ready(function () {
         getBlastDBs();
     });
+    var blastfilecontent = '';
 
     function getBlastDBs() {
         jQuery('#blastDBs').html('Loading available BLAST databases <img src=\"/images/ajax-loader.gif\"/>');
@@ -122,7 +123,10 @@
     }
 
     function sendBlastRequest() {
-        if (validateFasta(jQuery('#sequence').val())) {
+        if (validateFasta(jQuery('#sequence').val())||(jQuery('#sequence').val()=='' && jQuery('#seqfile').val()!='')) {
+//            if (jQuery('#sequence').val()=='' && jQuery('#seqfile').val()!='') {
+//                readSingleFile('seqfile');
+//            }
             jQuery('#blastResult').html('BLAST request submitted <img src=\"/images/ajax-loader.gif\"/>');
             Utils.ui.disableButton('blastButton1');
             Utils.ui.disableButton('blastButton2');
@@ -130,7 +134,7 @@
                     'wisControllerHelperService',
                     'sendBlastRequest',
                     {
-                        'form': jQuery('#blastSearchForm').serializeArray(),
+                        'form': jQuery('#blastSearchForm').serializeArray(), 'blastfile':blastfilecontent,
                         'url': ajaxurl
                     },
                     {
@@ -150,7 +154,7 @@
                     }
             );
         } else {
-            alert('Not valid Fasta format in the text area!');
+            alert('Not valid FASTA format in the text area!');
         }
 
     }
@@ -250,6 +254,28 @@
         // allow for Selenocysteine (U)
         return /^[ACDEFGHIKLMNPQRSTUVWY\s]+$/i.test(fasta);
     }
+
+    function readSingleFile() {
+        if (window.File && window.FileReader && window.FileList && window.Blob) {
+
+            var f = document.getElementById('seqfile').files[0];
+
+            if (f) {
+                var r = new FileReader();
+                r.onload = function(e) {
+                    var contents = e.target.result;
+                    blastfilecontent = contents;
+//                    alert(contents);
+                }
+                r.readAsText(f);
+            } else {
+                alert("Failed to load file");
+            }
+        } else {
+            alert('The File APIs are not fully supported by your browser.');
+        }
+    }
+
 </script>
 </div>
 
