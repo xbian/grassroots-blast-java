@@ -392,7 +392,7 @@ public class WISControllerHelperService {
 
       try {
         HttpPost request = new HttpPost(url);
-        StringEntity params = new StringEntity(service.replaceAll("\n", "\\\\n").replaceAll("\r", "\\\\n"));
+        StringEntity params = new StringEntity((service.replaceAll("\\n", "\\\\n")).replaceAll("\\r", "\\\\n"));
         request.addHeader("content-type", "application/x-www-form-urlencoded");
         request.setEntity(params);
         HttpResponse response = httpClient.execute(request);
