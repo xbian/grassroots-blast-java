@@ -127,7 +127,12 @@ public class WISControllerHelperService {
           String param = parameter.getString("param");
           String tag = parameter.getString("tag");
           dbArray.add(parameter);
-          dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" checked=\"checked\" />" + name + "<br/>");
+          if ("/tgac/public/databases/blast/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all".equals(param)) {
+            dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" checked=\"checked\" /><b>" + name + "</b><br/>");
+          }
+          else {
+            dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" />" + name + "<br/>");
+          }
         }
       }
 
@@ -164,7 +169,7 @@ public class WISControllerHelperService {
 
         sequence = j.getString("value");
 
-        if ("".equals(sequence) && !"".equals(blastfile)){
+        if ("".equals(sequence) && !"".equals(blastfile)) {
           sequence = blastfile;
         }
       }
@@ -614,7 +619,8 @@ public class WISControllerHelperService {
 
         String gaps = gapsList.item(i).getTextContent();
 
-        String alignmentDiv = Long.toHexString(Double.doubleToLongBits(Math.random()));;
+        String alignmentDiv = Long.toHexString(Double.doubleToLongBits(Math.random()));
+        ;
 
         String linktoensembl = "";
 
