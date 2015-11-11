@@ -96,6 +96,7 @@ public class WISControllerHelperService {
   }
 
   String blastURL = "http://v0214.nbi.ac.uk/wheatis";
+  String blastTestURL = "http://v0214.nbi.ac.uk:1888/grassroots/controller";
 
   public JSONObject getBlastService(HttpSession session, JSONObject json) {
     StringBuilder dbHTML = new StringBuilder();
@@ -655,6 +656,10 @@ public class WISControllerHelperService {
         }
         if ("w7984.meraculous.scaffolds.Mar28_contamination_removed".equals(databaseName)) {
           ensemblLink = taestivumLink;
+        }
+
+        if("Triticum_aestivum_CS42_TGACv1_all".equals(databaseName)){
+           id = "<a href='#' onclick=\"downloadFile('"+hseq+"','"+id+"')\">"+id+"</a>";
         }
 
         sb.append("<div class='blastResultBox ui-corner-all'>");
