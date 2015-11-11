@@ -658,8 +658,8 @@ public class WISControllerHelperService {
           ensemblLink = taestivumLink;
         }
 
-        if("Triticum_aestivum_CS42_TGACv1_all".equals(databaseName)){
-           id = id + " <a href='#' onclick=\"downloadFile('"+blastResultFormatter(qseq, midline, hseq, 100)+"','"+id+"')\">Download</a><div id='"+id+"status'></div>";
+        if ("Triticum_aestivum_CS42_TGACv1_all".equals(databaseName)) {
+          id = "<a href='javascript:;' onclick=\"downloadFileFromServer('" + id + "')\">"+id+"</a><div id='" + id + "status'></div>";
         }
 
         sb.append("<div class='blastResultBox ui-corner-all'>");
@@ -859,17 +859,40 @@ public class WISControllerHelperService {
     }
   }
 
-  public JSONObject insertYRExcel(HttpSession session, JSONObject json) {
-    String uuid = json.getString("uuid");
-    String url = blastURL;
-    String result = "{" +
-                    "  \"operations\": {" +
-                    "    \"operationId\": 7" +
-                    "  }," +
-                    "  \"services\": [" +
-                    "    \"" + uuid + "\"" +
-                    "  ]" +
-                    "}";
+  public JSONObject downloadFile(HttpSession session, JSONObject json) {
+    JSONObject responses = new JSONObject();
+    String id = json.getString("id");
+    String url = blastTestURL;
+//    String fa = "/tgac/references/internal/assembly/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all.fa";
+    String result = "{\"services\":" +
+                    "[" +
+                    "  {" +
+                    "    \"run\": true," +
+                    "    \"services\": \"SamTools service\"," +
+                    "    \"parameter_set\": {" +
+                    "      \"parameters\": [" +
+                    "        {" +
+                    "          \"param\": \"Index\"," +
+                    "          \"type\": \"string\"," +
+                    "          \"tag\": 1398031948," +
+                    "          \"current_value\": \"/tgac/references/internal/assembly/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all.fa\"," +
+                    "          \"level\": 7," +
+                    "          \"grassroots_type\": 5," +
+                    "          \"concise\": true" +
+                    "        }," +
+                    "        {" +
+                    "          \"param\": \"Scaffold\"," +
+                    "          \"type\": \"string\"," +
+                    "          \"tag\": 1398035267," +
+                    "          \"current_value\": \""+id+"\"," +
+                    "          \"level\": 7," +
+                    "          \"grassroots_type\": 5," +
+                    "          \"concise\": true" +
+                    "        }" +
+                    "      ]" +
+                    "    }" +
+                    "  }" +
+                    "]}";
 
     HttpClient httpClient = new DefaultHttpClient();
 
@@ -878,6 +901,24 @@ public class WISControllerHelperService {
       StringEntity params = new StringEntity(result);
       request.addHeader("content-type", "application/x-www-form-urlencoded");
       request.setEntity(params);
+      HttpResponse response = httpClient.execute(request);
+
+      ResponseHandler<String> handler = new BasicResponseHandler();
+      System.out.println(response);
+//      String body = handler.handleResponse(response);
+
+
+      JSONArray jobsArray = JSONArray.fromObject(handler.handleResponse(response));
+      JSONObject jobsObject = jobsArray.getJSONObject(0);
+
+
+      JSONArray resultArray = jobsObject.getJSONArray("jobs");
+
+      String text = resultArray.getJSONObject(0).getJSONObject("results").getString("scaffold");
+
+
+
+      responses.put("file", fastaFileFormatter(text, 60));
     }
     catch (Exception e) {
       e.printStackTrace();
@@ -886,8 +927,23 @@ public class WISControllerHelperService {
     finally {
       httpClient.getConnectionManager().shutdown();
     }
-    return JSONUtils.SimpleJSONResponse("ok");
+    return responses;
   }
+
+  public String fastaFileFormatter(String seq, int size) {
+    String[] lines = seq.split("\\\\n");
+    String line2 = lines[1];
+    ArrayList<String> seqList = splitEqually(line2, size);
+
+    StringBuilder sb = new StringBuilder();
+    sb.append(lines[0]);
+
+    for (int i = 0; i < seqList.size(); i++) {
+      sb.append(seqList.get(i) + "\\n");
+    }
+    return sb.toString();
+  }
+
 
 
 }
