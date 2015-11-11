@@ -1,1 +1,2 @@
-scp wis-portal/target/ROOT.war wheatis@wheatis.tgac.ac.uk:
+cp wis-portal/target/ROOT.war wis-portal/target/ROOT-test.war
+scp wis-portal/target/ROOT-test.war wheatis@wheatis.tgac.ac.uk:

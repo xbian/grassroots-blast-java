@@ -95,7 +95,8 @@ public class WISControllerHelperService {
     }
   }
 
-  String blastURL = "http://v0214.nbi.ac.uk/wheatis";
+//  String blastURL = "http://v0214.nbi.ac.uk/wheatis";
+  String blastURL = "http://v0214.nbi.ac.uk:1888/grassroots/controller";
 
   public JSONObject getBlastService(HttpSession session, JSONObject json) {
     StringBuilder dbHTML = new StringBuilder();
