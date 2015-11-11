@@ -458,34 +458,40 @@ public class WISControllerHelperService {
       JSONObject statusJSON = JSONObject.fromObject(body);
       JSONArray statusArray = statusJSON.getJSONArray("services");
 
-      int status = statusArray.getJSONObject(0).getInt("status");
+//      if (statusArray.getJSONObject(0).getString("Error") == null) {
+        int status = statusArray.getJSONObject(0).getInt("status");
 
-      if (status == -3) {
-        responses.put("html", "Job failed");
-      }
-      if (status == -2) {
-        responses.put("html", "Failed to start");
-      }
-      if (status == -1) {
-        responses.put("html", "Job error");
-      }
-      if (status == 0) {
-        responses.put("html", "Job idle <img src=\"/images/ajax-loader.gif\">");
-      }
-      if (status == 1) {
-        responses.put("html", "Job pending <img src=\"/images/ajax-loader.gif\">");
-      }
-      if (status == 2) {
-        responses.put("html", "Job started <img src=\"/images/ajax-loader.gif\">");
-      }
-      if (status == 3) {
-        responses.put("html", "Job finished <img src=\"/images/ajax-loader.gif\">");
-      }
-      if (status == 4) {
-        responses.put("html", "Job succeeded");
-      }
+        if (status == -3) {
+          responses.put("html", "Job failed");
+        }
+        if (status == -2) {
+          responses.put("html", "Failed to start");
+        }
+        if (status == -1) {
+          responses.put("html", "Job error");
+        }
+        if (status == 0) {
+          responses.put("html", "Job idle <img src=\"/images/ajax-loader.gif\">");
+        }
+        if (status == 1) {
+          responses.put("html", "Job pending <img src=\"/images/ajax-loader.gif\">");
+        }
+        if (status == 2) {
+          responses.put("html", "Job started <img src=\"/images/ajax-loader.gif\">");
+        }
+        if (status == 3) {
+          responses.put("html", "Job finished <img src=\"/images/ajax-loader.gif\">");
+        }
+        if (status == 4) {
+          responses.put("html", "Job succeeded");
+        }
 
-      responses.put("status", status);
+        responses.put("status", status);
+//      }else {
+//        responses.put("html", statusArray.getJSONObject(0).getString("Error"));
+//        responses.put("status", -1);
+//      }
+
     }
     catch (Exception e) {
       e.printStackTrace();
@@ -931,15 +937,15 @@ public class WISControllerHelperService {
   }
 
   public String fastaFileFormatter(String seq, int size) {
-    String[] lines = seq.split("\\\\n");
+    String[] lines = seq.split("\\n");
     String line2 = lines[1];
     ArrayList<String> seqList = splitEqually(line2, size);
 
     StringBuilder sb = new StringBuilder();
-    sb.append(lines[0]);
+    sb.append(lines[0]+"\n");
 
     for (int i = 0; i < seqList.size(); i++) {
-      sb.append(seqList.get(i) + "\\n");
+      sb.append(seqList.get(i) + "\n");
     }
     return sb.toString();
   }
