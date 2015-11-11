@@ -659,7 +659,7 @@ public class WISControllerHelperService {
         }
 
         if("Triticum_aestivum_CS42_TGACv1_all".equals(databaseName)){
-           id = id + " <a href='#' onclick=\"downloadFile('"+blastResultFormatter(qseq, midline, hseq, 100)+"','"+id+"')\">Download</a>";
+           id = id + " <a href='#' onclick=\"downloadFile('"+blastResultFormatter(qseq, midline, hseq, 100)+"','"+id+"')\">Download</a><div id='"+id+"status'></div>";
         }
 
         sb.append("<div class='blastResultBox ui-corner-all'>");
