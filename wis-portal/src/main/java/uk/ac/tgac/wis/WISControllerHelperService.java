@@ -101,7 +101,7 @@ public class WISControllerHelperService {
   public JSONObject getBlastService(HttpSession session, JSONObject json) {
     StringBuilder dbHTML = new StringBuilder();
     JSONObject responses = new JSONObject();
-    String url = blastURL;
+    String url = blastTestURL;
     String result = "{  \"operations\": {    \"operationId\": 4  },  \"services\": [    \"Blast service\"  ]}";
 
     HttpClient httpClient = new DefaultHttpClient();
@@ -583,7 +583,7 @@ public class WISControllerHelperService {
     JSONObject responses = new JSONObject();
     try {
 
-      String url = blastURL;
+      String url = blastTestURL;
 
 
       HttpClient httpClient = new DefaultHttpClient();
@@ -620,7 +620,7 @@ public class WISControllerHelperService {
   public JSONObject checkBlastResult(HttpSession session, JSONObject json) {
     JSONObject responses = new JSONObject();
     String uuid = json.getString("uuid");
-    String url = blastURL;
+    String url = blastTestURL;
     String result = "{" +
                     "  \"operations\": {" +
                     "    \"operationId\": 5" +
@@ -696,7 +696,7 @@ public class WISControllerHelperService {
     String rawResultString;
 
     String uuid = json.getString("uuid");
-    String url = blastURL;
+    String url = blastTestURL;
     String result = "{" +
                     "  \"operations\": {" +
                     "    \"operationId\": 6" +
@@ -882,7 +882,7 @@ public class WISControllerHelperService {
     JSONObject responses = new JSONObject();
     JSONObject rawResultJSON = new JSONObject();
     String uuid = json.getString("uuid");
-    String url = blastURL;
+    String url = blastTestURL;
     String result = "{" +
                     "  \"operations\": {" +
                     "    \"operationId\": 6" +
@@ -984,7 +984,7 @@ public class WISControllerHelperService {
 
   public JSONObject stopJob(HttpSession session, JSONObject json) {
     String uuid = json.getString("uuid");
-    String url = blastURL;
+    String url = blastTestURL;
     String result = "{" +
                     "  \"operations\": {" +
                     "    \"operationId\": 7" +

@@ -20,7 +20,7 @@
     <script type="text/javascript" src="<c:url value='/scripts/fluxion-ajax/fluxion-ajax-compiled.js?ts=${timestamp.time}'/>"></script>
 
     <!-- bootstrap -->
-    <script src="<c:url value='/scripts/bootstrap/bootstrap.min.js?ts=${timestamp.time}'/>" type="text/javascript"></script>
+    <script src="<c:url value='/scripts/bootstrap/js/bootstrap.min.js?ts=${timestamp.time}'/>" type="text/javascript"></script>
     <link href="<c:url value='/scripts/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="<c:url value='/styles/style.css?ts=${timestamp.time}'/>" type="text/css">
