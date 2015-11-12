@@ -760,7 +760,7 @@ public class WISControllerHelperService {
         sb.append("<p><b>" + hit.getString("num") + ". Title</b>: " + title + " <a target=\"_blank\" href=\"http://www.ensembl.org/Multi/Search/Results?q=" + id + "\">Ensembl</a></p>");
         sb.append("<p><b>Sequence ID</b>: " + id + "</p>");
         sb.append("<p><b>Taxonomy ID</b>: " + taxid + " | <b>Scientific Name</b>: " + sciname + " | <b>Bit Score</b>: " + bit_score + "</p>");
-        sb.append("<p><b>Score</b>: " + score + " | <b>Evalue</b>: " + evalue + " | <b>Identity</b>: " + identity + "</p><hr/>");
+        sb.append("<p><b>Score</b>: " + score + " | <b>Evalue</b>: " + evalue ); //+ " | <b>Identity</b>: " + identity + "</p><hr/>");
         sb.append("<p class='blastPosition'>Query from: " + query_from + " to: " + query_to + " Strand: " + query_strand + "</p>");
         sb.append(blastResultFormatter(qseq, midline, hseq, 100));
         sb.append("<p class='blastPosition'>Hit from: " + hit_from + " to: " + hit_to + " Strand: " + hit_strand + "</p>");
