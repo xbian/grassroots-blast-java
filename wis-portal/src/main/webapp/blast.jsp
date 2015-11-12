@@ -4,9 +4,7 @@
     <h2 id="blastTitle">Grassroots Genomics BLAST Search </h2>
 
     <p>
-        <small>This is a proof of concept, there are might be hiccups please bear with us and we will keep this system
-            updated..
-        </small>
+        <small>If you have any queries about this service, please email the <a href="mailto:grasshelpdesk@tgac.ac.uk">Grassroots Helpdesk</a></small>
     </p>
 
     <form id="blastSearchForm">
