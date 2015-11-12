@@ -671,7 +671,7 @@ public class WISControllerHelperService {
         sb.append("<div class='blastResultBox ui-corner-all'>");
         sb.append("<p><b>" + hit_num + ". </b>" + databaseName + " - " + id + " " + linktoensembl + "</p>");
         sb.append("<b>Bit Score</b>: " + bit_score + " | <b>Hit Length</b>: " + length + " | <b>Gaps:</b> " + gaps + "</p>");
-        sb.append("<p><b>Score</b>: " + score + " | <b>Evalue</b>: " + evalue + " | <b>Identity</b>: " + identity + "</p>");
+        sb.append("<p><b>Score</b>: " + score + " | <b>Evalue</b>: " + evalue); // + " | <b>Identity</b>: " + identity + "</p>");
         sb.append("<div class=\"sectionDivider\" onclick=\"Utils.ui.toggleLeftInfo(jQuery('#" + alignmentDiv + "_arrowclick'), '" + alignmentDiv + "');\">Alignment view" +
                   "        <div id=\"" + alignmentDiv + "_arrowclick\" class=\"toggleLeft\"></div>" +
                   "      </div>" +
