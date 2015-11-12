@@ -910,7 +910,6 @@ public class WISControllerHelperService {
       HttpResponse response = httpClient.execute(request);
 
       ResponseHandler<String> handler = new BasicResponseHandler();
-      System.out.println(response);
 //      String body = handler.handleResponse(response);
 
 
