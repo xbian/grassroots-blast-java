@@ -1005,13 +1005,14 @@ public class WISControllerHelperService {
     ArrayList<String> hseqList = splitEqually(hseq, size);
 
     StringBuilder sb = new StringBuilder();
-
+    sb.append("<pre>");
     if (qseqList.size() == midlineList.size() && qseqList.size() == hseqList.size()) {
       for (int i = 0; i < qseqList.size(); i++) {
-        sb.append("<pre>" + qseqList.get(i) + "<br/>");
+        sb.append(qseqList.get(i) + "<br/>");
         sb.append(midlineList.get(i) + "<br/>");
-        sb.append(hseqList.get(i) + "</pre>");
+        sb.append(hseqList.get(i)+ "<br/>");
       }
+      sb.append("</pre>");
       return sb.toString();
     }
     else {
