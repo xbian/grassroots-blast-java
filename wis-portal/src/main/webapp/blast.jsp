@@ -178,7 +178,7 @@
                             if (json.status == 4) {
                                 Fluxion.doAjax(
                                         'wisControllerHelperService',
-                                        'displayXMLBlastResult',
+                                        'displayNewXMLBlastResult',
                                         {
                                             'uuid': uuid,
                                             'url': ajaxurl
