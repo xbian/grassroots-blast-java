@@ -4,7 +4,12 @@
     <h2 id="blastTitle">Grassroots Genomics BLAST Search </h2>
 
     <p>
-        <small>If you have any queries about this service, please email the <a href="mailto:grasshelpdesk@tgac.ac.uk">Grassroots Helpdesk</a></small>
+        <small>If you have any queries about this service, please email the <a href="mailto:grasshelpdesk@tgac.ac.uk">Grassroots
+            Helpdesk</a></small>
+    </p>
+    <p>
+        <i>We are experiencing some issues with the connection to our HPC cluster, this might affect some users. If you
+            see a job error, please could you wait for a few minutes and then resubmit your job.</i>
     </p>
 
     <form id="blastSearchForm">
@@ -47,7 +52,7 @@
                     </select></td>
                 </tr>
                 <tr>
-                    <td><span class="blastFormTitle">Max target sequences non-default value</span></td>
+                    <td><span class="blastFormTitle">Short queries</span></td>
                     <td><select name="short_queries" id="short_queries">
                         <option value="false" selected="selected">false</option>
                         <option value="true">true</option>
