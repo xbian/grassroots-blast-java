@@ -109,7 +109,7 @@
             getBlastDBs();
         });
         var blastfilecontent = '';
-
+        var timer;
         function getBlastDBs() {
             jQuery('#blastDBs').html('Loading available BLAST databases <img src=\"/images/ajax-loader.gif\"/>');
             Utils.ui.disableButton('blastButton1');
@@ -194,13 +194,14 @@
                                                 Utils.ui.reenableButton('blastButton1', 'BLAST Search');
                                                 Utils.ui.reenableButton('blastButton2', 'BLAST Search');
                                                 stopJob(uuid);
+                                                clearTimeout(timer);
                                             }
                                         }
                                 );
                             }
                             else if (json.status == 0 || json.status == 1 || json.status == 2 || json.status == 3) {
                                 jQuery('#' + uuid).html(json.html);
-                                var timer;
+
                                 clearTimeout(timer);
                                 timer = setTimeout(function () {
                                     checkBlastResult(uuid);
@@ -210,6 +211,7 @@
                                 Utils.ui.reenableButton('blastButton1', 'BLAST Search');
                                 Utils.ui.reenableButton('blastButton2', 'BLAST Search');
                                 stopJob(uuid);
+                                clearTimeout(timer);
                             }
                         }
                     }
