@@ -8,8 +8,8 @@
             Helpdesk</a></small>
     </p>
     <p>
-        <i>We are experiencing some issues with the connection to our HPC cluster, this might affect some users. If you
-            see a job error, please could you wait for a few minutes and then resubmit your job.</i>
+        <small><i>We are experiencing some issues with the connection to our HPC cluster, this might affect some users. If you
+            see a job error, please could you wait for a few minutes and then resubmit your job.</i></small>
     </p>
 
     <form id="blastSearchForm">
