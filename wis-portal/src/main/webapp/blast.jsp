@@ -8,9 +8,12 @@
             Helpdesk</a></small>
     </p>
     <p>
-        <small><i>We are experiencing some issues with the connection to our HPC cluster, this might affect some users. If you
-            see a job error, please could you wait for a few minutes and then resubmit your job.</i></small>
+        <small><i>We are experiencing some issues with the connection to our HPC cluster, this might affect some users.
+            If you see a job error, please could you wait for a few minutes and then resubmit your job.</i></small>
     </p>
+    <p><font color="red">Please note: TGAC's high-performance cluster that powers this service will be undergoing
+        maintenance from 08:00 to 18:00 GMT on the 28th November. As such this service will be offline during this
+        period.</font></p>
 
     <form id="blastSearchForm">
         <p/>
