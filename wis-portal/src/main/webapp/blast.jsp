@@ -11,9 +11,9 @@
         <%--<small><i>We are experiencing some issues with the connection to our HPC cluster, this might affect some users.--%>
             <%--If you see a job error, please could you wait for a few minutes and then resubmit your job.</i></small>--%>
     <%--</p>--%>
-    <p><font color="red">Please note: TGAC's high-performance cluster that powers this service will be undergoing
-        maintenance from 08:00 to 18:00 GMT on the 28th November. As such this service will be offline during this
-        period.</font></p>
+    <%--<p><font color="red">Please note: TGAC's high-performance cluster that powers this service will be undergoing--%>
+        <%--maintenance from 08:00 to 18:00 GMT on the 28th November. As such this service will be offline during this--%>
+        <%--period.</font></p>--%>
 
     <form id="blastSearchForm">
         <p/>
@@ -112,7 +112,7 @@
             getBlastDBs();
         });
         var blastfilecontent = '';
-        var timer;
+
         function getBlastDBs() {
             jQuery('#blastDBs').html('Loading available BLAST databases <img src=\"/images/ajax-loader.gif\"/>');
             Utils.ui.disableButton('blastButton1');
@@ -197,14 +197,14 @@
                                                 Utils.ui.reenableButton('blastButton1', 'BLAST Search');
                                                 Utils.ui.reenableButton('blastButton2', 'BLAST Search');
                                                 stopJob(uuid);
-                                                clearTimeout(timer);
+//                                                clearTimeout(timer);
                                             }
                                         }
                                 );
                             }
                             else if (json.status == 0 || json.status == 1 || json.status == 2 || json.status == 3) {
                                 jQuery('#' + uuid).html(json.html);
-
+                                var timer;
                                 clearTimeout(timer);
                                 timer = setTimeout(function () {
                                     checkBlastResult(uuid);
@@ -214,7 +214,7 @@
                                 Utils.ui.reenableButton('blastButton1', 'BLAST Search');
                                 Utils.ui.reenableButton('blastButton2', 'BLAST Search');
                                 stopJob(uuid);
-                                clearTimeout(timer);
+//                                clearTimeout(timer);
                             }
                         }
                     }
