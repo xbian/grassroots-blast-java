@@ -114,7 +114,7 @@
         var blastfilecontent = '';
 
         function getBlastDBs() {
-            jQuery('#blastDBs').html('Loading available BLAST databases <img src=\"/images/ajax-loader.gif\"/>');
+            jQuery('#blastDBs').html('Loading available BLAST databases <img src=\"/grassroots-portal/images/ajax-loader.gif\"/>');
             Utils.ui.disableButton('blastButton1');
             Utils.ui.disableButton('blastButton2');
             Fluxion.doAjax(
@@ -139,7 +139,7 @@
 //            if (jQuery('#sequence').val()=='' && jQuery('#seqfile').val()!='') {
 //                readSingleFile('seqfile');
 //            }
-                jQuery('#blastResult').html('BLAST request submitted <img src=\"/images/ajax-loader.gif\"/>');
+                jQuery('#blastResult').html('BLAST request submitted <img src=\"/grassroots-portal/images/ajax-loader.gif\"/>');
                 Utils.ui.disableButton('blastButton1');
                 Utils.ui.disableButton('blastButton2');
                 Fluxion.doAjax(
@@ -159,7 +159,7 @@
                                     var name = job['description'].split(";", 1);
                                     jQuery('#blastResult').append(
                                             '<fieldset><legend>' + name + '</legend><div><p><b>Job ID: '
-                                            + uuid + '</b></p><div id=\"' + uuid + '\">Job Submitted <img src=\"/images/ajax-loader.gif\"/></div></div></br></fieldset>');
+                                            + uuid + '</b></p><div id=\"' + uuid + '\">Job Submitted <img src=\"/grassroots-portal/images/ajax-loader.gif\"/></div></div></br></fieldset>');
                                     checkBlastResult(uuid);
                                 }
                             }
@@ -295,7 +295,7 @@
 
 
         function downloadFileFromServer(id) {
-            jQuery('#' + id + 'status').html('<img src=\"/images/ajax-loader.gif\"/>');
+            jQuery('#' + id + 'status').html('<img src=\"/grassroots-portal/images/ajax-loader.gif\"/>');
             Fluxion.doAjax(
                     'wisControllerHelperService',
                     'downloadFile',

@@ -15,7 +15,7 @@
   <name>grassroots-portal</name>
 
   <build>
-    <finalName>ROOT</finalName>
+    <finalName>grassroots-portal</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -47,7 +47,7 @@
                 </artifactItem>
               </artifactItems>
               <excludes>META-INF</excludes>
-              <outputDirectory>target/ROOT/scripts/fluxion-ajax/</outputDirectory>
+              <outputDirectory>target/grassroots-portal/scripts/fluxion-ajax/</outputDirectory>
               <overWriteReleases>true</overWriteReleases>
             </configuration>
           </execution>

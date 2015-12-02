@@ -1,2 +1,3 @@
-cp wis-portal/target/ROOT.war wis-portal/target/ROOT-test.war
-scp wis-portal/target/ROOT-test.war wheatis@wheatis.tgac.ac.uk:
+mvn clean install -o
+cp wis-portal/target/grassroots-portal.war wis-portal/target/grassroots-portal-test.war
+scp wis-portal/target/grassroots-portal-test.war wheatis@wheatis.tgac.ac.uk:

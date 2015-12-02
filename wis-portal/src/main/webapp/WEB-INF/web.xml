@@ -26,14 +26,18 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
          version="2.4">
 
-  <display-name>Grassroots Portal</display-name>
+    <display-name>Grassroots Portal</display-name>
+
+
+
+
     <servlet>
-      <servlet-name>grassroots-portal</servlet-name>
-      <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-      <load-on-startup>1</load-on-startup>
+        <servlet-name>grassroots</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-      <servlet-name>grassroots-portal</servlet-name>
-      <url-pattern>/grassroots-portal/*</url-pattern>
+        <servlet-name>grassroots</servlet-name>
+        <url-pattern>/grassroots-portal/*</url-pattern>
     </servlet-mapping>
 </web-app>
