@@ -1328,10 +1328,10 @@ public class WISControllerHelperService {
       JSONArray jobsArray = JSONArray.fromObject(handler.handleResponse(response));
       JSONObject jobsObject = jobsArray.getJSONObject(0);
 
+//System.out.println(jobsObject);
+//      JSONArray resultArray = jobsObject.getJSONArray("jobs");
 
-      JSONArray resultArray = jobsObject.getJSONArray("jobs");
-
-      String text = resultArray.getJSONObject(0).getJSONObject("results").getString("scaffold");
+      String text = jobsObject.getJSONObject("results").getString("scaffold");
 
 
 
