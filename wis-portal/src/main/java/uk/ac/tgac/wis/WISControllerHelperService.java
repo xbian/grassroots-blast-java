@@ -20,6 +20,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpSession;
 import javax.xml.parsers.DocumentBuilder;
@@ -36,6 +38,7 @@ import java.util.ArrayList;
  */
 @Ajaxified
 public class WISControllerHelperService {
+    protected static final Logger log = LoggerFactory.getLogger(WISControllerHelperService.class);
 
 
   public JSONObject searchSolr(HttpSession session, JSONObject json) {
@@ -145,9 +148,9 @@ public class WISControllerHelperService {
       e.printStackTrace();
       return null;
     }
-    finally {
-      httpClient.getConnectionManager().shutdown();
-    }
+//    finally {
+//      httpClient.getConnectionManager().shutdown();
+//    }
     return responses;
   }
 
@@ -419,9 +422,9 @@ public class WISControllerHelperService {
         e.printStackTrace();
         return null;
       }
-      finally {
-        httpClient.getConnectionManager().shutdown();
-      }
+//      finally {
+//        httpClient.getConnectionManager().shutdown();
+//      }
 
       return responses;
 
@@ -502,9 +505,9 @@ public class WISControllerHelperService {
       e.printStackTrace();
       return null;
     }
-    finally {
-      httpClient.getConnectionManager().shutdown();
-    }
+//    finally {
+//      httpClient.getConnectionManager().shutdown();
+//    }
     return responses;
   }
 
@@ -543,9 +546,9 @@ public class WISControllerHelperService {
       e.printStackTrace();
       return null;
     }
-    finally {
-      httpClient.getConnectionManager().shutdown();
-    }
+//    finally {
+//      httpClient.getConnectionManager().shutdown();
+//    }
 
     try {
       DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -762,9 +765,9 @@ public class WISControllerHelperService {
       e.printStackTrace();
       return null;
     }
-    finally {
-      httpClient.getConnectionManager().shutdown();
-    }
+//    finally {
+//      httpClient.getConnectionManager().shutdown();
+//    }
 
     try {
       DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -948,9 +951,9 @@ public class WISControllerHelperService {
       e.printStackTrace();
       return null;
     }
-    finally {
-      httpClient.getConnectionManager().shutdown();
-    }
+//    finally {
+//      httpClient.getConnectionManager().shutdown();
+//    }
 
     try {
       JSONArray resultsHits = rawResultJSON.getJSONObject("BlastOutput").getJSONObject("report")
@@ -1044,9 +1047,9 @@ public class WISControllerHelperService {
       e.printStackTrace();
       return null;
     }
-    finally {
-      httpClient.getConnectionManager().shutdown();
-    }
+//    finally {
+//      httpClient.getConnectionManager().shutdown();
+//    }
     return JSONUtils.SimpleJSONResponse("ok");
   }
 
@@ -1092,71 +1095,117 @@ public class WISControllerHelperService {
 
   public JSONObject downloadFile(HttpSession session, JSONObject json) {
     JSONObject responses = new JSONObject();
-    String id = json.getString("id");
-    String url = blastTestURL;
-//    String fa = "/tgac/references/internal/assembly/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all.fa";
-    String result = "{\"services\":" +
-                    "[" +
-                    "  {" +
-                    "    \"run\": true," +
-                    "    \"services\": \"SamTools service\"," +
-                    "    \"parameter_set\": {" +
-                    "      \"parameters\": [" +
-                    "        {" +
-                    "          \"param\": \"Index\"," +
-                    "          \"type\": \"string\"," +
-                    "          \"tag\": 1398031948," +
-                    "          \"current_value\": \"/tgac/references/internal/assembly/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all.fa\"," +
-                    "          \"level\": 7," +
-                    "          \"grassroots_type\": 5," +
-                    "          \"concise\": true" +
-                    "        }," +
-                    "        {" +
-                    "          \"param\": \"Scaffold\"," +
-                    "          \"type\": \"string\"," +
-                    "          \"tag\": 1398035267," +
-                    "          \"current_value\": \""+id+"\"," +
-                    "          \"level\": 7," +
-                    "          \"grassroots_type\": 5," +
-                    "          \"concise\": true" +
-                    "        }" +
-                    "      ]" +
-                    "    }" +
-                    "  }" +
-                    "]}";
+      if (json.has("id")) {
+          String id = json.getString("id");
+          log.debug(id);
+          String url = blastTestURL;
 
-    HttpClient httpClient = new DefaultHttpClient();
+          JSONObject requestObject = new JSONObject();
+          JSONArray servicesArray = new JSONArray();
 
-    try {
-      HttpPost request = new HttpPost(url);
-      StringEntity params = new StringEntity(result);
-      request.addHeader("content-type", "application/x-www-form-urlencoded");
-      request.setEntity(params);
-      HttpResponse response = httpClient.execute(request);
+          JSONObject service1 = new JSONObject();
 
-      ResponseHandler<String> handler = new BasicResponseHandler();
-//      String body = handler.handleResponse(response);
+          JSONObject parameterSetObject = new JSONObject();
+
+          JSONArray parametersArray = new JSONArray();
+
+          JSONObject p1 = new JSONObject();
+          JSONObject p2 = new JSONObject();
+
+          p1.put("param","Index");
+          p1.put("type","string");
+          p1.put("tag",1398031948);
+          p1.put("current_value","/tgac/references/internal/assembly/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all.fa");
+          p1.put("level",7);
+          p1.put("grassroots_type",5);
+          p1.put("concise",true);
+
+          parametersArray.add(p1);
+
+          p2.put("param","Scaffold");
+          p2.put("type","string");
+          p2.put("tag",1398035267);
+          p2.put("current_value",id);
+          p2.put("level",7);
+          p2.put("grassroots_type",5);
+          p2.put("concise",true);
+
+          parametersArray.add(p2);
+
+          parameterSetObject.put("parameters",parametersArray);
+
+          service1.put("run",true);
+          service1.put("services","SamTools service");
+          service1.put("parameter_set",parameterSetObject);
 
 
-      JSONArray jobsArray = JSONArray.fromObject(handler.handleResponse(response));
-      JSONObject jobsObject = jobsArray.getJSONObject(0);
+          servicesArray.add(service1);
+          requestObject.put("services",servicesArray);
 
-//System.out.println(jobsObject);
-//      JSONArray resultArray = jobsObject.getJSONArray("jobs");
-
-      String text = jobsObject.getJSONObject("results").getString("scaffold");
+          log.debug(requestObject.toString());
 
 
+//          String result = "{\"services\":" +
+//                  "[" +
+//                  "  {" +
+//                  "    \"run\": true," +
+//                  "    \"services\": \"SamTools service\"," +
+//                  "    \"parameter_set\": {" +
+//                  "      \"parameters\": [" +
+//                  "        {" +
+//                  "          \"param\": \"Index\"," +
+//                  "          \"type\": \"string\"," +
+//                  "          \"tag\": 1398031948," +
+//                  "          \"current_value\": \"/tgac/references/internal/assembly/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all.fa\"," +
+//                  "          \"level\": 7," +
+//                  "          \"grassroots_type\": 5," +
+//                  "          \"concise\": true" +
+//                  "        }," +
+//                  "        {" +
+//                  "          \"param\": \"Scaffold\"," +
+//                  "          \"type\": \"string\"," +
+//                  "          \"tag\": 1398035267," +
+//                  "          \"current_value\": \"" + id + "\"," +
+//                  "          \"level\": 7," +
+//                  "          \"grassroots_type\": 5," +
+//                  "          \"concise\": true" +
+//                  "        }" +
+//                  "      ]" +
+//                  "    }" +
+//                  "  }" +
+//                  "]}";
 
-      responses.put("file", fastaFileFormatter(text, 60));
-    }
-    catch (Exception e) {
-      e.printStackTrace();
-      return null;
-    }
-    finally {
-      httpClient.getConnectionManager().shutdown();
-    }
+          HttpClient httpClient = new DefaultHttpClient();
+
+
+          try {
+              HttpPost request = new HttpPost(url);
+              StringEntity params = new StringEntity(requestObject.toString());
+              request.addHeader("content-type", "application/x-www-form-urlencoded");
+              request.setEntity(params);
+              HttpResponse response = httpClient.execute(request);
+              log.debug(request.toString());
+
+              ResponseHandler<String> handler = new BasicResponseHandler();
+              log.debug(handler.toString());
+
+              JSONArray jobsArray = JSONArray.fromObject(handler.handleResponse(response));
+              log.debug(response.toString());
+              String text = "Not found.";
+              if (jobsArray.size() > 0) {
+                  JSONObject jobsObject = jobsArray.getJSONObject(0);
+
+                  text = fastaFileFormatter(jobsObject.getJSONObject("results").getString("scaffold"), 60);
+              }
+              responses.put("file", text);
+          } catch (Exception e) {
+              e.printStackTrace();
+              return null;
+          }
+      }
+      else {
+          responses.put("file","Error no id appeared");
+      }
     return responses;
   }
 
