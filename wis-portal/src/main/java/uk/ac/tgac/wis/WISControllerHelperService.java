@@ -148,9 +148,9 @@ public class WISControllerHelperService {
       e.printStackTrace();
       return null;
     }
-//    finally {
-//      httpClient.getConnectionManager().shutdown();
-//    }
+    finally {
+      httpClient.getConnectionManager().shutdown();
+    }
     return responses;
   }
 
@@ -422,9 +422,9 @@ public class WISControllerHelperService {
         e.printStackTrace();
         return null;
       }
-//      finally {
-//        httpClient.getConnectionManager().shutdown();
-//      }
+      finally {
+        httpClient.getConnectionManager().shutdown();
+      }
 
       return responses;
 
@@ -505,9 +505,9 @@ public class WISControllerHelperService {
       e.printStackTrace();
       return null;
     }
-//    finally {
-//      httpClient.getConnectionManager().shutdown();
-//    }
+    finally {
+      httpClient.getConnectionManager().shutdown();
+    }
     return responses;
   }
 
@@ -541,14 +541,15 @@ public class WISControllerHelperService {
       JSONObject xmlJSON = JSONObject.fromObject(body);
       JSONArray xmlJSONArray = xmlJSON.getJSONArray("services");
       rawResultString = xmlJSONArray.getJSONObject(0).getString("data");
+        System.out.println(rawResultString);
     }
     catch (Exception e) {
       e.printStackTrace();
       return null;
     }
-//    finally {
-//      httpClient.getConnectionManager().shutdown();
-//    }
+    finally {
+      httpClient.getConnectionManager().shutdown();
+    }
 
     try {
       DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -765,9 +766,9 @@ public class WISControllerHelperService {
       e.printStackTrace();
       return null;
     }
-//    finally {
-//      httpClient.getConnectionManager().shutdown();
-//    }
+    finally {
+      httpClient.getConnectionManager().shutdown();
+    }
 
     try {
       DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -951,9 +952,9 @@ public class WISControllerHelperService {
       e.printStackTrace();
       return null;
     }
-//    finally {
-//      httpClient.getConnectionManager().shutdown();
-//    }
+    finally {
+      httpClient.getConnectionManager().shutdown();
+    }
 
     try {
       JSONArray resultsHits = rawResultJSON.getJSONObject("BlastOutput").getJSONObject("report")
@@ -1047,9 +1048,9 @@ public class WISControllerHelperService {
       e.printStackTrace();
       return null;
     }
-//    finally {
-//      httpClient.getConnectionManager().shutdown();
-//    }
+    finally {
+      httpClient.getConnectionManager().shutdown();
+    }
     return JSONUtils.SimpleJSONResponse("ok");
   }
 
@@ -1200,7 +1201,11 @@ public class WISControllerHelperService {
               responses.put("file", text);
           } catch (Exception e) {
               e.printStackTrace();
+              log.debug(e.toString());
               return null;
+          }
+          finally {
+              httpClient.getConnectionManager().shutdown();
           }
       }
       else {

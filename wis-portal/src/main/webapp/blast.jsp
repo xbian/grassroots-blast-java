@@ -135,7 +135,7 @@
         }
 
         function sendBlastRequest() {
-            if (validateFasta(jQuery('#sequence').val()) || (jQuery('#sequence').val() == '' && jQuery('#seqfile').val() != '')) {
+            if (validateFasta(jQuery('#sequence').val()) || (jQuery('#sequence').val() == '' && (jQuery('#seqfile').val() != '' && blastfilecontent != ''))) {
 //            if (jQuery('#sequence').val()=='' && jQuery('#seqfile').val()!='') {
 //                readSingleFile('seqfile');
 //            }
@@ -167,7 +167,7 @@
                 );
             }
             else {
-                alert('Not valid FASTA format in the text area!');
+                alert('Not valid FASTA format in the text area! Or blast file isn\'t supplied');
             }
 
         }
@@ -197,7 +197,6 @@
                                                 Utils.ui.reenableButton('blastButton1', 'BLAST Search');
                                                 Utils.ui.reenableButton('blastButton2', 'BLAST Search');
                                                 stopJob(uuid);
-//                                                clearTimeout(timer);
                                             }
                                         }
                                 );
@@ -214,7 +213,6 @@
                                 Utils.ui.reenableButton('blastButton1', 'BLAST Search');
                                 Utils.ui.reenableButton('blastButton2', 'BLAST Search');
                                 stopJob(uuid);
-//                                clearTimeout(timer);
                             }
                         }
                     }
