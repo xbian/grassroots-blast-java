@@ -541,7 +541,6 @@ public class WISControllerHelperService {
       JSONObject xmlJSON = JSONObject.fromObject(body);
       JSONArray xmlJSONArray = xmlJSON.getJSONArray("services");
       rawResultString = xmlJSONArray.getJSONObject(0).getString("data");
-        System.out.println(rawResultString);
     }
     catch (Exception e) {
       e.printStackTrace();
