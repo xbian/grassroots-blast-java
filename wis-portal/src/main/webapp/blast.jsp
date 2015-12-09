@@ -196,7 +196,7 @@
                                                 jQuery('#' + uuid).html(json.html);
                                                 Utils.ui.reenableButton('blastButton1', 'BLAST Search');
                                                 Utils.ui.reenableButton('blastButton2', 'BLAST Search');
-                                                stopJob(uuid);
+//                                                stopJob(uuid);
                                             }
                                         }
                                 );
@@ -212,7 +212,7 @@
                             else {
                                 Utils.ui.reenableButton('blastButton1', 'BLAST Search');
                                 Utils.ui.reenableButton('blastButton2', 'BLAST Search');
-                                stopJob(uuid);
+//                                stopJob(uuid);
                             }
                         }
                     }
@@ -230,7 +230,7 @@
                     },
                     {
                         'doOnSuccess': function (json) {
-                            console.log("Stopped job: " + uuid);
+                            console.log(json);
                         }
                     }
             );

@@ -148,9 +148,9 @@ public class WISControllerHelperService {
       e.printStackTrace();
       return null;
     }
-    finally {
-      httpClient.getConnectionManager().shutdown();
-    }
+//    finally {
+//      httpClient.getConnectionManager().shutdown();
+//    }
     return responses;
   }
 
@@ -422,9 +422,9 @@ public class WISControllerHelperService {
         e.printStackTrace();
         return null;
       }
-      finally {
-        httpClient.getConnectionManager().shutdown();
-      }
+//      finally {
+//        httpClient.getConnectionManager().shutdown();
+//      }
 
       return responses;
 
@@ -505,9 +505,9 @@ public class WISControllerHelperService {
       e.printStackTrace();
       return null;
     }
-    finally {
-      httpClient.getConnectionManager().shutdown();
-    }
+//    finally {
+//      httpClient.getConnectionManager().shutdown();
+//    }
     return responses;
   }
 
@@ -546,9 +546,9 @@ public class WISControllerHelperService {
       e.printStackTrace();
       return null;
     }
-    finally {
-      httpClient.getConnectionManager().shutdown();
-    }
+//    finally {
+//      httpClient.getConnectionManager().shutdown();
+//    }
 
     try {
       DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -765,9 +765,9 @@ public class WISControllerHelperService {
       e.printStackTrace();
       return null;
     }
-    finally {
-      httpClient.getConnectionManager().shutdown();
-    }
+//    finally {
+//      httpClient.getConnectionManager().shutdown();
+//    }
 
     try {
       DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -951,9 +951,9 @@ public class WISControllerHelperService {
       e.printStackTrace();
       return null;
     }
-    finally {
-      httpClient.getConnectionManager().shutdown();
-    }
+//    finally {
+//      httpClient.getConnectionManager().shutdown();
+//    }
 
     try {
       JSONArray resultsHits = rawResultJSON.getJSONObject("BlastOutput").getJSONObject("report")
@@ -1042,14 +1042,16 @@ public class WISControllerHelperService {
       StringEntity params = new StringEntity(result);
       request.addHeader("content-type", "application/x-www-form-urlencoded");
       request.setEntity(params);
+        HttpResponse response = httpClient.execute(request);
+        log.debug(response.toString());
     }
     catch (Exception e) {
       e.printStackTrace();
       return null;
     }
-    finally {
-      httpClient.getConnectionManager().shutdown();
-    }
+//    finally {
+//      httpClient.getConnectionManager().shutdown();
+//    }
     return JSONUtils.SimpleJSONResponse("ok");
   }
 
@@ -1203,9 +1205,9 @@ public class WISControllerHelperService {
               log.debug(e.toString());
               return null;
           }
-          finally {
-              httpClient.getConnectionManager().shutdown();
-          }
+//          finally {
+//              httpClient.getConnectionManager().shutdown();
+//          }
       }
       else {
           responses.put("file","Error no id appeared");
