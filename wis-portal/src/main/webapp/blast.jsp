@@ -207,7 +207,7 @@
                                 clearTimeout(timer);
                                 timer = setTimeout(function () {
                                     checkBlastResult(uuid);
-                                }, 5000);
+                                }, 6500);
                             }
                             else {
                                 Utils.ui.reenableButton('blastButton1', 'BLAST Search');
