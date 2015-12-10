@@ -106,14 +106,24 @@ public class WISControllerHelperService {
     StringBuilder dbHTML = new StringBuilder();
     JSONObject responses = new JSONObject();
     String url = blastURL;
-    String result = "{  \"operations\": {    \"operationId\": 4  },  \"services\": [    \"Blast service\"  ]}";
+
+      JSONObject requestObject = new JSONObject();
+      JSONObject operationsObject = new JSONObject();
+      JSONArray servicesArray = new JSONArray();
+
+      servicesArray.add("Blast service");
+      requestObject.put("services",servicesArray);
+
+      operationsObject.put("operationId",4);
+      requestObject.put("operations",operationsObject);
+//    String result = "{  \"operations\": {    \"operationId\": 4  },  \"services\": [    \"Blast service\"  ]}";
 
     HttpClient httpClient = new DefaultHttpClient();
 
 
     try {
       HttpPost request = new HttpPost(url);
-      StringEntity params = new StringEntity(result);
+      StringEntity params = new StringEntity(requestObject.toString());
       request.addHeader("content-type", "application/x-www-form-urlencoded");
       request.setEntity(params);
       HttpResponse response = httpClient.execute(request);
@@ -438,20 +448,29 @@ public class WISControllerHelperService {
     JSONObject responses = new JSONObject();
     String uuid = json.getString("uuid");
     String url = blastURL;
-    String result = "{" +
-                    "  \"operations\": {" +
-                    "    \"operationId\": 5" +
-                    "  }," +
-                    "  \"services\": [" +
-                    "    \"" + uuid + "\"" +
-                    "  ]" +
-                    "}";
+      JSONObject requestObject = new JSONObject();
+      JSONObject operationsObject = new JSONObject();
+      JSONArray servicesArray = new JSONArray();
+
+      servicesArray.add(uuid);
+      requestObject.put("services",servicesArray);
+
+      operationsObject.put("operationId",5);
+      requestObject.put("operations",operationsObject);
+//    String result = "{" +
+//                    "  \"operations\": {" +
+//                    "    \"operationId\": 5" +
+//                    "  }," +
+//                    "  \"services\": [" +
+//                    "    \"" + uuid + "\"" +
+//                    "  ]" +
+//                    "}";
 
     HttpClient httpClient = new DefaultHttpClient();
 
     try {
       HttpPost request = new HttpPost(url);
-      StringEntity params = new StringEntity(result);
+      StringEntity params = new StringEntity(requestObject.toString());
       request.addHeader("content-type", "application/x-www-form-urlencoded");
       request.setEntity(params);
       HttpResponse response = httpClient.execute(request);
@@ -518,20 +537,31 @@ public class WISControllerHelperService {
 
     String uuid = json.getString("uuid");
     String url = blastURL;
-    String result = "{" +
-                    "  \"operations\": {" +
-                    "    \"operationId\": 6" +
-                    "  }," +
-                    "  \"services\": [" +
-                    "    \"" + uuid + "\"" +
-                    "  ]" +
-                    "}";
+      JSONObject requestObject = new JSONObject();
+      JSONObject operationsObject = new JSONObject();
+      JSONArray servicesArray = new JSONArray();
+
+      servicesArray.add(uuid);
+      requestObject.put("services",servicesArray);
+
+      operationsObject.put("operationId",6);
+      requestObject.put("operations",operationsObject);
+
+
+//    String result = "{" +
+//                    "  \"operations\": {" +
+//                    "    \"operationId\": 6" +
+//                    "  }," +
+//                    "  \"services\": [" +
+//                    "    \"" + uuid + "\"" +
+//                    "  ]" +
+//                    "}";
 
     HttpClient httpClient = new DefaultHttpClient();
 
     try {
       HttpPost request = new HttpPost(url);
-      StringEntity params = new StringEntity(result);
+      StringEntity params = new StringEntity(requestObject.toString());
       request.addHeader("content-type", "application/x-www-form-urlencoded");
       request.setEntity(params);
       HttpResponse response = httpClient.execute(request);
