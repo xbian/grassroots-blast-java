@@ -194,6 +194,11 @@ function downloadFileFromServer(id) {
                 downloadFile(json.file, id);
                 jQuery('#' + id + 'status').html('');
                 jQuery('#' + id ).attr('onclick','downloadFileFromServer(\''+id+'\')');
+            },
+            'doOnError': function (json) {
+                alert(json.error);
+                jQuery('#' + id + 'status').html('');
+                jQuery('#' + id).attr('onclick', 'downloadFileFromServer(\'' + id + '\')');
             }
         }
     );
