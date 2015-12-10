@@ -175,6 +175,15 @@ public class WISControllerHelperService {
         String mismatch = "-3";
         StringBuilder databaseParameters = new StringBuilder();
 
+        JSONObject requestObject = new JSONObject();
+        JSONArray servicesArray = new JSONArray();
+
+        JSONObject service1 = new JSONObject();
+
+        JSONObject parameterSetObject = new JSONObject();
+
+        JSONArray parametersArray = new JSONArray();
+
         for (JSONObject j : (Iterable<JSONObject>) formJSON) {
             if (j.getString("name").equals("sequence")) {
 
@@ -214,6 +223,16 @@ public class WISControllerHelperService {
             if (j.getString("name").equals("database")) {
                 String databasevalue = j.getString("value");
                 String[] databasevaluelist = databasevalue.split("\\^");
+                JSONObject parameter = new JSONObject();
+
+                parameter.put("param", databasevaluelist[0]);
+                parameter.put("tag", Integer.parseInt(databasevaluelist[1]));
+                parameter.put("current_value", true);
+                parameter.put("wheatis_type", 0);
+                parameter.put("concise", true);
+
+                parametersArray.add(parameter);
+
                 databaseParameters.append(",{");
                 databaseParameters.append("\"param\": \"" + databasevaluelist[0] + "\",");
                 databaseParameters.append("\"current_value\": true,");
@@ -223,6 +242,166 @@ public class WISControllerHelperService {
                 databaseParameters.append("}");
             }
         }
+
+
+
+
+        JSONObject p1 = new JSONObject();
+        JSONObject p2 = new JSONObject();
+        JSONObject p3 = new JSONObject();
+        JSONObject p4 = new JSONObject();
+        JSONObject p5 = new JSONObject();
+        JSONObject p6 = new JSONObject();
+        JSONObject p7 = new JSONObject();
+        JSONObject p8 = new JSONObject();
+        JSONObject p9 = new JSONObject();
+        JSONObject p10 = new JSONObject();
+        JSONObject p11 = new JSONObject();
+        JSONObject p12 = new JSONObject();
+        JSONObject p13 = new JSONObject();
+
+        JSONObject p1CurrentValue = new JSONObject();
+        p1.put("param", "input");
+        p1CurrentValue.put("protocol","");
+        p1CurrentValue.put("value","");
+        p1.put("current_value", p1CurrentValue);
+        p1.put("tag", 1112100422);
+        p1.put("wheatis_type", 7);
+//        p2.put("type", "string");
+        p1.put("concise", true);
+
+        parametersArray.add(p1);
+
+
+        JSONObject p2CurrentValue = new JSONObject();
+        p2.put("param", "output");
+//        p2.put("type", "string");
+        p2.put("tag", 1112495430);
+        p2CurrentValue.put("protocol","");
+        p2CurrentValue.put("value","");
+        p2.put("current_value", p2CurrentValue);
+//        p2.put("level", 7);
+        p2.put("wheatis_type", 6);
+        p2.put("concise", true);
+
+        parametersArray.add(p2);
+
+        p3.put("param", "query_sequence");
+//        p3.put("type", "string");
+        p3.put("tag", 1112626521);
+        p3.put("current_value", sequence.replaceAll("\\n", "\\\\n").replaceAll("\\r", "\\\\n"));
+//        p3.put("level", 7);
+        p3.put("wheatis_type", 5);
+        p3.put("concise", true);
+
+        parametersArray.add(p3);
+
+        p4.put("param", "from");
+//        p4.put("type", "integer");
+        p4.put("tag", 1112622674);
+        p4.put("current_value", Integer.parseInt(query_from));
+//        p4.put("level", 6);
+        p4.put("wheatis_type", 2);
+        p4.put("concise", true);
+
+        parametersArray.add(p4);
+
+        p5.put("param", "to");
+//        p5.put("type", "integer");
+        p5.put("tag", 1112626255);
+        p5.put("current_value", Integer.parseInt(query_to));
+//        p5.put("level", 6);
+        p5.put("wheatis_type", 2);
+        p5.put("concise", true);
+
+        parametersArray.add(p5);
+
+        p6.put("param", "max_target_sequences");
+//        p6.put("type", "integer");
+        p6.put("tag", 1112363857);
+        p6.put("current_value", Integer.parseInt(max_target_sequences));
+//        p6.put("level", 7);
+        p6.put("wheatis_type", 2);
+        p6.put("concise", true);
+
+        parametersArray.add(p6);
+
+        p7.put("param", "short_queries");
+//        p7.put("type", "boolean");
+        p7.put("tag", 1112754257);
+        p7.put("current_value", Boolean.valueOf(short_queries));
+//        p7.put("level", 7);
+        p7.put("wheatis_type", 0);
+        p7.put("concise", true);
+
+        parametersArray.add(p7);
+
+        p8.put("param", "expect_threshold");
+//        p8.put("type", "integer");
+        p8.put("tag", 1111840852);
+        p8.put("current_value", Integer.parseInt(expect_threshold));
+//        p8.put("level", 7);
+        p8.put("wheatis_type", 2);
+        p8.put("concise", true);
+
+        parametersArray.add(p8);
+
+        p9.put("param", "word_size");
+//        p9.put("type", "integer");
+        p9.put("tag", 1113015379);
+        p9.put("current_value", Integer.parseInt(word_size));
+//        p9.put("level", 7);
+        p9.put("wheatis_type", 2);
+        p9.put("concise", true);
+
+        parametersArray.add(p9);
+
+        p10.put("param", "max_matches_in_a_query_range");
+//        p10.put("type", "integer");
+        p10.put("tag", 1112363591);
+        p10.put("current_value", Integer.parseInt(max_matches_query_range));
+//        p10.put("level", 7);
+        p10.put("wheatis_type", 2);
+        p10.put("concise", true);
+
+        parametersArray.add(p10);
+
+        p11.put("param", "output_format");
+//        p11.put("type", "integer");
+        p11.put("tag", 1111903572);
+        p11.put("current_value", 5);
+//        p11.put("level", 7);
+        p11.put("wheatis_type", 2);
+        p11.put("concise", true);
+
+        parametersArray.add(p11);
+
+        p12.put("param", "match");
+//        p12.put("type", "integer");
+        p12.put("tag", 1112364099);
+        p12.put("current_value", Integer.parseInt(match));
+//        p12.put("level", 6);
+        p12.put("wheatis_type", 1);
+        p12.put("concise", true);
+
+        parametersArray.add(p12);
+
+        p13.put("param", "mismatch");
+        p13.put("tag", 1112363853);
+        p13.put("current_value", Integer.parseInt(mismatch));
+        p12.put("wheatis_type", 1);
+        p13.put("concise", true);
+
+        parametersArray.add(p13);
+
+        parameterSetObject.put("parameters", parametersArray);
+
+        service1.put("run", true);
+        service1.put("services", "Blast service");
+        service1.put("parameter_set", parameterSetObject);
+        servicesArray.add(service1);
+        requestObject.put("services", servicesArray);
+
         String service = "{" +
                 "    \"services\": [" +
                 "        {" +
@@ -414,7 +593,8 @@ public class WISControllerHelperService {
 
             try {
                 HttpPost request = new HttpPost(url);
-                StringEntity params = new StringEntity((service.replaceAll("\\n", "\\\\n")).replaceAll("\\r", "\\\\n"));
+//                StringEntity params = new StringEntity(requestObject.toString());
+                StringEntity params = new StringEntity(service.replaceAll("\\n", "\\\\n").replaceAll("\\r", "\\\\n"));
                 request.addHeader("content-type", "application/x-www-form-urlencoded");
                 request.setEntity(params);
                 HttpResponse response = httpClient.execute(request);
