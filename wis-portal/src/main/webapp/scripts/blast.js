@@ -181,6 +181,7 @@ function readSingleFile() {
 
 function downloadFileFromServer(id) {
     jQuery('#' + id + 'status').html('<img src=\"/images/ajax-loader.gif\"/>');
+    jQuery('#' + id ).removeAttr('onclick');
     Fluxion.doAjax(
         'wisControllerHelperService',
         'downloadFile',
@@ -192,6 +193,7 @@ function downloadFileFromServer(id) {
             'doOnSuccess': function (json) {
                 downloadFile(json.file, id);
                 jQuery('#' + id + 'status').html('');
+                jQuery('#' + id ).attr('onclick','downloadFileFromServer(\''+id+'\')');
             }
         }
     );
