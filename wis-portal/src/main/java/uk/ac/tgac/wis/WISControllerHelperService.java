@@ -199,15 +199,15 @@ public class WISControllerHelperService {
             if (j.getString("name").equals("query_to")) {
                 query_to = j.getString("value");
             }
-            if (j.getString("name").equals("max_target_sequences")) {
-                max_target_sequences = j.getString("value");
-            }
+//            if (j.getString("name").equals("max_target_sequences")) {
+//                max_target_sequences = j.getString("value");
+//            }
             if (j.getString("name").equals("short_queries")) {
                 short_queries = j.getString("value");
             }
-            if (j.getString("name").equals("expect_threshold")) {
-                expect_threshold = j.getString("value");
-            }
+//            if (j.getString("name").equals("expect_threshold")) {
+//                expect_threshold = j.getString("value");
+//            }
             if (j.getString("name").equals("word_size")) {
                 word_size = j.getString("value");
             }
