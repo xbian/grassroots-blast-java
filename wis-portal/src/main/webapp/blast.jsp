@@ -42,7 +42,7 @@
             <table border="0">
                 <tr>
                     <td>Set subsequence: </td>
-                    <td>From <input type="text" name="query_from" id="query_from" value="0" size="10">
+                    <td>From <input type="text" name="query_from" id="query_from" value="0" size="10"><br/>
                         To <input type="text" name="query_to" id="query_to" value="0" size="10"></td>
                 </tr>
                 <%--<tr>--%>

@@ -244,8 +244,6 @@ public class WISControllerHelperService {
         }
 
 
-
-
         JSONObject p1 = new JSONObject();
         JSONObject p2 = new JSONObject();
         JSONObject p3 = new JSONObject();
@@ -262,8 +260,8 @@ public class WISControllerHelperService {
 
         JSONObject p1CurrentValue = new JSONObject();
         p1.put("param", "input");
-        p1CurrentValue.put("protocol","");
-        p1CurrentValue.put("value","");
+        p1CurrentValue.put("protocol", "");
+        p1CurrentValue.put("value", "");
         p1.put("current_value", p1CurrentValue);
         p1.put("tag", 1112100422);
         p1.put("wheatis_type", 7);
@@ -277,8 +275,8 @@ public class WISControllerHelperService {
         p2.put("param", "output");
 //        p2.put("type", "string");
         p2.put("tag", 1112495430);
-        p2CurrentValue.put("protocol","");
-        p2CurrentValue.put("value","");
+        p2CurrentValue.put("protocol", "");
+        p2CurrentValue.put("value", "");
         p2.put("current_value", p2CurrentValue);
 //        p2.put("level", 7);
         p2.put("wheatis_type", 6);
@@ -905,8 +903,15 @@ public class WISControllerHelperService {
                         ensemblLink = taestivumLink;
                     }
 
-                    if ("Triticum_aestivum_CS42_TGACv1_all".equals(databaseName)) {
-                        id = "<a href='javascript:;' id='" + id + "' onclick=\"downloadFileFromServer('" + id + "')\">" + id + "</a><div id='" + id + "status'></div>";
+                    if ("Triticum_aestivum_CS42_TGACv1_all".equals(databaseName) ||
+                            "Aegilops_tauschii.GCA_000347335.1.26.dna.genome.fa".equals(databaseName) ||
+                            "subassemblies_TEcleaned_Hv80Bd75Sb70Os70_30aa_firstBestHit_assembly_ml40_mi99.fa".equals(databaseName) ||
+                            "IWGSCv2.0.fa".equals(databaseName) ||
+                            "w7984.meraculous.scaffolds.Mar28_contamination_removed.fa".equals(databaseName) ||
+                            "spp_aegilopoides/TmG3116_cDNA.fa".equals(databaseName) ||
+                            "spp_monococcum/TmDV92_cDNA.fa".equals(databaseName)
+                            ) {
+                        id = "<a href='javascript:;' id='" + id + "' onclick=\"downloadFileFromServer('" + id.replaceAll("|","^") + "','" + databaseString + "')\">" + id + "</a><div id='" + id.replaceAll("|","^") + "status'></div>";
                     }
 
                     sb.append("<div class='blastResultBox ui-corner-all'>");
@@ -1294,8 +1299,9 @@ public class WISControllerHelperService {
 
     public JSONObject downloadFile(HttpSession session, JSONObject json) {
         JSONObject responses = new JSONObject();
-        if (json.has("id")) {
+        if (json.has("id") && json.has("db")) {
             String id = json.getString("id");
+            String db = json.getString("db");
             log.debug(id);
             String url = blastTestURL;
 
@@ -1314,7 +1320,8 @@ public class WISControllerHelperService {
             p1.put("param", "Index");
             p1.put("type", "string");
             p1.put("tag", 1398031948);
-            p1.put("current_value", "/tgac/references/internal/assembly/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all.fa");
+//            p1.put("current_value", "/tgac/references/internal/assembly/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all.fa");
+            p1.put("db", db);
             p1.put("level", 7);
             p1.put("grassroots_type", 5);
             p1.put("concise", true);
@@ -1324,7 +1331,7 @@ public class WISControllerHelperService {
             p2.put("param", "Scaffold");
             p2.put("type", "string");
             p2.put("tag", 1398035267);
-            p2.put("current_value", id);
+            p2.put("current_value", id.replaceAll("^","|"));
             p2.put("level", 7);
             p2.put("grassroots_type", 5);
             p2.put("concise", true);
