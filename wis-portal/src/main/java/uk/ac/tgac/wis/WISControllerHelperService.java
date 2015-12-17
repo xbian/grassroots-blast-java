@@ -702,8 +702,6 @@ public class WISControllerHelperService {
     }
 
     public JSONObject displayNewXMLBlastResult(HttpSession session, JSONObject json) {
-        StringBuilder sb = new StringBuilder();
-        JSONObject responses = new JSONObject();
         String rawResultString;
 
         String uuid = json.getString("uuid");
@@ -742,6 +740,7 @@ public class WISControllerHelperService {
             JSONObject xmlJSON = JSONObject.fromObject(body);
             JSONArray xmlJSONArray = xmlJSON.getJSONArray("services");
             rawResultString = xmlJSONArray.getJSONObject(0).getString("data");
+            return formatXMLBlastResult(rawResultString);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -750,6 +749,11 @@ public class WISControllerHelperService {
 //      httpClient.getConnectionManager().shutdown();
 //    }
 
+    }
+
+    public JSONObject formatXMLBlastResult(String rawResultString) {
+        StringBuilder sb = new StringBuilder();
+        JSONObject responses = new JSONObject();
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder;
@@ -911,7 +915,7 @@ public class WISControllerHelperService {
                             "/tgac/public/databases/blast/triticum_monococcum/spp_aegilopoides/Triticum_monococcum_G3116".equals(databaseString) ||
                             "/tgac/public/databases/blast/triticum_monococcum/spp_monococcum/Triticum_monococcum_DV92".equals(databaseString)
                             ) {
-                        id = "<a href='javascript:;' id='" + id.replaceAll("\\|",":") + "' onclick=\"downloadFileFromServer('" + id.replaceAll("\\|",":") + "','" + databaseString + "')\">" + id + "</a><div id='" + id.replaceAll("\\|",":") + "status'></div>";
+                        id = "<a href='javascript:;' id='" + id.replaceAll("\\|", ":") + "' onclick=\"downloadFileFromServer('" + id.replaceAll("\\|", ":") + "','" + databaseString + "')\">" + id + "</a><div id='" + id.replaceAll("\\|", ":") + "status'></div>";
                     }
 
                     sb.append("<div class='blastResultBox ui-corner-all'>");
@@ -1341,7 +1345,7 @@ public class WISControllerHelperService {
             p2.put("param", "Scaffold");
             p2.put("type", "string");
             p2.put("tag", 1398035267);
-            p2.put("current_value", id.replaceAll(":","\\|"));
+            p2.put("current_value", id.replaceAll(":", "\\|"));
             p2.put("level", 7);
             p2.put("grassroots_type", 5);
             p2.put("concise", true);
