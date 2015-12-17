@@ -198,7 +198,7 @@ function downloadFileFromServer(id,db) {
             },
             'doOnError': function (json) {
                 alert(json.error);
-                jQuery('#' + id + 'status').html('');
+                jQuery('#' + id + 'status').html('Failed download the sequence, please try again.');
                 jQuery('#' + id).attr('onclick', 'downloadFileFromServer(\'' + id + '\')');
             }
         }

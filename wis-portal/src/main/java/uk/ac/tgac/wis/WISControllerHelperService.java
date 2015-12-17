@@ -911,7 +911,7 @@ public class WISControllerHelperService {
                             "/tgac/public/databases/blast/triticum_monococcum/spp_aegilopoides/Triticum_monococcum_G3116".equals(databaseString) ||
                             "/tgac/public/databases/blast/triticum_monococcum/spp_monococcum/Triticum_monococcum_DV92".equals(databaseString)
                             ) {
-                        id = "<a href='javascript:;' id='" + id + "' onclick=\"downloadFileFromServer('" + id.replaceAll("\\|","\\^") + "','" + databaseString + "')\">" + id + "</a><div id='" + id.replaceAll("\\|","\\^") + "status'></div>";
+                        id = "<a href='javascript:;' id='" + id.replaceAll("\\|",":") + "' onclick=\"downloadFileFromServer('" + id.replaceAll("\\|",":") + "','" + databaseString + "')\">" + id + "</a><div id='" + id.replaceAll("\\|",":") + "status'></div>";
                     }
 
                     sb.append("<div class='blastResultBox ui-corner-all'>");
@@ -1341,7 +1341,7 @@ public class WISControllerHelperService {
             p2.put("param", "Scaffold");
             p2.put("type", "string");
             p2.put("tag", 1398035267);
-            p2.put("current_value", id.replaceAll("\\^","\\|"));
+            p2.put("current_value", id.replaceAll(":","\\|"));
             p2.put("level", 7);
             p2.put("grassroots_type", 5);
             p2.put("concise", true);
@@ -1359,37 +1359,6 @@ public class WISControllerHelperService {
             requestObject.put("services", servicesArray);
 
             log.debug(requestObject.toString());
-
-
-//          String result = "{\"services\":" +
-//                  "[" +
-//                  "  {" +
-//                  "    \"run\": true," +
-//                  "    \"services\": \"SamTools service\"," +
-//                  "    \"parameter_set\": {" +
-//                  "      \"parameters\": [" +
-//                  "        {" +
-//                  "          \"param\": \"Index\"," +
-//                  "          \"type\": \"string\"," +
-//                  "          \"tag\": 1398031948," +
-//                  "          \"current_value\": \"/tgac/references/internal/assembly/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all.fa\"," +
-//                  "          \"level\": 7," +
-//                  "          \"grassroots_type\": 5," +
-//                  "          \"concise\": true" +
-//                  "        }," +
-//                  "        {" +
-//                  "          \"param\": \"Scaffold\"," +
-//                  "          \"type\": \"string\"," +
-//                  "          \"tag\": 1398035267," +
-//                  "          \"current_value\": \"" + id + "\"," +
-//                  "          \"level\": 7," +
-//                  "          \"grassroots_type\": 5," +
-//                  "          \"concise\": true" +
-//                  "        }" +
-//                  "      ]" +
-//                  "    }" +
-//                  "  }" +
-//                  "]}";
 
             HttpClient httpClient = new DefaultHttpClient();
 
