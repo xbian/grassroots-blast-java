@@ -22,8 +22,31 @@ function getBlastDBs() {
 }
 
 function sendBlastRequest() {
-    
-    if (validateFasta(jQuery('#sequence').val()) || blastfilecontent != '') {
+    if (validateJobID(jQuery('#sequence').val())) {
+        var uuid = jQuery('#sequence').val();
+        jQuery('#blastResult').html('Retriving job id: ' + uuid + ' <img src=\"/images/ajax-loader.gif\"/>');
+        Utils.ui.disableButton('blastButton1');
+        Utils.ui.disableButton('blastButton2');
+        Fluxion.doAjax(
+            'wisControllerHelperService',
+            'getPreviousJob',
+            {
+                'id': jQuery('#sequence').val(),
+                'url': ajaxurl
+            },
+            {
+                'doOnSuccess': function (json) {
+                    jQuery('#blastResult').html('');
+                    Utils.ui.reenableButton('blastButton1', 'BLAST Search');
+                    Utils.ui.reenableButton('blastButton2', 'BLAST Search');
+                    jQuery('#blastResult').append('<b>Job ID: ' + uuid + '</b>');
+                    checkBlastResult(uuid);
+                }
+            }
+        );
+        console.log('job id: ' + uuid);
+    }
+    else if (validateFasta(jQuery('#sequence').val()) || blastfilecontent != '') {
         jQuery('#blastResult').html('BLAST request submitted <img src=\"/images/ajax-loader.gif\"/>');
         Utils.ui.disableButton('blastButton1');
         Utils.ui.disableButton('blastButton2');
