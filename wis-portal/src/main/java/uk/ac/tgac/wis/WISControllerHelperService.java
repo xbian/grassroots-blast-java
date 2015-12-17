@@ -903,15 +903,15 @@ public class WISControllerHelperService {
                         ensemblLink = taestivumLink;
                     }
 
-                    if ("Triticum_aestivum_CS42_TGACv1_all".equals(databaseName) ||
-                            "Aegilops_tauschii.GCA_000347335.1.26.dna.genome.fa".equals(databaseName) ||
-                            "subassemblies_TEcleaned_Hv80Bd75Sb70Os70_30aa_firstBestHit_assembly_ml40_mi99.fa".equals(databaseName) ||
-                            "IWGSCv2.0.fa".equals(databaseName) ||
-                            "w7984.meraculous.scaffolds.Mar28_contamination_removed.fa".equals(databaseName) ||
-                            "spp_aegilopoides/TmG3116_cDNA.fa".equals(databaseName) ||
-                            "spp_monococcum/TmDV92_cDNA.fa".equals(databaseName)
+                    if ("/tgac/public/databases/blast/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all".equals(databaseString) ||
+                            "/tgac/public/databases/blast/aegilops_tauschii/GCA_000347335.1/Aegilops_tauschii.GCA_000347335.1.26.dna.genome".equals(databaseString) ||
+                            "/tgac/public/databases/blast/triticum_aestivum/brenchley_CS42/subassemblies_TEcleaned_Hv80Bd75Sb70Os70_30aa_firstBestHit_assembly_ml40_mi99".equals(databaseString) ||
+                            "/tgac/public/databases/blast/triticum_aestivum/IWGSC/v2/IWGSCv2.0".equals(databaseString) ||
+                            "/tgac/public/databases/blast/triticum_aestivum/W7984/w7984.meraculous.scaffolds.Mar28_contamination_removed".equals(databaseString) ||
+                            "/tgac/public/databases/blast/triticum_monococcum/spp_aegilopoides/Triticum_monococcum_G3116".equals(databaseString) ||
+                            "/tgac/public/databases/blast/triticum_monococcum/spp_monococcum/Triticum_monococcum_DV92".equals(databaseString)
                             ) {
-                        id = "<a href='javascript:;' id='" + id + "' onclick=\"downloadFileFromServer('" + id.replaceAll("\\|","^") + "','" + databaseString + "')\">" + id + "</a><div id='" + id.replaceAll("\\|","^") + "status'></div>";
+                        id = "<a href='javascript:;' id='" + id + "' onclick=\"downloadFileFromServer('" + id.replaceAll("\\|","\\^") + "','" + databaseString + "')\">" + id + "</a><div id='" + id.replaceAll("\\|","\\^") + "status'></div>";
                     }
 
                     sb.append("<div class='blastResultBox ui-corner-all'>");
@@ -1317,21 +1317,31 @@ public class WISControllerHelperService {
             JSONObject p1 = new JSONObject();
             JSONObject p2 = new JSONObject();
 
-            p1.put("param", "Index");
+//            p1.put("param", "Index");
+//            p1.put("type", "string");
+//            p1.put("tag", 1398031948);
+////            p1.put("current_value", "/tgac/references/internal/assembly/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all.fa");
+//            p1.put("db", db);
+//            p1.put("level", 7);
+//            p1.put("grassroots_type", 5);
+//            p1.put("concise", true);
+
+            p1.put("param", "Blast database");
             p1.put("type", "string");
-            p1.put("tag", 1398031948);
+            p1.put("tag", 1398030918);
 //            p1.put("current_value", "/tgac/references/internal/assembly/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all.fa");
-            p1.put("db", db);
+            p1.put("current_value", db);
             p1.put("level", 7);
             p1.put("grassroots_type", 5);
             p1.put("concise", true);
+
 
             parametersArray.add(p1);
 
             p2.put("param", "Scaffold");
             p2.put("type", "string");
             p2.put("tag", 1398035267);
-            p2.put("current_value", id.replaceAll("^","\\|"));
+            p2.put("current_value", id.replaceAll("\\^","\\|"));
             p2.put("level", 7);
             p2.put("grassroots_type", 5);
             p2.put("concise", true);
