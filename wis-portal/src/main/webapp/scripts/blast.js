@@ -41,6 +41,12 @@ function sendBlastRequest() {
                     Utils.ui.reenableButton('blastButton2', 'BLAST Search');
                     jQuery('#blastResult').append('<b>Job ID: ' + uuid + '</b>');
                     checkBlastResult(uuid);
+                },
+                'doOnError': function (json) {
+                    console.info(json.error);
+                    jQuery('#blastResult').html('Failed to retrieve job id: ' + uuid);
+                    Utils.ui.reenableButton('blastButton1', 'BLAST Search');
+                    Utils.ui.reenableButton('blastButton2', 'BLAST Search');
                 }
             }
         );
@@ -228,7 +234,7 @@ function downloadFileFromServer(id, db) {
                 jQuery('#' + id).attr('onclick', 'downloadFileFromServer(\'' + id + '\')');
             },
             'doOnError': function (json) {
-                alert(json.error);
+                console.info(json.error);
                 jQuery('#' + id + 'status').html('Failed download the sequence, please try again.');
                 jQuery('#' + id).attr('onclick', 'downloadFileFromServer(\'' + id + '\')');
             }
