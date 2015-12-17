@@ -22,10 +22,7 @@ function getBlastDBs() {
 }
 
 function sendBlastRequest() {
-    if (validateFasta(jQuery('#sequence').val()) || (jQuery('#sequence').val() == '' && (jQuery('#seqfile').val() != '' && blastfilecontent != ''))) {
-//            if (jQuery('#sequence').val()=='' && jQuery('#seqfile').val()!='') {
-//                readSingleFile('seqfile');
-//            }
+    if (validateFasta(jQuery('#sequence').val()) || blastfilecontent != '') {
         jQuery('#blastResult').html('BLAST request submitted <img src=\"/images/ajax-loader.gif\"/>');
         Utils.ui.disableButton('blastButton1');
         Utils.ui.disableButton('blastButton2');
@@ -179,9 +176,9 @@ function readSingleFile() {
 }
 
 
-function downloadFileFromServer(id,db) {
+function downloadFileFromServer(id, db) {
     jQuery('#' + id + 'status').html('<img src=\"/images/ajax-loader.gif\"/>');
-    jQuery('#' + id ).removeAttr('onclick');
+    jQuery('#' + id).removeAttr('onclick');
     Fluxion.doAjax(
         'wisControllerHelperService',
         'downloadFile',
@@ -194,7 +191,7 @@ function downloadFileFromServer(id,db) {
             'doOnSuccess': function (json) {
                 downloadFile(json.file, id);
                 jQuery('#' + id + 'status').html('');
-                jQuery('#' + id ).attr('onclick','downloadFileFromServer(\''+id+'\')');
+                jQuery('#' + id).attr('onclick', 'downloadFileFromServer(\'' + id + '\')');
             },
             'doOnError': function (json) {
                 alert(json.error);
@@ -210,4 +207,38 @@ function downloadFileFromServer(id,db) {
 function downloadFile(text, filename) {
     var blob = new Blob([text], {type: "text/plain;charset=utf-8"});
     saveAs(blob, filename + ".txt");
+}
+
+function handleFileSelect(evt) {
+        evt.stopPropagation();
+        evt.preventDefault();
+
+        var files = evt.dataTransfer.files; // FileList object.
+
+        // files is a FileList of File objects. List some properties.
+        var output = [];
+        var f = files[0];
+            output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                f.size, ' bytes, last modified: ',
+                f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+                '</li>');
+        document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+    //var f = files[0];
+    if (f) {
+        var r = new FileReader();
+        r.onload = function (e) {
+            var contents = e.target.result;
+            blastfilecontent = contents;
+        }
+        r.readAsText(f);
+    }
+    else {
+        alert("Failed to load file");
+    }
+}
+
+function handleDragOver(evt) {
+    evt.stopPropagation();
+    evt.preventDefault();
+    evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
 }
