@@ -179,7 +179,7 @@ function readSingleFile() {
 }
 
 
-function downloadFileFromServer(id) {
+function downloadFileFromServer(id,db) {
     jQuery('#' + id + 'status').html('<img src=\"/images/ajax-loader.gif\"/>');
     jQuery('#' + id ).removeAttr('onclick');
     Fluxion.doAjax(
@@ -187,6 +187,7 @@ function downloadFileFromServer(id) {
         'downloadFile',
         {
             'id': id,
+            'db': db,
             'url': ajaxurl
         },
         {

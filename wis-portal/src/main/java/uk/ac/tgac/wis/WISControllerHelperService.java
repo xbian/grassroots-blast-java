@@ -911,7 +911,7 @@ public class WISControllerHelperService {
                             "spp_aegilopoides/TmG3116_cDNA.fa".equals(databaseName) ||
                             "spp_monococcum/TmDV92_cDNA.fa".equals(databaseName)
                             ) {
-                        id = "<a href='javascript:;' id='" + id + "' onclick=\"downloadFileFromServer('" + id.replaceAll("|","^") + "','" + databaseString + "')\">" + id + "</a><div id='" + id.replaceAll("|","^") + "status'></div>";
+                        id = "<a href='javascript:;' id='" + id + "' onclick=\"downloadFileFromServer('" + id.replaceAll("\\|","^") + "','" + databaseString + "')\">" + id + "</a><div id='" + id.replaceAll("\\|","^") + "status'></div>";
                     }
 
                     sb.append("<div class='blastResultBox ui-corner-all'>");
@@ -1331,7 +1331,7 @@ public class WISControllerHelperService {
             p2.put("param", "Scaffold");
             p2.put("type", "string");
             p2.put("tag", 1398035267);
-            p2.put("current_value", id.replaceAll("^","|"));
+            p2.put("current_value", id.replaceAll("^","\\|"));
             p2.put("level", 7);
             p2.put("grassroots_type", 5);
             p2.put("concise", true);
