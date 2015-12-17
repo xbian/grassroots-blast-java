@@ -22,6 +22,7 @@ function getBlastDBs() {
 }
 
 function sendBlastRequest() {
+    
     if (validateFasta(jQuery('#sequence').val()) || blastfilecontent != '') {
         jQuery('#blastResult').html('BLAST request submitted <img src=\"/images/ajax-loader.gif\"/>');
         Utils.ui.disableButton('blastButton1');
@@ -152,6 +153,16 @@ function validateFasta(fasta) {
     return /^[ACDEFGHIKLMNPQRSTUVWY\s]+$/i.test(fasta);
 }
 
+function validateJobID(id) {
+    if (!id) { // check there is something first of all
+        return false;
+    }
+
+    // immediately remove trailing spaces
+    id = id.trim();
+    return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(id);
+}
+
 function readSingleFile() {
     if (window.File && window.FileReader && window.FileList && window.Blob) {
 
@@ -210,19 +221,19 @@ function downloadFile(text, filename) {
 }
 
 function handleFileSelect(evt) {
-        evt.stopPropagation();
-        evt.preventDefault();
+    evt.stopPropagation();
+    evt.preventDefault();
 
-        var files = evt.dataTransfer.files; // FileList object.
+    var files = evt.dataTransfer.files; // FileList object.
 
-        // files is a FileList of File objects. List some properties.
-        var output = [];
-        var f = files[0];
-            output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                f.size, ' bytes, last modified: ',
-                f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
-                '</li>');
-        document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+    // files is a FileList of File objects. List some properties.
+    var output = [];
+    var f = files[0];
+    output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+        f.size, ' bytes, last modified: ',
+        f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+        '</li>');
+    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
     //var f = files[0];
     if (f) {
         var r = new FileReader();
