@@ -1093,5 +1093,61 @@ public class WISControllerHelperService {
         return sb.toString();
     }
 
+    public JSONObject getPreviousJob(HttpSession session, JSONObject json) {
+        String rawResultString;
+
+        String uuid = json.getString("id");
+        String url = blastTestURL;
+        JSONObject requestObject = new JSONObject();
+        JSONArray servicesArray = new JSONArray();
+
+        JSONObject service1 = new JSONObject();
+        JSONObject parameterSetObject = new JSONObject();
+        JSONArray parametersArray = new JSONArray();
+
+        JSONObject p1 = new JSONObject();
+
+        p1.put("param", "job_id");
+        p1.put("tag", 1112099401);
+        p1.put("current_value", uuid);
+        p1.put("grassroots_type", 5);
+        p1.put("type", "string");
+        p1.put("level", 7);
+        p1.put("concise", true);
+        parametersArray.add(p1);
+
+        parameterSetObject.put("parameters", parametersArray);
+
+        service1.put("run", true);
+        service1.put("services", "Blast service");
+        service1.put("parameter_set", parameterSetObject);
+
+        servicesArray.add(service1);
+        requestObject.put("services", servicesArray);
+
+        HttpClient httpClient = new DefaultHttpClient();
+
+        try {
+            HttpPost request = new HttpPost(url);
+            StringEntity params = new StringEntity(requestObject.toString());
+            request.addHeader("content-type", "application/x-www-form-urlencoded");
+            request.setEntity(params);
+            HttpResponse response = httpClient.execute(request);
+
+            ResponseHandler<String> handler = new BasicResponseHandler();
+            String body = handler.handleResponse(response);
+            JSONObject xmlJSON = JSONObject.fromObject(body);
+            JSONArray xmlJSONArray = xmlJSON.getJSONArray("services");
+            rawResultString = xmlJSONArray.getJSONObject(0).getString("data");
+            return formatXMLBlastResult(rawResultString);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+//    finally {
+//      httpClient.getConnectionManager().shutdown();
+//    }
+
+    }
 
 }

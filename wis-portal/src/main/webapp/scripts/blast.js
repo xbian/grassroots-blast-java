@@ -39,8 +39,8 @@ function sendBlastRequest() {
                     jQuery('#blastResult').html('');
                     Utils.ui.reenableButton('blastButton1', 'BLAST Search');
                     Utils.ui.reenableButton('blastButton2', 'BLAST Search');
-                    jQuery('#blastResult').append('<b>Job ID: ' + uuid + '</b>');
-                    checkBlastResult(uuid);
+                    jQuery('#blastResult').append('<b>Job ID: ' + uuid + '</b><br/>');
+                    jQuery('#blastResult').append(json.html);
                 },
                 'doOnError': function (json) {
                     console.info(json.error);
