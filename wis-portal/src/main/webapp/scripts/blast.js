@@ -24,7 +24,7 @@ function getBlastDBs() {
 function sendBlastRequest() {
     if (validateJobID(jQuery('#sequence').val())) {
         var uuid = jQuery('#sequence').val();
-        jQuery('#blastResult').html('Retriving job id: ' + uuid + ' <img src=\"/images/ajax-loader.gif\"/>');
+        jQuery('#blastResult').html('Retrieving job id: ' + uuid + ' <img src=\"/images/ajax-loader.gif\"/>');
         Utils.ui.disableButton('blastButton1');
         Utils.ui.disableButton('blastButton2');
         Fluxion.doAjax(

@@ -1127,6 +1127,9 @@ public class WISControllerHelperService {
 
         HttpClient httpClient = new DefaultHttpClient();
 
+
+        JSONObject result = new JSONObject();
+
         try {
             HttpPost request = new HttpPost(url);
             StringEntity params = new StringEntity(requestObject.toString());
@@ -1136,13 +1139,26 @@ public class WISControllerHelperService {
 
             ResponseHandler<String> handler = new BasicResponseHandler();
             String body = handler.handleResponse(response);
-            JSONObject xmlJSON = JSONObject.fromObject(body);
-            JSONArray xmlJSONArray = xmlJSON.getJSONArray("services");
-            rawResultString = xmlJSONArray.getJSONObject(0).getString("data");
-            return formatXMLBlastResult(rawResultString);
+            JSONArray resultArray = JSONArray.fromObject(body);
+            JSONObject xmlJSON = (JSONObject) resultArray.get(0);
+
+            if (xmlJSON.get("status") != null) {
+                if (xmlJSON.getInt("status")!= -1) {
+                    JSONArray xmlJSONArray = xmlJSON.getJSONArray("services");
+                    rawResultString = xmlJSONArray.getJSONObject(0).getString("data");
+                    return formatXMLBlastResult(rawResultString);
+                } else {
+                    result.put("html", "Error, Not able to retrieve job " + uuid);
+                    return result;
+                }
+            } else {
+                result.put("html", "Error, Not able to retrieve job " + uuid);
+                return result;
+            }
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            result.put("error", e.toString());
+            return result;
         }
 //    finally {
 //      httpClient.getConnectionManager().shutdown();
