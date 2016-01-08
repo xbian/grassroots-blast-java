@@ -99,11 +99,13 @@ public class WISControllerHelperService {
 
     String blastURL = "http://v0214.nbi.ac.uk/wheatis";
     String blastTestURL = "http://v0214.nbi.ac.uk:1888/grassroots/controller";
+    String simonURL = "http://n79610.nbi.ac.uk:8080/grassroots/controller";
 
     public JSONObject getBlastService(HttpSession session, JSONObject json) {
         StringBuilder dbHTML = new StringBuilder();
         JSONObject responses = new JSONObject();
-        String url = blastURL;
+//        String url = blastURL;
+        String url = simonURL;
 
         JSONObject requestObject = new JSONObject();
         JSONObject operationsObject = new JSONObject();
@@ -227,7 +229,7 @@ public class WISControllerHelperService {
                 parameter.put("param", databasevaluelist[0]);
                 parameter.put("tag", Integer.parseInt(databasevaluelist[1]));
                 parameter.put("current_value", true);
-                parameter.put("wheatis_type", 0);
+                parameter.put("grassroots_type", 0);
                 parameter.put("concise", true);
 
                 parametersArray.add(parameter);
@@ -236,7 +238,7 @@ public class WISControllerHelperService {
                 databaseParameters.append("\"param\": \"" + databasevaluelist[0] + "\",");
                 databaseParameters.append("\"current_value\": true,");
                 databaseParameters.append("\"tag\": " + databasevaluelist[1] + ",");
-                databaseParameters.append("\"wheatis_type\": 0,");
+                databaseParameters.append("\"grassroots_type\": 0,");
                 databaseParameters.append("\"concise\": true");
                 databaseParameters.append("}");
             }
@@ -263,7 +265,7 @@ public class WISControllerHelperService {
         p1CurrentValue.put("value", "");
         p1.put("current_value", p1CurrentValue);
         p1.put("tag", 1112100422);
-        p1.put("wheatis_type", 7);
+        p1.put("grassroots_type", 7);
 //        p2.put("type", "string");
         p1.put("concise", true);
 
@@ -278,7 +280,7 @@ public class WISControllerHelperService {
         p2CurrentValue.put("value", "");
         p2.put("current_value", p2CurrentValue);
 //        p2.put("level", 7);
-        p2.put("wheatis_type", 6);
+        p2.put("grassroots_type", 6);
         p2.put("concise", true);
 
         parametersArray.add(p2);
@@ -288,7 +290,7 @@ public class WISControllerHelperService {
         p3.put("tag", 1112626521);
         p3.put("current_value", sequence.replaceAll("\\n", "\\\\n").replaceAll("\\r", "\\\\n"));
 //        p3.put("level", 7);
-        p3.put("wheatis_type", 5);
+        p3.put("grassroots_type", 5);
         p3.put("concise", true);
 
         parametersArray.add(p3);
@@ -298,7 +300,7 @@ public class WISControllerHelperService {
         p4.put("tag", 1112622674);
         p4.put("current_value", Integer.parseInt(query_from));
 //        p4.put("level", 6);
-        p4.put("wheatis_type", 2);
+        p4.put("grassroots_type", 2);
         p4.put("concise", true);
 
         parametersArray.add(p4);
@@ -308,7 +310,7 @@ public class WISControllerHelperService {
         p5.put("tag", 1112626255);
         p5.put("current_value", Integer.parseInt(query_to));
 //        p5.put("level", 6);
-        p5.put("wheatis_type", 2);
+        p5.put("grassroots_type", 2);
         p5.put("concise", true);
 
         parametersArray.add(p5);
@@ -318,7 +320,7 @@ public class WISControllerHelperService {
         p6.put("tag", 1112363857);
         p6.put("current_value", Integer.parseInt(max_target_sequences));
 //        p6.put("level", 7);
-        p6.put("wheatis_type", 2);
+        p6.put("grassroots_type", 2);
         p6.put("concise", true);
 
         parametersArray.add(p6);
@@ -328,7 +330,7 @@ public class WISControllerHelperService {
         p7.put("tag", 1112754257);
         p7.put("current_value", Boolean.valueOf(short_queries));
 //        p7.put("level", 7);
-        p7.put("wheatis_type", 0);
+        p7.put("grassroots_type", 0);
         p7.put("concise", true);
 
         parametersArray.add(p7);
@@ -338,7 +340,7 @@ public class WISControllerHelperService {
         p8.put("tag", 1111840852);
         p8.put("current_value", Integer.parseInt(expect_threshold));
 //        p8.put("level", 7);
-        p8.put("wheatis_type", 2);
+        p8.put("grassroots_type", 2);
         p8.put("concise", true);
 
         parametersArray.add(p8);
@@ -348,7 +350,7 @@ public class WISControllerHelperService {
         p9.put("tag", 1113015379);
         p9.put("current_value", Integer.parseInt(word_size));
 //        p9.put("level", 7);
-        p9.put("wheatis_type", 2);
+        p9.put("grassroots_type", 2);
         p9.put("concise", true);
 
         parametersArray.add(p9);
@@ -358,7 +360,7 @@ public class WISControllerHelperService {
         p10.put("tag", 1112363591);
         p10.put("current_value", Integer.parseInt(max_matches_query_range));
 //        p10.put("level", 7);
-        p10.put("wheatis_type", 2);
+        p10.put("grassroots_type", 2);
         p10.put("concise", true);
 
         parametersArray.add(p10);
@@ -368,7 +370,7 @@ public class WISControllerHelperService {
         p11.put("tag", 1111903572);
         p11.put("current_value", 5);
 //        p11.put("level", 7);
-        p11.put("wheatis_type", 2);
+        p11.put("grassroots_type", 2);
         p11.put("concise", true);
 
         parametersArray.add(p11);
@@ -378,7 +380,7 @@ public class WISControllerHelperService {
         p12.put("tag", 1112364099);
         p12.put("current_value", Integer.parseInt(match));
 //        p12.put("level", 6);
-        p12.put("wheatis_type", 1);
+        p12.put("grassroots_type", 1);
         p12.put("concise", true);
 
         parametersArray.add(p12);
@@ -386,7 +388,7 @@ public class WISControllerHelperService {
         p13.put("param", "mismatch");
         p13.put("tag", 1112363853);
         p13.put("current_value", Integer.parseInt(mismatch));
-        p12.put("wheatis_type", 1);
+        p12.put("grassroots_type", 1);
         p13.put("concise", true);
 
         parametersArray.add(p13);
@@ -414,7 +416,7 @@ public class WISControllerHelperService {
                 "            \"value\": \"\"" +
                 "          }," +
                 "          \"tag\": 1112100422," +
-                "          \"wheatis_type\": 7," +
+                "          \"grassroots_type\": 7," +
                 "          \"default\": {" +
                 "            \"protocol\": \"\"," +
                 "            \"value\": \"\"" +
@@ -432,7 +434,7 @@ public class WISControllerHelperService {
                 "            \"value\": \"\"" +
                 "          }," +
                 "          \"tag\": 1112495430," +
-                "          \"wheatis_type\": 6," +
+                "          \"grassroots_type\": 6," +
                 "          \"default\": {" +
                 "            \"protocol\": \"\"," +
                 "            \"value\": \"\"" +
@@ -447,7 +449,7 @@ public class WISControllerHelperService {
                 "          \"param\": \"query_sequence\"," +
                 "          \"current_value\": \"" + sequence + "\"," +
                 "          \"tag\": 1112626521," +
-                "          \"wheatis_type\": 5," +
+                "          \"grassroots_type\": 5," +
                 "          \"default\": \"\"," +
                 "          \"type\": \"string\"," +
                 "          \"description\": \"Query sequence(s) to be used for a BLAST search should be pasted in the 'Search' text area. It accepts a number of different types of input and automatically determines the format or the input. To allow this feature there are certain conventions required with regard to the input of identifiers (e.g., accessions or gi's)\"," +
@@ -459,7 +461,7 @@ public class WISControllerHelperService {
                 "          \"param\": \"from\"," +
                 "          \"current_value\": " + query_from + "," +
                 "          \"tag\": 1112622674," +
-                "          \"wheatis_type\": 2," +
+                "          \"grassroots_type\": 2," +
                 "          \"default\": 0," +
                 "          \"type\": \"integer\"," +
                 "          \"description\": \"Coordinates for a subrange of the query sequence. The BLAST search will apply only to the residues in the range. Valid sequence coordinates are from 1 to the sequence length. Set either From or To to 0 to ignore the range. The range includes the residue at the To coordinate.\"," +
@@ -471,7 +473,7 @@ public class WISControllerHelperService {
                 "          \"param\": \"to\"," +
                 "          \"current_value\": " + query_to + "," +
                 "          \"tag\": 1112626255," +
-                "          \"wheatis_type\": 2," +
+                "          \"grassroots_type\": 2," +
                 "          \"default\": 0," +
                 "          \"type\": \"integer\"," +
                 "          \"description\": \"Coordinates for a subrange of the query sequence. The BLAST search will apply only to the residues in the range. Valid sequence coordinates are from 1 to the sequence length. Set either From or To to 0 to ignore the range. The range includes the residue at the To coordinate.\"," +
@@ -483,7 +485,7 @@ public class WISControllerHelperService {
                 "          \"param\": \"max_target_sequences\"," +
                 "          \"current_value\": " + max_target_sequences + "," +
                 "          \"tag\": 1112363857," +
-                "          \"wheatis_type\": 2," +
+                "          \"grassroots_type\": 2," +
                 "          \"default\": 100," +
                 "          \"type\": \"integer\"," +
                 "          \"description\": \"Select the maximum number of aligned sequences to display (the actual number of alignments may be greater than this).\"," +
@@ -495,7 +497,7 @@ public class WISControllerHelperService {
                 "          \"param\": \"short_queries\"," +
                 "          \"current_value\": " + short_queries + "," +
                 "          \"tag\": 1112754257," +
-                "          \"wheatis_type\": 0," +
+                "          \"grassroots_type\": 0," +
                 "          \"default\": true," +
                 "          \"type\": \"boolean\"," +
                 "          \"description\": \"Automatically adjust parameters for short input sequences\"," +
@@ -507,7 +509,7 @@ public class WISControllerHelperService {
                 "          \"param\": \"expect_threshold\"," +
                 "          \"current_value\": " + expect_threshold + "," +
                 "          \"tag\": 1111840852," +
-                "          \"wheatis_type\": 2," +
+                "          \"grassroots_type\": 2," +
                 "          \"default\": 10," +
                 "          \"type\": \"integer\"," +
                 "          \"description\": \"Expected number of chance matches in a random model\"," +
@@ -519,7 +521,7 @@ public class WISControllerHelperService {
                 "          \"param\": \"word_size\"," +
                 "          \"current_value\": " + word_size + "," +
                 "          \"tag\": 1113015379," +
-                "          \"wheatis_type\": 2," +
+                "          \"grassroots_type\": 2," +
                 "          \"default\": 28," +
                 "          \"type\": \"integer\"," +
                 "          \"description\": \"Expected number of chance matches in a random model\"," +
@@ -531,7 +533,7 @@ public class WISControllerHelperService {
                 "          \"param\": \"max_matches_in_a_query_range\"," +
                 "          \"current_value\": " + max_matches_query_range + "," +
                 "          \"tag\": 1112363591," +
-                "          \"wheatis_type\": 2," +
+                "          \"grassroots_type\": 2," +
                 "          \"default\": 0," +
                 "          \"type\": \"integer\"," +
                 "          \"description\": \"Limit the number of matches to a query range. This option is useful if many strong matches to one part of a query may prevent BLAST from presenting weaker matches to another part of the query\"," +
@@ -543,7 +545,7 @@ public class WISControllerHelperService {
                 "          \"param\": \"output_format\"," +
                 "          \"current_value\": 5," +
                 "          \"tag\": 1111903572," +
-                "          \"wheatis_type\": 2," +
+                "          \"grassroots_type\": 2," +
                 "          \"default\": 5," +
                 "          \"type\": \"integer\"," +
                 "          \"description\": \"The output format for the results\"," +
@@ -555,7 +557,7 @@ public class WISControllerHelperService {
                 "          \"param\": \"match\"," +
                 "          \"current_value\": " + match + "," +
                 "          \"tag\": 1112364099," +
-                "          \"wheatis_type\": 1," +
+                "          \"grassroots_type\": 1," +
                 "          \"default\": 2," +
                 "          \"type\": \"integer\"," +
                 "          \"description\": \"Reward for a nucleotide match.\"," +
@@ -567,7 +569,7 @@ public class WISControllerHelperService {
                 "          \"param\": \"mismatch\"," +
                 "          \"current_value\": " + mismatch + "," +
                 "          \"tag\": 1112363853," +
-                "          \"wheatis_type\": 1," +
+                "          \"grassroots_type\": 1," +
                 "          \"default\": -3," +
                 "          \"type\": \"integer\"," +
                 "          \"description\": \"Penalty for a nucleotide mismatch.\"," +
@@ -583,7 +585,8 @@ public class WISControllerHelperService {
         JSONObject responses = new JSONObject();
         try {
 
-            String url = blastURL;
+//        String url = blastURL;
+            String url = simonURL;
 
 
             HttpClient httpClient = new DefaultHttpClient();
@@ -618,7 +621,8 @@ public class WISControllerHelperService {
     public JSONObject checkBlastResult(HttpSession session, JSONObject json) {
         JSONObject responses = new JSONObject();
         String uuid = json.getString("uuid");
-        String url = blastURL;
+//        String url = blastURL;
+        String url = simonURL;
         JSONObject requestObject = new JSONObject();
         JSONObject operationsObject = new JSONObject();
         JSONArray servicesArray = new JSONArray();
@@ -696,7 +700,8 @@ public class WISControllerHelperService {
         String rawResultString;
 
         String uuid = json.getString("uuid");
-        String url = blastURL;
+//        String url = blastURL;
+        String url = simonURL;
         JSONObject requestObject = new JSONObject();
         JSONObject operationsObject = new JSONObject();
         JSONArray servicesArray = new JSONArray();
@@ -985,7 +990,8 @@ public class WISControllerHelperService {
             String id = json.getString("id");
             String db = json.getString("db");
             log.debug(id);
-            String url = blastTestURL;
+//            String url = blastTestURL;
+            String url = simonURL;
 
             JSONObject requestObject = new JSONObject();
             JSONArray servicesArray = new JSONArray();
@@ -1097,7 +1103,7 @@ public class WISControllerHelperService {
         String rawResultString;
 
         String uuid = json.getString("id");
-        String url = blastTestURL;
+        String url = simonURL;
         JSONObject requestObject = new JSONObject();
         JSONArray servicesArray = new JSONArray();
 
@@ -1143,7 +1149,7 @@ public class WISControllerHelperService {
             JSONObject xmlJSON = (JSONObject) resultArray.get(0);
 
             if (xmlJSON.get("status") != null) {
-                if (xmlJSON.getInt("status")!= -1) {
+                if (xmlJSON.getInt("status")== 4) {
                     JSONArray xmlJSONArray = xmlJSON.getJSONArray("services");
                     rawResultString = xmlJSONArray.getJSONObject(0).getString("data");
                     return formatXMLBlastResult(rawResultString);
