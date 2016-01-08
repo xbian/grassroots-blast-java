@@ -69,7 +69,7 @@ function sendBlastRequest() {
                     var response = json.response;
                     for (var i = 0; i < response.length; i++) {
                         var job = response[i];
-                        var uuid = job['service_uuid'];
+                        var uuid = job['job_uuid'];
                         var name = job['description'].split(";", 1);
                         jQuery('#blastResult').append(
                             '<fieldset><legend>' + name + '</legend><div><p><b>Job ID: '
