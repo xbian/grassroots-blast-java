@@ -105,7 +105,7 @@ public class WISControllerHelperService {
         StringBuilder dbHTML = new StringBuilder();
         JSONObject responses = new JSONObject();
 //        String url = blastURL;
-        String url = simonURL;
+        String url = blastTestURL;
 
         JSONObject requestObject = new JSONObject();
         JSONObject operationsObject = new JSONObject();
@@ -586,7 +586,7 @@ public class WISControllerHelperService {
         try {
 
 //        String url = blastURL;
-            String url = simonURL;
+            String url = blastTestURL;
 
 
             HttpClient httpClient = new DefaultHttpClient();
@@ -622,7 +622,7 @@ public class WISControllerHelperService {
         JSONObject responses = new JSONObject();
         String uuid = json.getString("uuid");
 //        String url = blastURL;
-        String url = simonURL;
+        String url = blastTestURL;
         JSONObject requestObject = new JSONObject();
         JSONObject operationsObject = new JSONObject();
         JSONArray servicesArray = new JSONArray();
@@ -701,7 +701,7 @@ public class WISControllerHelperService {
 
         String uuid = json.getString("uuid");
 //        String url = blastURL;
-        String url = simonURL;
+        String url = blastTestURL;
         JSONObject requestObject = new JSONObject();
         JSONObject operationsObject = new JSONObject();
         JSONArray servicesArray = new JSONArray();
@@ -991,7 +991,7 @@ public class WISControllerHelperService {
             String db = json.getString("db");
             log.debug(id);
 //            String url = blastTestURL;
-            String url = simonURL;
+            String url = blastTestURL;
 
             JSONObject requestObject = new JSONObject();
             JSONArray servicesArray = new JSONArray();
@@ -1103,7 +1103,7 @@ public class WISControllerHelperService {
         String rawResultString;
 
         String uuid = json.getString("id");
-        String url = simonURL;
+        String url = blastTestURL;
         JSONObject requestObject = new JSONObject();
         JSONArray servicesArray = new JSONArray();
 
@@ -1121,6 +1121,13 @@ public class WISControllerHelperService {
         p1.put("level", 7);
         p1.put("concise", true);
         parametersArray.add(p1);
+
+        JSONObject p2 = new JSONObject();
+
+        p2.put("description", "XML Blast output");
+        p2.put("value", 5);
+        parametersArray.add(p2);
+
 
         parameterSetObject.put("parameters", parametersArray);
 
@@ -1148,10 +1155,9 @@ public class WISControllerHelperService {
             JSONArray resultArray = JSONArray.fromObject(body);
             JSONObject xmlJSON = (JSONObject) resultArray.get(0);
 
-            if (xmlJSON.get("status") != null) {
-                if (xmlJSON.getInt("status")== 4) {
-                    JSONArray xmlJSONArray = xmlJSON.getJSONArray("services");
-                    rawResultString = xmlJSONArray.getJSONObject(0).getString("data");
+            if (xmlJSON.get("status_text") != null) {
+                if (xmlJSON.getString("status_text").equals("Succeeded")) {
+                    rawResultString = xmlJSON.getString("data");
                     return formatXMLBlastResult(rawResultString);
                 } else {
                     result.put("html", "Error, Not able to retrieve job " + uuid);
