@@ -266,7 +266,7 @@ public class WISControllerHelperService {
         p1.put("current_value", p1CurrentValue);
         p1.put("tag", 1112100422);
         p1.put("grassroots_type", 7);
-//        p2.put("type", "string");
+        p2.put("type", "string");
         p1.put("concise", true);
 
         parametersArray.add(p1);
@@ -274,121 +274,123 @@ public class WISControllerHelperService {
 
         JSONObject p2CurrentValue = new JSONObject();
         p2.put("param", "output");
-//        p2.put("type", "string");
+        p2.put("type", "string");
         p2.put("tag", 1112495430);
         p2CurrentValue.put("protocol", "");
         p2CurrentValue.put("value", "");
         p2.put("current_value", p2CurrentValue);
-//        p2.put("level", 7);
+        p2.put("level", 7);
         p2.put("grassroots_type", 6);
         p2.put("concise", true);
 
         parametersArray.add(p2);
 
         p3.put("param", "query_sequence");
-//        p3.put("type", "string");
+        p3.put("type", "string");
         p3.put("tag", 1112626521);
         p3.put("current_value", sequence.replaceAll("\\n", "\\\\n").replaceAll("\\r", "\\\\n"));
-//        p3.put("level", 7);
+        p3.put("level", 7);
         p3.put("grassroots_type", 5);
         p3.put("concise", true);
 
         parametersArray.add(p3);
 
         p4.put("param", "from");
-//        p4.put("type", "integer");
+        p4.put("type", "integer");
         p4.put("tag", 1112622674);
         p4.put("current_value", Integer.parseInt(query_from));
-//        p4.put("level", 6);
+        p4.put("level", 6);
         p4.put("grassroots_type", 2);
         p4.put("concise", true);
 
         parametersArray.add(p4);
 
         p5.put("param", "to");
-//        p5.put("type", "integer");
+        p5.put("type", "integer");
         p5.put("tag", 1112626255);
         p5.put("current_value", Integer.parseInt(query_to));
-//        p5.put("level", 6);
+        p5.put("level", 6);
         p5.put("grassroots_type", 2);
         p5.put("concise", true);
 
         parametersArray.add(p5);
 
         p6.put("param", "max_target_sequences");
-//        p6.put("type", "integer");
+        p6.put("type", "integer");
         p6.put("tag", 1112363857);
         p6.put("current_value", Integer.parseInt(max_target_sequences));
-//        p6.put("level", 7);
+        p6.put("level", 7);
         p6.put("grassroots_type", 2);
         p6.put("concise", true);
 
         parametersArray.add(p6);
 
         p7.put("param", "short_queries");
-//        p7.put("type", "boolean");
+        p7.put("type", "boolean");
         p7.put("tag", 1112754257);
         p7.put("current_value", Boolean.valueOf(short_queries));
-//        p7.put("level", 7);
+        p7.put("level", 7);
         p7.put("grassroots_type", 0);
         p7.put("concise", true);
 
         parametersArray.add(p7);
 
         p8.put("param", "expect_threshold");
-//        p8.put("type", "integer");
+        p8.put("type", "integer");
         p8.put("tag", 1111840852);
         p8.put("current_value", Integer.parseInt(expect_threshold));
-//        p8.put("level", 7);
+        p8.put("level", 7);
         p8.put("grassroots_type", 2);
         p8.put("concise", true);
 
         parametersArray.add(p8);
 
         p9.put("param", "word_size");
-//        p9.put("type", "integer");
+        p9.put("type", "integer");
         p9.put("tag", 1113015379);
         p9.put("current_value", Integer.parseInt(word_size));
-//        p9.put("level", 7);
+        p9.put("level", 7);
         p9.put("grassroots_type", 2);
         p9.put("concise", true);
 
         parametersArray.add(p9);
 
         p10.put("param", "max_matches_in_a_query_range");
-//        p10.put("type", "integer");
+        p10.put("type", "integer");
         p10.put("tag", 1112363591);
         p10.put("current_value", Integer.parseInt(max_matches_query_range));
-//        p10.put("level", 7);
+        p10.put("level", 7);
         p10.put("grassroots_type", 2);
         p10.put("concise", true);
 
         parametersArray.add(p10);
 
         p11.put("param", "output_format");
-//        p11.put("type", "integer");
+        p11.put("type", "integer");
         p11.put("tag", 1111903572);
         p11.put("current_value", 5);
-//        p11.put("level", 7);
+        p11.put("level", 7);
         p11.put("grassroots_type", 2);
         p11.put("concise", true);
 
         parametersArray.add(p11);
 
         p12.put("param", "match");
-//        p12.put("type", "integer");
+        p12.put("type", "integer");
         p12.put("tag", 1112364099);
         p12.put("current_value", Integer.parseInt(match));
-//        p12.put("level", 6);
+        p12.put("level", 6);
         p12.put("grassroots_type", 1);
         p12.put("concise", true);
 
         parametersArray.add(p12);
 
         p13.put("param", "mismatch");
+        p12.put("type", "integer");
         p13.put("tag", 1112363853);
         p13.put("current_value", Integer.parseInt(mismatch));
-        p12.put("grassroots_type", 1);
+        p13.put("grassroots_type", 1);
+        p13.put("level", 6);
         p13.put("concise", true);
 
         parametersArray.add(p13);
@@ -593,8 +595,8 @@ public class WISControllerHelperService {
 
             try {
                 HttpPost request = new HttpPost(url);
-//                StringEntity params = new StringEntity(requestObject.toString());
-                StringEntity params = new StringEntity(service.replaceAll("\\n", "\\\\n").replaceAll("\\r", "\\\\n"));
+                StringEntity params = new StringEntity(requestObject.toString());
+//                StringEntity params = new StringEntity(service.replaceAll("\\n", "\\\\n").replaceAll("\\r", "\\\\n"));
                 request.addHeader("content-type", "application/x-www-form-urlencoded");
                 request.setEntity(params);
                 HttpResponse response = httpClient.execute(request);
@@ -1113,7 +1115,7 @@ public class WISControllerHelperService {
 
         JSONObject p1 = new JSONObject();
 
-        p1.put("param", "job_id");
+        p1.put("param", "job_ids");
         p1.put("tag", 1112099401);
         p1.put("current_value", uuid);
         p1.put("grassroots_type", 5);
@@ -1124,8 +1126,14 @@ public class WISControllerHelperService {
 
         JSONObject p2 = new JSONObject();
 
-        p2.put("description", "XML Blast output");
-        p2.put("value", 5);
+
+        p2.put("param", "output_format");
+        p2.put("tag", 1111903572);
+        p2.put("current_value", 5);
+        p2.put("grassroots_type", 2);
+        p2.put("type", "integer");
+        p2.put("level", 7);
+        p2.put("concise", true);
         parametersArray.add(p2);
 
 
@@ -1157,7 +1165,8 @@ public class WISControllerHelperService {
 
             if (xmlJSON.get("status_text") != null) {
                 if (xmlJSON.getString("status_text").equals("Succeeded")) {
-                    rawResultString = xmlJSON.getString("data");
+                    JSONObject resultData = (JSONObject) xmlJSON.getJSONArray("results").get(0);
+                    rawResultString = resultData.getString("data");
                     return formatXMLBlastResult(rawResultString);
                 } else {
                     result.put("html", "Error, Not able to retrieve job " + uuid);
