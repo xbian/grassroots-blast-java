@@ -258,6 +258,7 @@ public class WISControllerHelperService {
         JSONObject p11 = new JSONObject();
         JSONObject p12 = new JSONObject();
         JSONObject p13 = new JSONObject();
+        JSONObject p14 = new JSONObject();
 
         JSONObject p1CurrentValue = new JSONObject();
         p1.put("param", "input");
@@ -394,6 +395,15 @@ public class WISControllerHelperService {
         p13.put("concise", true);
 
         parametersArray.add(p13);
+
+        p14.put("param", "output_format");
+        p14.put("tag", 1111903572);
+        p14.put("current_value", 5);
+        p14.put("grassroots_type", 2);
+        p14.put("type", "integer");
+        p14.put("level", 7);
+        p14.put("concise", true);
+        parametersArray.add(p14);
 
         parameterSetObject.put("parameters", parametersArray);
 
