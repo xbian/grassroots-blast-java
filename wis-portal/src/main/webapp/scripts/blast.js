@@ -40,6 +40,7 @@ function sendBlastRequest() {
                     Utils.ui.reenableButton('blastButton1', 'BLAST Search');
                     Utils.ui.reenableButton('blastButton2', 'BLAST Search');
                     jQuery('#blastResult').append('<b>Job ID: ' + uuid + '</b><br/>');
+                    jQuery('#blastResult').append('<a href="javascript:;" id=\"' + uuid + 'dl\" onclick=\"downloadJobFromServer(\'' + uuid + '\');\">Download Job</a> <div id=\"' + uuid + 'status\"></div><br/>');
                     jQuery('#blastResult').append(json.html);
                 },
                 'doOnError': function (json) {
@@ -107,7 +108,8 @@ function checkBlastResult(uuid) {
                         },
                         {
                             'doOnSuccess': function (json) {
-                                jQuery('#' + uuid).html(json.html);
+                                jQuery('#' + uuid).append('<a href="javascript:;" id=\"' + uuid + 'dl\" onclick=\"downloadJobFromServer(\'' + uuid + '\');\">Download Job</a> <div id=\"' + uuid + 'status\"></div><br/>');
+                                jQuery('#' + uuid).append(json.html);
                                 Utils.ui.reenableButton('blastButton1', 'BLAST Search');
                                 Utils.ui.reenableButton('blastButton2', 'BLAST Search');
                             }
@@ -212,12 +214,12 @@ function downloadFileFromServer(id, db) {
             'doOnSuccess': function (json) {
                 downloadFile(json.file, id);
                 jQuery('#' + id + 'status').html('');
-                jQuery('#' + id).attr('onclick', 'downloadFileFromServer(\'' + id + '\')');
+                jQuery('#' + id).attr('onclick', 'downloadFileFromServer(\'' + id + '\',\'' + db + '\')');
             },
             'doOnError': function (json) {
                 console.info(json.error);
                 jQuery('#' + id + 'status').html('Failed download the sequence, please try again.');
-                jQuery('#' + id).attr('onclick', 'downloadFileFromServer(\'' + id + '\')');
+                jQuery('#' + id).attr('onclick', 'downloadFileFromServer(\'' + id + '\',\'' + db + '\')');
             }
         }
     );
@@ -228,6 +230,35 @@ function downloadFileFromServer(id, db) {
 function downloadFile(text, filename) {
     var blob = new Blob([text], {type: "text/plain;charset=utf-8"});
     saveAs(blob, filename + ".txt");
+}
+
+
+
+function downloadJobFromServer(id) {
+    jQuery('#' + id + 'status').html('<img src=\"/images/ajax-loader.gif\"/>');
+    jQuery('#' + id + 'dl').removeAttr('onclick');
+    Fluxion.doAjax(
+        'wisControllerHelperService',
+        'downloadPreviousJob',
+        {
+            'id': id,
+            'format': 0,//jQuery('#'+id+'format'),
+            'url': ajaxurl
+        },
+        {
+            'doOnSuccess': function (json) {
+                downloadFile(json.file, id);
+                jQuery('#' + id + 'status').html('');
+                jQuery('#' + id + 'dl').attr('onclick', 'downloadJobFromServer(\'' + id + '\')');
+            },
+            'doOnError': function (json) {
+                console.info(json.error);
+                jQuery('#' + id + 'status').html('Failed download the sequence, please try again.');
+                jQuery('#' + id + 'dl').attr('onclick', 'downloadJobFromServer(\'' + id + '\')');
+            }
+        }
+    );
+
 }
 
 function handleFileSelect(evt) {

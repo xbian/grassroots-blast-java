@@ -1197,4 +1197,96 @@ public class WISControllerHelperService {
 
     }
 
+
+    public JSONObject downloadPreviousJob(HttpSession session, JSONObject json) {
+        String rawResultString;
+
+        String uuid = json.getString("id");
+        int format = 0;
+        if (json.get("format")!=null) {
+            format = json.getInt("format");
+        }
+        String url = blastTestURL;
+        JSONObject requestObject = new JSONObject();
+        JSONArray servicesArray = new JSONArray();
+
+        JSONObject service1 = new JSONObject();
+        JSONObject parameterSetObject = new JSONObject();
+        JSONArray parametersArray = new JSONArray();
+
+        JSONObject p1 = new JSONObject();
+
+        p1.put("param", "job_ids");
+        p1.put("tag", 1112099401);
+        p1.put("current_value", uuid);
+        p1.put("grassroots_type", 5);
+        p1.put("type", "string");
+        p1.put("level", 7);
+        p1.put("concise", true);
+        parametersArray.add(p1);
+
+        JSONObject p2 = new JSONObject();
+
+
+        p2.put("param", "output_format");
+        p2.put("tag", 1111903572);
+        p2.put("current_value", 5);
+        p2.put("grassroots_type", format);
+        p2.put("type", "integer");
+        p2.put("level", 7);
+        p2.put("concise", true);
+        parametersArray.add(p2);
+
+
+        parameterSetObject.put("parameters", parametersArray);
+
+        service1.put("run", true);
+        service1.put("services", "Blast service");
+        service1.put("parameter_set", parameterSetObject);
+
+        servicesArray.add(service1);
+        requestObject.put("services", servicesArray);
+
+        HttpClient httpClient = new DefaultHttpClient();
+
+
+        JSONObject result = new JSONObject();
+
+        try {
+            HttpPost request = new HttpPost(url);
+            StringEntity params = new StringEntity(requestObject.toString());
+            request.addHeader("content-type", "application/x-www-form-urlencoded");
+            request.setEntity(params);
+            HttpResponse response = httpClient.execute(request);
+
+            ResponseHandler<String> handler = new BasicResponseHandler();
+            String body = handler.handleResponse(response);
+            JSONArray resultArray = JSONArray.fromObject(body);
+            JSONObject xmlJSON = (JSONObject) resultArray.get(0);
+
+            if (xmlJSON.get("status_text") != null) {
+                if (xmlJSON.getString("status_text").equals("Succeeded")) {
+                    JSONObject resultData = (JSONObject) xmlJSON.getJSONArray("results").get(0);
+                    rawResultString = resultData.getString("data");
+                    result.put("file", rawResultString);
+                    return result;
+                } else {
+                    result.put("file", "Error, Not able to retrieve job " + uuid);
+                    return result;
+                }
+            } else {
+                result.put("file", "Error, Not able to retrieve job " + uuid);
+                return result;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            result.put("error", e.toString());
+            return result;
+        }
+//    finally {
+//      httpClient.getConnectionManager().shutdown();
+//    }
+
+    }
+
 }
