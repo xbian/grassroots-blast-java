@@ -117,6 +117,26 @@
         <p/>
         <button id="blastButton2" type="button" onclick="sendBlastRequest();">BLAST Search</button>
     </form>
+    <div>
+        <p>Download job format</p>
+        <select id="output_format">
+            <option value="0" selected="selected">Pairwise</option>
+            <option value="1">Query-anchored showing identities</option>
+            <option value="2">Query-anchored no identities</option>
+            <option value="3">Flat query-anchored, show identities</option>
+            <option value="4">Flat query-anchored, no identities</option>
+            <option value="5">XML Blast output</option>
+            <option value="6">Tabular</option>
+            <option value="7">Tabular with comment lines</option>
+            <option value="8">Text ASN.1</option>
+            <option value="9">Binary ASN.1</option>
+            <option value="10">Comma-separated values</option>
+            <option value="11">BLAST archive format (ASN.1)</option>
+            <option value="12">JSON Seqalign output</option>
+            <option value="13">JSON Blast output</option>
+            <option value="14">XML2 Blast output</option>
+        </select>
+    </div>
 
     <div id="blastResult"></div>
 

@@ -242,7 +242,7 @@ function downloadJobFromServer(id) {
         'downloadPreviousJob',
         {
             'id': id,
-            'format': 0,//jQuery('#'+id+'format'),
+            'format': jQuery('#output_format').val(),
             'url': ajaxurl
         },
         {

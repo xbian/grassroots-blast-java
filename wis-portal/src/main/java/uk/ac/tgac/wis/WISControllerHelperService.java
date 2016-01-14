@@ -1204,7 +1204,7 @@ public class WISControllerHelperService {
         String uuid = json.getString("id");
         int format = 0;
         if (json.get("format")!=null) {
-            format = json.getInt("format");
+            format = Integer.parseInt(json.getString("format"));
         }
         String url = blastTestURL;
         JSONObject requestObject = new JSONObject();
@@ -1230,8 +1230,8 @@ public class WISControllerHelperService {
 
         p2.put("param", "output_format");
         p2.put("tag", 1111903572);
-        p2.put("current_value", 5);
-        p2.put("grassroots_type", format);
+        p2.put("current_value", format);
+        p2.put("grassroots_type", 2);
         p2.put("type", "integer");
         p2.put("level", 7);
         p2.put("concise", true);
