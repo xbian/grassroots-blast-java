@@ -97,7 +97,7 @@ function checkBlastResult(uuid) {
         {
             'doOnSuccess': function (json) {
                 jQuery('#' + uuid).html(json.html);
-                if (json.status == 4) {
+                if (json.status == 4 || json.status == 5) {
                     Fluxion.doAjax(
                         'wisControllerHelperService',
                         'displayNewXMLBlastResult',
@@ -110,7 +110,6 @@ function checkBlastResult(uuid) {
                                 jQuery('#' + uuid).html(json.html);
                                 Utils.ui.reenableButton('blastButton1', 'BLAST Search');
                                 Utils.ui.reenableButton('blastButton2', 'BLAST Search');
-//                                                stopJob(uuid);
                             }
                         }
                     );
@@ -126,30 +125,12 @@ function checkBlastResult(uuid) {
                 else {
                     Utils.ui.reenableButton('blastButton1', 'BLAST Search');
                     Utils.ui.reenableButton('blastButton2', 'BLAST Search');
-//                                stopJob(uuid);
                 }
             }
         }
     );
 }
 
-//
-//function stopJob(uuid) {
-//    Fluxion.doAjax(
-//        'wisControllerHelperService',
-//        'stopJob',
-//        {
-//            'uuid': uuid,
-//            'url': ajaxurl
-//        },
-//        {
-//            'doOnSuccess': function (json) {
-//                console.log(json);
-//            }
-//        }
-//    );
-//
-//}
 
 function validateFasta(fasta) {
 

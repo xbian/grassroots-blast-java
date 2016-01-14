@@ -684,7 +684,7 @@ public class WISControllerHelperService {
                     if (status == 3) {
                         responses.put("html", "Job finished <img src=\"/images/ajax-loader.gif\">");
                     }
-                    if (status == 4) {
+                    if (status == 4 || status == 5) {
                         responses.put("html", "Job succeeded");
                     }
 
