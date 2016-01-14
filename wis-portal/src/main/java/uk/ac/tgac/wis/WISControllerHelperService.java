@@ -1268,7 +1268,7 @@ public class WISControllerHelperService {
                 if (xmlJSON.getString("status_text").equals("Succeeded")) {
                     JSONObject resultData = (JSONObject) xmlJSON.getJSONArray("results").get(0);
                     rawResultString = resultData.getString("data");
-                    result.put("file", rawResultString);
+                    result.put("file", rawResultString.replaceAll("%", " percent"));
                     return result;
                 } else {
                     result.put("file", "Error, Not able to retrieve job " + uuid);
