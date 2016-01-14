@@ -247,7 +247,7 @@ function downloadJobFromServer(id) {
         },
         {
             'doOnSuccess': function (json) {
-                downloadFile(json.file, id);
+                downloadFile(json["file"], id);
                 jQuery('#' + id + 'status').html('');
                 jQuery('#' + id + 'dl').attr('onclick', 'downloadJobFromServer(\'' + id + '\')');
             },

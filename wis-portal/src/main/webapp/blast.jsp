@@ -133,8 +133,8 @@
             <option value="10">Comma-separated values</option>
             <option value="11">BLAST archive format (ASN.1)</option>
             <option value="12">JSON Seqalign output</option>
-            <option value="13">JSON Blast output</option>
-            <option value="14">XML2 Blast output</option>
+            <%--<option value="13">JSON Blast output</option>--%>
+            <%--<option value="14">XML2 Blast output</option>--%>
         </select>
     </div>
 
