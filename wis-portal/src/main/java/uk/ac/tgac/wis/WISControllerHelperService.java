@@ -99,6 +99,7 @@ public class WISControllerHelperService {
 
     String blastURL = "http://v0214.nbi.ac.uk/wheatis";
     String blastTestURL = "http://v0214.nbi.ac.uk:1888/grassroots/controller";
+    String simonURL = "http://n79610.nbi.ac.uk:8080/grassroots/controller";
 
     public JSONObject getBlastService(HttpSession session, JSONObject json) {
         StringBuilder dbHTML = new StringBuilder();
@@ -1061,8 +1062,9 @@ public class WISControllerHelperService {
                 String text = "Not found.";
                 if (jobsArray.size() > 0) {
                     JSONObject jobsObject = jobsArray.getJSONObject(0);
+                    JSONObject resultObject = jobsObject.getJSONArray("results").getJSONObject(0);
 
-                    text = fastaFileFormatter(jobsObject.getJSONObject("results").getString("scaffold"), 60);
+                    text = fastaFileFormatter(resultObject.getString("data"), 60);
                 }
                 responses.put("file", text);
             } catch (Exception e) {

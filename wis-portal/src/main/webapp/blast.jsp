@@ -18,7 +18,8 @@
 
     <form id="blastSearchForm">
         <p/>
-        Enter sequence below in FASTA format or previous job id
+        Enter sequence below in FASTA format
+        <%--or previous job id--%>
         <br/>
 <textarea name="sequence" id="sequence" rows="10" cols="80">
 </textarea>
