@@ -147,6 +147,7 @@
         dropZone.addEventListener('drop', handleFileSelect, false);
         jQuery(document).ready(function () {
             getBlastDBs();
+            jQuery('#output_format_div').hide();
         });
 
     </script>

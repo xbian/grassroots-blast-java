@@ -1079,8 +1079,9 @@ public class WISControllerHelperService {
                 String text = "Not found.";
                 if (jobsArray.size() > 0) {
                     JSONObject jobsObject = jobsArray.getJSONObject(0);
+                    JSONObject resultObject = jobsObject.getJSONArray("results").getJSONObject(0);
 
-                    text = fastaFileFormatter(jobsObject.getJSONObject("results").getString("scaffold"), 60);
+                    text = fastaFileFormatter(resultObject.getString("data"), 60);
                 }
                 responses.put("file", text);
             } catch (Exception e) {

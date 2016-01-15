@@ -36,6 +36,7 @@ function sendBlastRequest() {
             },
             {
                 'doOnSuccess': function (json) {
+                    jQuery('#output_format_div').show();
                     jQuery('#blastResult').html('');
                     Utils.ui.reenableButton('blastButton1', 'BLAST Search');
                     Utils.ui.reenableButton('blastButton2', 'BLAST Search');
@@ -108,6 +109,7 @@ function checkBlastResult(uuid) {
                         },
                         {
                             'doOnSuccess': function (json) {
+                                jQuery('#output_format_div').show();
                                 jQuery('#' + uuid).append('<a href="javascript:;" id=\"' + uuid + 'dl\" onclick=\"downloadJobFromServer(\'' + uuid + '\');\">Download Job</a> <div id=\"' + uuid + 'status\"></div><br/>');
                                 jQuery('#' + uuid).append(json.html);
                                 Utils.ui.reenableButton('blastButton1', 'BLAST Search');
