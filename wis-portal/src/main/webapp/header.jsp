@@ -19,9 +19,6 @@
     <script type="text/javascript" src="<c:url value='/scripts/scriptaculous/prototype.js'/>"></script>
     <script type="text/javascript" src="<c:url value='/scripts/fluxion-ajax/fluxion-ajax-compiled.js?ts=${timestamp.time}'/>"></script>
 
-    <!-- bootstrap -->
-    <script src="<c:url value='/scripts/bootstrap/js/bootstrap.min.js?ts=${timestamp.time}'/>" type="text/javascript"></script>
-    <link href="<c:url value='/scripts/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="<c:url value='/styles/style.css?ts=${timestamp.time}'/>" type="text/css">
     <!-- font awesome -->
@@ -52,6 +49,10 @@
           type="text/css">
     <link rel="stylesheet" href="<c:url value='/scripts/jquery/colorbox/colorbox.css'/>"
           type="text/css">
+
+    <!-- bootstrap -->
+    <script src="<c:url value='/scripts/bootstrap/js/bootstrap.min.js?ts=${timestamp.time}'/>" type="text/javascript"></script>
+    <link href="<c:url value='/scripts/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet" type="text/css">
 
     <!-- Leaflet -->
     <link rel="stylesheet" href="<c:url value='/scripts/leaflet/leaflet.css'/>" />
