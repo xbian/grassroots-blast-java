@@ -1,6 +1,6 @@
 <%@ include file="header.jsp" %>
 
-<script type="text/javascript" src="<c:url value='/scripts/blast.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/scripts/blast.js?ts=${timestamp.time}'/>"></script>
 <div class="container center-block">
     <h2 id="blastTitle">Grassroots Genomics BLAST Search </h2>
 
