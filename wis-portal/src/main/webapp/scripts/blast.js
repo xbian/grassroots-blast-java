@@ -231,12 +231,12 @@ function downloadFileFromServer(id, db) {
             'doOnSuccess': function (json) {
                 downloadFile(json.file, id);
                 jQuery('#' + id + 'status').html('');
-                jQuery('#' + id).attr('onclick', 'downloadFileFromServer(\'' + id + '\')');
+                jQuery('#' + id).attr('onclick', 'downloadFileFromServer(\'' + id + '\',\'' + db + '\')');
             },
             'doOnError': function (json) {
                 console.info(json.error);
                 jQuery('#' + id + 'status').html('Failed download the sequence, please try again.');
-                jQuery('#' + id).attr('onclick', 'downloadFileFromServer(\'' + id + '\')');
+                jQuery('#' + id).attr('onclick', 'downloadFileFromServer(\'' + id + '\',\'' + db + '\')');
             }
         }
     );
