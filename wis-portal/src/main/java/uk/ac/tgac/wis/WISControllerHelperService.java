@@ -684,6 +684,13 @@ public class WISControllerHelperService {
 
                     String turartuLink = "http://plants.ensembl.org/Triticum_urartu/Search/Results?species=Triticum%20urartu;idx=;q=";
 
+                    String tgacv1Link = "http://pre.plants.ensembl.org/Triticum_aestivum/Location/View?r=";
+
+                    if ("Triticum_aestivum_CS42_TGACv1_all".equals(databaseName)) {
+                        ensemblLink = tgacv1Link;
+                        linktoensembl = " | <a target=\"_blank\" href=\"" + ensemblLink + accession.replaceAll("Triticum_aestivum_CS42_","") + ":1-1000000000\">View on Ensembl</a>";
+                    }
+
                     if ("Aegilops_tauschii.GCA_000347335.1.26.dna.genome".equals(databaseName)) {
                         ensemblLink = aegilopsTauschiiLink;
                         linktoensembl = " | <a target=\"_blank\" href=\"" + ensemblLink + accession + "\">Ensembl Search</a>";
@@ -717,7 +724,7 @@ public class WISControllerHelperService {
                             "/tgac/public/databases/blast/triticum_monococcum/spp_aegilopoides/Triticum_monococcum_G3116".equals(databaseString) ||
                             "/tgac/public/databases/blast/triticum_monococcum/spp_monococcum/Triticum_monococcum_DV92".equals(databaseString)
                             ) {
-                        id = "<a href='javascript:;' id='" + id.replaceAll("\\|", ":") + "' onclick=\"downloadFileFromServer('" + id.replaceAll("\\|", ":") + "','" + databaseString + "')\">" + id + "</a><div id='" + id.replaceAll("\\|", ":") + "status'></div>";
+                        id = id + " | <a href='javascript:;' id='" + id.replaceAll("\\|", ":") + "' onclick=\"downloadFileFromServer('" + id.replaceAll("\\|", ":") + "','" + databaseString + "')\">Download</a><span id='" + id.replaceAll("\\|", ":") + "status'></span>";
                     }
 
                     sb.append("<div class='blastResultBox ui-corner-all'>");
