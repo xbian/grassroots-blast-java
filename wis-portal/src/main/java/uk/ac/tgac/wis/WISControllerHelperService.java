@@ -155,9 +155,6 @@ public class WISControllerHelperService {
             e.printStackTrace();
             return null;
         }
-//    finally {
-//      httpClient.getConnectionManager().shutdown();
-//    }
         return responses;
     }
 
@@ -413,7 +410,6 @@ public class WISControllerHelperService {
         servicesArray.add(service1);
         requestObject.put("services", servicesArray);
 
-
         JSONObject responses = new JSONObject();
         try {
 
@@ -438,10 +434,6 @@ public class WISControllerHelperService {
                 e.printStackTrace();
                 return null;
             }
-//      finally {
-//        httpClient.getConnectionManager().shutdown();
-//      }
-
             return responses;
 
         } catch (Exception e) {
@@ -521,9 +513,6 @@ public class WISControllerHelperService {
             e.printStackTrace();
             return null;
         }
-//    finally {
-//      httpClient.getConnectionManager().shutdown();
-//    }
         return responses;
     }
 
@@ -562,10 +551,6 @@ public class WISControllerHelperService {
             e.printStackTrace();
             return null;
         }
-//    finally {
-//      httpClient.getConnectionManager().shutdown();
-//    }
-
     }
 
     public JSONObject formatXMLBlastResult(String rawResultString) {
@@ -908,9 +893,6 @@ public class WISControllerHelperService {
                 log.debug(e.toString());
                 return null;
             }
-//          finally {
-//              httpClient.getConnectionManager().shutdown();
-//          }
         } else {
             responses.put("file", "Error no id appeared");
         }
@@ -1011,10 +993,6 @@ public class WISControllerHelperService {
             result.put("error", e.toString());
             return result;
         }
-//    finally {
-//      httpClient.getConnectionManager().shutdown();
-//    }
-
     }
 
 
@@ -1103,10 +1081,6 @@ public class WISControllerHelperService {
             result.put("error", e.toString());
             return result;
         }
-//    finally {
-//      httpClient.getConnectionManager().shutdown();
-//    }
-
     }
 
 }
