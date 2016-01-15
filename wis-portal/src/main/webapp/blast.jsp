@@ -18,7 +18,7 @@
 
     <form id="blastSearchForm">
         <p/>
-        Enter sequence below in FASTA format or previous job id
+        Enter sequence below in FASTA format or a previous job id
         <br/>
 <textarea name="sequence" id="sequence" rows="10" cols="80">
 </textarea>
@@ -40,7 +40,8 @@
         <%--<hr/>--%>
         <%--<h3></h3>--%>
         <div class="sectionDivider"
-             onclick="Utils.ui.toggleLeftInfo(jQuery('#parameter_arrowclick'), 'blast_parameters');">Algorithm parameters
+             onclick="Utils.ui.toggleLeftInfo(jQuery('#parameter_arrowclick'), 'blast_parameters');">Algorithm
+            parameters
             <div id="parameter_arrowclick" class="toggleLeft"></div>
         </div>
         <div id="blast_parameters" class="note" style="display:none;">
@@ -104,24 +105,25 @@
         </div>
     </form>
     <div id="output_format_div" style="display:none;">
-        <p>Download job format</p>
-        <select id="output_format">
-            <option value="0" selected="selected">Pairwise</option>
-            <option value="1">Query-anchored showing identities</option>
-            <option value="2">Query-anchored no identities</option>
-            <option value="3">Flat query-anchored, show identities</option>
-            <option value="4">Flat query-anchored, no identities</option>
-            <option value="5">XML Blast output</option>
-            <option value="6">Tabular</option>
-            <option value="7">Tabular with comment lines</option>
-            <option value="8">Text ASN.1</option>
-            <option value="9">Binary ASN.1</option>
-            <option value="10">Comma-separated values</option>
-            <option value="11">BLAST archive format (ASN.1)</option>
-            <option value="12">JSON Seqalign output</option>
-            <%--<option value="13">JSON Blast output</option>--%>
-            <%--<option value="14">XML2 Blast output</option>--%>
-        </select>
+        <p>Download job format
+            <select id="output_format" onchange="changeDownloadFormat();">
+                <option value="0" selected="selected">Pairwise</option>
+                <option value="1">Query-anchored showing identities</option>
+                <option value="2">Query-anchored no identities</option>
+                <option value="3">Flat query-anchored, show identities</option>
+                <option value="4">Flat query-anchored, no identities</option>
+                <option value="5">XML Blast output</option>
+                <option value="6">Tabular</option>
+                <option value="7">Tabular with comment lines</option>
+                <option value="8">Text ASN.1</option>
+                <option value="9">Binary ASN.1</option>
+                <option value="10">Comma-separated values</option>
+                <option value="11">BLAST archive format (ASN.1)</option>
+                <option value="12">JSON Seqalign output</option>
+                <%--<option value="13">JSON Blast output</option>--%>
+                <%--<option value="14">XML2 Blast output</option>--%>
+            </select>
+        </p>
     </div>
 
     <div id="blastResult"></div>

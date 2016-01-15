@@ -40,8 +40,8 @@ function sendBlastRequest() {
                     jQuery('#blastResult').html('');
                     Utils.ui.reenableButton('blastButton1', 'BLAST Search');
                     Utils.ui.reenableButton('blastButton2', 'BLAST Search');
-                    jQuery('#blastResult').append('<b>Job ID: ' + uuid + '</b><br/>');
-                    jQuery('#blastResult').append('<a href="javascript:;" id=\"' + uuid + 'dl\" onclick=\"downloadJobFromServer(\'' + uuid + '\');\">Download Job</a> <div id=\"' + uuid + 'status\"></div><br/>');
+                    jQuery('#blastResult').append('<b>Job ID: ' + uuid + '</b> ');
+                    jQuery('#blastResult').append('<a href="javascript:;" id=\"' + uuid + 'dl\" onclick=\"downloadJobFromServer(\'' + uuid + '\');\">Download Job</a> in <span class="dlformat">Pairwise</span> format <span id=\"' + uuid + 'status\"></span><br/>');
                     jQuery('#blastResult').append(json.html);
                 },
                 'doOnError': function (json) {
@@ -110,7 +110,7 @@ function checkBlastResult(uuid) {
                         {
                             'doOnSuccess': function (json) {
                                 jQuery('#output_format_div').show();
-                                jQuery('#' + uuid).append('<a href="javascript:;" id=\"' + uuid + 'dl\" onclick=\"downloadJobFromServer(\'' + uuid + '\');\">Download Job</a> <div id=\"' + uuid + 'status\"></div><br/>');
+                                jQuery('#' + uuid).append('<a href="javascript:;" id=\"' + uuid + 'dl\" onclick=\"downloadJobFromServer(\'' + uuid + '\');\">Download Job</a> in <span class="dlformat">Pairwise</span> format <span id=\"' + uuid + 'status\"></span><br/>');
                                 jQuery('#' + uuid).append(json.html);
                                 Utils.ui.reenableButton('blastButton1', 'BLAST Search');
                                 Utils.ui.reenableButton('blastButton2', 'BLAST Search');
@@ -295,4 +295,8 @@ function handleDragOver(evt) {
     evt.stopPropagation();
     evt.preventDefault();
     evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
+}
+
+function changeDownloadFormat(){
+    jQuery('.dlformat').html(jQuery("#output_format option:selected").text());
 }
