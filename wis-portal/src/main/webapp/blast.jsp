@@ -104,7 +104,7 @@
             <button id="blastButton2" type="button" onclick="sendBlastRequest();">BLAST Search</button>
         </div>
     </form>
-    <div id="output_format_div" style="display:none;">
+    <div id="output_format_div" style="display:none; float:right;">
         <p>Download job format
             <select id="output_format" onchange="changeDownloadFormat();">
                 <option value="0" selected="selected">Pairwise</option>
@@ -125,6 +125,7 @@
             </select>
         </p>
     </div>
+    <div style="clear:both;"></div>
 
     <div id="blastResult"></div>
 
