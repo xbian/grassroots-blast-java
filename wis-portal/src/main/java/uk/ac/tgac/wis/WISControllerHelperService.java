@@ -468,8 +468,9 @@ public class WISControllerHelperService {
             ResponseHandler<String> handler = new BasicResponseHandler();
             String body = handler.handleResponse(response);
             // if 6 keep checking
-            JSONObject statusJSON = JSONObject.fromObject(body);
-            JSONArray statusArray = statusJSON.getJSONArray("services");
+            JSONArray statusArray = JSONArray.fromObject(body);
+//            JSONObject statusJSON = resultArray.getJSONObject(0);
+//            JSONArray statusArray = statusJSON.getJSONArray("services");
             if (statusArray.getJSONObject(0) != null) {
                 if (statusArray.getJSONObject(0).has("status")) {
                     int status = statusArray.getJSONObject(0).getInt("status");
@@ -543,9 +544,11 @@ public class WISControllerHelperService {
 
             ResponseHandler<String> handler = new BasicResponseHandler();
             String body = handler.handleResponse(response);
-            JSONObject xmlJSON = JSONObject.fromObject(body);
-            JSONArray xmlJSONArray = xmlJSON.getJSONArray("services");
-            rawResultString = xmlJSONArray.getJSONObject(0).getString("data");
+//            JSONObject xmlJSON = JSONObject.fromObject(body);
+//            JSONArray xmlJSONArray = xmlJSON.getJSONArray("services");
+            JSONArray xmlJSONArray = JSONArray.fromObject(body);
+            JSONArray resultsArray = xmlJSONArray.getJSONObject(0).getJSONArray("results");
+            rawResultString = resultsArray.getJSONObject(0).getString("data");
             return formatXMLBlastResult(rawResultString);
         } catch (Exception e) {
             e.printStackTrace();
