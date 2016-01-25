@@ -23,35 +23,44 @@ function getBlastDBs() {
 
 function sendBlastRequest() {
     if (validateJobID(jQuery('#sequence').val())) {
-        var uuid = jQuery('#sequence').val();
-        jQuery('#blastResult').html('Retrieving job id: ' + uuid + ' <img src=\"/images/ajax-loader.gif\"/>');
         Utils.ui.disableButton('blastButton1');
         Utils.ui.disableButton('blastButton2');
-        Fluxion.doAjax(
-            'wisControllerHelperService',
-            'getPreviousJob',
-            {
-                'id': jQuery('#sequence').val(),
-                'url': ajaxurl
-            },
-            {
-                'doOnSuccess': function (json) {
-                    jQuery('#output_format_div').show();
-                    jQuery('#blastResult').html('');
-                    Utils.ui.reenableButton('blastButton1', 'BLAST Search');
-                    Utils.ui.reenableButton('blastButton2', 'BLAST Search');
-                    jQuery('#blastResult').append('<b>Job ID: ' + uuid + '</b> ');
-                    jQuery('#blastResult').append('<a href="javascript:;" id=\"' + uuid + 'dl\" onclick=\"downloadJobFromServer(\'' + uuid + '\');\">Download Job</a> in <span class="dlformat">Pairwise</span> format <span id=\"' + uuid + 'status\"></span><br/>');
-                    jQuery('#blastResult').append(json.html);
+        var id = jQuery('#sequence').val();
+
+        id = id.replace(/\s+/g, '');
+        id = id.replace(/\r?\n|\r/g, '');
+        var uuids = id.split(',');
+        console.log(uuids);
+        for (var j = 0; j < uuids.length; j++) {
+            var uuid = uuids[j];
+            console.log(uuid);
+            jQuery('#blastResult').append('<div id=\"' + uuid + '_c\">Retrieving job id: ' + uuid + ' <img src=\"/images/ajax-loader.gif\"/></div>');
+            Fluxion.doAjax(
+                'wisControllerHelperService',
+                'getPreviousJob',
+                {
+                    'id': jQuery('#sequence').val(),
+                    'url': ajaxurl
                 },
-                'doOnError': function (json) {
-                    console.info(json.error);
-                    jQuery('#blastResult').html('Failed to retrieve job id: ' + uuid);
-                    Utils.ui.reenableButton('blastButton1', 'BLAST Search');
-                    Utils.ui.reenableButton('blastButton2', 'BLAST Search');
+                {
+                    'doOnSuccess': function (json) {
+                        jQuery('#output_format_div').show();
+                        jQuery('#' + uuid + '_c').html('');
+                        Utils.ui.reenableButton('blastButton1', 'BLAST Search');
+                        Utils.ui.reenableButton('blastButton2', 'BLAST Search');
+                        jQuery('#' + uuid + '_c').append('<b>Job ID: ' + uuid + '</b> ');
+                        jQuery('#' + uuid + '_c').append('<a href="javascript:;" id=\"' + uuid + 'dl\" onclick=\"downloadJobFromServer(\'' + uuid + '\');\">Download Job</a> in <span class="dlformat">Pairwise</span> format <span id=\"' + uuid + 'status\"></span><br/>');
+                        jQuery('#' + uuid + '_c').append(json.html);
+                    },
+                    'doOnError': function (json) {
+                        console.info(json.error);
+                        jQuery('#blastResult').html('Failed to retrieve job id: ' + uuid);
+                        Utils.ui.reenableButton('blastButton1', 'BLAST Search');
+                        Utils.ui.reenableButton('blastButton2', 'BLAST Search');
+                    }
                 }
-            }
-        );
+            );
+        }
     }
     else if (validateFasta(jQuery('#sequence').val()) || blastfilecontent != '') {
         jQuery('#blastResult').html('BLAST request submitted <img src=\"/images/ajax-loader.gif\"/>');
@@ -235,7 +244,6 @@ function downloadFile(text, filename) {
 }
 
 
-
 function downloadJobFromServer(id) {
     jQuery('#' + id + 'status').html('<img src=\"/images/ajax-loader.gif\"/>');
     jQuery('#' + id + 'dl').removeAttr('onclick');
@@ -297,6 +305,6 @@ function handleDragOver(evt) {
     evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
 }
 
-function changeDownloadFormat(){
+function changeDownloadFormat() {
     jQuery('.dlformat').html(jQuery("#output_format option:selected").text());
 }
