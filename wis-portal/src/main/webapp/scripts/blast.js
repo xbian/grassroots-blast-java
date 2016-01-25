@@ -52,7 +52,6 @@ function sendBlastRequest() {
                 }
             }
         );
-        console.log('job id: ' + uuid);
     }
     else if (validateFasta(jQuery('#sequence').val()) || blastfilecontent != '') {
         jQuery('#blastResult').html('BLAST request submitted <img src=\"/images/ajax-loader.gif\"/>');
@@ -173,8 +172,9 @@ function validateJobID(id) {
     }
 
     // immediately remove trailing spaces
-    id = id.trim();
-    return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(id);
+    id = id.replace(/\s+/g, '');
+    id = id.replace(/\r?\n|\r/g, '');
+    return /^([0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})+(,[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})*$/g.test(id);
 }
 
 function readSingleFile() {
