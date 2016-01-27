@@ -831,19 +831,9 @@ public class WISControllerHelperService {
             JSONObject p1 = new JSONObject();
             JSONObject p2 = new JSONObject();
 
-//            p1.put("param", "Index");
-//            p1.put("type", "string");
-//            p1.put("tag", 1398031948);
-////            p1.put("current_value", "/tgac/references/internal/assembly/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all.fa");
-//            p1.put("db", db);
-//            p1.put("level", 7);
-//            p1.put("grassroots_type", 5);
-//            p1.put("concise", true);
-
             p1.put("param", "Blast database");
             p1.put("type", "string");
             p1.put("tag", 1398030918);
-//            p1.put("current_value", "/tgac/references/internal/assembly/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all.fa");
             p1.put("current_value", db);
             p1.put("level", 7);
             p1.put("grassroots_type", 5);

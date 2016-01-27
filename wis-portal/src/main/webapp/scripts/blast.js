@@ -52,7 +52,7 @@ function sendBlastRequest() {
                     },
                     'doOnError': function (json) {
                         console.info(json.error);
-                        jQuery('#blastResult').html('Failed to retrieve job id: ' + uuid);
+                        jQuery('#' + uuid + '_c').html('Failed to retrieve job id: ' + uuid);
                     }
                 }
             );
