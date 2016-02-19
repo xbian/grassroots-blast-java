@@ -101,11 +101,13 @@ public class WISControllerHelperService {
     String blastTestURL = "http://v0214.nbi.ac.uk:1888/grassroots/controller";
     String simonURL = "http://n79610.nbi.ac.uk:8080/grassroots/controller";
 
+    String activeURL = simonURL;
+
     public JSONObject getBlastService(HttpSession session, JSONObject json) {
         StringBuilder dbHTML = new StringBuilder();
         JSONObject responses = new JSONObject();
 //        String url = blastURL;
-        String url = blastTestURL;
+        String url = activeURL;
 
         JSONObject requestObject = new JSONObject();
         JSONObject operationsObject = new JSONObject();
@@ -414,7 +416,7 @@ public class WISControllerHelperService {
         try {
 
 //        String url = blastURL;
-            String url = blastTestURL;
+            String url = activeURL;
 
 
             HttpClient httpClient = new DefaultHttpClient();
@@ -445,7 +447,7 @@ public class WISControllerHelperService {
         JSONObject responses = new JSONObject();
         String uuid = json.getString("uuid");
 //        String url = blastURL;
-        String url = blastTestURL;
+        String url = activeURL;
         JSONObject requestObject = new JSONObject();
         JSONObject operationsObject = new JSONObject();
         JSONArray servicesArray = new JSONArray();
@@ -521,8 +523,7 @@ public class WISControllerHelperService {
         String rawResultString;
 
         String uuid = json.getString("uuid");
-//        String url = blastURL;
-        String url = blastTestURL;
+        String url = activeURL;
         JSONObject requestObject = new JSONObject();
         JSONObject operationsObject = new JSONObject();
         JSONArray servicesArray = new JSONArray();
@@ -816,8 +817,7 @@ public class WISControllerHelperService {
             String id = json.getString("id");
             String db = json.getString("db");
             log.debug(id);
-//            String url = blastTestURL;
-            String url = blastTestURL;
+            String url = activeURL;
 
             JSONObject requestObject = new JSONObject();
             JSONArray servicesArray = new JSONArray();
@@ -917,7 +917,7 @@ public class WISControllerHelperService {
         String rawResultString;
 
         String uuid = json.getString("id");
-        String url = blastTestURL;
+        String url = activeURL;
         JSONObject requestObject = new JSONObject();
         JSONArray servicesArray = new JSONArray();
 
@@ -1004,7 +1004,7 @@ public class WISControllerHelperService {
         if (json.get("format")!=null) {
             format = Integer.parseInt(json.getString("format"));
         }
-        String url = blastTestURL;
+        String url = activeURL;
         JSONObject requestObject = new JSONObject();
         JSONArray servicesArray = new JSONArray();
 
