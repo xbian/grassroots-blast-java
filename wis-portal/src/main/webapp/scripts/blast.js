@@ -1,5 +1,5 @@
 var blastfilecontent = '';
-var synchronous = true;
+var synchronous = false;
 
 function getBlastDBs() {
     jQuery('#blastDBs').html('Loading available BLAST databases <img src=\"/images/ajax-loader.gif\"/>');
@@ -80,9 +80,11 @@ function sendBlastRequest() {
                     console.info(synchronous);
                     var response = json.response;
                     for (var i = 0; i < response.length; i++) {
-                        var job = response[i];
-                        var uuid = job['job_uuid'];
-                        var name = job['description'];
+                        var job_in_response = response[i];
+                        var uuid = job_in_response["job_uuid"];
+                        var dbname = job_in_response["description"];
+                        console.info(dbname);
+                        console.info(uuid);
 
                         if (synchronous) {
                             var  blastHTML;
@@ -98,7 +100,7 @@ function sendBlastRequest() {
                                     'doOnSuccess': function (json) {
                                         blastHTML = json.html;
                                         jQuery('#blastResult').append(
-                                            '<fieldset><legend>' + name + '</legend><div><p><b>Job ID: '
+                                            '<fieldset><legend>' + dbname + '</legend><div><p><b>Job ID: '
                                             + uuid + '</b></p><div id=\"' + uuid + '\">' + blastHTML + '</div></div></br></fieldset>');
                                     }
                                 }
@@ -107,7 +109,7 @@ function sendBlastRequest() {
                             Utils.ui.reenableButton('blastButton2', 'BLAST Search');
                         } else {
                             jQuery('#blastResult').append(
-                                '<fieldset><legend>' + name + '</legend><div><p><b>Job ID: '
+                                '<fieldset><legend>' + dbname + '</legend><div><p><b>Job ID: '
                                 + uuid + '</b></p><div id=\"' + uuid + '\">Job Submitted <img src=\"/images/ajax-loader.gif\"/></div></div></br></fieldset>');
                             checkBlastResult(uuid);
                         }

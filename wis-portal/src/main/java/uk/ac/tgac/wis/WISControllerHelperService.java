@@ -101,7 +101,9 @@ public class WISControllerHelperService {
     String blastTestURL = "http://v0214.nbi.ac.uk:1888/grassroots/controller";
     String simonURL = "http://n79610.nbi.ac.uk:8080/grassroots/controller";
 
-    String activeURL = simonURL;
+    String service_key = "services";
+
+    String activeURL = blastTestURL;
 
     public JSONObject getBlastService(HttpSession session, JSONObject json) {
         StringBuilder dbHTML = new StringBuilder();
@@ -419,7 +421,7 @@ public class WISControllerHelperService {
         parameterSetObject.put("parameters", parametersArray);
 
         service1.put("run", true);
-        service1.put("service", "Blast service");
+        service1.put(service_key, "Blast service");
         service1.put("parameter_set", parameterSetObject);
         servicesArray.add(service1);
         requestObject.put("services", servicesArray);
@@ -427,7 +429,6 @@ public class WISControllerHelperService {
         JSONObject responses = new JSONObject();
         try {
 
-//        String url = blastURL;
             String url = activeURL;
 
 
@@ -873,7 +874,7 @@ public class WISControllerHelperService {
             parameterSetObject.put("parameters", parametersArray);
 
             service1.put("run", true);
-            service1.put("service", "SamTools service");
+            service1.put(service_key, "SamTools service");
             service1.put("parameter_set", parameterSetObject);
 
 
@@ -970,7 +971,7 @@ public class WISControllerHelperService {
         parameterSetObject.put("parameters", parametersArray);
 
         service1.put("run", true);
-        service1.put("service", "Blast service");
+        service1.put(service_key, "Blast service");
         service1.put("parameter_set", parameterSetObject);
 
         servicesArray.add(service1);
@@ -1057,7 +1058,7 @@ public class WISControllerHelperService {
         parameterSetObject.put("parameters", parametersArray);
 
         service1.put("run", true);
-        service1.put("service", "Blast service");
+        service1.put(service_key, "Blast service");
         service1.put("parameter_set", parameterSetObject);
 
         servicesArray.add(service1);
