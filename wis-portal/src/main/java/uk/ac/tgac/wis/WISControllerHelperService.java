@@ -133,26 +133,38 @@ public class WISControllerHelperService {
             String body = handler.handleResponse(response);
 
             JSONArray serviceArray = JSONArray.fromObject(body);
-            JSONArray dbArray = new JSONArray();
+//            JSONArray dbArray = new JSONArray();
             JSONArray parametersArray = serviceArray.getJSONObject(0).getJSONObject("operations").getJSONObject("parameter_set").getJSONArray("parameters");
+
+            Boolean synchronous = true;
+            if (serviceArray.getJSONObject(0).getJSONObject("operations").get("synchronous")!=null){
+                synchronous = serviceArray.getJSONObject(0).getJSONObject("operations").getBoolean("synchronous");
+            }
+
+            JSONArray dbGroupArray = new JSONArray();
+
 
             for (int i = 0; i < parametersArray.size(); i++) {
                 JSONObject parameter = parametersArray.getJSONObject(i);
-                if ("Available Databases".equals(parameter.getString("group"))) {
+                if ( (parameter.getString("group")).matches("^Available Databases.*")) {
                     String name = parameter.getString("name").split(";")[0];
                     String param = parameter.getString("param");
                     String tag = parameter.getString("tag");
-                    dbArray.add(parameter);
+//                    dbArray.add(parameter);
+                    String dbRowHTML;
                     if ("/tgac/public/databases/blast/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all".equals(param)) {
+                        dbRowHTML = ("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" checked=\"checked\" /> <b>" + name + "</b> <a target=\"_blank\" href=\"/images/Blast_database_announcement_v11.pdf\">README</a><br/>");
                         dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" checked=\"checked\" /> <b>" + name + "</b> <a target=\"_blank\" href=\"/images/Blast_database_announcement_v11.pdf\">README</a><br/>");
                     } else {
+                        dbRowHTML = ("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" /> " + name + "<br/>");
                         dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" /> " + name + "<br/>");
                     }
                 }
             }
 
-            responses.put("blastdbs", parametersArray);
+//            responses.put("blastdbs", parametersArray);
             responses.put("html", dbHTML.toString());
+            responses.put("synchronousbool", synchronous);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -288,7 +300,7 @@ public class WISControllerHelperService {
         p3.put("param", "query_sequence");
         p3.put("type", "string");
         p3.put("tag", 1112626521);
-        p3.put("current_value", sequence.replaceAll("\\n", "\\\\n").replaceAll("\\r", "\\\\n"));
+        p3.put("current_value", sequence);
         p3.put("level", 7);
         p3.put("grassroots_type", 5);
         p3.put("concise", true);
@@ -407,7 +419,7 @@ public class WISControllerHelperService {
         parameterSetObject.put("parameters", parametersArray);
 
         service1.put("run", true);
-        service1.put("services", "Blast service");
+        service1.put("service", "Blast service");
         service1.put("parameter_set", parameterSetObject);
         servicesArray.add(service1);
         requestObject.put("services", servicesArray);
@@ -555,6 +567,12 @@ public class WISControllerHelperService {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public JSONObject formatXMLBlastResultFrontend(HttpSession session, JSONObject json) {
+        String rawResultString = json.getString("rawResultString");
+        return formatXMLBlastResult(rawResultString);
+
     }
 
     public JSONObject formatXMLBlastResult(String rawResultString) {
@@ -855,7 +873,7 @@ public class WISControllerHelperService {
             parameterSetObject.put("parameters", parametersArray);
 
             service1.put("run", true);
-            service1.put("services", "SamTools service");
+            service1.put("service", "SamTools service");
             service1.put("parameter_set", parameterSetObject);
 
 
@@ -952,7 +970,7 @@ public class WISControllerHelperService {
         parameterSetObject.put("parameters", parametersArray);
 
         service1.put("run", true);
-        service1.put("services", "Blast service");
+        service1.put("service", "Blast service");
         service1.put("parameter_set", parameterSetObject);
 
         servicesArray.add(service1);
@@ -1039,7 +1057,7 @@ public class WISControllerHelperService {
         parameterSetObject.put("parameters", parametersArray);
 
         service1.put("run", true);
-        service1.put("services", "Blast service");
+        service1.put("service", "Blast service");
         service1.put("parameter_set", parameterSetObject);
 
         servicesArray.add(service1);

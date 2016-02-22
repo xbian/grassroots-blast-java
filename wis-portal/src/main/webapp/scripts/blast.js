@@ -1,4 +1,5 @@
 var blastfilecontent = '';
+var synchronous = true;
 
 function getBlastDBs() {
     jQuery('#blastDBs').html('Loading available BLAST databases <img src=\"/images/ajax-loader.gif\"/>');
@@ -13,6 +14,7 @@ function getBlastDBs() {
         {
             'doOnSuccess': function (json) {
                 jQuery('#blastDBs').html(json.html);
+                //synchronous = json.synchronousbool;
                 Utils.ui.reenableButton('blastButton1', 'BLAST Search');
                 Utils.ui.reenableButton('blastButton2', 'BLAST Search');
             }
@@ -75,15 +77,40 @@ function sendBlastRequest() {
             {
                 'doOnSuccess': function (json) {
                     jQuery('#blastResult').html('');
+                    console.info(synchronous);
                     var response = json.response;
                     for (var i = 0; i < response.length; i++) {
                         var job = response[i];
                         var uuid = job['job_uuid'];
-                        var name = job['description'].split(";", 1);
-                        jQuery('#blastResult').append(
-                            '<fieldset><legend>' + name + '</legend><div><p><b>Job ID: '
-                            + uuid + '</b></p><div id=\"' + uuid + '\">Job Submitted <img src=\"/images/ajax-loader.gif\"/></div></div></br></fieldset>');
-                        checkBlastResult(uuid);
+                        var name = job['description'];
+
+                        if (synchronous) {
+                            var  blastHTML;
+                            var result = job['results'][0];
+                            Fluxion.doAjax(
+                                'wisControllerHelperService',
+                                'formatXMLBlastResultFrontend',
+                                {
+                                    'rawResultString': result['data'],
+                                    'url': ajaxurl
+                                },
+                                {
+                                    'doOnSuccess': function (json) {
+                                        blastHTML = json.html;
+                                        jQuery('#blastResult').append(
+                                            '<fieldset><legend>' + name + '</legend><div><p><b>Job ID: '
+                                            + uuid + '</b></p><div id=\"' + uuid + '\">' + blastHTML + '</div></div></br></fieldset>');
+                                    }
+                                }
+                            );
+                            Utils.ui.reenableButton('blastButton1', 'BLAST Search');
+                            Utils.ui.reenableButton('blastButton2', 'BLAST Search');
+                        } else {
+                            jQuery('#blastResult').append(
+                                '<fieldset><legend>' + name + '</legend><div><p><b>Job ID: '
+                                + uuid + '</b></p><div id=\"' + uuid + '\">Job Submitted <img src=\"/images/ajax-loader.gif\"/></div></div></br></fieldset>');
+                            checkBlastResult(uuid);
+                        }
                     }
                 }
             }
