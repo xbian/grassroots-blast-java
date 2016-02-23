@@ -1,5 +1,5 @@
 var blastfilecontent = '';
-var synchronous = false;
+var synchronous = true;
 
 function getBlastDBs() {
     jQuery('#blastDBs').html('Loading available BLAST databases <img src=\"/images/ajax-loader.gif\"/>');
@@ -77,18 +77,15 @@ function sendBlastRequest() {
             {
                 'doOnSuccess': function (json) {
                     jQuery('#blastResult').html('');
-                    console.info(synchronous);
                     var response = json.response;
                     for (var i = 0; i < response.length; i++) {
                         var job_in_response = response[i];
                         var uuid = job_in_response["job_uuid"];
                         var dbname = job_in_response["description"];
-                        console.info(dbname);
-                        console.info(uuid);
 
                         if (synchronous) {
                             var  blastHTML;
-                            var result = job['results'][0];
+                            var result = job_in_response['results'][0];
                             Fluxion.doAjax(
                                 'wisControllerHelperService',
                                 'formatXMLBlastResultFrontend',

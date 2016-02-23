@@ -1,6 +1,7 @@
 <%@ include file="header.jsp" %>
 
-<script type="text/javascript" src="<c:url value='/scripts/blast.js?ts=${timestamp.time}'/>"></script>
+<script type="text/javascript" src="<c:url value='/scripts/blast.js'/>"></script>
+<%--<script type="text/javascript" src="<c:url value='/scripts/blast.js?ts=${timestamp.time}'/>"></script>--%>
 <div class="container center-block">
     <h2 id="blastTitle">Grassroots Genomics BLAST Search </h2>
 
@@ -20,8 +21,7 @@
         <p/>
         Enter sequence below in FASTA format or previous job ids separated by comma
         <br/>
-<textarea name="sequence" id="sequence" rows="10" cols="80">
-</textarea>
+<textarea name="sequence" id="sequence" rows="10" cols="80">CTAAGTTCTATGATGACTAGTGCAAATATTCTAAAGGCTGCAGATAAGTCAGAAGTCATGGGCNNNNNNNTGGACACTGGCGAATCTAGTTCTCAATGGAT</textarea>
         <br/>
         <%--Or load it from disk--%>
         <%--<input type="file" name="seqfile" onchange="readSingleFile();" id="seqfile"/>--%>
