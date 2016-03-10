@@ -104,7 +104,7 @@ public class WISControllerHelperService {
 
     String service_key = "service";
 
-    String activeURL = blastTestURL2;
+    String activeURL = blastTestURL;
 
     public JSONObject getBlastService(HttpSession session, JSONObject json) {
         StringBuilder dbHTML = new StringBuilder();
