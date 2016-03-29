@@ -102,9 +102,11 @@ public class WISControllerHelperService {
     String blastTestURL2 = "http://v0214.nbi.ac.uk:2888/grassroots/controller";
     String simonURL = "http://n79610.nbi.ac.uk:8080/grassroots/controller";
 
+    String slurmTestURL = "http://v0687.nbi.ac.uk:1888/grassroots/controller";
+
     String service_key = "service";
 
-    String activeURL = blastTestURL;
+    String activeURL = slurmTestURL;
 
     public JSONObject getBlastService(HttpSession session, JSONObject json) {
         StringBuilder dbHTML = new StringBuilder();
