@@ -1,5 +1,5 @@
 var blastfilecontent = '';
-var synchronous = true;
+var synchronous = false;
 
 function getBlastDBs() {
     jQuery('#blastDBs').html('Loading available BLAST databases <img src=\"/images/ajax-loader.gif\"/>');
@@ -14,7 +14,7 @@ function getBlastDBs() {
         {
             'doOnSuccess': function (json) {
                 jQuery('#blastDBs').html(json.html);
-                synchronous = json.synchronousbool;
+                //synchronous = json.synchronousbool;
                 Utils.ui.reenableButton('blastButton1', 'BLAST Search');
                 Utils.ui.reenableButton('blastButton2', 'BLAST Search');
             }
