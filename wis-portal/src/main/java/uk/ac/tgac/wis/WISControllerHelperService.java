@@ -167,8 +167,8 @@ public class WISControllerHelperService {
 //                    dbArray.add(parameter);
                     String dbRowHTML;
                     if ("/tgac/public/databases/blast/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all".equals(param)) {
-                        dbRowHTML = ("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" checked=\"checked\" /> <b>" + name + "</b> <a target=\"_blank\" href=\"/images/Blast_database_announcement_v11.pdf\">README</a><br/>");
-                        dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" checked=\"checked\" /> <b>" + name + "</b> <a target=\"_blank\" href=\"/images/Blast_database_announcement_v11.pdf\">README</a><br/>");
+                        dbRowHTML = ("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" checked=\"checked\" /> <b>" + name + "<i>" + provide + "</b></i> <a target=\"_blank\" href=\"/images/Blast_database_announcement_v11.pdf\">README</a><br/>");
+                        dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" checked=\"checked\" /> <b>" + name + "<i>" + provide + "</b></i> <a target=\"_blank\" href=\"/images/Blast_database_announcement_v11.pdf\">README</a><br/>");
                     } else {
                         dbRowHTML = ("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" /> " + name + "<b><i>" + provide + "</b></i> <br/>");
                         dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" /> " + name + "<b><i>" + provide + "</b></i> <br/>");
