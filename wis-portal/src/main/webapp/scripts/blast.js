@@ -2,7 +2,7 @@ var blastfilecontent = '';
 var synchronous = false;
 
 function getBlastDBs() {
-    jQuery('#blastDBs').html('Loading available BLAST databases <img src=\"/images/ajax-loader.gif\"/>');
+    jQuery('#blastDBs').html('Loading available BLAST databases <img src=\"../images/ajax-loader.gif\"/>');
     Utils.ui.disableButton('blastButton1');
     Utils.ui.disableButton('blastButton2');
     Fluxion.doAjax(
@@ -37,7 +37,7 @@ function sendBlastRequest() {
 
         for (var j = 0; j < uuids.length; j++) {
             var uuid = uuids[j];
-            jQuery('#blastResult').append('<div id=\"' + uuid + '_c\">Retrieving job id: ' + uuid + ' <img src=\"/images/ajax-loader.gif\"/></div>');
+            jQuery('#blastResult').append('<div id=\"' + uuid + '_c\">Retrieving job id: ' + uuid + ' <img src=\"../images/ajax-loader.gif\"/></div>');
             Fluxion.doAjax(
                 'wisControllerHelperService',
                 'getPreviousJob',
@@ -64,7 +64,7 @@ function sendBlastRequest() {
         Utils.ui.reenableButton('blastButton2', 'BLAST Search');
     }
     else if (validateFasta(jQuery('#sequence').val()) || blastfilecontent != '') {
-        jQuery('#blastResult').html('BLAST request submitted <img src=\"/images/ajax-loader.gif\"/>');
+        jQuery('#blastResult').html('BLAST request submitted <img src=\"../images/ajax-loader.gif\"/>');
         Utils.ui.disableButton('blastButton1');
         Utils.ui.disableButton('blastButton2');
         Fluxion.doAjax(
@@ -107,7 +107,7 @@ function sendBlastRequest() {
                         } else {
                             jQuery('#blastResult').append(
                                 '<fieldset><legend>' + dbname + '</legend><div><p><b>Job ID: '
-                                + uuid + '</b></p><div id=\"' + uuid + '\">Job Submitted <img src=\"/images/ajax-loader.gif\"/></div></div></br></fieldset>');
+                                + uuid + '</b></p><div id=\"' + uuid + '\">Job Submitted <img src=\"../images/ajax-loader.gif\"/></div></div></br></fieldset>');
                             checkBlastResult(uuid);
                         }
                     }
@@ -236,7 +236,7 @@ function readSingleFile() {
 
 
 function downloadFileFromServer(id, db) {
-    jQuery('#' + id + 'status').html('<img src=\"/images/ajax-loader.gif\"/>');
+    jQuery('#' + id + 'status').html('<img src=\"../images/ajax-loader.gif\"/>');
     jQuery('#' + id).removeAttr('onclick');
     Fluxion.doAjax(
         'wisControllerHelperService',
@@ -270,7 +270,7 @@ function downloadFile(text, filename) {
 
 
 function downloadJobFromServer(id) {
-    jQuery('#' + id + 'status').html('<img src=\"/images/ajax-loader.gif\"/>');
+    jQuery('#' + id + 'status').html('<img src=\"../images/ajax-loader.gif\"/>');
     jQuery('#' + id + 'dl').removeAttr('onclick');
     Fluxion.doAjax(
         'wisControllerHelperService',

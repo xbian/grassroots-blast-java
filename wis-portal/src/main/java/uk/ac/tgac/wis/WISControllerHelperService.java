@@ -512,16 +512,16 @@ public class WISControllerHelperService {
                         responses.put("html", "Job error");
                     }
                     if (status == 0) {
-                        responses.put("html", "Job idle <img src=\"/images/ajax-loader.gif\">");
+                        responses.put("html", "Job idle <img src=\"images/ajax-loader.gif\">");
                     }
                     if (status == 1) {
-                        responses.put("html", "Job pending <img src=\"/images/ajax-loader.gif\">");
+                        responses.put("html", "Job pending <img src=\"images/ajax-loader.gif\">");
                     }
                     if (status == 2) {
-                        responses.put("html", "Job started <img src=\"/images/ajax-loader.gif\">");
+                        responses.put("html", "Job started <img src=\"images/ajax-loader.gif\">");
                     }
                     if (status == 3) {
-                        responses.put("html", "Job finished <img src=\"/images/ajax-loader.gif\">");
+                        responses.put("html", "Job finished <img src=\"images/ajax-loader.gif\">");
                     }
                     if (status == 4 || status == 5) {
                         responses.put("html", "Job succeeded");

@@ -24,7 +24,7 @@
 //stop browser caching
 jQuery.ajaxSetup({cache: false});
 
-var ajaxurl = '/grassroots-portal/fluxion.ajax';
+var ajaxurl = 'fluxion.ajax';
 
 var Utils = Utils || {
   /** Maps a form element's child input elements to a JSON object. */
