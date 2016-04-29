@@ -28,6 +28,8 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by IntelliJ IDEA.
@@ -104,6 +106,7 @@ public class WISControllerHelperService {
 
     String slurmTestURL = "http://v0687.nbi.ac.uk:1888/grassroots/controller";
 
+    String frontTestURL = "https://wheatis.tgac.ac.uk/grassroots-test";
     String service_key = "service";
 
     String activeURL = slurmTestURL;
@@ -151,7 +154,13 @@ public class WISControllerHelperService {
 
             for (int i = 0; i < parametersArray.size(); i++) {
                 JSONObject parameter = parametersArray.getJSONObject(i);
-                if ( (parameter.getString("group")).matches("^Available Databases.*")) {
+                if ( (parameter.getString("group")).matches("^Available Databases(.*)")) {
+                    Pattern p = Pattern.compile("^Available Databases(.*)");
+                    Matcher m = p.matcher(parameter.getString("group"));
+                    String provide = "";
+                    while(m.find()){
+                        provide = m.group(1);
+                    }
                     String name = parameter.getString("name").split(";")[0];
                     String param = parameter.getString("param");
                     String tag = parameter.getString("tag");
@@ -161,8 +170,8 @@ public class WISControllerHelperService {
                         dbRowHTML = ("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" checked=\"checked\" /> <b>" + name + "</b> <a target=\"_blank\" href=\"/images/Blast_database_announcement_v11.pdf\">README</a><br/>");
                         dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" checked=\"checked\" /> <b>" + name + "</b> <a target=\"_blank\" href=\"/images/Blast_database_announcement_v11.pdf\">README</a><br/>");
                     } else {
-                        dbRowHTML = ("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" /> " + name + "<br/>");
-                        dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" /> " + name + "<br/>");
+                        dbRowHTML = ("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" /> " + name + "<b><i>" + provide + "</b></i> <br/>");
+                        dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" /> " + name + "<b><i>" + provide + "</b></i> <br/>");
                     }
                 }
             }
