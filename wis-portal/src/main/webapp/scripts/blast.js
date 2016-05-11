@@ -67,6 +67,7 @@ function sendBlastRequest() {
         jQuery('#blastResult').html('BLAST request submitted <img src=\"../images/ajax-loader.gif\"/>');
         Utils.ui.disableButton('blastButton1');
         Utils.ui.disableButton('blastButton2');
+        jQuery('#output_format_div').show();
         Fluxion.doAjax(
             'wisControllerHelperService',
             'sendBlastRequest',
@@ -97,8 +98,7 @@ function sendBlastRequest() {
                                     'doOnSuccess': function (json) {
                                         blastHTML = json.html;
                                         jQuery('#blastResult').append(
-                                            '<fieldset><legend>' + dbname + '</legend><div><p><b>Job ID: '
-                                            + uuid + '</b></p><div id=\"' + uuid + '\">' + blastHTML + '</div></div></br></fieldset>');
+                                            '<fieldset><legend>' + dbname + '</legend><div><p><a href="javascript:;" id=\"' + uuid + 'dl\" onclick=\"downloadJobFromServer(\'' + uuid + '\');\">Download Job</a> in <span class="dlformat">Pairwise</span> format <span id=\"' + uuid + 'status\"></span><br/></p><div id=\"' + uuid + '\">' + blastHTML + '</div></div></br></fieldset>');
                                     }
                                 }
                             );
