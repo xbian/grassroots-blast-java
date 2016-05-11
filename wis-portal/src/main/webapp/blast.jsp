@@ -9,6 +9,7 @@
         <small>If you have any queries about this service, please email the <a href="mailto:grasshelpdesk@tgac.ac.uk">Grassroots
             Helpdesk</a></small>
     </p>
+    <%--<p><font color="red">Please note: We are experiencing some issues with the connection to our HPC cluster, this will affect job submission, we are working on a fix now.</font></p>--%>
     <%--<p>--%>
     <%--<small><i>We are experiencing some issues with the connection to our HPC cluster, this might affect some users.--%>
     <%--If you see a job error, please could you wait for a few minutes and then resubmit your job.</i></small>--%>

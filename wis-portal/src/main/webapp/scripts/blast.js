@@ -1,5 +1,5 @@
 var blastfilecontent = '';
-var synchronous = false;
+var synchronous = true;
 
 function getBlastDBs() {
     jQuery('#blastDBs').html('Loading available BLAST databases <img src=\"../images/ajax-loader.gif\"/>');
