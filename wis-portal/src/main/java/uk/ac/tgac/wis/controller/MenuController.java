@@ -70,4 +70,9 @@ public class MenuController implements ServletContextAware {
     return "/blast.jsp";
   }
 
+  @RequestMapping("/contentmine")
+  public String contentmineWeb() {
+    return "/contentmine.jsp";
+  }
+
 }
