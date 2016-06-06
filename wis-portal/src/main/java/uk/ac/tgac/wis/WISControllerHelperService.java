@@ -145,7 +145,7 @@ public class WISControllerHelperService {
             JSONArray parametersArray = serviceArray.getJSONObject(0).getJSONObject("operations").getJSONObject("parameter_set").getJSONArray("parameters");
 
             Boolean synchronous = true;
-            if (serviceArray.getJSONObject(0).getJSONObject("operations").get("synchronous")!=null){
+            if (serviceArray.getJSONObject(0).getJSONObject("operations").get("synchronous") != null) {
                 synchronous = serviceArray.getJSONObject(0).getJSONObject("operations").getBoolean("synchronous");
             }
 
@@ -154,11 +154,11 @@ public class WISControllerHelperService {
 
             for (int i = 0; i < parametersArray.size(); i++) {
                 JSONObject parameter = parametersArray.getJSONObject(i);
-                if ( (parameter.getString("group")).matches("^Available Databases(.*)")) {
+                if ((parameter.getString("group")).matches("^Available Databases(.*)")) {
                     Pattern p = Pattern.compile("^Available Databases(.*)");
                     Matcher m = p.matcher(parameter.getString("group"));
                     String provide = "";
-                    while(m.find()){
+                    while (m.find()) {
                         provide = m.group(1);
                     }
                     String name = parameter.getString("name").split(";")[0];
@@ -723,7 +723,7 @@ public class WISControllerHelperService {
 
                     if ("Triticum_aestivum_CS42_TGACv1_all".equals(databaseName)) {
                         ensemblLink = tgacv1Link;
-                        linktoensembl = " | <a target=\"_blank\" href=\"" + ensemblLink + accession.replaceAll("Triticum_aestivum_CS42_","") + ":1-1000000000\">View on Ensembl</a>";
+                        linktoensembl = " | <a target=\"_blank\" href=\"" + ensemblLink + accession.replaceAll("Triticum_aestivum_CS42_", "") + ":1-1000000000\">View on Ensembl</a>";
                     }
 
                     if ("Aegilops_tauschii.GCA_000347335.1.26.dna.genome".equals(databaseName)) {
@@ -1032,7 +1032,7 @@ public class WISControllerHelperService {
 
         String uuid = json.getString("id");
         int format = 0;
-        if (json.get("format")!=null) {
+        if (json.get("format") != null) {
             format = Integer.parseInt(json.getString("format"));
         }
         String url = activeURL;
@@ -1111,6 +1111,38 @@ public class WISControllerHelperService {
             e.printStackTrace();
             result.put("error", e.toString());
             return result;
+        }
+    }
+
+    public JSONObject getpapers(HttpSession session, JSONObject json) {
+        try {
+            String query = json.getString("query");
+            String dir = json.getString("dir");
+            Runtime rt = Runtime.getRuntime();
+            String[] commands = {"getpapers", "--query " + query + " --outdir " + dir};
+            Process proc = rt.exec(commands);
+
+            BufferedReader stdInput = new BufferedReader(new
+                    InputStreamReader(proc.getInputStream()));
+
+            BufferedReader stdError = new BufferedReader(new
+                    InputStreamReader(proc.getErrorStream()));
+
+            System.out.println("Here is the standard output of the command:\n");
+            String s = null;
+            while ((s = stdInput.readLine()) != null) {
+                System.out.println(s);
+            }
+
+            System.out.println("Here is the standard error of the command (if any):\n");
+            while ((s = stdError.readLine()) != null) {
+                System.out.println(s);
+            }
+            return JSONUtils.SimpleJSONResponse("ok");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JSONUtils.SimpleJSONResponse(e.toString());
         }
     }
 
