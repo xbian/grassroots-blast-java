@@ -15,7 +15,7 @@
                 'wisControllerHelperService',
                 'getpapers',
                 {
-                    'query':'wheat',
+                    'query':'puccinia',
                     'dir':'/Users/bianx/Downloads/wheat',
                     'url': ajaxurl
                 },

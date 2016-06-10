@@ -1119,8 +1119,7 @@ public class WISControllerHelperService {
             String query = json.getString("query");
             String dir = json.getString("dir");
             Runtime rt = Runtime.getRuntime();
-            String[] commands = {"getpapers", "--query " + query + " --outdir " + dir};
-            Process proc = rt.exec(commands);
+            Process proc = rt.exec("sudo docker run --rm --volume " + dir + "/cm:/contentmine --tty --interactive psychemedia/contentmine getpapers -q " + query + " -o /contentmine/out -x");
 
             BufferedReader stdInput = new BufferedReader(new
                     InputStreamReader(proc.getInputStream()));
