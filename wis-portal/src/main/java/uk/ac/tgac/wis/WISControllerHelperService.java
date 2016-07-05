@@ -107,6 +107,8 @@ public class WISControllerHelperService {
     String slurmTestURL = "http://v0687.nbi.ac.uk:1888/grassroots/controller";
 
     String frontTestURL = "https://wheatis.tgac.ac.uk/grassroots-test";
+
+    String wisServer = "https://wheatis.tgac.ac.uk/grassroots-test/controller/0";
     String service_key = "service";
 
     String activeURL = blastTestURL;

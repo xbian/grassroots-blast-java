@@ -316,7 +316,7 @@ function handleFileSelect(evt) {
         r.onload = function (e) {
             var contents = e.target.result;
             blastfilecontent = contents;
-        }
+        };
         r.readAsText(f);
     }
     else {
