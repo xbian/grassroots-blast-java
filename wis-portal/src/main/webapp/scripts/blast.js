@@ -78,15 +78,15 @@ function sendBlastRequest() {
             {
                 'doOnSuccess': function (json) {
                     jQuery('#blastResult').html('');
-                    var response = json.response;
+                    var response = json['response']['results'];
                     for (var i = 0; i < response.length; i++) {
-                        var job_in_response = response[i];
-                        var uuid = job_in_response["job_uuid"];
-                        var dbname = job_in_response["description"];
+                        //var job_in_response = response[i];
+                        var job_uuid = response[i]["job_uuid"];
+                        var job_dbname = response[i]["description"];
 
                         if (synchronous) {
-                            var  blastHTML;
-                            var result = job_in_response['results'][0];
+                            var blastHTML;
+                            var result = response[i]['results'][0];
                             Fluxion.doAjax(
                                 'wisControllerHelperService',
                                 'formatXMLBlastResultFrontend',
@@ -98,7 +98,7 @@ function sendBlastRequest() {
                                     'doOnSuccess': function (json) {
                                         blastHTML = json.html;
                                         jQuery('#blastResult').append(
-                                            '<fieldset><legend>' + dbname + '</legend><div><p><a href="javascript:;" id=\"' + uuid + 'dl\" onclick=\"downloadJobFromServer(\'' + uuid + '\');\">Download Job</a> in <span class="dlformat">Pairwise</span> format <span id=\"' + uuid + 'status\"></span><br/></p><div id=\"' + uuid + '\">' + blastHTML + '</div></div></br></fieldset>');
+                                            '<fieldset><legend>' + job_dbname + '</legend><div><p><a href="javascript:;" id=\"' + job_uuid + 'dl\" onclick=\"downloadJobFromServer(\'' + job_uuid + '\');\">Download Job</a> in <span class="dlformat">Pairwise</span> format <span id=\"' + job_uuid + 'status\"></span><br/></p><div id=\"' + job_uuid + '\">' + blastHTML + '</div></div></br></fieldset>');
                                     }
                                 }
                             );
@@ -106,9 +106,9 @@ function sendBlastRequest() {
                             Utils.ui.reenableButton('blastButton2', 'BLAST Search');
                         } else {
                             jQuery('#blastResult').append(
-                                '<fieldset><legend>' + dbname + '</legend><div><p><b>Job ID: '
-                                + uuid + '</b></p><div id=\"' + uuid + '\">Job Submitted <img src=\"../images/ajax-loader.gif\"/></div></div></br></fieldset>');
-                            checkBlastResult(uuid);
+                                '<fieldset><legend>' + job_dbname + '</legend><div><p><b>Job ID: '
+                                + job_uuid + '</b></p><div id=\"' + job_uuid + '\">Job Submitted <img src=\"../images/ajax-loader.gif\"/></div></div></br></fieldset>');
+                            checkBlastResult(job_uuid);
                         }
                     }
                 }

@@ -108,10 +108,10 @@ public class WISControllerHelperService {
 
     String frontTestURL = "https://wheatis.tgac.ac.uk/grassroots-test";
 
-    String wisServer = "https://wheatis.tgac.ac.uk/grassroots-test/controller/0";
+    String wisServer = "https://wheatis.tgac.ac.uk/grassroots-test/0/controller";
     String service_key = "service";
 
-    String activeURL = blastTestURL;
+    String activeURL = wisServer;
 
     public JSONObject getBlastService(HttpSession session, JSONObject json) {
         StringBuilder dbHTML = new StringBuilder();
@@ -142,9 +142,11 @@ public class WISControllerHelperService {
             ResponseHandler<String> handler = new BasicResponseHandler();
             String body = handler.handleResponse(response);
 
-            JSONArray serviceArray = JSONArray.fromObject(body);
+            JSONObject responseObject = JSONObject.fromObject(body);
+            JSONArray serviceArray = responseObject.getJSONArray("services");
 //            JSONArray dbArray = new JSONArray();
             JSONArray parametersArray = serviceArray.getJSONObject(0).getJSONObject("operations").getJSONObject("parameter_set").getJSONArray("parameters");
+            JSONArray providersArray = serviceArray.getJSONObject(0).getJSONArray("provider");
 
             Boolean synchronous = true;
             if (serviceArray.getJSONObject(0).getJSONObject("operations").get("synchronous") != null) {
@@ -154,29 +156,39 @@ public class WISControllerHelperService {
             JSONArray dbGroupArray = new JSONArray();
 
 
-            for (int i = 0; i < parametersArray.size(); i++) {
-                JSONObject parameter = parametersArray.getJSONObject(i);
-                if ((parameter.getString("group")).matches("^Available Databases(.*)")) {
-                    Pattern p = Pattern.compile("^Available Databases(.*)");
-                    Matcher m = p.matcher(parameter.getString("group"));
-                    String provide = "";
-                    while (m.find()) {
-                        provide = m.group(1);
-                    }
-                    String name = parameter.getString("name").split(";")[0];
-                    String param = parameter.getString("param");
-                    String tag = parameter.getString("tag");
+            for (int j = 0; j < providersArray.size(); j++){
+                JSONObject provider = providersArray.getJSONObject(j);
+                dbHTML.append("<h3>"+provider.getString("name")+"</h3>");
+
+                for (int i = 0; i < parametersArray.size(); i++) {
+                    JSONObject parameter = parametersArray.getJSONObject(i);
+                    if ((parameter.getString("group")).matches("^Available Databases(.*)")) {
+                        if ((parameter.getString("group")).contains(provider.getString("name"))) {
+                            Pattern p = Pattern.compile("^Available Databases(.*)");
+                            Matcher m = p.matcher(parameter.getString("group"));
+                            String provide = "";
+                            while (m.find()) {
+                                provide = m.group(1);
+                            }
+                            String name = parameter.getString("name").split(";")[0];
+                            String param = parameter.getString("param");
+//                    String grassroots_type = parameter.getString("grassroots_type");
 //                    dbArray.add(parameter);
-                    String dbRowHTML;
-                    if ("/tgac/public/databases/blast/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all".equals(param)) {
-                        dbRowHTML = ("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" checked=\"checked\" /> <b>" + name + "<i>" + provide + "</b></i> <a target=\"_blank\" href=\"/images/Blast_database_announcement_v11.pdf\">README</a><br/>");
-                        dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" checked=\"checked\" /> <b>" + name + "<i>" + provide + "</b></i> <a target=\"_blank\" href=\"/images/Blast_database_announcement_v11.pdf\">README</a><br/>");
-                    } else {
-                        dbRowHTML = ("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" /> " + name + "<b><i>" + provide + "</b></i> <br/>");
-                        dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" /> " + name + "<b><i>" + provide + "</b></i> <br/>");
+                            String dbRowHTML;
+//                    if ("/tgac/public/databases/blast/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all".equals(param)) {
+//                        dbRowHTML = ("<input type=\"checkbox\" name=\"database\" value=\"" + param  + "\" checked=\"checked\" /> <b>" + name + "<i>" + provide + "</b></i> <a target=\"_blank\" href=\"/images/Blast_database_announcement_v11.pdf\">README</a><br/>");
+//                        dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "\" checked=\"checked\" /> <b>" + name + "<i>" + provide + "</b></i> <a target=\"_blank\" href=\"/images/Blast_database_announcement_v11.pdf\">README</a><br/>");
+//                    } else {
+//                            dbRowHTML = ("<input type=\"checkbox\" name=\"database\" value=\"" + param + "\" /> " + name + "<b><i>" + provide + "</b></i> <br/>");
+//                            dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "\" /> " + name + "<b><i>" + provide + "</b></i> <br/>");
+                            dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "\" /> " + name + "<br/>");
+//                    }
+                        }
                     }
                 }
             }
+
+
 
 //            responses.put("blastdbs", parametersArray);
             responses.put("html", dbHTML.toString());
@@ -250,11 +262,11 @@ public class WISControllerHelperService {
             }
             if (j.getString("name").equals("database")) {
                 String databasevalue = j.getString("value");
-                String[] databasevaluelist = databasevalue.split("\\^");
+//                String[] databasevaluelist = databasevalue.split("\\^");
                 JSONObject parameter = new JSONObject();
 
-                parameter.put("param", databasevaluelist[0]);
-                parameter.put("tag", Integer.parseInt(databasevaluelist[1]));
+                parameter.put("param", databasevalue);
+//                parameter.put("grassroots_type", Integer.parseInt(databasevaluelist[1]));
                 parameter.put("current_value", true);
                 parameter.put("grassroots_type", 0);
                 parameter.put("concise", true);
@@ -262,9 +274,9 @@ public class WISControllerHelperService {
                 parametersArray.add(parameter);
 
                 databaseParameters.append(",{");
-                databaseParameters.append("\"param\": \"" + databasevaluelist[0] + "\",");
-                databaseParameters.append("\"current_value\": true,");
-                databaseParameters.append("\"tag\": " + databasevaluelist[1] + ",");
+                databaseParameters.append("\"param\": \"" + databasevalue + "\",");
+//                databaseParameters.append("\"current_value\": true,");
+//                databaseParameters.append("\"tag\": " + databasevaluelist[1] + ",");
                 databaseParameters.append("\"grassroots_type\": 0,");
                 databaseParameters.append("\"concise\": true");
                 databaseParameters.append("}");
@@ -288,149 +300,149 @@ public class WISControllerHelperService {
         JSONObject p14 = new JSONObject();
 
         JSONObject p1CurrentValue = new JSONObject();
-        p1.put("param", "input");
+        p1.put("param", "input_file");
         p1CurrentValue.put("protocol", "");
         p1CurrentValue.put("value", "");
         p1.put("current_value", p1CurrentValue);
-        p1.put("tag", 1112100422);
+//        p1.put("tag", 1112100422);
         p1.put("grassroots_type", 7);
-        p2.put("type", "string");
-        p1.put("concise", true);
+//        p2.put("type", "string");
+//        p1.put("concise", true);
 
         parametersArray.add(p1);
 
 
         JSONObject p2CurrentValue = new JSONObject();
         p2.put("param", "output");
-        p2.put("type", "string");
-        p2.put("tag", 1112495430);
+//        p2.put("type", "string");
+//        p2.put("tag", 1112495430);
         p2CurrentValue.put("protocol", "");
         p2CurrentValue.put("value", "");
         p2.put("current_value", p2CurrentValue);
-        p2.put("level", 7);
+//        p2.put("level", 7);
         p2.put("grassroots_type", 6);
-        p2.put("concise", true);
+//        p2.put("concise", true);
 
         parametersArray.add(p2);
 
         p3.put("param", "query_sequence");
-        p3.put("type", "string");
-        p3.put("tag", 1112626521);
+//        p3.put("type", "string");
+//        p3.put("tag", 1112626521);
         p3.put("current_value", sequence);
-        p3.put("level", 7);
+//        p3.put("level", 7);
         p3.put("grassroots_type", 5);
-        p3.put("concise", true);
+//        p3.put("concise", true);
 
         parametersArray.add(p3);
 
-        p4.put("param", "from");
-        p4.put("type", "integer");
-        p4.put("tag", 1112622674);
+        p4.put("param", "subrange_from");
+//        p4.put("type", "integer");
+//        p4.put("tag", 1112622674);
         p4.put("current_value", Integer.parseInt(query_from));
-        p4.put("level", 6);
+//        p4.put("level", 6);
         p4.put("grassroots_type", 2);
-        p4.put("concise", true);
+//        p4.put("concise", true);
 
         parametersArray.add(p4);
 
-        p5.put("param", "to");
-        p5.put("type", "integer");
-        p5.put("tag", 1112626255);
+        p5.put("param", "subrange_to");
+//        p5.put("type", "integer");
+//        p5.put("tag", 1112626255);
         p5.put("current_value", Integer.parseInt(query_to));
-        p5.put("level", 6);
+//        p5.put("level", 6);
         p5.put("grassroots_type", 2);
-        p5.put("concise", true);
+//        p5.put("concise", true);
 
         parametersArray.add(p5);
 
         p6.put("param", "max_target_sequences");
-        p6.put("type", "integer");
-        p6.put("tag", 1112363857);
+//        p6.put("type", "integer");
+//        p6.put("tag", 1112363857);
         p6.put("current_value", Integer.parseInt(max_target_sequences));
-        p6.put("level", 7);
+//        p6.put("level", 7);
         p6.put("grassroots_type", 2);
-        p6.put("concise", true);
+//        p6.put("concise", true);
 
         parametersArray.add(p6);
 
         p7.put("param", "short_queries");
-        p7.put("type", "boolean");
-        p7.put("tag", 1112754257);
+//        p7.put("type", "boolean");
+//        p7.put("tag", 1112754257);
         p7.put("current_value", Boolean.valueOf(short_queries));
-        p7.put("level", 7);
+//        p7.put("level", 7);
         p7.put("grassroots_type", 0);
-        p7.put("concise", true);
+//        p7.put("concise", true);
 
         parametersArray.add(p7);
 
         p8.put("param", "expect_threshold");
-        p8.put("type", "integer");
-        p8.put("tag", 1111840852);
+//        p8.put("type", "integer");
+//        p8.put("tag", 1111840852);
         p8.put("current_value", Integer.parseInt(expect_threshold));
-        p8.put("level", 7);
+//        p8.put("level", 7);
         p8.put("grassroots_type", 2);
-        p8.put("concise", true);
+//        p8.put("concise", true);
 
         parametersArray.add(p8);
 
         p9.put("param", "word_size");
-        p9.put("type", "integer");
-        p9.put("tag", 1113015379);
+//        p9.put("type", "integer");
+//        p9.put("tag", 1113015379);
         p9.put("current_value", Integer.parseInt(word_size));
-        p9.put("level", 7);
+//        p9.put("level", 7);
         p9.put("grassroots_type", 2);
-        p9.put("concise", true);
+//        p9.put("concise", true);
 
         parametersArray.add(p9);
 
         p10.put("param", "max_matches_in_a_query_range");
-        p10.put("type", "integer");
-        p10.put("tag", 1112363591);
+//        p10.put("type", "integer");
+//        p10.put("tag", 1112363591);
         p10.put("current_value", Integer.parseInt(max_matches_query_range));
-        p10.put("level", 7);
+//        p10.put("level", 7);
         p10.put("grassroots_type", 2);
-        p10.put("concise", true);
+//        p10.put("concise", true);
 
         parametersArray.add(p10);
 
         p11.put("param", "output_format");
-        p11.put("type", "integer");
-        p11.put("tag", 1111903572);
+//        p11.put("type", "integer");
+//        p11.put("tag", 1111903572);
         p11.put("current_value", 5);
-        p11.put("level", 7);
+//        p11.put("level", 7);
         p11.put("grassroots_type", 2);
-        p11.put("concise", true);
+//        p11.put("concise", true);
 
         parametersArray.add(p11);
 
         p12.put("param", "match");
-        p12.put("type", "integer");
-        p12.put("tag", 1112364099);
+//        p12.put("type", "integer");
+//        p12.put("tag", 1112364099);
         p12.put("current_value", Integer.parseInt(match));
-        p12.put("level", 6);
+//        p12.put("level", 6);
         p12.put("grassroots_type", 1);
-        p12.put("concise", true);
+//        p12.put("concise", true);
 
         parametersArray.add(p12);
 
         p13.put("param", "mismatch");
-        p13.put("type", "integer");
-        p13.put("tag", 1112363853);
+//        p13.put("type", "integer");
+//        p13.put("tag", 1112363853);
         p13.put("current_value", Integer.parseInt(mismatch));
         p13.put("grassroots_type", 1);
-        p13.put("level", 6);
-        p13.put("concise", true);
+//        p13.put("level", 6);
+//        p13.put("concise", true);
 
         parametersArray.add(p13);
 
-        p14.put("param", "output_format");
-        p14.put("tag", 1111903572);
-        p14.put("current_value", 5);
-        p14.put("grassroots_type", 2);
-        p14.put("type", "integer");
-        p14.put("level", 7);
-        p14.put("concise", true);
-        parametersArray.add(p14);
+//        p14.put("param", "output_format");
+////        p14.put("tag", 1111903572);
+//        p14.put("current_value", 5);
+//        p14.put("grassroots_type", 2);
+////        p14.put("type", "integer");
+////        p14.put("level", 7);
+//        p14.put("concise", true);
+//        parametersArray.add(p14);
 
         parameterSetObject.put("parameters", parametersArray);
 
@@ -865,23 +877,23 @@ public class WISControllerHelperService {
             JSONObject p2 = new JSONObject();
 
             p1.put("param", "Blast database");
-            p1.put("type", "string");
-            p1.put("tag", 1398030918);
+//            p1.put("type", "string");
+//            p1.put("tag", 1398030918);
             p1.put("current_value", db);
-            p1.put("level", 7);
+//            p1.put("level", 7);
             p1.put("grassroots_type", 5);
-            p1.put("concise", true);
+//            p1.put("concise", true);
 
 
             parametersArray.add(p1);
 
             p2.put("param", "Scaffold");
-            p2.put("type", "string");
-            p2.put("tag", 1398035267);
+//            p2.put("type", "string");
+//            p2.put("tag", 1398035267);
             p2.put("current_value", id.replaceAll(":", "\\|"));
-            p2.put("level", 7);
+//            p2.put("level", 7);
             p2.put("grassroots_type", 5);
-            p2.put("concise", true);
+//            p2.put("concise", true);
 
             parametersArray.add(p2);
 
@@ -961,24 +973,24 @@ public class WISControllerHelperService {
         JSONObject p1 = new JSONObject();
 
         p1.put("param", "job_ids");
-        p1.put("tag", 1112099401);
+//        p1.put("tag", 1112099401);
         p1.put("current_value", uuid);
         p1.put("grassroots_type", 5);
-        p1.put("type", "string");
-        p1.put("level", 7);
-        p1.put("concise", true);
+//        p1.put("type", "string");
+//        p1.put("level", 7);
+//        p1.put("concise", true);
         parametersArray.add(p1);
 
         JSONObject p2 = new JSONObject();
 
 
         p2.put("param", "output_format");
-        p2.put("tag", 1111903572);
+//        p2.put("tag", 1111903572);
         p2.put("current_value", 5);
         p2.put("grassroots_type", 2);
-        p2.put("type", "integer");
-        p2.put("level", 7);
-        p2.put("concise", true);
+//        p2.put("type", "integer");
+//        p2.put("level", 7);
+//        p2.put("concise", true);
         parametersArray.add(p2);
 
 
@@ -1048,24 +1060,24 @@ public class WISControllerHelperService {
         JSONObject p1 = new JSONObject();
 
         p1.put("param", "job_ids");
-        p1.put("tag", 1112099401);
+//        p1.put("tag", 1112099401);
         p1.put("current_value", uuid);
         p1.put("grassroots_type", 5);
-        p1.put("type", "string");
-        p1.put("level", 7);
-        p1.put("concise", true);
+//        p1.put("type", "string");
+//        p1.put("level", 7);
+//        p1.put("concise", true);
         parametersArray.add(p1);
 
         JSONObject p2 = new JSONObject();
 
 
         p2.put("param", "output_format");
-        p2.put("tag", 1111903572);
+//        p2.put("tag", 1111903572);
         p2.put("current_value", format);
         p2.put("grassroots_type", 2);
-        p2.put("type", "integer");
-        p2.put("level", 7);
-        p2.put("concise", true);
+//        p2.put("type", "integer");
+//        p2.put("level", 7);
+//        p2.put("concise", true);
         parametersArray.add(p2);
 
 
