@@ -598,7 +598,12 @@ public class WISControllerHelperService {
 
     public JSONObject formatXMLBlastResultFrontend(HttpSession session, JSONObject json) {
         String rawResultString = json.getString("rawResultString");
-        return formatXMLBlastResult(rawResultString);
+        String dbname = json.getString("dbname");
+        String uuid = json.getString("uuid");
+        JSONObject response = formatXMLBlastResult(rawResultString);
+        response.put("dbname", dbname);
+        response.put("uuid", uuid);
+        return response;
 
     }
 

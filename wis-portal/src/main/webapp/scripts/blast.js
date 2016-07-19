@@ -92,13 +92,15 @@ function sendBlastRequest() {
                                 'formatXMLBlastResultFrontend',
                                 {
                                     'rawResultString': result['data'],
+                                    'dbname': job_dbname,
+                                    'uuid': job_uuid,
                                     'url': ajaxurl
                                 },
                                 {
                                     'doOnSuccess': function (json) {
                                         blastHTML = json.html;
                                         jQuery('#blastResult').append(
-                                            '<fieldset><legend>' + job_dbname + '</legend><div><p><a href="javascript:;" id=\"' + job_uuid + 'dl\" onclick=\"downloadJobFromServer(\'' + job_uuid + '\');\">Download Job</a> in <span class="dlformat">Pairwise</span> format <span id=\"' + job_uuid + 'status\"></span><br/></p><div id=\"' + job_uuid + '\">' + blastHTML + '</div></div></br></fieldset>');
+                                            '<fieldset><legend>' + json.dbname + '</legend><div><p><a href="javascript:;" id=\"' + json.uuid + 'dl\" onclick=\"downloadJobFromServer(\'' + json.uuid + '\');\">Download Job</a> in <span class="dlformat">Pairwise</span> format <span id=\"' + json.uuid + 'status\"></span><br/></p><div id=\"' + json.uuid + '\">' + blastHTML + '</div></div></br></fieldset>');
                                     }
                                 }
                             );
