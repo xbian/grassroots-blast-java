@@ -13,7 +13,7 @@
             <li><a href="<c:url value='/grassroots-portal/blast'/>">Blast searches on HPC</a></li>
             <li>iRODS file management</li>
             <li>Solr / ElasticSearch indexers</li>
-            <li>Geo-location information</li>
+            <li><a href="/yellowrust-map">Geo-location information</a></li>
         </ul>
 
     </div>
