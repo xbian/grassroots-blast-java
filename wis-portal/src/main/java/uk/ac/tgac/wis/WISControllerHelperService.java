@@ -111,7 +111,7 @@ public class WISControllerHelperService {
     String wisServer = "https://wheatis.tgac.ac.uk/grassroots-test/0/controller";
     String service_key = "service";
 
-    String activeURL = wisServer;
+    String activeURL = blastTestURL;
 
     public JSONObject getBlastService(HttpSession session, JSONObject json) {
         StringBuilder dbHTML = new StringBuilder();

@@ -109,7 +109,7 @@
                 <li><a href="<c:url value='/grassroots-portal/contact'/>">Contact</a></li>
                 <li><a href="http://wheatis.tgac.ac.uk/grassroots/api/">Grassroots API</a></li>
             </ul>
-            <img class ="navbar-nav navbar-right" style="height:50px;" src="<c:url value='/images/tgac_logo.png'/>"/>
+            <img class ="navbar-nav navbar-right" style="height:50px;" src="<c:url value='/images/earlham-institure-logo.png'/>"/>
         </div>
     </div>
 </nav>
