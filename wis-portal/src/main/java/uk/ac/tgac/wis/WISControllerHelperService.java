@@ -584,7 +584,12 @@ public class WISControllerHelperService {
 
     public JSONObject formatXMLBlastResultFrontend(HttpSession session, JSONObject json) {
         String rawResultString = json.getString("rawResultString");
-        return formatXMLBlastResult(rawResultString);
+        String dbname = json.getString("dbname");
+        String uuid = json.getString("uuid");
+        JSONObject response = formatXMLBlastResult(rawResultString);
+        response.put("dbname", dbname);
+        response.put("uuid", uuid);
+        return response;
 
     }
 
@@ -752,6 +757,7 @@ public class WISControllerHelperService {
                     }
 
                     if ("/tgac/public/databases/blast/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all".equals(databaseString) ||
+                            "/tgac/public/databases/blast/triticum_aestivum/EI/v1/Triticum_aestivum_Cadenza_EIv1".equals(databaseString) ||
                             "/tgac/public/databases/blast/aegilops_tauschii/GCA_000347335.1/Aegilops_tauschii.GCA_000347335.1.26.dna.genome".equals(databaseString) ||
                             "/tgac/public/databases/blast/triticum_aestivum/brenchley_CS42/subassemblies_TEcleaned_Hv80Bd75Sb70Os70_30aa_firstBestHit_assembly_ml40_mi99".equals(databaseString) ||
                             "/tgac/public/databases/blast/triticum_aestivum/IWGSC/v2/IWGSCv2.0".equals(databaseString) ||
