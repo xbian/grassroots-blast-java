@@ -4,7 +4,7 @@
     <p>
         &copy; 2015
         - <fmt:formatDate value="${timestamp}" pattern="yyyy"/>
-        Brought to you by <a href="http://www.tgac.ac.uk/" target="_blank">The Genome Analysis Centre</a><br/>
+        Brought to you by <a href="http://www.earlham.ac.uk/" target="_blank">Earlham Institute</a><br/>
         Powered by Grassroots API
     </p>
 </div>
