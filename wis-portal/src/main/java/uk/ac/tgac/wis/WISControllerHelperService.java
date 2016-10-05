@@ -156,9 +156,9 @@ public class WISControllerHelperService {
             JSONArray dbGroupArray = new JSONArray();
 
 
-            for (int j = 0; j < providersArray.size(); j++){
+            for (int j = 0; j < providersArray.size(); j++) {
                 JSONObject provider = providersArray.getJSONObject(j);
-                dbHTML.append("<h3>"+provider.getString("name")+"</h3>");
+                dbHTML.append("<h3>" + provider.getString("name") + "</h3>");
 
                 for (int i = 0; i < parametersArray.size(); i++) {
                     JSONObject parameter = parametersArray.getJSONObject(i);
@@ -175,19 +175,19 @@ public class WISControllerHelperService {
 //                    String grassroots_type = parameter.getString("grassroots_type");
 //                    dbArray.add(parameter);
                             String dbRowHTML;
-//                    if ("/tgac/public/databases/blast/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all".equals(param)) {
+                            if ("/tgac/public/databases/blast/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all".equals(param)) {
 //                        dbRowHTML = ("<input type=\"checkbox\" name=\"database\" value=\"" + param  + "\" checked=\"checked\" /> <b>" + name + "<i>" + provide + "</b></i> <a target=\"_blank\" href=\"/images/Blast_database_announcement_v11.pdf\">README</a><br/>");
 //                        dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "\" checked=\"checked\" /> <b>" + name + "<i>" + provide + "</b></i> <a target=\"_blank\" href=\"/images/Blast_database_announcement_v11.pdf\">README</a><br/>");
-//                    } else {
+                                dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "\" checked=\"checked\" /> " + name + "<br/>");
+                            } else {
 //                            dbRowHTML = ("<input type=\"checkbox\" name=\"database\" value=\"" + param + "\" /> " + name + "<b><i>" + provide + "</b></i> <br/>");
 //                            dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "\" /> " + name + "<b><i>" + provide + "</b></i> <br/>");
-                            dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "\" /> " + name + "<br/>");
-//                    }
+                                dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "\" /> " + name + "<br/>");
+                            }
                         }
                     }
                 }
             }
-
 
 
 //            responses.put("blastdbs", parametersArray);
