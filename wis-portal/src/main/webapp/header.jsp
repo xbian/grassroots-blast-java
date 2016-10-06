@@ -105,7 +105,7 @@
             <ul class="nav navbar-nav">
                 <li ><a href="<c:url value='/'/>">Home</a></li>
                 <li><a href="<c:url value='/grassroots-portal/services'/>">Services</a></li>
-                <li><a href="<c:url value='/grassroots-portal/indexer'/>">Search</a></li>
+                <%--<li><a href="<c:url value='/grassroots-portal/indexer'/>">Search</a></li>--%>
                 <li><a href="<c:url value='/grassroots-portal/contact'/>">Contact</a></li>
                 <li><a href="http://wheatis.tgac.ac.uk/grassroots/api/">Grassroots API</a></li>
             </ul>
