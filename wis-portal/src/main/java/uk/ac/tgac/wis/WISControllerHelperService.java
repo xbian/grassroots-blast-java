@@ -111,7 +111,7 @@ public class WISControllerHelperService {
     String wisServer = "https://wheatis.tgac.ac.uk/grassroots-test/0/controller";
     String service_key = "service";
 
-    String activeURL = blastTestURL;
+    String activeURL = wisServer;
 
     public JSONObject getBlastService(HttpSession session, JSONObject json) {
         StringBuilder dbHTML = new StringBuilder();
@@ -177,8 +177,8 @@ public class WISControllerHelperService {
                             String dbRowHTML;
                             if ("/tgac/public/databases/blast/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all".equals(param)) {
 //                        dbRowHTML = ("<input type=\"checkbox\" name=\"database\" value=\"" + param  + "\" checked=\"checked\" /> <b>" + name + "<i>" + provide + "</b></i> <a target=\"_blank\" href=\"/images/Blast_database_announcement_v11.pdf\">README</a><br/>");
-//                        dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "\" checked=\"checked\" /> <b>" + name + "<i>" + provide + "</b></i> <a target=\"_blank\" href=\"/images/Blast_database_announcement_v11.pdf\">README</a><br/>");
-                                dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "\" checked=\"checked\" /> " + name + "<br/>");
+                        dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "\" checked=\"checked\" /> <b>" + name + "<i>" + provide + "</b></i> <a target=\"_blank\" href=\"/images/Blast_database_announcement_v11.pdf\">README</a><br/>");
+//                                dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "\" checked=\"checked\" /> " + name + "<br/>");
                             } else {
 //                            dbRowHTML = ("<input type=\"checkbox\" name=\"database\" value=\"" + param + "\" /> " + name + "<b><i>" + provide + "</b></i> <br/>");
 //                            dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "\" /> " + name + "<b><i>" + provide + "</b></i> <br/>");
@@ -771,6 +771,9 @@ public class WISControllerHelperService {
                     }
 
                     if ("/tgac/public/databases/blast/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all".equals(databaseString) ||
+                            "/tgac/public/databases/blast/triticum_aestivum/EI/v1/Triticum_aestivum_Cadenza_EIv1".equals(databaseString) ||
+                            "/tgac/public/databases/blast/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_scaffold.annotation.gff3.cdna.fa".equals(databaseString) ||
+                            "/tgac/public/databases/blast/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_scaffold.annotation.gff3.cds.fa".equals(databaseString) ||
                             "/tgac/public/databases/blast/aegilops_tauschii/GCA_000347335.1/Aegilops_tauschii.GCA_000347335.1.26.dna.genome".equals(databaseString) ||
                             "/tgac/public/databases/blast/triticum_aestivum/brenchley_CS42/subassemblies_TEcleaned_Hv80Bd75Sb70Os70_30aa_firstBestHit_assembly_ml40_mi99".equals(databaseString) ||
                             "/tgac/public/databases/blast/triticum_aestivum/IWGSC/v2/IWGSCv2.0".equals(databaseString) ||
