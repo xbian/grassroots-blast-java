@@ -758,6 +758,7 @@ public class WISControllerHelperService {
 
                     if ("/tgac/public/databases/blast/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all".equals(databaseString) ||
                             "/tgac/public/databases/blast/triticum_aestivum/EI/v1/Triticum_aestivum_Cadenza_EIv1".equals(databaseString) ||
+                            "/tgac/public/databases/blast/triticum_aestivum/EI/v1/Triticum_aestivum_Kronos_EIv1".equals(databaseString) ||
 //                            "/tgac/public/databases/blast/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_scaffold.annotation.gff3.cdna.fa".equals(databaseString) ||
 //                            "/tgac/public/databases/blast/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_scaffold.annotation.gff3.cds.fa".equals(databaseString) ||
                             "/tgac/public/databases/blast/aegilops_tauschii/GCA_000347335.1/Aegilops_tauschii.GCA_000347335.1.26.dna.genome".equals(databaseString) ||
