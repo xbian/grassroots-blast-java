@@ -724,7 +724,7 @@ public class WISControllerHelperService {
 
                     String turartuLink = "http://plants.ensembl.org/Triticum_urartu/Search/Results?species=Triticum%20urartu;idx=;q=";
 
-                    String tgacv1Link = "http://pre.plants.ensembl.org/Triticum_aestivum/Location/View?r=";
+                    String tgacv1Link = "http://plants.ensembl.org/Triticum_aestivum/Location/View?r=";
 
                     if ("Triticum_aestivum_CS42_TGACv1_all".equals(databaseName)) {
                         ensemblLink = tgacv1Link;
