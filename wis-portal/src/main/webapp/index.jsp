@@ -28,7 +28,7 @@
             a system to expose your data.
         </p>
         <p>The project is fully open source and the source code is available on <a
-                href="https://github.com/TGAC/grassroots-api">GitHub</a></p>
+                href="https://github.com/TGAC?q=grassroots">GitHub</a></p>
     </div>
 </div>
 
