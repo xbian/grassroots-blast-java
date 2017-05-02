@@ -23,6 +23,28 @@ function getBlastDBs() {
 
 }
 
+function getBlastDBs2() {
+    jQuery('#blastDBs').html('Loading available BLAST databases <img src=\"../images/ajax-loader.gif\"/>');
+    Utils.ui.disableButton('blastButton1');
+    Utils.ui.disableButton('blastButton2');
+    Fluxion.doAjax(
+        'wisControllerHelperService',
+        'getBlastService2',
+        {
+            'url': ajaxurl
+        },
+        {
+            'doOnSuccess': function (json) {
+                jQuery('#blastDBs').html(json.html);
+                //synchronous = json.synchronousbool;
+                Utils.ui.reenableButton('blastButton1', 'BLAST Search');
+                Utils.ui.reenableButton('blastButton2', 'BLAST Search');
+            }
+        }
+    );
+
+}
+
 function sendBlastRequest() {
     if (validateJobID(jQuery('#sequence').val())) {
         Utils.ui.disableButton('blastButton1');

@@ -70,4 +70,9 @@ public class MenuController implements ServletContextAware {
     return "/blast.jsp";
   }
 
+  @RequestMapping("/hordeum_vulgare")
+  public String grassRootBlast2() {
+    return "/blast2.jsp";
+  }
+
 }
