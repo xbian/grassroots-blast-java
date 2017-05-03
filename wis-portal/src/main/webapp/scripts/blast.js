@@ -204,12 +204,12 @@ function validateFasta(fasta) {
     // split on newlines...
     var lines = fasta.split('\n');
 
-    // check for header
-    if (fasta[0] == '>') {
-        // remove one line, starting at the first position
-        lines.splice(0, 1);
-    }
-
+    	for(var i=0; i < lines.length; i++){
+    	if (lines[i][0] == '>') {
+    		// remove one line, starting at the first position
+    		lines.splice(i, 1);
+    	}
+    	}
     // join the array back into a single string without newlines and
     // trailing or leading spaces
     fasta = lines.join('').trim();
