@@ -17,9 +17,6 @@
     <%--<p><font color="red">Please note: TGAC's high-performance cluster that powers this service will be undergoing--%>
     <%--maintenance from 08:00 to 18:00 GMT on the 28th November. As such this service will be offline during this--%>
     <%--period.</font></p>--%>
-    <p>
-    Download full sequence files: <a href="http://opendata.earlham.ac.uk/Triticum_aestivum/">Triticum aestivum</a>  <a href="http://opendata.earlham.ac.uk/Triticum_turgidum/">Triticum turgidum</a>
-    </p>
     <form id="blastSearchForm">
         <p/>
         Enter sequence below in FASTA format or previous job ids separated by comma
@@ -37,6 +34,9 @@
         <%--<p/>--%>
         <fieldset>
             <legend>BLAST Databases</legend>
+    <p>
+    Download full sequence files: <a href="http://opendata.earlham.ac.uk/Triticum_aestivum/">Triticum aestivum</a>  <a href="http://opendata.earlham.ac.uk/Triticum_turgidum/">Triticum turgidum</a>
+    </p>
             <div id="blastDBs"></div>
         </fieldset>
         <button id="blastButton1" type="button" onclick="sendBlastRequest();">BLAST Search</button>
