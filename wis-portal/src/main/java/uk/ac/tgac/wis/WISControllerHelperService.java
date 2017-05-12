@@ -145,7 +145,7 @@ public class WISControllerHelperService {
             JSONArray parametersArray = serviceArray.getJSONObject(0).getJSONObject("operations").getJSONObject("parameter_set").getJSONArray("parameters");
 
             Boolean synchronous = true;
-            if (serviceArray.getJSONObject(0).getJSONObject("operations").get("synchronous")!=null){
+            if (serviceArray.getJSONObject(0).getJSONObject("operations").get("synchronous") != null) {
                 synchronous = serviceArray.getJSONObject(0).getJSONObject("operations").getBoolean("synchronous");
             }
 
@@ -154,11 +154,11 @@ public class WISControllerHelperService {
 
             for (int i = 0; i < parametersArray.size(); i++) {
                 JSONObject parameter = parametersArray.getJSONObject(i);
-                if ( (parameter.getString("group")).matches("^Available Databases(.*)")) {
+                if ((parameter.getString("group")).matches("^Available Databases(.*)")) {
                     Pattern p = Pattern.compile("^Available Databases(.*)");
                     Matcher m = p.matcher(parameter.getString("group"));
                     String provide = "";
-                    while(m.find()){
+                    while (m.find()) {
                         provide = m.group(1);
                     }
                     String name = parameter.getString("name").split(";")[0];
@@ -171,8 +171,7 @@ public class WISControllerHelperService {
                         dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" checked=\"checked\" /> <b>" + name + "<i>" + provide + "</b></i> <a target=\"_blank\" href=\"/images/Blast_database_announcement_v11.pdf\">README</a><br/>");
                     } else if ("/tgac/references/databases/blast/hordeum_vulgare/Hordeum_vulgare_Golden_promise_EIv1".equals(param)) {
 
-                    }
-                    else {
+                    } else {
                         dbRowHTML = ("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" /> " + name + "<b><i>" + provide + "</b></i> <br/>");
                         dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" /> " + name + "<b><i>" + provide + "</b></i> <br/>");
                     }
@@ -223,7 +222,7 @@ public class WISControllerHelperService {
             JSONArray parametersArray = serviceArray.getJSONObject(0).getJSONObject("operations").getJSONObject("parameter_set").getJSONArray("parameters");
 
             Boolean synchronous = true;
-            if (serviceArray.getJSONObject(0).getJSONObject("operations").get("synchronous")!=null){
+            if (serviceArray.getJSONObject(0).getJSONObject("operations").get("synchronous") != null) {
                 synchronous = serviceArray.getJSONObject(0).getJSONObject("operations").getBoolean("synchronous");
             }
 
@@ -232,11 +231,11 @@ public class WISControllerHelperService {
 
             for (int i = 0; i < parametersArray.size(); i++) {
                 JSONObject parameter = parametersArray.getJSONObject(i);
-                if ( (parameter.getString("group")).matches("^Available Databases(.*)")) {
+                if ((parameter.getString("group")).matches("^Available Databases(.*)")) {
                     Pattern p = Pattern.compile("^Available Databases(.*)");
                     Matcher m = p.matcher(parameter.getString("group"));
                     String provide = "";
-                    while(m.find()){
+                    while (m.find()) {
                         provide = m.group(1);
                     }
                     String name = parameter.getString("name").split(";")[0];
@@ -247,7 +246,7 @@ public class WISControllerHelperService {
                     if ("/tgac/references/databases/blast/hordeum_vulgare/Hordeum_vulgare_Golden_promise_EIv1".equals(param)) {
                         dbRowHTML = ("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" checked=\"checked\" /> " + name + "<b><i>" + provide + "</b></i> <br/>");
                         dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" checked=\"checked\" /> " + name + "<b><i>" + provide + "</b></i> <br/>");
-                         } else {
+                    } else {
                     }
                 }
             }
@@ -804,7 +803,7 @@ public class WISControllerHelperService {
 
                     if ("Triticum_aestivum_CS42_TGACv1_all".equals(databaseName)) {
                         ensemblLink = tgacv1Link;
-                        linktoensembl = " | <a target=\"_blank\" href=\"" + ensemblLink + accession.replaceAll("Triticum_aestivum_CS42_","") + ":1-1000000000\">View on Ensembl</a>";
+                        linktoensembl = " | <a target=\"_blank\" href=\"" + ensemblLink + accession.replaceAll("Triticum_aestivum_CS42_", "") + ":1-1000000000\">View on Ensembl</a>";
                     }
 
                     if ("Aegilops_tauschii.GCA_000347335.1.26.dna.genome".equals(databaseName)) {
@@ -834,6 +833,11 @@ public class WISControllerHelperService {
 
                     if ("/tgac/public/databases/blast/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all".equals(databaseString) ||
                             "/tgac/references/databases/blast/hordeum_vulgare/Hordeum_vulgare_Golden_promise_EIv1".equals(databaseString) ||
+                            "/tgac/public/databases/blast/triticum_aestivum/EI/v1.1/Triticum_aestivum_Cadenza_EIv1.1".equals(databaseString) ||
+                            "/tgac/public/databases/blast/triticum_turgidum/EI/v1.1/Triticum_turgidum_Kronos_EIv1.1".equals(databaseString) ||
+                            "/tgac/public/databases/blast/triticum_aestivum/EI/v1.1/Triticum_aestivum_Paragon_EIv1.1".equals(databaseString) ||
+                            "/tgac/public/databases/blast/triticum_aestivum/EI/v1.1/Triticum_aestivum_Robigus_EIv1.1".equals(databaseString) ||
+                            "/tgac/public/databases/blast/triticum_aestivum/EI/v1.1/Triticum_aestivum_Claire_EIv1.1".equals(databaseString) ||
                             "/tgac/public/databases/blast/triticum_aestivum/EI/v1/Triticum_aestivum_Cadenza_EIv1".equals(databaseString) ||
                             "/tgac/public/databases/blast/triticum_turgidum/EI/v1/Triticum_turgidum_Kronos_EIv1".equals(databaseString) ||
                             "/tgac/public/databases/blast/triticum_aestivum/EI/v1/Triticum_aestivum_Paragon_EIv1".equals(databaseString) ||
@@ -1121,7 +1125,7 @@ public class WISControllerHelperService {
 
         String uuid = json.getString("id");
         int format = 0;
-        if (json.get("format")!=null) {
+        if (json.get("format") != null) {
             format = Integer.parseInt(json.getString("format"));
         }
         String url = activeURL;
