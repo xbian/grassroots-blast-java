@@ -802,8 +802,14 @@ public class WISControllerHelperService {
                     String tgacv1Link = "http://plants.ensembl.org/Triticum_aestivum/Location/View?r=";
 
                     if ("Triticum_aestivum_CS42_TGACv1_all".equals(databaseName)) {
+                        String ensemblAccession = "";
+                        Pattern p = Pattern.compile("^Triticum_aestivum_CS42_TGACv1_scaffold_(\\d+)_(\\d*[A-Z]*).*");
+                        Matcher m = p.matcher(accession);
+                        while (m.find()) {
+                            ensemblAccession = "TGACv1_scaffold_" + m.group(1) + "_" + m.group(2);
+                        }
                         ensemblLink = tgacv1Link;
-                        linktoensembl = " | <a target=\"_blank\" href=\"" + ensemblLink + accession.replaceAll("Triticum_aestivum_CS42_", "") + ":1-1000000000\">View on Ensembl</a>";
+                        linktoensembl = " | <a target=\"_blank\" href=\"" + ensemblLink + ensemblAccession + ":1\">View on Ensembl</a>";
                     }
 
                     if ("Aegilops_tauschii.GCA_000347335.1.26.dna.genome".equals(databaseName)) {
