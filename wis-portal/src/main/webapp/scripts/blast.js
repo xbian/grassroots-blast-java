@@ -99,7 +99,7 @@ function sendBlastRequest() {
             },
             {
                 'doOnSuccess': function (json) {
-                    jQuery('#blastResult').html('Preparing results...');
+                    jQuery('#blastResult').html('Preparing results <img src=\"../images/ajax-loader.gif\"/>');
                     var response = json.response;
                     for (var i = 0; i < response.length; i++) {
                         var job_in_response = response[i];
