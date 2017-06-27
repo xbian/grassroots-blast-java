@@ -99,7 +99,7 @@ function sendBlastRequest() {
             },
             {
                 'doOnSuccess': function (json) {
-                    jQuery('#blastResult').html('');
+                    jQuery('#blastResult').html('Preparing results...');
                     var response = json.response;
                     for (var i = 0; i < response.length; i++) {
                         var job_in_response = response[i];
@@ -121,7 +121,7 @@ function sendBlastRequest() {
                                 {
                                     'doOnSuccess': function (json) {
                                         blastHTML = json.html;
-                                        jQuery('#blastResult').append('<fieldset><legend>' + json.dbname + '</legend><div><p><a href="javascript:;" id=\"' + json.uuid + 'dl\" onclick=\"downloadJobFromServer(\'' + json.uuid + '\');\">Download Job</a> in <span class="dlformat">Pairwise</span> format <span id=\"' + json.uuid + 'status\"></span><br/></p><div id=\"' + json.uuid + '\">' + blastHTML + '</div></div></br></fieldset>');
+                                        jQuery('#blastResult').html('<fieldset><legend>' + json.dbname + '</legend><div><p><a href="javascript:;" id=\"' + json.uuid + 'dl\" onclick=\"downloadJobFromServer(\'' + json.uuid + '\');\">Download Job</a> in <span class="dlformat">Pairwise</span> format <span id=\"' + json.uuid + 'status\"></span><br/></p><div id=\"' + json.uuid + '\">' + blastHTML + '</div></div></br></fieldset>');
                                     }
                                 }
                             );
@@ -156,6 +156,7 @@ function checkBlastResult(uuid) {
             'doOnSuccess': function (json) {
                 jQuery('#' + uuid).html(json.html);
                 if (json.status == 4 || json.status == 5) {
+                    jQuery('#' + uuid).html('Preparing results...');
                     Fluxion.doAjax(
                         'wisControllerHelperService',
                         'displayNewXMLBlastResult',
