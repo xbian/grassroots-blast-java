@@ -339,7 +339,8 @@ function handleFileSelect(evt) {
         var r = new FileReader();
         r.onload = function (e) {
             var contents = e.target.result;
-            blastfilecontent = contents;
+            //blastfilecontent = contents;
+            jQuery('#sequence').val(contents);
         }
         r.readAsText(f);
     }
