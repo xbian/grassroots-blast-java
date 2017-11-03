@@ -99,15 +99,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Grassroots Infrastructure</a>
+            <a class="navbar-brand" href="https://grassroots.tools">Grassroots Infrastructure</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li ><a href="<c:url value='/'/>">Home</a></li>
-                <li><a href="<c:url value='/grassroots-portal/services'/>">Services</a></li>
-                <%--<li><a href="<c:url value='/grassroots-portal/indexer'/>">Search</a></li>--%>
-                <li><a href="<c:url value='/grassroots-portal/contact'/>">Contact</a></li>
-                <li><a href="http://wheatis.tgac.ac.uk/grassroots/api/">Grassroots API</a></li>
+                <li ><a href="https://grassroots.tools">Home</a></li>
+                <li><a href="https://grassroots.tools/#services">Services</a></li>
+                <li><a href="https://grassroots.tools/docs/api/">Docs</a></li>
+                <li><a href="https://grassroots.tools/#about">About</a></li>
+                <li><a href="https://grassroots.tools/blog.html">Blog</a></li>
+                <li><a href="https://grassroots.tools/#contact">Contact</a></li>
             </ul>
             <img class ="navbar-nav navbar-right" style="height:50px;" src="<c:url value='/images/earlham-institure-logo.png'/>"/>
         </div>

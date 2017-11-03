@@ -1,5 +1,6 @@
 <%@ include file="header.jsp" %>
 
+<meta http-equiv="refresh" content="0; url=https://grassroots.tools/#services" />
 <div class="container center-block">
 
     <div class="jumbotron">
