@@ -4,7 +4,7 @@
     <br/>
     Welcome to public data
     at the Earlham Institute
-    <div id="info" style="margin-top:10px;">
+    <section id="project-info" style="margin-top:10px;">
         <h2 id="projectName" style="color: #18bc9c;">${projectName}</h2>
         <i>
             <small>
@@ -22,7 +22,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
 
 </header>
