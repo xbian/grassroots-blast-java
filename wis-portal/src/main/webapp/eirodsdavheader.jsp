@@ -13,9 +13,9 @@
         </i>
         <div id="description" style="text-align: justify">${description}</div>
 
-        <div id="license-panel" class="panel panel-primary">
+        <div id="license-panel" class="panel panel-primary" style="${license_style}">
             <div class="panel-body">
-                <h3 class="text-on-pannel text-primary"><strong class="text-uppercase" id="license"> License ${license}</strong>
+                <h3 class="text-on-pannel text-primary"><strong class="text-uppercase" id="license">${license}</strong>
                 </h3>
                 <div id="license-detail">
                     ${license_detail}

@@ -93,7 +93,7 @@ public class MenuController implements ServletContextAware {
         String G_METADATA_API_URL_S = "https://grassroots.tools/test-insecure/data/api/metadata/";
         String elasticsearch_url = "https://grassroots.tools/elastic-search/irods/project/";
 
-        String toronto = "        All of the data listed here is available under the prepublication data sharing principle of the <a\n" +
+        String toronto = "All of the data listed here is available under the prepublication data sharing principle of the <a\n" +
                 "            href=\"https://www.nature.com/articles/461168a\">Toronto agreement</a>.\n" +
                 "        By using this data, you agree to:\n" +
                 "\n" +
@@ -131,45 +131,49 @@ public class MenuController implements ServletContextAware {
                 String license = "";
                 String license_detail = "";
                 String description = "";
-                HttpClient client = new DefaultHttpClient();
-                HttpGet esGet = new HttpGet(elasticsearch_url + uuid);
-                HttpResponse responseGet = client.execute(esGet);
-                HttpEntity resEntityGet = responseGet.getEntity();
-                if (resEntityGet != null) {
-                    BufferedReader rd = new BufferedReader(new InputStreamReader(resEntityGet.getContent()));
-                    String line = "";
-                    while ((line = rd.readLine()) != null) {
-                        esObject = JSONObject.fromObject(line);
-                        if (esObject.getJSONObject("_source")!=null) {
-                            JSONObject sourceObject = esObject.getJSONObject("_source");
-                            if (sourceObject.getString("projectName")!=null) {
-                                projectName = sourceObject.getString("projectName");
-                            }
-                            if  (sourceObject.getString("poi")!=null) {
-                                poi = sourceObject.getString("poi");
-                            }
-                            if (sourceObject.getString("description")!=null) {
-                                description = sourceObject.getString("description");
-                            }
-                            if (sourceObject.getString("license")!=null) {
-                                license = sourceObject.getString("license");
-                                if (license.equals("toronto")){
-                                    license = " - Toronto Agreement";
-                                    license_detail = toronto;
+                String license_style = "";
+                if (uuid != null || !uuid.equals("null") || !uuid.equals("") ) {
+                    HttpClient client = new DefaultHttpClient();
+                    HttpGet esGet = new HttpGet(elasticsearch_url + uuid);
+                    HttpResponse responseGet = client.execute(esGet);
+                    HttpEntity resEntityGet = responseGet.getEntity();
+                    if (resEntityGet != null) {
+                        BufferedReader rd = new BufferedReader(new InputStreamReader(resEntityGet.getContent()));
+                        String line = "";
+                        while ((line = rd.readLine()) != null) {
+                            esObject = JSONObject.fromObject(line);
+                            if (esObject.get("_source") != null) {
+                                JSONObject sourceObject = esObject.getJSONObject("_source");
+                                if (sourceObject.get("projectName") != null) {
+                                    projectName = sourceObject.getString("projectName");
                                 }
-                            }
+                                if (sourceObject.get("poi") != null) {
+                                    poi = sourceObject.getString("poi");
+                                }
+                                if (sourceObject.get("description") != null) {
+                                    description = sourceObject.getString("description");
+                                }
+                                if (sourceObject.get("license") != null) {
+                                    license = "License - " + sourceObject.getString("license");
+                                    if (license.equals("License - toronto")) {
+                                        license = "License - Toronto Agreement";
+                                        license_detail = toronto;
+                                    }
+                                } else {
+                                    license_style = "display:none ! important; ";
+                                }
 
+                            }
                         }
                     }
                 }
-
 
                 model.put("projectName", projectName);
                 model.put("poi", poi);
                 model.put("description", description);
                 model.put("license", license);
                 model.put("license_detail", license_detail);
-                System.out.println(projectName);
+                model.put("license_style", license_style);
 
                 return new ModelAndView("/eirodsdavheader.jsp", model);
         }
