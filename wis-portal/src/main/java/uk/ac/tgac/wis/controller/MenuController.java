@@ -131,7 +131,7 @@ public class MenuController implements ServletContextAware {
                 String license = "";
                 String license_detail = "";
                 String description = "";
-                String license_style = "";
+                String license_style = "display:none ! important; ";
                 if (uuid != null || !uuid.equals("null") || !uuid.equals("") ) {
                     HttpClient client = new DefaultHttpClient();
                     HttpGet esGet = new HttpGet(elasticsearch_url + uuid);
@@ -155,6 +155,7 @@ public class MenuController implements ServletContextAware {
                                 }
                                 if (sourceObject.get("license") != null) {
                                     license = "License - " + sourceObject.getString("license");
+                                    license_style = "";
                                     if (license.equals("License - toronto")) {
                                         license = "License - Toronto Agreement";
                                         license_detail = toronto;
@@ -167,7 +168,6 @@ public class MenuController implements ServletContextAware {
                         }
                     }
                 }
-
                 model.put("projectName", projectName);
                 model.put("poi", poi);
                 model.put("description", description);
