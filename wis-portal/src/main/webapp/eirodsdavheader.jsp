@@ -1,9 +1,8 @@
-
 <link href="https://grassroots.tools/css/site.css" rel="stylesheet">
-<%--<script src="https://grassroots.tools/js/site.js"></script>--%>
+<script src="https://grassroots.tools/js/site.js"></script>
 <style type="text/css">
-    .fixed-top{
-        top:-20px ! important;
+    .fixed-top {
+        top: -20px ! important;
     }
 
     .text-primary {
@@ -19,6 +18,7 @@
         /*text-underline-position: under;*/
         outline: 0
     }
+
     footer {
         color: black ! important;
     }
@@ -43,11 +43,11 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#services">Search</a>
+                    <a class="nav-link js-scroll-trigger" data-toggle=“modal” data-target=“#license-detail” href="#">Search</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#about">Login</a>
-                </li>
+                <%--<li class="nav-item">--%>
+                <%--<a class="nav-link js-scroll-trigger" href="#about">Login</a>--%>
+                <%--</li>--%>
             </ul>
             <img class="navbar-nav navbar-right" style="height:50px;margin-left:50px;"
                  src="https://grassroots.tools/img/logo-white.png"/>
@@ -60,16 +60,13 @@
     <i>
         <small> ${poi} </small>
     </i>
-    <div id="description" style="text-align: justify">${description}</div>
+    <div id="description" style="text-align: justify; padding-bottom: 30px;">${description}</div>
 
-    <div id="license-panel" class="panel panel-primary" style="${license_style}">
-        <div class="panel-body">
-            <h3 class="text-on-pannel text-primary" data-toggle="collapse" data-target="#license-detail"><strong
-                    class="text-uppercase" id="license">${license}</strong>
-            </h3>
-            <div id="license-detail" class="collapse">
-                ${license_detail}
-            </div>
+    <div id="license-panel" style="${license_style}">
+        This data is made available under the <span style="color: rgba(198, 31, 22, 1);">${license}</span>, <a href="#license-detail" data-toggle=“collapse”  aria-expanded="false" aria-controls="license-detail">click for more details...</a>
+        <br/>
+        <div id="license-detail" class="collapse" style="padding-top:20px;">
+            ${license_detail}
         </div>
     </div>
 </section>
