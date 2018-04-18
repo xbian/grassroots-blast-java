@@ -157,7 +157,7 @@ public class MenuController implements ServletContextAware {
                                     license = "License - " + sourceObject.getString("license");
                                     license_style = "";
                                     if (license.equals("License - toronto")) {
-                                        license = "License - Toronto Agreement";
+                                        license = "Toronto Agreement";
                                         license_detail = toronto;
                                     }
                                 } else {
