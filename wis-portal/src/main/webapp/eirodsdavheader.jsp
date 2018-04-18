@@ -1,11 +1,6 @@
 <script src="https://grassroots.tools/js/site.js"></script>
 <link rel="stylesheet" type="text/css" href="/eirods_dav_files/styles/header.css"/>
-<style type="text/css">
-    ul.autocomplete{
-        margin-top: -365px !important;
-        margin-left: -400px !important;
-    }
-</style>
+
 
 
 <!-- Navigation -->
@@ -89,8 +84,8 @@
     function searchModal() {
         $('#search_form_popup').modal('show');
 
-
         SetUpMetadataKeysAutoCompleteList();
         SetUpMetadataValuesAutoCompleteList();
     }
+
 </script>
