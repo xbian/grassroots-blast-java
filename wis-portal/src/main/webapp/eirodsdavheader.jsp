@@ -2,7 +2,6 @@
 <link rel="stylesheet" type="text/css" href="/eirods_dav_files/styles/header.css"/>
 
 
-
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
@@ -18,7 +17,9 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a id="searchLink" class="nav-link js-scroll-trigger" data-toggle=“modal” data-target=“#search_form”
-                       href="#" onclick="searchModal();">Search</a>
+                       href="#" onclick="searchCollapse();">Search</a>
+                    <div id="searchFormHolder"
+                         style="display:none;position: absolute; margin-top:20px;margin-right:20px;"></div>
                 </li>
                 <li class="nav-item">
                     <a id="loginout" class="nav-link js-scroll-trigger" href="" data-toggle="tooltip"
@@ -26,7 +27,8 @@
                 </li>
             </ul>
             <img class="navbar-nav navbar-right" style="height:50px;margin-left:50px;"
-                 src="https://grassroots.tools/img/logo-white.png"/>
+                 src="https://grassroots.tools/img/logo-white.png"
+                 alt="The Earlham Institute logo"/>
         </div>
     </div>
 </nav>
@@ -50,14 +52,14 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        var search_form_content = $('#search_form');
+        var search_form_content = $('#search_form_2');
         $('#search_form').remove();
-        $('#search_form_content').html(search_form_content);
+        $('#searchFormHolder').html(search_form_content);
         $('#search_form_popup').addClass("modal");
         $('#search_form_popup').addClass("fade");
-        $('#search_form_popup').modal({
-            show: false
-        });
+        // $('#search_form_popup').modal({
+        //     show: false
+        // });
 
         if ($('#login_link') != null) {
             $('#loginout').html('Login');
@@ -88,4 +90,49 @@
         SetUpMetadataValuesAutoCompleteList();
     }
 
+
+    function searchCollapse() {
+        if ($('#searchFormHolder').css('display') == 'none') {
+            $('#searchFormHolder').show();
+            $('#searchFormHolder').css({
+                "left": $('#searchLink').offset().left,
+                "top": $('#searchLink').offset().top + 40,
+                "z-index": "9999"
+            });
+            $('#mainNav').css({
+                "padding-bottom": "60px"
+            });
+            $('#project-info').css({
+                "margin-top": "140px"
+            });
+        } else {
+
+            $('#searchFormHolder').hide();
+            $('#mainNav').css({
+                "padding-bottom": "25px"
+            });
+            $('#project-info').css({
+                "margin-top": "120px"
+            });
+        }
+        SetUpMetadataKeysAutoCompleteList();
+        SetUpMetadataValuesAutoCompleteList();
+    }
+
 </script>
+
+<form action="/wheat/api/metadata/search" id="search_form_2">
+
+    <div class="input-group">
+        <input name="key" type="text" id="search_key" class="form-control" placeholder="Attribute"
+               aria-label="Attribute" aria-describedby="">
+        <input type="text" id="search_value" name="value" class="form-control" placeholder="Value" aria-label="Value"
+               aria-describedby="">
+        <div class="input-group-append">
+            <button class="btn btn-light" type="submit">Search</button>
+        </div>
+    </div>
+
+    <ul id="search_keys_autocomplete_list" class="autocomplete"></ul>
+    <ul id="search_values_autocomplete_list" class="autocomplete"></ul>
+</form>
