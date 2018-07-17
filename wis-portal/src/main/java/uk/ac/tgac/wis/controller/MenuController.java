@@ -132,6 +132,7 @@ public class MenuController implements ServletContextAware {
                 String license_detail = "";
                 String description = "";
                 String license_style = "display:none ! important; ";
+                String projectStyle = "";
                 if (uuid != null || !uuid.equals("null") || !uuid.equals("") ) {
                     HttpClient client = new DefaultHttpClient();
                     HttpGet esGet = new HttpGet(elasticsearch_url + uuid);
@@ -146,6 +147,7 @@ public class MenuController implements ServletContextAware {
                                 JSONObject sourceObject = esObject.getJSONObject("_source");
                                 if (sourceObject.get("projectName") != null) {
                                     projectName = sourceObject.getString("projectName");
+                                    projectStyle = "style=\"padding: 100px 0px 0px 0px ! important;\"";
                                 }
                                 if (sourceObject.get("poi") != null) {
                                     poi = sourceObject.getString("poi");
@@ -174,6 +176,7 @@ public class MenuController implements ServletContextAware {
                 model.put("license", license);
                 model.put("license_detail", license_detail);
                 model.put("license_style", license_style);
+                model.put("projectStyle", projectStyle);
 
                 return new ModelAndView("/eirodsdavheader.jsp", model);
         }

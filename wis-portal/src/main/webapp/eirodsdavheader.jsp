@@ -32,20 +32,21 @@
         </div>
     </div>
 </nav>
+<section id="services" ${projectStyle}>
+    <div class="container">
+        <h3 id="projectName" style="color: #18bc9c;">${projectName}</h3>
+        <i>
+            <small> ${poi} </small>
+        </i>
+        <div id="description" style="text-align: justify; padding-bottom: 30px;">${description}</div>
 
-<section id="project-info" style="margin-top:100px;">
-    <h3 id="projectName" style="color: #18bc9c;">${projectName}</h3>
-    <i>
-        <small> ${poi} </small>
-    </i>
-    <div id="description" style="text-align: justify; padding-bottom: 30px;">${description}</div>
-
-    <div id="licensePanel" style="${license_style}">
-        This data is made available under the <a href="#" onclick="licenseCollapse();"><span
-            style="color: rgba(198, 31, 22, 1);">${license}</span></a>
-        <br/>
-        <div id="licenseDetail" class="collapse" style="padding-top:20px;">
-            ${license_detail}
+        <div id="licensePanel" style="${license_style}">
+            This data is made available under the <a href="#" onclick="licenseCollapse();"><span
+                style="color: rgba(198, 31, 22, 1);">${license}</span></a>
+            <br/>
+            <div id="licenseDetail" class="collapse" style="padding-top:20px;">
+                ${license_detail}
+            </div>
         </div>
     </div>
 </section>
@@ -120,6 +121,22 @@
     }
 
 </script>
+
+<%--<form action="/wheat/api/metadata/search" id="search_form_2">--%>
+
+<%--<div class="input-group">--%>
+<%--<input name="key" type="text" id="search_key" class="form-control" placeholder="Attribute"--%>
+<%--aria-label="Attribute" aria-describedby="">--%>
+<%--<input type="text" id="search_value" name="value" class="form-control" placeholder="Value" aria-label="Value"--%>
+<%--aria-describedby="">--%>
+<%--<div class="input-group-append">--%>
+<%--<button class="btn btn-light" type="submit">Search</button>--%>
+<%--</div>--%>
+<%--</div>--%>
+
+<%--<ul id="search_keys_autocomplete_list" class="autocomplete"></ul>--%>
+<%--<ul id="search_values_autocomplete_list" class="autocomplete"></ul>--%>
+<%--</form>--%>
 
 <form action="/wheat/api/metadata/search" id="search_form_2">
 
