@@ -1,4 +1,4 @@
-<script src="https://grassroots.tools/js/site.js"></script>
+<%--<script src="https://grassroots.tools/js/site.js"></script>--%>
 <link rel="stylesheet" type="text/css" href="/eirods_dav_files/styles/header.css"/>
 
 
