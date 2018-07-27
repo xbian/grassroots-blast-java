@@ -138,7 +138,7 @@
 <%--<ul id="search_values_autocomplete_list" class="autocomplete"></ul>--%>
 <%--</form>--%>
 
-<form action="/wheat/api/metadata/search" id="search_form_2">
+<form action="/wheat/search" id="search_form_2">
 
     <div class="input-group">
         <input name="key" type="text" id="search_key" class="form-control" placeholder="Attribute"
