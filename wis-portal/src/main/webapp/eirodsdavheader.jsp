@@ -16,6 +16,9 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
+                    <a id="webdavlink" class="nav-link js-scroll-trigger" href="/webdav.html" >WebDAV</a>
+                </li>
+                <li class="nav-item">
                     <a id="searchLink" class="nav-link js-scroll-trigger" data-toggle=“modal” data-target=“#search_form”
                        href="#" onclick="searchCollapse();">Search</a>
                     <div id="searchFormHolder"
