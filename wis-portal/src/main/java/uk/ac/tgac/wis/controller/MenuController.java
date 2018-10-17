@@ -25,6 +25,7 @@ package uk.ac.tgac.wis.controller;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import net.sourceforge.fluxion.ajax.util.JSONUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -94,47 +95,50 @@ public class MenuController implements ServletContextAware {
         JSONObject responseJSON = new JSONObject();
         String esresult = "";
 
-        String elasticsearch_url = "https://grassroots.tools/elastic-search/irods/_search?q="+key+":"+value;
+        String elasticsearch_url = "https://grassroots.tools/elastic-search/irodstest/_search?q=" + key + ":" + value;
         String redirectUrl = "https://opendata.earlham.ac.uk/wheat/views/list?ids=1.10022,1.10023";
 
 
-
-        HttpClient client = new DefaultHttpClient();
-        HttpGet get = new HttpGet(esSearch);
-        HttpResponse responseGet = client.execute(get);
-        HttpEntity resEntityGet = responseGet.getEntity();
-        if (resEntityGet != null) {
-            BufferedReader rd = new BufferedReader(new InputStreamReader(resEntityGet.getContent()));
-            String line = "";
-            while ((line = rd.readLine()) != null) {
-                esresult = line;
-            }
-        }
-        responseJSON = JSONObject.fromObject(esresult);
-        if (responseJSON != null && responseJSON.get("hits")!=null) {
-            JSONObject hitsJSON = responseJSON.getJSONObject("hits");
-            if (hitsJSON != null && hitsJSON.get("total")!=null)
-            if (hitsJSON.getInt("total") > 0) {
-                if (hitsJSON.get("hits")!=null){
-                    JSONArray hitsArray = hitsJSON.getJSONArray("hits");
-                    for (int i = 0; i < hitsArray.size(); i++) {
-                        if (hitsArray.getJSONObject(i).get("_source") != null) {
-                            if (hitsArray.getJSONObject(i).getJSONObject("_source").get("irods_id") != null) {
-                            if (i == 0) {
-                                redirectUrl = redirectUrl + hitsArray.getJSONObject(i).getJSONObject("_source").getString("irods_id");
-                            } else {
-                                redirectUrl = redirectUrl + "," + hitsArray.getJSONObject(i).getJSONObject("_source").getString("irods_id");
-
-                            }
-
-                        }
-                    }
+        try {
+            HttpClient client = new DefaultHttpClient();
+            HttpGet get = new HttpGet(elasticsearch_url);
+            HttpResponse responseGet = client.execute(get);
+            HttpEntity resEntityGet = responseGet.getEntity();
+            if (resEntityGet != null) {
+                BufferedReader rd = new BufferedReader(new InputStreamReader(resEntityGet.getContent()));
+                String line = "";
+                while ((line = rd.readLine()) != null) {
+                    esresult = line;
                 }
-
             }
-        }
+            responseJSON = JSONObject.fromObject(esresult);
+            if (responseJSON != null && responseJSON.get("hits") != null) {
+                JSONObject hitsJSON = responseJSON.getJSONObject("hits");
+                if (hitsJSON != null && hitsJSON.get("total") != null)
+                    if (hitsJSON.getInt("total") > 0) {
+                        if (hitsJSON.get("hits") != null) {
+                            JSONArray hitsArray = hitsJSON.getJSONArray("hits");
+                            for (int i = 0; i < hitsArray.size(); i++) {
+                                if (hitsArray.getJSONObject(i).get("_source") != null) {
+                                    if (hitsArray.getJSONObject(i).getJSONObject("_source").get("irods_id") != null) {
+                                        if (i == 0) {
+                                            redirectUrl = redirectUrl + hitsArray.getJSONObject(i).getJSONObject("_source").getString("irods_id");
+                                        } else {
+                                            redirectUrl = redirectUrl + "," + hitsArray.getJSONObject(i).getJSONObject("_source").getString("irods_id");
 
-        return "redirect:" + redirectUrl;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+            }
+
+            return "redirect:" + redirectUrl;
+        } catch (Exception e) {
+            return "Failed: " + e.getMessage();
+        }
     }
 
     @RequestMapping("/eirods-dav-header/")
@@ -170,67 +174,64 @@ public class MenuController implements ServletContextAware {
                 "        producers and contributors.";
 
 
-
-
 //            JSONArray imetaArray = new JSONArray();
-            JSONObject esObject = new JSONObject();
+        JSONObject esObject = new JSONObject();
 
-            try {
-                String projectName = "";
-                String poi = "";
-                String license = "";
-                String license_detail = "";
-                String description = "";
-                String license_style = "display:none ! important; ";
-                String projectStyle = "";
-                if (uuid != null || !uuid.equals("null") || !uuid.equals("") ) {
-                    HttpClient client = new DefaultHttpClient();
-                    HttpGet esGet = new HttpGet(elasticsearch_url + uuid);
-                    HttpResponse responseGet = client.execute(esGet);
-                    HttpEntity resEntityGet = responseGet.getEntity();
-                    if (resEntityGet != null) {
-                        BufferedReader rd = new BufferedReader(new InputStreamReader(resEntityGet.getContent()));
-                        String line = "";
-                        while ((line = rd.readLine()) != null) {
-                            esObject = JSONObject.fromObject(line);
-                            if (esObject.get("_source") != null) {
-                                JSONObject sourceObject = esObject.getJSONObject("_source");
-                                if (sourceObject.get("projectName") != null) {
-                                    projectName = sourceObject.getString("projectName");
-                                    projectStyle = "style=\"padding: 100px 0px 0px 0px ! important;\"";
-                                }
-                                if (sourceObject.get("poi") != null) {
-                                    poi = sourceObject.getString("poi");
-                                }
-                                if (sourceObject.get("description") != null) {
-                                    description = sourceObject.getString("description");
-                                }
-                                if (sourceObject.get("license") != null) {
-                                    license = "License - " + sourceObject.getString("license");
-                                    license_style = "";
-                                    if (license.equals("License - toronto")) {
-                                        license = "Toronto Agreement";
-                                        license_detail = toronto;
-                                    }
-                                } else {
-                                    license_style = "display:none ! important; ";
-                                }
-
+        try {
+            String projectName = "";
+            String poi = "";
+            String license = "";
+            String license_detail = "";
+            String description = "";
+            String license_style = "display:none ! important; ";
+            String projectStyle = "";
+            if (uuid != null || !uuid.equals("null") || !uuid.equals("")) {
+                HttpClient client = new DefaultHttpClient();
+                HttpGet esGet = new HttpGet(elasticsearch_url + uuid);
+                HttpResponse responseGet = client.execute(esGet);
+                HttpEntity resEntityGet = responseGet.getEntity();
+                if (resEntityGet != null) {
+                    BufferedReader rd = new BufferedReader(new InputStreamReader(resEntityGet.getContent()));
+                    String line = "";
+                    while ((line = rd.readLine()) != null) {
+                        esObject = JSONObject.fromObject(line);
+                        if (esObject.get("_source") != null) {
+                            JSONObject sourceObject = esObject.getJSONObject("_source");
+                            if (sourceObject.get("projectName") != null) {
+                                projectName = sourceObject.getString("projectName");
+                                projectStyle = "style=\"padding: 100px 0px 0px 0px ! important;\"";
                             }
+                            if (sourceObject.get("poi") != null) {
+                                poi = sourceObject.getString("poi");
+                            }
+                            if (sourceObject.get("description") != null) {
+                                description = sourceObject.getString("description");
+                            }
+                            if (sourceObject.get("license") != null) {
+                                license = "License - " + sourceObject.getString("license");
+                                license_style = "";
+                                if (license.equals("License - toronto")) {
+                                    license = "Toronto Agreement";
+                                    license_detail = toronto;
+                                }
+                            } else {
+                                license_style = "display:none ! important; ";
+                            }
+
                         }
                     }
                 }
-                model.put("projectName", projectName);
-                model.put("poi", poi);
-                model.put("description", description);
-                model.put("license", license);
-                model.put("license_detail", license_detail);
-                model.put("license_style", license_style);
-                model.put("projectStyle", projectStyle);
+            }
+            model.put("projectName", projectName);
+            model.put("poi", poi);
+            model.put("description", description);
+            model.put("license", license);
+            model.put("license_detail", license_detail);
+            model.put("license_style", license_style);
+            model.put("projectStyle", projectStyle);
 
-                return new ModelAndView("/eirodsdavheader.jsp", model);
-        }
-        catch (Exception ex) {
+            return new ModelAndView("/eirodsdavheader.jsp", model);
+        } catch (Exception ex) {
             throw ex;
         }
     }
@@ -268,8 +269,6 @@ public class MenuController implements ServletContextAware {
                 "        producers and contributors.";
 
 
-
-
 //            JSONArray imetaArray = new JSONArray();
         JSONObject esObject = new JSONObject();
 
@@ -281,7 +280,7 @@ public class MenuController implements ServletContextAware {
             String description = "";
             String license_style = "display:none ! important; ";
             String projectStyle = "";
-            if (uuid != null || !uuid.equals("null") || !uuid.equals("") ) {
+            if (uuid != null || !uuid.equals("null") || !uuid.equals("")) {
                 HttpClient client = new DefaultHttpClient();
                 HttpGet esGet = new HttpGet(elasticsearch_url + uuid);
                 HttpResponse responseGet = client.execute(esGet);
@@ -327,8 +326,7 @@ public class MenuController implements ServletContextAware {
             model.put("projectStyle", projectStyle);
 
             return new ModelAndView("/eirodsdavheadertest.jsp", model);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             throw ex;
         }
     }
