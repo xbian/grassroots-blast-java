@@ -93,10 +93,10 @@ public class MenuController implements ServletContextAware {
     public String irodsFiles(@RequestParam("key") String key, @RequestParam("value") String value) {
 
         JSONObject responseJSON = new JSONObject();
-        String esresult = "";
+        StringBuilder esresult = new StringBuilder();
 
-        String elasticsearch_url = "https://grassroots.tools/elastic-search/irodstest/_search?q=" + key + ":" + value;
-        String redirectUrl = "https://opendata.earlham.ac.uk/wheat/views/list?ids=1.10022,1.10023";
+        String elasticsearch_url = "https://grassroots.tools/elastic-search/irods/_search?q=" + key + ":" + value;
+        String redirectUrl = "https://opendata.earlham.ac.uk/wheat/views/list?ids=";
 
 
         try {
@@ -108,10 +108,10 @@ public class MenuController implements ServletContextAware {
                 BufferedReader rd = new BufferedReader(new InputStreamReader(resEntityGet.getContent()));
                 String line = "";
                 while ((line = rd.readLine()) != null) {
-                    esresult = line;
+                    esresult.append(line);
                 }
             }
-            responseJSON = JSONObject.fromObject(esresult);
+            responseJSON = JSONObject.fromObject(esresult.toString());
             if (responseJSON != null && responseJSON.get("hits") != null) {
                 JSONObject hitsJSON = responseJSON.getJSONObject("hits");
                 if (hitsJSON != null && hitsJSON.get("total") != null)
