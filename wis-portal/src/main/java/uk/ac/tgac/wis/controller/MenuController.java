@@ -141,6 +141,57 @@ public class MenuController implements ServletContextAware {
         }
     }
 
+//    @RequestMapping("/elasticsearch")
+//    public String elasticsearch(@RequestParam("key") String key, @RequestParam("value") String value) {
+//
+//        JSONObject responseJSON = new JSONObject();
+//        StringBuilder esresult = new StringBuilder();
+//
+//        String elasticsearch_url = "https://grassroots.tools/elastic-search/_search?q=" + key + ":" + value;
+//
+//
+//        try {
+//            HttpClient client = new DefaultHttpClient();
+//            HttpGet get = new HttpGet(elasticsearch_url);
+//            HttpResponse responseGet = client.execute(get);
+//            HttpEntity resEntityGet = responseGet.getEntity();
+//            if (resEntityGet != null) {
+//                BufferedReader rd = new BufferedReader(new InputStreamReader(resEntityGet.getContent()));
+//                String line = "";
+//                while ((line = rd.readLine()) != null) {
+//                    esresult.append(line);
+//                }
+//            }
+//            responseJSON = JSONObject.fromObject(esresult.toString());
+//            if (responseJSON != null && responseJSON.get("hits") != null) {
+//                JSONObject hitsJSON = responseJSON.getJSONObject("hits");
+//                if (hitsJSON != null && hitsJSON.get("total") != null)
+//                    if (hitsJSON.getInt("total") > 0) {
+//                        if (hitsJSON.get("hits") != null) {
+//                            JSONArray hitsArray = hitsJSON.getJSONArray("hits");
+//                            for (int i = 0; i < hitsArray.size(); i++) {
+//                                if (hitsArray.getJSONObject(i).get("_source") != null) {
+//                                    if (hitsArray.getJSONObject(i).getJSONObject("_source").get("irods_id") != null) {
+//                                        if (i == 0) {
+////                                            redirectUrl = redirectUrl + hitsArray.getJSONObject(i).getJSONObject("_source").getString("irods_id");
+//                                        } else {
+////                                            redirectUrl = redirectUrl + "," + hitsArray.getJSONObject(i).getJSONObject("_source").getString("irods_id");
+//
+//                                        }
+//                                    }
+//                                }
+//                            }
+//                        }
+//
+//                    }
+//            }
+//
+//            return "redirect:" + redirectUrl;
+//        } catch (Exception e) {
+//            return "Failed: " + e.getMessage();
+//        }
+//    }
+
     @RequestMapping("/eirods-dav-header/")
     public ModelAndView getHeaderforiRODSObj(@RequestParam("uuid") String uuid, ModelMap model) throws IOException {
 
