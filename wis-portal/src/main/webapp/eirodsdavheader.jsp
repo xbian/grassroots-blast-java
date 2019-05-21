@@ -41,7 +41,7 @@
         <i>
             <small> ${poi} </small>
         </i>
-        <div id="description" style="text-align: justify; padding-bottom: 30px;">${description}</div>
+        <div id="description" style="text-align: justify; padding-bottom: 30px; height:300px; overflow-y: auto">${description}</div>
 
         <div id="licensePanel" style="${license_style}">
             This data is made available under the <a href="#" onclick="licenseCollapse();"><span
