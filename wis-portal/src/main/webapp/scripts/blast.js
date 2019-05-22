@@ -121,7 +121,7 @@ function sendBlastRequest() {
                                 {
                                     'doOnSuccess': function (json) {
                                         blastHTML = json.html;
-                                        jQuery('#blastResult').append('<fieldset><legend>' + json.dbname + '</legend><div><p><a href="javascript:;" id=\"' + json.uuid + 'dl\" onclick=\"downloadJobFromServer(\'' + json.uuid + '\');\">Download Job</a> in <span class="dlformat">Pairwise</span> format <span id=\"' + json.uuid + 'status\"></span><br/></p><div id=\"' + json.uuid + '\">' + blastHTML + '</div></div></br></fieldset>');
+                                        jQuery('#blastResult').append('<fieldset><legend>' + json.dbname + '</legend><div><p><a href="javascript:;" id=\"' + json.uuid + 'dl\" onclick=\"downloadJobFromServer(\'' + json.uuid + '\');\">Download Job</a> in <span class="dlformat">'+jQuery("#output_format option:selected").text()+'</span> format <span id=\"' + json.uuid + 'status\"></span><br/></p><div id=\"' + json.uuid + '\">' + blastHTML + '</div></div></br></fieldset>');
                                     }
                                 }
                             );
