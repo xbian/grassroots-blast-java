@@ -36,7 +36,7 @@ function getBlastDBs2() {
         {
             'doOnSuccess': function (json) {
                 jQuery('#blastDBs').html(json.html);
-                //synchronous = json.synchronousbool;
+                // synchronous = json.synchronousbool;
                 Utils.ui.reenableButton('blastButton1', 'BLAST Search');
                 Utils.ui.reenableButton('blastButton2', 'BLAST Search');
             }
@@ -84,8 +84,7 @@ function sendBlastRequest() {
 
         Utils.ui.reenableButton('blastButton1', 'BLAST Search');
         Utils.ui.reenableButton('blastButton2', 'BLAST Search');
-    }
-    else if (validateFasta(jQuery('#sequence').val()) || blastfilecontent != '') {
+    } else if (validateFasta(jQuery('#sequence').val()) || blastfilecontent != '') {
         jQuery('#blastResult').html('BLAST request submitted <img src=\"../images/ajax-loader.gif\"/>');
         Utils.ui.disableButton('blastButton1');
         Utils.ui.disableButton('blastButton2');
@@ -99,7 +98,8 @@ function sendBlastRequest() {
             },
             {
                 'doOnSuccess': function (json) {
-                    jQuery('#blastResult').html('Preparing results <img src=\"../images/ajax-loader.gif\"/>');
+                    // jQuery('#blastResult').html('Preparing results <img src=\"../images/ajax-loader.gif\"/>');
+                    jQuery('#blastResult').html('');
                     var response = json.response;
                     for (var i = 0; i < response.length; i++) {
                         var job_in_response = response[i];
@@ -107,7 +107,7 @@ function sendBlastRequest() {
                         var dbname = job_in_response["description"];
 
                         if (synchronous) {
-                            var  blastHTML;
+                            var blastHTML;
                             var result = job_in_response['results'][0];
                             Fluxion.doAjax(
                                 'wisControllerHelperService',
@@ -121,27 +121,29 @@ function sendBlastRequest() {
                                 {
                                     'doOnSuccess': function (json) {
                                         blastHTML = json.html;
-                                        jQuery('#blastResult').html('<fieldset><legend>' + json.dbname + '</legend><div><p><a href="javascript:;" id=\"' + json.uuid + 'dl\" onclick=\"downloadJobFromServer(\'' + json.uuid + '\');\">Download Job</a> in <span class="dlformat">Pairwise</span> format <span id=\"' + json.uuid + 'status\"></span><br/></p><div id=\"' + json.uuid + '\">' + blastHTML + '</div></div></br></fieldset>');
+                                        jQuery('#blastResult').append('<fieldset><legend>' + json.dbname + '</legend><div><p><a href="javascript:;" id=\"' + json.uuid + 'dl\" onclick=\"downloadJobFromServer(\'' + json.uuid + '\');\">Download Job</a> in <span class="dlformat">Pairwise</span> format <span id=\"' + json.uuid + 'status\"></span><br/></p><div id=\"' + json.uuid + '\">' + blastHTML + '</div></div></br></fieldset>');
                                     }
                                 }
                             );
                             Utils.ui.reenableButton('blastButton1', 'BLAST Search');
                             Utils.ui.reenableButton('blastButton2', 'BLAST Search');
+                            changeDownloadFormat();
                         } else {
                             jQuery('#blastResult').append(
                                 '<fieldset><legend>' + dbname + '</legend><div><p><b>Job ID: '
                                 + uuid + '</b></p><div id=\"' + uuid + '\">Job Submitted <img src=\"../images/ajax-loader.gif\"/></div></div></br></fieldset>');
                             checkBlastResult(uuid);
                         }
+
                     }
                 }
             }
         );
-    }
-    else {
+    } else {
         alert('Not valid FASTA format in the text area! Or blast file isn\'t supplied');
     }
 
+    changeDownloadFormat();
 }
 
 function checkBlastResult(uuid) {
@@ -167,23 +169,24 @@ function checkBlastResult(uuid) {
                         {
                             'doOnSuccess': function (json) {
                                 jQuery('#output_format_div').show();
-                                jQuery('#' + uuid).append('<a href="javascript:;" id=\"' + uuid + 'dl\" onclick=\"downloadJobFromServer(\'' + uuid + '\');\">Download Job</a> in <span class="dlformat">Pairwise</span> format <span id=\"' + uuid + 'status\"></span><br/>');
+                                jQuery('#' + uuid).append('<a href="javascript:;" id=\"'
+                                    + uuid + 'dl\" onclick=\"downloadJobFromServer(\'' + uuid
+                                    + '\');\">Download Job</a> in <span class="dlformat">'
+                                    + jQuery("#output_format option:selected").text() + '</span> format <span id=\"' + uuid + 'status\"></span><br/>');
                                 jQuery('#' + uuid).append(json.html);
                                 Utils.ui.reenableButton('blastButton1', 'BLAST Search');
                                 Utils.ui.reenableButton('blastButton2', 'BLAST Search');
                             }
                         }
                     );
-                }
-                else if (json.status == 0 || json.status == 1 || json.status == 2 || json.status == 3) {
+                } else if (json.status == 0 || json.status == 1 || json.status == 2 || json.status == 3) {
                     jQuery('#' + uuid).html(json.html);
                     var timer;
                     clearTimeout(timer);
                     timer = setTimeout(function () {
                         checkBlastResult(uuid);
                     }, 6500);
-                }
-                else {
+                } else {
                     Utils.ui.reenableButton('blastButton1', 'BLAST Search');
                     Utils.ui.reenableButton('blastButton2', 'BLAST Search');
                 }
@@ -205,12 +208,12 @@ function validateFasta(fasta) {
     // split on newlines...
     var lines = fasta.split('\n');
 
-    	for(var i=0; i < lines.length; i++){
-    	if (lines[i][0] == '>') {
-    		// remove one line, starting at the first position
-    		lines.splice(i, 1);
-    	}
-    	}
+    for (var i = 0; i < lines.length; i++) {
+        if (lines[i][0] == '>') {
+            // remove one line, starting at the first position
+            lines.splice(i, 1);
+        }
+    }
     // join the array back into a single string without newlines and
     // trailing or leading spaces
     fasta = lines.join('').trim();
@@ -248,12 +251,10 @@ function readSingleFile() {
 //                    alert(contents);
             }
             r.readAsText(f);
-        }
-        else {
+        } else {
             alert("Failed to load file");
         }
-    }
-    else {
+    } else {
         alert('The File APIs are not fully supported by your browser.');
     }
 }
@@ -343,8 +344,7 @@ function handleFileSelect(evt) {
             jQuery('#sequence').val(contents);
         }
         r.readAsText(f);
-    }
-    else {
+    } else {
         alert("Failed to load file");
     }
 }
