@@ -245,30 +245,32 @@ public class MenuController implements ServletContextAware {
                     BufferedReader rd = new BufferedReader(new InputStreamReader(resEntityGet.getContent()));
                     String line = "";
                     while ((line = rd.readLine()) != null) {
-                        esObject = JSONObject.fromObject(line);
-                        if (esObject.get("_source") != null) {
-                            JSONObject sourceObject = esObject.getJSONObject("_source");
-                            if (sourceObject.get("projectName") != null) {
-                                projectName = sourceObject.getString("projectName");
-                                projectStyle = "style=\"padding: 100px 0px 0px 0px ! important;\"";
-                            }
-                            if (sourceObject.get("poi") != null) {
-                                poi = sourceObject.getString("poi");
-                            }
-                            if (sourceObject.get("description") != null) {
-                                description = sourceObject.getString("description");
-                            }
-                            if (sourceObject.get("license") != null) {
-                                license = "License - " + sourceObject.getString("license");
-                                license_style = "";
-                                if (license.equals("License - toronto")) {
-                                    license = "Toronto Agreement";
-                                    license_detail = toronto;
+                        if (line.startsWith("{")) {
+                            esObject = JSONObject.fromObject(line);
+                            if (esObject.get("_source") != null) {
+                                JSONObject sourceObject = esObject.getJSONObject("_source");
+                                if (sourceObject.get("projectName") != null) {
+                                    projectName = sourceObject.getString("projectName");
+                                    projectStyle = "style=\"padding: 100px 0px 0px 0px ! important;\"";
                                 }
-                            } else {
-                                license_style = "display:none ! important; ";
-                            }
+                                if (sourceObject.get("poi") != null) {
+                                    poi = sourceObject.getString("poi");
+                                }
+                                if (sourceObject.get("description") != null) {
+                                    description = sourceObject.getString("description");
+                                }
+                                if (sourceObject.get("license") != null) {
+                                    license = "License - " + sourceObject.getString("license");
+                                    license_style = "";
+                                    if (license.equals("License - toronto")) {
+                                        license = "Toronto Agreement";
+                                        license_detail = toronto;
+                                    }
+                                } else {
+                                    license_style = "display:none ! important; ";
+                                }
 
+                            }
                         }
                     }
                 }
