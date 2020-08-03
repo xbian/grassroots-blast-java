@@ -195,8 +195,8 @@ public class MenuController implements ServletContextAware {
     @RequestMapping("/eirods-dav-header/")
     public ModelAndView getHeaderforiRODSObj(@RequestParam("uuid") String uuid, ModelMap model) throws IOException {
 
-        String G_METADATA_API_URL_S = "https://grassroots.tools/test-insecure/data/api/metadata/";
-        String elasticsearch_url = "https://grassroots.tools/elastic-search/irods/project/";
+//        String G_METADATA_API_URL_S = "https://grassroots.tools/test-insecure/data/api/metadata/";
+//        String elasticsearch_url = "https://grassroots.tools/elastic-search/irods/project/";
 
         String toronto = "All of the data listed here is available under the prepublication data sharing principle of the <a\n" +
                 "            href=\"https://www.nature.com/articles/461168a\">Toronto agreement</a>.\n" +
@@ -236,45 +236,47 @@ public class MenuController implements ServletContextAware {
             String description = "";
             String license_style = "display:none ! important; ";
             String projectStyle = "";
-            if (uuid != null || !uuid.equals("null") || !uuid.equals("")) {
-                HttpClient client = new DefaultHttpClient();
-                HttpGet esGet = new HttpGet(elasticsearch_url + uuid);
-                HttpResponse responseGet = client.execute(esGet);
-                HttpEntity resEntityGet = responseGet.getEntity();
-                if (resEntityGet != null) {
-                    BufferedReader rd = new BufferedReader(new InputStreamReader(resEntityGet.getContent()));
-                    String line = "";
-                    while ((line = rd.readLine()) != null) {
-                        if (line.startsWith("{")) {
-                            esObject = JSONObject.fromObject(line);
-                            if (esObject.get("_source") != null) {
-                                JSONObject sourceObject = esObject.getJSONObject("_source");
-                                if (sourceObject.get("projectName") != null) {
-                                    projectName = sourceObject.getString("projectName");
-                                    projectStyle = "style=\"padding: 100px 0px 0px 0px ! important;\"";
-                                }
-                                if (sourceObject.get("poi") != null) {
-                                    poi = sourceObject.getString("poi");
-                                }
-                                if (sourceObject.get("description") != null) {
-                                    description = sourceObject.getString("description");
-                                }
-                                if (sourceObject.get("license") != null) {
-                                    license = "License - " + sourceObject.getString("license");
-                                    license_style = "";
-                                    if (license.equals("License - toronto")) {
-                                        license = "Toronto Agreement";
-                                        license_detail = toronto;
-                                    }
-                                } else {
-                                    license_style = "display:none ! important; ";
-                                }
-
-                            }
-                        }
-                    }
-                }
-            }
+//            if (uuid != null || !uuid.equals("null") || !uuid.equals("")) {
+//                HttpClient client = new DefaultHttpClient();
+//                HttpGet esGet = new HttpGet(elasticsearch_url + uuid);
+//                HttpResponse responseGet = client.execute(esGet);
+//                HttpEntity resEntityGet = responseGet.getEntity();
+//                if (resEntityGet != null) {
+//                    BufferedReader rd = new BufferedReader(new InputStreamReader(resEntityGet.getContent()));
+//                    String line = "";
+//                    while ((line = rd.readLine()) != null) {
+//                        if (line.startsWith("{")) {
+//                            esObject = JSONObject.fromObject(line);
+//                            if (esObject.get("_source") != null) {
+//                                JSONObject sourceObject = esObject.getJSONObject("_source");
+//                                if (sourceObject.get("projectName") != null) {
+//                                    projectName = sourceObject.getString("projectName");
+//                                    projectStyle = "style=\"padding: 100px 0px 0px 0px ! important;\"";
+//                                }
+//                                if (sourceObject.get("poi") != null) {
+//                                    poi = sourceObject.getString("poi");
+//                                }
+//                                if (sourceObject.get("description") != null) {
+//                                    description = sourceObject.getString("description");
+//                                }
+//                                if (sourceObject.get("license") != null) {
+//                                    license = "License - " + sourceObject.getString("license");
+//                                    license_style = "";
+//                                    if (license.equals("License - toronto")) {
+//                                        license = "Toronto Agreement";
+//                                        license_detail = toronto;
+//                                    }
+//                                } else {
+//                                    license_style = "display:none ! important; ";
+//                                }
+//
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+            license = "Toronto Agreement";
+            license_detail = toronto;
             model.put("projectName", projectName);
             model.put("poi", poi);
             model.put("description", description);
