@@ -1,5 +1,5 @@
 <%--<script src="https://grassroots.tools/js/site.js"></script>--%>
-<link rel="stylesheet" type="text/css" href="/eirods_dav_files/styles/site.css"/>
+<link rel="stylesheet" type="text/css" href="/eirods_dav_files/styles/eirods_header.css"/>
 
 
 <!-- Navigation -->

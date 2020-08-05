@@ -229,13 +229,13 @@ public class MenuController implements ServletContextAware {
         JSONObject esObject = new JSONObject();
 
         try {
-            String projectName = "";
-            String poi = "";
-            String license = "";
-            String license_detail = "";
-            String description = "";
-            String license_style = "display:none ! important; ";
-            String projectStyle = "";
+//            String projectName = "";
+//            String poi = "";
+//            String license = "";
+//            String license_detail = "";
+//            String description = "";
+//            String license_style = "display:none ! important; ";
+//            String projectStyle = "";
 //            if (uuid != null || !uuid.equals("null") || !uuid.equals("")) {
 //                HttpClient client = new DefaultHttpClient();
 //                HttpGet esGet = new HttpGet(elasticsearch_url + uuid);
@@ -275,8 +275,16 @@ public class MenuController implements ServletContextAware {
 //                    }
 //                }
 //            }
-            license = "Toronto Agreement";
-            license_detail = toronto;
+
+            String projectName = "";
+            String poi = "";
+            String license = "Toronto Agreement";
+            String license_detail = "";
+            String description = "";
+            String license_style = "";
+            String projectStyle = "style=\"padding: 100px 0px 0px 0px ! important;\"";
+
+
             model.put("projectName", projectName);
             model.put("poi", poi);
             model.put("description", description);
