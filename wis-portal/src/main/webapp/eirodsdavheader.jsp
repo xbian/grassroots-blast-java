@@ -156,3 +156,9 @@
     <ul id="search_keys_autocomplete_list" class="autocomplete"></ul>
     <ul id="search_values_autocomplete_list" class="autocomplete"></ul>
 </form>
+
+<style>
+    #tools {
+        display: none;
+    }
+</style>
