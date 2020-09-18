@@ -65,5 +65,15 @@
         "url":"https://opendata.earlham.ac.uk/wheat/under_license/toronto/Gardiner_2018-01-29_Watkins-diversity-12Mb/",
         "irods_path":"/grassrootsZone/public/under_license/toronto/Gardiner_2018-01-29_Watkins-diversity-12Mb",
         "@type": "grassroots:project"
-    }
+    },{
+         "uuid":"c0d214a8-f09e-4f15-bcd2-f33e023a159b",
+         "authors": ["Wingen, Luzie U.", "Orford, Simon", "Leverington-Waite, Michelle", "Collier, Sarah", "Awal, Rajani", "Griffiths, Simon"],
+         "projectName": "DFW-WP3: Germplasm Development for Trait Dissection - Initial QTL Validation",
+         "description": "Phenotype data for QTL beneficial allele validation using Near Isogenic Lines (NILs) from growing season Oct 2017 - Aug 2018 at Church Farm, John Innes Centre, Norwich, UK, for the traits: heading time, plant height and  grain yield. Phenotype data was collected for 189 NILs of the DFW-TK-Landrace-NIL-Set2, which were developed from six landrace parents (Watkins 1190034, Watkins 1190141, Watkins 1190292, Watkins 1190352, Watkins 1190468, Watkins 1190729) and cultivar 'Paragon'. The introgressed 37 QTL, present show association with one of the following traits: above ground dry mass, anthesis date, grain fill, grain yield, height, lodging, maturity mildew score, NDRE, NDVI, and straw yield. Furthermore, phenotype data for two DFW-TK-Mutation-NILs,  from a mutation screen for gw2-A, and for the control cultivars 'Paragon' and 'Soisson' was also collected. The DFW Wheat Toolkit (TK) contains sets of pre-breeding germplasm lines, developed by Work Package 3 of the Designing Future Wheat (DFW) Institute Strategic Programme (https://designingfuturewheat.org.uk/work-package-3/) and includes NILs or equivalent material from different wheat diversity sources, e.g. landraces, mutation screening, ancient wheat relatives and new synthetic wheats. DFW TK lines  are assessed for traits of interest within the DFW programme. Genotype data, for SNPs on the 35k Axiom Wheat Genotyping Breeders' Array, is available from CerealsDB.",
+         "license" : {"so:name": "toronto", "so:url": "https://www.nature.com/articles/461168a#Sec2" },
+         "project_codes":["BB/P016855/1"],
+         "url":"https://opendata.earlham.ac.uk/wheat/under_license/toronto/Griffiths_2018-10-22_DFW-TK-NIL-Set2-2018-phenotypes/",
+         "irods_path":"/grassrootsZone/public/under_license/toronto/Griffiths_2018-10-22_DFW-TK-NIL-Set2-2018-phenotypes",
+         "@type": "grassroots:project"
+     }
 ]
