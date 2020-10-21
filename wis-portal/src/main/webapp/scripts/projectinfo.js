@@ -103,4 +103,3 @@
          "so:image": "https://grassroots.tools/grassroots/images/aiss/drawer"
      }
 ]
- DFW_Academic_Toolkit_Harvest_2020/
