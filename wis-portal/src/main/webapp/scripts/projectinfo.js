@@ -75,5 +75,16 @@
          "url":"https://opendata.earlham.ac.uk/wheat/under_license/toronto/Griffiths_2018-10-22_DFW-TK-NIL-Set2-2018-phenotypes/",
          "irods_path":"/grassrootsZone/public/under_license/toronto/Griffiths_2018-10-22_DFW-TK-NIL-Set2-2018-phenotypes",
          "@type": "Grassroots:project"
+     },{
+         "uuid":"1f0ed4e0-be12-49b1-a65e-cab36a449f95",
+         "authors": ["Malcolm Hawkesford", "Andrew Riche"],
+         "projectName": "DFW Academic Toolkit Harvest 2020",
+         "description": "Within Workpackage 3 of Designing Future Wheat, there is an Academic Toolkit field experiment each year, which provides information for selecting a subset of lines to constitute the Breeders toolkit, which is grown the following year by the UK wheat breeding community. An image was taken of each plot, post anthesis, to show what the lines look like, and give an idea of purity.",
+         "license" : {"so:name": "toronto", "so:url": "https://www.nature.com/articles/461168a#Sec2" },
+         "project_codes":["BB/P016855/1"],
+         "url":"https://opendata.earlham.ac.uk/wheat/under_license/toronto/Riche_2020-07-13_DFW_Academic_Toolkit_Harvest_2020/",
+         "irods_path":"/grassrootsZone/public/under_license/toronto/Riche_2020-07-13_DFW_Academic_Toolkit_Harvest_2020",
+         "@type": "Grassroots:project"
      }
 ]
+ DFW_Academic_Toolkit_Harvest_2020/
