@@ -10,7 +10,9 @@
         "project_codes":["BB/N005104/1", "BB/N005155/1", "BB/P016855/1"],
         "url":"https://opendata.earlham.ac.uk/wheat/under_license/toronto/Gardiner_2018-07-04_Wheat-gene-promoter-capture/",
         "irods_path":"/grassrootsZone/public/under_license/toronto/Gardiner_2018-07-04_Wheat-gene-promoter-capture",
-        "@type": "Grassroots:project"
+        "@type": "Grassroots:project",
+        "type_description": "Dataset",
+        "so:image": "https://grassroots.tools/grassroots/images/aiss/drawer"
     },
     {
         "uuid":"fd22c6a9-5692-4bbd-bb77-e04567fe3bc0",
@@ -21,7 +23,9 @@
         "project_codes":["BBS/E/T/000PR9785"],
         "url":"https://opendata.earlham.ac.uk/wheat/under_license/toronto/Zhou_2019_RobxCla_UAV_Image_Data/",
         "irods_path":"/grassrootsZone/public/under_license/toronto/Zhou_2019_RobxCla_UAV_Image_Data",
-        "@type": "Grassroots:project"
+        "@type": "Grassroots:project",
+        "type_description": "Dataset",
+        "so:image": "https://grassroots.tools/grassroots/images/aiss/drawer"
     },
     {
         "uuid":"4c53dd08-39d6-4d3a-bfc0-c6a5f32b609f",
@@ -32,7 +36,9 @@
         "project_codes":["BB/J007188/1"],
         "url":"https://opendata.earlham.ac.uk/wheat/under_license/toronto/Martin_etal_2018_Alabdullah_etal_2019_wheat_meiosis_transcriptome_and_co-expression_network/",
         "irods_path":"/grassrootsZone/public/under_license/toronto/Martin_etal_2018_Alabdullah_etal_2019_wheat_meiosis_transcriptome_and_co-expression_network",
-        "@type": "Grassroots:project"
+        "@type": "Grassroots:project",
+        "type_description": "Dataset",
+        "so:image": "https://grassroots.tools/grassroots/images/aiss/drawer"
     },
     {
         "uuid":"844c0d71-5288-4f85-ae66-cc7d66596ab1",
@@ -43,7 +49,9 @@
         "project_codes":["BB/P016855/1"],
         "url":"https://opendata.earlham.ac.uk/wheat/under_license/toronto/Wulff_2018-01-31_OWWC/",
         "irods_path":"/grassrootsZone/public/under_license/toronto/Wulff_2018-01-31_OWWC",
-        "@type": "Grassroots:project"
+        "@type": "Grassroots:project",
+        "type_description": "Dataset",
+        "so:image": "https://grassroots.tools/grassroots/images/aiss/drawer"
     },
     {
         "uuid":"1e949203-127e-4d5d-8738-fa1e98fb4b82",
@@ -54,7 +62,9 @@
         "project_codes":["BB/P016855/1"],
         "url":"https://opendata.earlham.ac.uk/wheat/under_license/toronto/Ramirez-Gonzalez_etal_2018-06025-Transcriptome-Landscape/",
         "irods_path":"/grassrootsZone/public/under_license/toronto/Ramirez-Gonzalez_etal_2018-06025-Transcriptome-Landscape",
-        "@type": "Grassroots:project"
+        "@type": "Grassroots:project",
+        "type_description": "Dataset",
+        "so:image": "https://grassroots.tools/grassroots/images/aiss/drawer"
     },{
         "uuid":"5dd4fd26-56f7-4ae6-a046-70969f084ce8",
         "authors": ["Anthony Hall", "Laura-Jayne Gardiner"],
@@ -64,7 +74,9 @@
         "project_codes":["BB/N005104/1", "BB/N005155/1", "BB/P016855/1"],
         "url":"https://opendata.earlham.ac.uk/wheat/under_license/toronto/Gardiner_2018-01-29_Watkins-diversity-12Mb/",
         "irods_path":"/grassrootsZone/public/under_license/toronto/Gardiner_2018-01-29_Watkins-diversity-12Mb",
-        "@type": "Grassroots:project"
+        "@type": "Grassroots:project",
+         "type_description": "Dataset",
+         "so:image": "https://grassroots.tools/grassroots/images/aiss/drawer"
     },{
          "uuid":"c0d214a8-f09e-4f15-bcd2-f33e023a159b",
          "authors": ["Luzie U. Wingen", "Simon Orford", "Michelle Leverington-Waite", "Sarah Collier", "Rajani Awal", "Simon Griffiths"],
@@ -74,7 +86,9 @@
          "project_codes":["BB/P016855/1"],
          "url":"https://opendata.earlham.ac.uk/wheat/under_license/toronto/Griffiths_2018-10-22_DFW-TK-NIL-Set2-2018-phenotypes/",
          "irods_path":"/grassrootsZone/public/under_license/toronto/Griffiths_2018-10-22_DFW-TK-NIL-Set2-2018-phenotypes",
-         "@type": "Grassroots:project"
+         "@type": "Grassroots:project",
+         "type_description": "Dataset",
+         "so:image": "https://grassroots.tools/grassroots/images/aiss/drawer"
      },{
          "uuid":"1f0ed4e0-be12-49b1-a65e-cab36a449f95",
          "authors": ["Malcolm Hawkesford", "Andrew Riche"],
@@ -84,7 +98,9 @@
          "project_codes":["BB/P016855/1"],
          "url":"https://opendata.earlham.ac.uk/wheat/under_license/toronto/Riche_2020-07-13_DFW_Academic_Toolkit_Harvest_2020/",
          "irods_path":"/grassrootsZone/public/under_license/toronto/Riche_2020-07-13_DFW_Academic_Toolkit_Harvest_2020",
-         "@type": "Grassroots:project"
+         "@type": "Grassroots:project",
+         "type_description": "Dataset",
+         "so:image": "https://grassroots.tools/grassroots/images/aiss/drawer"
      }
 ]
  DFW_Academic_Toolkit_Harvest_2020/
