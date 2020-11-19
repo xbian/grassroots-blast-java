@@ -1,5 +1,14 @@
 <%--<script src="https://grassroots.tools/js/site.js"></script>--%>
-<link rel="stylesheet" type="text/css" href="/eirods_dav_files/styles/eirods_header.css"/>
+<link rel="stylesheet" type="text/css" href="/eirods_dav_files/styles/site.css"/>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-21666189-13"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-21666189-13');
+</script>
 
 
 <!-- Navigation -->
@@ -15,9 +24,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <%--<li class="nav-item">--%>
-                    <%--<a id="webdavlink" class="nav-link js-scroll-trigger" href="/webdav.html" >WebDAV</a>--%>
-                <%--</li>--%>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/webdav" data-toggle="tooltip"
+                       data-placement="bottom" title="Mount the DFW Data portal as a network drive">Mount</a>
+                </li>
                 <li class="nav-item">
                     <a id="searchLink" class="nav-link js-scroll-trigger" data-toggle=“modal” data-target=“#search_form”
                        href="#" onclick="searchCollapse();">Search</a>
@@ -41,7 +51,7 @@
         <i>
             <small> ${poi} </small>
         </i>
-        <div id="description" style="text-align: justify; padding-bottom: 30px; max-height:300px; overflow-y: auto">${description}</div>
+        <div id="description" style="text-align: justify; padding-bottom: 30px;  overflow-y: auto">${description}</div>
 
         <div id="licensePanel" style="${license_style}">
             This data is made available under the <a href="#" onclick="licenseCollapse();"><span
@@ -52,7 +62,7 @@
             </div>
         </div>
     </div>
-</section>
+
 
 <%--<script type="text/javascript">--%>
     <%--$(document).ready(function () {--%>
@@ -161,4 +171,20 @@
     #tools {
         display: none;
     }
+    #mainNav{
+        padding-top: 0px ! important;
+        padding-bottom: 0px ! important;
+        margin-top: 0px ! important
+    }
+    .container {
+        max-width: 100% ! important;
+    }
+    /*@media (min-width: 1200px)*/
+    /*main {*/
+    /*    max-width: 1140px*/
+    /*}*/
+    /*@media (min-width: 992px)*/
+    /*main {*/
+    /*max-width: 960px*/
+    /*}*/
 </style>

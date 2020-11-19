@@ -1,10 +1,12 @@
 </section>
 
+<div class="footer">Brought to you by <a href="https://github.com/billyfish/eirods-dav">mod_eirods_dav</a> Copyright (c) 2016-20, The Earlham Institute and Utrecht University.</div>
+
 <footer class="text-center">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                Copyright (c) 2016-20, Earlham Institute<br>
+                Copyright (c) 2016-20, Earlham Institute and Utrecht University.<br>
                 Images taken from the <a href="https://web.archive.org/web/20181121095246/http://www.masonicons.de/">Amiga Image Storage System</a> by Martin Merz.
             </div>
         </div>
@@ -17,7 +19,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="metadata_viewer_title">New message</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body" id="metadata_viewer_content">
@@ -30,4 +32,71 @@
     </div>
 </div>
 
-</footer>
+
+<script type="text/javascript">    $(document).ready(function () {
+    var search_form_content = $('#search_form_2');
+    $('#search_form').remove();
+    $('#searchFormHolder').html(search_form_content);
+    $('#search_form_popup').addClass("modal");
+    $('#search_form_popup').addClass("fade");
+    // $('#search_form_popup').modal({
+    //     show: false
+    // });
+
+    if ($('#login_link') != null) {
+        $('#loginout').html('Login');
+        $('#loginout').attr('href', $('#login_link').attr('href'));
+        $('#loginout').attr('data-toggle', 'tooltip');
+        $('#loginout').attr('data-placement', 'bottom');
+        $('#loginout').attr('title', 'You are viewing ' + $('#user .zone_name').html() + ' zone');
+    } else if ($('#login_link') != null) {
+
+        $('#loginout').html('logout');
+        $('#loginout').attr('href', $('#login_link').attr('href'));
+        $('#loginout').attr('data-toggle', 'tooltip');
+        $('#loginout').attr('data-placement', 'bottom');
+        $('#loginout').attr('title', 'You are logged in as ' + $('#user .zone_name').html());
+    }
+
+
+});
+
+function licenseCollapse() {
+    $("#licenseDetail").collapse('toggle');
+}
+
+function searchModal() {
+    $('#search_form_popup').modal('show');
+
+    SetUpMetadataKeysAutoCompleteList();
+    SetUpMetadataValuesAutoCompleteList();
+}
+
+
+function searchCollapse() {
+    if ($('#searchFormHolder').css('display') == 'none') {
+        $('#searchFormHolder').show();
+        $('#searchFormHolder').css({
+            "left": $('#searchLink').offset().left,
+            "top": $('#searchLink').offset().top + 40,
+            "z-index": "9999"
+        });
+        $('#mainNav').css({
+            "padding-bottom": "60px"
+        });
+        $('#project-info').css({
+            "margin-top": "140px"
+        });
+    } else {
+
+        $('#searchFormHolder').hide();
+        $('#mainNav').css({
+            "padding-bottom": "25px"
+        });
+        $('#project-info').css({
+            "margin-top": "120px"
+        });
+    }
+    SetUpMetadataKeysAutoCompleteList();
+    SetUpMetadataValuesAutoCompleteList();
+}</script>

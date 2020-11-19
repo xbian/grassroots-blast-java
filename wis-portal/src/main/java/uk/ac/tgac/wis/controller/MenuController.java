@@ -234,7 +234,7 @@ public class MenuController implements ServletContextAware {
             String license_detail = toronto;
             String description = "";
             String license_style = "";
-            String projectStyle = "";
+            String projectStyle = "style=\"padding: 100px 0px 0px 0px ! important;\"";
             if (uuid != null || !uuid.equals("null") || !uuid.equals("")) {
                 HttpClient client = new DefaultHttpClient();
                 HttpGet esGet = new HttpGet(elasticsearch_url);

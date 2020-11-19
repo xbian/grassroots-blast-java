@@ -1,5 +1,5 @@
 <%--<script src="https://grassroots.tools/js/site.js"></script>--%>
-<link rel="stylesheet" type="text/css" href="/eirods_dav_files/styles/header.css"/>
+<link rel="stylesheet" type="text/css" href="/eirods_dav_files/styles/eirods_header.css"/>
 
 
 <!-- Navigation -->
@@ -15,6 +15,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+                <%--<li class="nav-item">--%>
+                <%--<a id="webdavlink" class="nav-link js-scroll-trigger" href="/webdav.html" >WebDAV</a>--%>
+                <%--</li>--%>
                 <li class="nav-item">
                     <a id="searchLink" class="nav-link js-scroll-trigger" data-toggle=“modal” data-target=“#search_form”
                        href="#" onclick="searchCollapse();">Search</a>
@@ -38,7 +41,7 @@
         <i>
             <small> ${poi} </small>
         </i>
-        <div id="description" style="text-align: justify; padding-bottom: 30px;">${description}</div>
+        <div id="description" style="text-align: justify; padding-bottom: 30px; max-height:300px; overflow-y: auto">${description}</div>
 
         <div id="licensePanel" style="${license_style}">
             This data is made available under the <a href="#" onclick="licenseCollapse();"><span
@@ -52,73 +55,73 @@
 </section>
 
 <%--<script type="text/javascript">--%>
-    <%--$(document).ready(function () {--%>
-        <%--var search_form_content = $('#search_form_2');--%>
-        <%--$('#search_form').remove();--%>
-        <%--$('#searchFormHolder').html(search_form_content);--%>
-        <%--$('#search_form_popup').addClass("modal");--%>
-        <%--$('#search_form_popup').addClass("fade");--%>
-        <%--// $('#search_form_popup').modal({--%>
-        <%--//     show: false--%>
-        <%--// });--%>
+<%--$(document).ready(function () {--%>
+<%--var search_form_content = $('#search_form_2');--%>
+<%--$('#search_form').remove();--%>
+<%--$('#searchFormHolder').html(search_form_content);--%>
+<%--$('#search_form_popup').addClass("modal");--%>
+<%--$('#search_form_popup').addClass("fade");--%>
+<%--// $('#search_form_popup').modal({--%>
+<%--//     show: false--%>
+<%--// });--%>
 
-        <%--if ($('#login_link') != null) {--%>
-            <%--$('#loginout').html('Login');--%>
-            <%--$('#loginout').attr('href', $('#login_link').attr('href'));--%>
-            <%--$('#loginout').attr('data-toggle', 'tooltip');--%>
-            <%--$('#loginout').attr('data-placement', 'bottom');--%>
-            <%--$('#loginout').attr('title', 'You are viewing ' + $('#user .zone_name').html() + ' zone');--%>
-        <%--} else if ($('#login_link') != null) {--%>
+<%--if ($('#login_link') != null) {--%>
+<%--$('#loginout').html('Login');--%>
+<%--$('#loginout').attr('href', $('#login_link').attr('href'));--%>
+<%--$('#loginout').attr('data-toggle', 'tooltip');--%>
+<%--$('#loginout').attr('data-placement', 'bottom');--%>
+<%--$('#loginout').attr('title', 'You are viewing ' + $('#user .zone_name').html() + ' zone');--%>
+<%--} else if ($('#login_link') != null) {--%>
 
-            <%--$('#loginout').html('logout');--%>
-            <%--$('#loginout').attr('href', $('#login_link').attr('href'));--%>
-            <%--$('#loginout').attr('data-toggle', 'tooltip');--%>
-            <%--$('#loginout').attr('data-placement', 'bottom');--%>
-            <%--$('#loginout').attr('title', 'You are logged in as ' + $('#user .zone_name').html());--%>
-        <%--}--%>
-
-
-    <%--});--%>
-
-    <%--function licenseCollapse() {--%>
-        <%--$("#licenseDetail").collapse('toggle');--%>
-    <%--}--%>
-
-    <%--function searchModal() {--%>
-        <%--$('#search_form_popup').modal('show');--%>
-
-        <%--SetUpMetadataKeysAutoCompleteList();--%>
-        <%--SetUpMetadataValuesAutoCompleteList();--%>
-    <%--}--%>
+<%--$('#loginout').html('logout');--%>
+<%--$('#loginout').attr('href', $('#login_link').attr('href'));--%>
+<%--$('#loginout').attr('data-toggle', 'tooltip');--%>
+<%--$('#loginout').attr('data-placement', 'bottom');--%>
+<%--$('#loginout').attr('title', 'You are logged in as ' + $('#user .zone_name').html());--%>
+<%--}--%>
 
 
-    <%--function searchCollapse() {--%>
-        <%--if ($('#searchFormHolder').css('display') == 'none') {--%>
-            <%--$('#searchFormHolder').show();--%>
-            <%--$('#searchFormHolder').css({--%>
-                <%--"left": $('#searchLink').offset().left,--%>
-                <%--"top": $('#searchLink').offset().top + 40,--%>
-                <%--"z-index": "9999"--%>
-            <%--});--%>
-            <%--$('#mainNav').css({--%>
-                <%--"padding-bottom": "60px"--%>
-            <%--});--%>
-            <%--$('#project-info').css({--%>
-                <%--"margin-top": "140px"--%>
-            <%--});--%>
-        <%--} else {--%>
+<%--});--%>
 
-            <%--$('#searchFormHolder').hide();--%>
-            <%--$('#mainNav').css({--%>
-                <%--"padding-bottom": "25px"--%>
-            <%--});--%>
-            <%--$('#project-info').css({--%>
-                <%--"margin-top": "120px"--%>
-            <%--});--%>
-        <%--}--%>
-        <%--SetUpMetadataKeysAutoCompleteList();--%>
-        <%--SetUpMetadataValuesAutoCompleteList();--%>
-    <%--}--%>
+<%--function licenseCollapse() {--%>
+<%--$("#licenseDetail").collapse('toggle');--%>
+<%--}--%>
+
+<%--function searchModal() {--%>
+<%--$('#search_form_popup').modal('show');--%>
+
+<%--SetUpMetadataKeysAutoCompleteList();--%>
+<%--SetUpMetadataValuesAutoCompleteList();--%>
+<%--}--%>
+
+
+<%--function searchCollapse() {--%>
+<%--if ($('#searchFormHolder').css('display') == 'none') {--%>
+<%--$('#searchFormHolder').show();--%>
+<%--$('#searchFormHolder').css({--%>
+<%--"left": $('#searchLink').offset().left,--%>
+<%--"top": $('#searchLink').offset().top + 40,--%>
+<%--"z-index": "9999"--%>
+<%--});--%>
+<%--$('#mainNav').css({--%>
+<%--"padding-bottom": "60px"--%>
+<%--});--%>
+<%--$('#project-info').css({--%>
+<%--"margin-top": "140px"--%>
+<%--});--%>
+<%--} else {--%>
+
+<%--$('#searchFormHolder').hide();--%>
+<%--$('#mainNav').css({--%>
+<%--"padding-bottom": "25px"--%>
+<%--});--%>
+<%--$('#project-info').css({--%>
+<%--"margin-top": "120px"--%>
+<%--});--%>
+<%--}--%>
+<%--SetUpMetadataKeysAutoCompleteList();--%>
+<%--SetUpMetadataValuesAutoCompleteList();--%>
+<%--}--%>
 
 <%--</script>--%>
 
@@ -138,7 +141,7 @@
 <%--<ul id="search_values_autocomplete_list" class="autocomplete"></ul>--%>
 <%--</form>--%>
 
-<form action="/wheat/search" id="search_form_2">
+<form action="/wheat/api/metadata/search" id="search_form_2">
 
     <div class="input-group">
         <input name="key" type="text" id="search_key" class="form-control" placeholder="Attribute"
@@ -153,3 +156,9 @@
     <ul id="search_keys_autocomplete_list" class="autocomplete"></ul>
     <ul id="search_values_autocomplete_list" class="autocomplete"></ul>
 </form>
+
+<style>
+    #tools {
+        display: none;
+    }
+</style>
