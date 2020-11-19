@@ -235,7 +235,7 @@ public class MenuController implements ServletContextAware {
             String description = "";
             String license_style = "";
             String projectStyle = "style=\"padding: 100px 0px 0px 0px ! important;\"";
-            if (uuid != null || !uuid.equals("null") || !uuid.equals("")) {
+            if (uuid != null && !uuid.equals("null") && !uuid.equals("") && !uuid.equals("none")) {
                 HttpClient client = new DefaultHttpClient();
                 HttpGet esGet = new HttpGet(elasticsearch_url);
                 HttpResponse responseGet = client.execute(esGet);
@@ -278,6 +278,10 @@ public class MenuController implements ServletContextAware {
                         }
                     }
                 }
+            } else if (uuid.equals("none")) {
+                license = "";
+                license_detail = "";
+                license_style = "display:none ! important; ";
             }
 
 
@@ -291,14 +295,12 @@ public class MenuController implements ServletContextAware {
 
             return new ModelAndView("/eirodsdavheader.jsp", model);
 
-    } catch(
-    Exception ex)
+        } catch (
+                Exception ex) {
+            throw ex;
+        }
 
-    {
-        throw ex;
     }
-
-}
 
     @RequestMapping("/eirods-dav-header-test/")
     public ModelAndView getHeaderforiRODSObjTest(@RequestParam("uuid") String uuid, ModelMap model) throws IOException {
