@@ -194,62 +194,8 @@ public class MenuController implements ServletContextAware {
 
     @RequestMapping("/eirods-dav-header/")
     public ModelAndView getHeaderforiRODSObj(@RequestParam("uuid") String uuid, ModelMap model) throws IOException {
-//        String projectInfoStr = "[\n" +
-//                "    {\n" +
-//                "        \"uuid\":\"ffc3e90f-7f89-4934-8e35-943bb64d1789\",\n" +
-//                "        \"authors\": [\"Anthony Hall\", \"Laura-Jayne Gardiner\"],\n" +
-//                "        \"projectName\": \"Integrating genomic resources to present full gene and promoter capture probe sets for bread wheat\",\n" +
-//                "        \"description\": \"Whole genome shotgun re-sequencing of wheat is expensive because of its large, repetitive genome. Moreover, sequence data can fail to map uniquely to the reference genome making it difficult to unambiguously assign variation. Re-sequencing using target capture enables sequencing of large numbers of individuals at high coverage to reliably identify variants associated with important agronomic traits. We present two gold standard capture probe sets for hexaploid bread wheat, a gene and a promoter capture, which are designed using recently developed genome sequence and annotation resources. The captures can be combined or used independently. The capture probe sets effectively enrich the high confidence genes and promoters that were identified in the genome alongside a large proportion of the low confidence genes and promoters. We use a capture design employing an 'island strategy' to enable analysis of the large gene/promoter space of wheat with only 2x160 Mb NimbelGen probe sets. Furthermore, these assays extend the regions of the wheat genome that are amenable to analyses beyond its exome, providing tools for detailed characterization of these regulatory regions in large populations. Here, we release the targeted sequence of the capture probe sets on the wheat RefSeqv1, the design space that was used to tile our capture probes across and finally the positions of the probes themselves across this design space for both the gene and promoter capture probe sets. This project was supported by the BBSRC via an ERA-CAPS grant BB/N005104/1, BB/N005155/1 and BBSRC Designing Future Wheat BB/P016855/1.\",\n" +
-//                "        \"license\" : {\"so:name\": \"toronto\", \"so:url\": \"https://www.nature.com/articles/461168a#Sec2\" },\n" +
-//                "        \"project_codes\":[\"BB/N005104/1\", \"BB/N005155/1\", \"BB/P016855/1\"],\n" +
-//                "        \"url\":\"https://opendata.earlham.ac.uk/wheat/under_license/toronto/Gardiner_2018-07-04_Wheat-gene-promoter-capture/\",\n" +
-//                "        \"irods_path\":\"/grassrootsZone/public/under_license/toronto/Gardiner_2018-07-04_Wheat-gene-promoter-capture\"\n" +
-//                "    },\n" +
-//                "    {\n" +
-//                "        \"uuid\":\"fd22c6a9-5692-4bbd-bb77-e04567fe3bc0\",\n" +
-//                "        \"authors\": [\"Ji Zhou\", \"Joshua Ball\"],\n" +
-//                "        \"projectName\": \"DFW RobigusxClaire UAV Image Data\",\n" +
-//                "        \"description\": \"Working with the Griffiths group at JIC we have collected UAV image data for the RobigusxClaire population across the 2019 season. Divided into early, mid, and late drilling dates. Raw images from UAV capture are pre-processed using Pix4DMapper software to create a large, high-detail, orthomosaic images providing a single image for analysis and extraction of wheat traits for QTL analysis. Single whole field images are also captured to account for light and colour variations, This project is supported by the BBSRC Designing Future Wheat grant sub-work package BBS/E/T/000PR9785\",\n" +
-//                "        \"license\" : {\"so:name\": \"toronto\", \"so:url\": \"https://www.nature.com/articles/461168a#Sec2\" },\n" +
-//                "        \"project_codes\":[\"BBS/E/T/000PR9785\"],\n" +
-//                "        \"url\":\"https://opendata.earlham.ac.uk/wheat/under_license/toronto/Zhou_2019_RobxCla_UAV_Image_Data/\",\n" +
-//                "        \"irods_path\":\"/grassrootsZone/public/under_license/toronto/Zhou_2019_RobxCla_UAV_Image_Data\"\n" +
-//                "    },\n" +
-//                "    {\n" +
-//                "        \"uuid\":\"4c53dd08-39d6-4d3a-bfc0-c6a5f32b609f\",\n" +
-//                "        \"authors\": [\"Azahara Carmen Martín\", \"AbdulKader Alabdullah\", \"Philippa Borrill\", \"Ricardo H. Ramírez-González\", \"Janet Higgins\", \"David Swarbreck\", \"Cristobal Uauy\", \"Peter Shaw\", \"Graham Moore\"],\n" +
-//                "        \"projectName\": \"Meiosis transcriptome and co-expression network in hexaploid wheat\",\n" +
-//                "        \"description\": \"Polyploidization is a fundamental process in plant evolution. One of the biggest challenges faced by a new polyploid is meiosis, particularly discriminating between multiple related chromosomes so that only homologous chromosomes synapse and recombine to ensure regular chromosome segregation and balanced gametes. Despite its large genome size, high DNA repetitive content and similarity between homoeologous chromosomes, hexaploid wheat completes meiosis in a shorter period than diploid species with a much smaller genome. Therefore, during wheat meiosis, mechanisms additional to the classical model based on DNA sequence homology, must facilitate more efficient homologous recognition. One such mechanism could involve exploitation of differences in chromosome structure between homologs and homoeologs at the onset of meiosis. In turn, these chromatin changes, can be expected to be linked to transcriptional gene activity. In this study, we present an extensive analysis of a large RNA-seq data derived from six different genotypes: wheat, wheat?rye hybrids and newly synthesized octoploid triticale, both in the presence and absence of the Ph1 locus. Plant material was collected at early prophase, at the transition leptotene-zygotene, when the telomere bouquet is forming and synapsis between homologs is beginning. The six genotypes exhibit different levels of synapsis and chromatin structure at this stage; therefore, recombination and consequently segregation, are also different. Unexpectedly, our study reveals that neither synapsis, whole genome duplication nor the absence of the Ph1 locus are associated with major changes in gene expression levels during early meiotic prophase. Overall wheat transcription at this meiotic stage is therefore highly resilient to such alterations, even in the presence of major chromatin structural changes. Further studies in wheat and other polyploid species will be required to reveal whether these observations are specific to wheat meiosis. The genetic mechanisms regulating meiotic progression in plants are still not fully understood. Our knowledge of the genes involved in meiosis in many crop species such as wheat is largely based on studies on model species. The latest advances of wheat genomics in particular the high-quality genome reference sequence and a developmental gene expression atlas, together with the gene expression data collected from meiotic samples have provided the prerequisite resources for building a co-expression gene network to facilitate wheat meiotic studies. We used the WGCNA package in R to build a meiotic gene co-expression network in wheat based on 130 wheat RNA-seq samples collected from a range of tissues including meiotic tissue (anthers at different meiotic stages). A set of 50,387 genes were expressed during meiosis (TPM ? 0.5 in one meiosis sample at least) and assigned to 66 modules according to their expression patterns. Three of the modules (modules 2, 28 and 41 containing 4940 genes, 544 genes and 313 genes, respectively) were significantly correlated with meiotic tissue samples (r > 0.5, FDR adjusted p < 0.001) but not with any other type of tissue. Gene Ontology (GO) term enrichment analysis showed that GO terms related to cell cycle, DNA replication, chromatin modifications and other processes occurring during meiosis were highly enriched (FDR adjusted p < 0.001) in the three modules. We also applied orthology informed approaches to evaluate the genes in the meiosis-related modules and found that wheat orthologs of meiosis genes were found in modules 2, 28 and 41. Module 2, in particular, was significantly enriched possessing 166 meiosis orthologs. The combination of co-expression network analysis in tandem with orthologue information will contribute to the discovery of new meiosis genes and greatly empowers reverse genetics approaches to validate the function of candidate genes. Ultimately this will lead to better understanding of the regulation of meiosis in wheat (and other polyploid plants) and subsequently improve wheat production. To our knowledge, this study represents the first meiotic co-expression gene network built in polyploids. Project Code: BB/J007188/1\",\n" +
-//                "        \"license\" : {\"so:name\": \"toronto\", \"so:url\": \"https://www.nature.com/articles/461168a#Sec2\" },\n" +
-//                "        \"project_codes\":[\"BB/J007188/1\"],\n" +
-//                "        \"url\":\"https://opendata.earlham.ac.uk/wheat/under_license/toronto/Martin_etal_2018_Alabdullah_etal_2019_wheat_meiosis_transcriptome_and_co-expression_network/\",\n" +
-//                "        \"irods_path\":\"/grassrootsZone/public/under_license/toronto/Martin_etal_2018_Alabdullah_etal_2019_wheat_meiosis_transcriptome_and_co-expression_network\"\n" +
-//                "    },\n" +
-//                "    {\n" +
-//                "        \"uuid\":\"844c0d71-5288-4f85-ae66-cc7d66596ab1\",\n" +
-//                "        \"authors\": [\"Brande Wulff\", \"Burkhard Steuernagel\"],\n" +
-//                "        \"projectName\": \"Aegilops tauschii diversity panel\",\n" +
-//                "        \"description\": \"This is the raw data from whole genome shotgun sequencing of 150 accessions of Aegilops tauschii, a wild relative of wheat. This data was generated by the open wild wheat consortium. Financial support for this project includes (but is not excluded to) the BBSRC (Designing Future Wheat BB/P016855/1), KWS, Syngenta, Bayer and Limagrain. In kind support was received from CLC Bio, Novogene and 2Blades.\",\n" +
-//                "        \"license\" : {\"so:name\": \"toronto\", \"so:url\": \"https://www.nature.com/articles/461168a#Sec2\" },\n" +
-//                "        \"project_codes\":[\"BB/P016855/1\"],\n" +
-//                "        \"url\":\"https://opendata.earlham.ac.uk/wheat/under_license/toronto/Wulff_2018-01-31_OWWC/\",\n" +
-//                "        \"irods_path\":\"/grassrootsZone/public/under_license/toronto/Wulff_2018-01-31_OWWC\"\n" +
-//                "    },\n" +
-//                "    {\n" +
-//                "        \"uuid\":\"1e949203-127e-4d5d-8738-fa1e98fb4b82\",\n" +
-//                "        \"authors\": [\"Ricardo Ramirez-Gonzalez\", \"Philippa Borrill\", \"Cristobal.Uauy\"],\n" +
-//                "        \"projectName\": \"The transcriptional landscape of hexaploid wheat across tissues, cultivars, and stress conditions\",\n" +
-//                "        \"description\": \"The coordinatronto\", \"so:url\": \"https://www.nature.com/articles/461168a#Sec2\" },\n" +
-//                "        \"project_codes\":[\"BB/P016855/1\"],\n" +
-//                "        \"url\":\"https://opendata.earlham.ac.uk/wheat/under_license/toronto/Ramirez-Gonzalez_etal_2018-06025-Transcriptome-Landscape/\",\n" +
-//                "        \"irods_path\":\"/grassrootsZone/public/under_license/toronto/Ramirez-Gonzalez_etal_2018-06025-Transcriptome-Landscape\"\n" +
-//                "    }\n" +
-//                "]";
-//        JSONArray projectInfo = new JSONArray();
-//        projectInfo = JSONArray.fromObject(projectInfoStr);
 
-//        String G_METADATA_API_URL_S = "https://grassroots.tools/test-insecure/data/api/metadata/";
-//        String elasticsearch_url = "https://grassroots.tools/elastic-search/irods/project/";
+        String elasticsearch_url = "https://opendata.earlham.ac.uk/projectinfo-min.json";
 
         String toronto = "All of the data listed here is available under the prepublication data sharing principle of the <a\n" +
                 "            href=\"https://www.nature.com/articles/461168a\">Toronto agreement</a>.\n" +
@@ -278,64 +224,61 @@ public class MenuController implements ServletContextAware {
                 "        producers and contributors.";
 
 
-//            JSONArray imetaArray = new JSONArray();
+        JSONArray imetaArray = new JSONArray();
         JSONObject esObject = new JSONObject();
 
         try {
-//            String projectName = "";
-//            String poi = "";
-//            String license = "";
-//            String license_detail = "";
-//            String description = "";
-//            String license_style = "display:none ! important; ";
-//            String projectStyle = "";
-//            if (uuid != null || !uuid.equals("null") || !uuid.equals("")) {
-//                HttpClient client = new DefaultHttpClient();
-//                HttpGet esGet = new HttpGet(elasticsearch_url + uuid);
-//                HttpResponse responseGet = client.execute(esGet);
-//                HttpEntity resEntityGet = responseGet.getEntity();
-//                if (resEntityGet != null) {
-//                    BufferedReader rd = new BufferedReader(new InputStreamReader(resEntityGet.getContent()));
-//                    String line = "";
-//                    while ((line = rd.readLine()) != null) {
-//                        if (line.startsWith("{")) {
-//                            esObject = JSONObject.fromObject(line);
-//                            if (esObject.get("_source") != null) {
-//                                JSONObject sourceObject = esObject.getJSONObject("_source");
-//                                if (sourceObject.get("projectName") != null) {
-//                                    projectName = sourceObject.getString("projectName");
-//                                    projectStyle = "style=\"padding: 100px 0px 0px 0px ! important;\"";
-//                                }
-//                                if (sourceObject.get("poi") != null) {
-//                                    poi = sourceObject.getString("poi");
-//                                }
-//                                if (sourceObject.get("description") != null) {
-//                                    description = sourceObject.getString("description");
-//                                }
-//                                if (sourceObject.get("license") != null) {
-//                                    license = "License - " + sourceObject.getString("license");
-//                                    license_style = "";
-//                                    if (license.equals("License - toronto")) {
-//                                        license = "Toronto Agreement";
-//                                        license_detail = toronto;
-//                                    }
-//                                } else {
-//                                    license_style = "display:none ! important; ";
-//                                }
-//
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-
             String projectName = "";
             String poi = "";
             String license = "Toronto Agreement";
-            String license_detail = "";
+            String license_detail = toronto;
             String description = "";
             String license_style = "";
-            String projectStyle = "style=\"padding: 100px 0px 0px 0px ! important;\"";
+            String projectStyle = "";
+            if (uuid != null || !uuid.equals("null") || !uuid.equals("")) {
+                HttpClient client = new DefaultHttpClient();
+                HttpGet esGet = new HttpGet(elasticsearch_url);
+                HttpResponse responseGet = client.execute(esGet);
+                HttpEntity resEntityGet = responseGet.getEntity();
+                if (resEntityGet != null) {
+                    BufferedReader rd = new BufferedReader(new InputStreamReader(resEntityGet.getContent()));
+                    String line = "";
+                    while ((line = rd.readLine()) != null) {
+                        if (line.startsWith("[")) {
+                            imetaArray = JSONArray.fromObject(line);
+
+//                            esObject = JSONObject.fromObject(line);
+                            for (int n = 0; n < imetaArray.size(); n++) {
+                                esObject = imetaArray.getJSONObject(n);
+                                if (esObject.getString("uuid").equals(uuid)) {
+                                    JSONObject sourceObject = esObject;
+                                    if (sourceObject.get("projectName") != null) {
+                                        projectName = sourceObject.getString("projectName");
+                                        projectStyle = "style=\"padding: 100px 0px 0px 0px ! important;\"";
+                                    }
+                                    if (sourceObject.get("authors") != null) {
+                                        JSONArray authorArray = sourceObject.getJSONArray("authors");
+                                        String authors = "";
+                                        for (int an = 0; an < authorArray.size(); an++) {
+                                            authors = authors.concat(authorArray.getString(an));
+                                        }
+                                    }
+                                    if (sourceObject.get("description") != null) {
+                                        description = sourceObject.getString("description");
+                                    }
+                                    if (sourceObject.get("license") != null) {
+                                        license = "Toronto Agreement";
+                                        license_detail = toronto;
+
+                                    } else {
+                                        license_style = "display:none ! important; ";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
 
 
             model.put("projectName", projectName);
@@ -347,10 +290,15 @@ public class MenuController implements ServletContextAware {
             model.put("projectStyle", projectStyle);
 
             return new ModelAndView("/eirodsdavheader.jsp", model);
-        } catch (Exception ex) {
-            throw ex;
-        }
+
+    } catch(
+    Exception ex)
+
+    {
+        throw ex;
     }
+
+}
 
     @RequestMapping("/eirods-dav-header-test/")
     public ModelAndView getHeaderforiRODSObjTest(@RequestParam("uuid") String uuid, ModelMap model) throws IOException {
