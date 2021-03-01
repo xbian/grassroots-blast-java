@@ -258,9 +258,15 @@ public class MenuController implements ServletContextAware {
                                     }
                                     if (sourceObject.get("authors") != null) {
                                         JSONArray authorArray = sourceObject.getJSONArray("authors");
-                                        String authors = "";
+//                                        String authors = "";
                                         for (int an = 0; an < authorArray.size(); an++) {
-                                            authors = authors.concat(authorArray.getString(an));
+                                            if (an == 0) {
+                                                poi = poi.concat(authorArray.getString(an));
+
+                                            } else {
+                                                poi = poi.concat(", " + authorArray.getString(an));
+
+                                            }
                                         }
                                     }
                                     if (sourceObject.get("description") != null) {
