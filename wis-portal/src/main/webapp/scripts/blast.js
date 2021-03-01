@@ -1,7 +1,8 @@
 var blastfilecontent = '';
+var synchronous = true;
 
 function getBlastDBs() {
-    jQuery('#blastDBs').html('Loading available BLAST databases <img src=\"/images/ajax-loader.gif\"/>');
+    jQuery('#blastDBs').html('Loading available BLAST databases <img src=\"../images/ajax-loader.gif\"/>');
     Utils.ui.disableButton('blastButton1');
     Utils.ui.disableButton('blastButton2');
     Fluxion.doAjax(
@@ -13,6 +14,29 @@ function getBlastDBs() {
         {
             'doOnSuccess': function (json) {
                 jQuery('#blastDBs').html(json.html);
+                //synchronous = json.synchronousbool;
+                Utils.ui.reenableButton('blastButton1', 'BLAST Search');
+                Utils.ui.reenableButton('blastButton2', 'BLAST Search');
+            }
+        }
+    );
+
+}
+
+function getBlastDBs2() {
+    jQuery('#blastDBs').html('Loading available BLAST databases <img src=\"../images/ajax-loader.gif\"/>');
+    Utils.ui.disableButton('blastButton1');
+    Utils.ui.disableButton('blastButton2');
+    Fluxion.doAjax(
+        'wisControllerHelperService',
+        'getBlastService2',
+        {
+            'url': ajaxurl
+        },
+        {
+            'doOnSuccess': function (json) {
+                jQuery('#blastDBs').html(json.html);
+                // synchronous = json.synchronousbool;
                 Utils.ui.reenableButton('blastButton1', 'BLAST Search');
                 Utils.ui.reenableButton('blastButton2', 'BLAST Search');
             }
@@ -23,39 +47,48 @@ function getBlastDBs() {
 
 function sendBlastRequest() {
     if (validateJobID(jQuery('#sequence').val())) {
-        var uuid = jQuery('#sequence').val();
-        jQuery('#blastResult').html('Retrieving job id: ' + uuid + ' <img src=\"/images/ajax-loader.gif\"/>');
         Utils.ui.disableButton('blastButton1');
         Utils.ui.disableButton('blastButton2');
-        Fluxion.doAjax(
-            'wisControllerHelperService',
-            'getPreviousJob',
-            {
-                'id': jQuery('#sequence').val(),
-                'url': ajaxurl
-            },
-            {
-                'doOnSuccess': function (json) {
-                    jQuery('#blastResult').html('');
-                    Utils.ui.reenableButton('blastButton1', 'BLAST Search');
-                    Utils.ui.reenableButton('blastButton2', 'BLAST Search');
-                    jQuery('#blastResult').append('<b>Job ID: ' + uuid + '</b><br/>');
-                    jQuery('#blastResult').append(json.html);
+        jQuery('#blastResult').html('');
+        jQuery('#output_format_div').show();
+
+        var id = jQuery('#sequence').val();
+        id = id.replace(/\s+/g, '');
+        id = id.replace(/\r?\n|\r/g, '');
+        var uuids = id.split(',');
+
+        for (var j = 0; j < uuids.length; j++) {
+            var uuid = uuids[j];
+            jQuery('#blastResult').append('<div id=\"' + uuid + '_c\">Retrieving job id: ' + uuid + ' <img src=\"../images/ajax-loader.gif\"/></div>');
+            Fluxion.doAjax(
+                'wisControllerHelperService',
+                'getPreviousJob',
+                {
+                    'id': uuid,
+                    'url': ajaxurl
                 },
-                'doOnError': function (json) {
-                    console.info(json.error);
-                    jQuery('#blastResult').html('Failed to retrieve job id: ' + uuid);
-                    Utils.ui.reenableButton('blastButton1', 'BLAST Search');
-                    Utils.ui.reenableButton('blastButton2', 'BLAST Search');
+                {
+                    'doOnSuccess': function (json) {
+                        jQuery('#' + uuid + '_c').html('');
+                        jQuery('#' + uuid + '_c').append('<b>Job ID: ' + uuid + '</b> ');
+                        jQuery('#' + uuid + '_c').append('<a href="javascript:;" id=\"' + uuid + 'dl\" onclick=\"downloadJobFromServer(\'' + uuid + '\');\">Download Job</a> in <span class="dlformat">Pairwise</span> format <span id=\"' + uuid + 'status\"></span><br/>');
+                        jQuery('#' + uuid + '_c').append(json.html);
+                    },
+                    'doOnError': function (json) {
+                        console.info(json.error);
+                        jQuery('#' + uuid + '_c').html('Failed to retrieve job id: ' + uuid);
+                    }
                 }
-            }
-        );
-        console.log('job id: ' + uuid);
-    }
-    else if (validateFasta(jQuery('#sequence').val()) || blastfilecontent != '') {
-        jQuery('#blastResult').html('BLAST request submitted <img src=\"/images/ajax-loader.gif\"/>');
+            );
+        }
+
+        Utils.ui.reenableButton('blastButton1', 'BLAST Search');
+        Utils.ui.reenableButton('blastButton2', 'BLAST Search');
+    } else if (validateFasta(jQuery('#sequence').val()) || blastfilecontent != '') {
+        jQuery('#blastResult').html('BLAST request submitted <img src=\"../images/ajax-loader.gif\"/>');
         Utils.ui.disableButton('blastButton1');
         Utils.ui.disableButton('blastButton2');
+        jQuery('#output_format_div').show();
         Fluxion.doAjax(
             'wisControllerHelperService',
             'sendBlastRequest',
@@ -65,25 +98,52 @@ function sendBlastRequest() {
             },
             {
                 'doOnSuccess': function (json) {
+                    // jQuery('#blastResult').html('Preparing results <img src=\"../images/ajax-loader.gif\"/>');
                     jQuery('#blastResult').html('');
                     var response = json.response;
                     for (var i = 0; i < response.length; i++) {
-                        var job = response[i];
-                        var uuid = job['service_uuid'];
-                        var name = job['description'].split(";", 1);
-                        jQuery('#blastResult').append(
-                            '<fieldset><legend>' + name + '</legend><div><p><b>Job ID: '
-                            + uuid + '</b></p><div id=\"' + uuid + '\">Job Submitted <img src=\"/images/ajax-loader.gif\"/></div></div></br></fieldset>');
-                        checkBlastResult(uuid);
+                        var job_in_response = response[i];
+                        var uuid = job_in_response["job_uuid"];
+                        var dbname = job_in_response["description"];
+
+                        if (synchronous) {
+                            var blastHTML;
+                            var result = job_in_response['results'][0];
+                            Fluxion.doAjax(
+                                'wisControllerHelperService',
+                                'formatXMLBlastResultFrontend',
+                                {
+                                    'rawResultString': result['data'],
+                                    'dbname': dbname,
+                                    'uuid': uuid,
+                                    'url': ajaxurl
+                                },
+                                {
+                                    'doOnSuccess': function (json) {
+                                        blastHTML = json.html;
+                                        jQuery('#blastResult').append('<fieldset><legend>' + json.dbname + '</legend><div><p><a href="javascript:;" id=\"' + json.uuid + 'dl\" onclick=\"downloadJobFromServer(\'' + json.uuid + '\');\">Download Job</a> in <span class="dlformat">'+jQuery("#output_format option:selected").text()+'</span> format <span id=\"' + json.uuid + 'status\"></span><br/></p><div id=\"' + json.uuid + '\">' + blastHTML + '</div></div></br></fieldset>');
+                                    }
+                                }
+                            );
+                            Utils.ui.reenableButton('blastButton1', 'BLAST Search');
+                            Utils.ui.reenableButton('blastButton2', 'BLAST Search');
+                            changeDownloadFormat();
+                        } else {
+                            jQuery('#blastResult').append(
+                                '<fieldset><legend>' + dbname + '</legend><div><p><b>Job ID: '
+                                + uuid + '</b></p><div id=\"' + uuid + '\">Job Submitted <img src=\"../images/ajax-loader.gif\"/></div></div></br></fieldset>');
+                            checkBlastResult(uuid);
+                        }
+
                     }
                 }
             }
         );
-    }
-    else {
+    } else {
         alert('Not valid FASTA format in the text area! Or blast file isn\'t supplied');
     }
 
+    changeDownloadFormat();
 }
 
 function checkBlastResult(uuid) {
@@ -97,7 +157,8 @@ function checkBlastResult(uuid) {
         {
             'doOnSuccess': function (json) {
                 jQuery('#' + uuid).html(json.html);
-                if (json.status == 4) {
+                if (json.status == 4 || json.status == 5) {
+                    jQuery('#' + uuid).html('Preparing results...');
                     Fluxion.doAjax(
                         'wisControllerHelperService',
                         'displayNewXMLBlastResult',
@@ -107,49 +168,33 @@ function checkBlastResult(uuid) {
                         },
                         {
                             'doOnSuccess': function (json) {
-                                jQuery('#' + uuid).html(json.html);
+                                jQuery('#output_format_div').show();
+                                jQuery('#' + uuid).append('<a href="javascript:;" id=\"'
+                                    + uuid + 'dl\" onclick=\"downloadJobFromServer(\'' + uuid
+                                    + '\');\">Download Job</a> in <span class="dlformat">'
+                                    + jQuery("#output_format option:selected").text() + '</span> format <span id=\"' + uuid + 'status\"></span><br/>');
+                                jQuery('#' + uuid).append(json.html);
                                 Utils.ui.reenableButton('blastButton1', 'BLAST Search');
                                 Utils.ui.reenableButton('blastButton2', 'BLAST Search');
-//                                                stopJob(uuid);
                             }
                         }
                     );
-                }
-                else if (json.status == 0 || json.status == 1 || json.status == 2 || json.status == 3) {
+                } else if (json.status == 0 || json.status == 1 || json.status == 2 || json.status == 3) {
                     jQuery('#' + uuid).html(json.html);
                     var timer;
                     clearTimeout(timer);
                     timer = setTimeout(function () {
                         checkBlastResult(uuid);
                     }, 6500);
-                }
-                else {
+                } else {
                     Utils.ui.reenableButton('blastButton1', 'BLAST Search');
                     Utils.ui.reenableButton('blastButton2', 'BLAST Search');
-//                                stopJob(uuid);
                 }
             }
         }
     );
 }
 
-//
-//function stopJob(uuid) {
-//    Fluxion.doAjax(
-//        'wisControllerHelperService',
-//        'stopJob',
-//        {
-//            'uuid': uuid,
-//            'url': ajaxurl
-//        },
-//        {
-//            'doOnSuccess': function (json) {
-//                console.log(json);
-//            }
-//        }
-//    );
-//
-//}
 
 function validateFasta(fasta) {
 
@@ -163,12 +208,12 @@ function validateFasta(fasta) {
     // split on newlines...
     var lines = fasta.split('\n');
 
-    // check for header
-    if (fasta[0] == '>') {
-        // remove one line, starting at the first position
-        lines.splice(0, 1);
+    for (var i = 0; i < lines.length; i++) {
+        if (lines[i][0] == '>') {
+            // remove one line, starting at the first position
+            lines.splice(i, 1);
+        }
     }
-
     // join the array back into a single string without newlines and
     // trailing or leading spaces
     fasta = lines.join('').trim();
@@ -188,8 +233,9 @@ function validateJobID(id) {
     }
 
     // immediately remove trailing spaces
-    id = id.trim();
-    return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(id);
+    id = id.replace(/\s+/g, '');
+    id = id.replace(/\r?\n|\r/g, '');
+    return /^([0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})+(,[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})*$/g.test(id);
 }
 
 function readSingleFile() {
@@ -205,19 +251,17 @@ function readSingleFile() {
 //                    alert(contents);
             }
             r.readAsText(f);
-        }
-        else {
+        } else {
             alert("Failed to load file");
         }
-    }
-    else {
+    } else {
         alert('The File APIs are not fully supported by your browser.');
     }
 }
 
 
 function downloadFileFromServer(id, db) {
-    jQuery('#' + id + 'status').html('<img src=\"/images/ajax-loader.gif\"/>');
+    jQuery('#' + id + 'status').html('<img src=\"../images/ajax-loader.gif\"/>');
     jQuery('#' + id).removeAttr('onclick');
     Fluxion.doAjax(
         'wisControllerHelperService',
@@ -249,6 +293,34 @@ function downloadFile(text, filename) {
     saveAs(blob, filename + ".txt");
 }
 
+
+function downloadJobFromServer(id) {
+    jQuery('#' + id + 'status').html('<img src=\"../images/ajax-loader.gif\"/>');
+    jQuery('#' + id + 'dl').removeAttr('onclick');
+    Fluxion.doAjax(
+        'wisControllerHelperService',
+        'downloadPreviousJob',
+        {
+            'id': id,
+            'format': jQuery('#output_format').val(),
+            'url': ajaxurl
+        },
+        {
+            'doOnSuccess': function (json) {
+                downloadFile(json["file"], id);
+                jQuery('#' + id + 'status').html('');
+                jQuery('#' + id + 'dl').attr('onclick', 'downloadJobFromServer(\'' + id + '\')');
+            },
+            'doOnError': function (json) {
+                console.info(json.error);
+                jQuery('#' + id + 'status').html('Failed download the sequence, please try again.');
+                jQuery('#' + id + 'dl').attr('onclick', 'downloadJobFromServer(\'' + id + '\')');
+            }
+        }
+    );
+
+}
+
 function handleFileSelect(evt) {
     evt.stopPropagation();
     evt.preventDefault();
@@ -268,11 +340,11 @@ function handleFileSelect(evt) {
         var r = new FileReader();
         r.onload = function (e) {
             var contents = e.target.result;
-            blastfilecontent = contents;
+            //blastfilecontent = contents;
+            jQuery('#sequence').val(contents);
         }
         r.readAsText(f);
-    }
-    else {
+    } else {
         alert("Failed to load file");
     }
 }
@@ -281,4 +353,8 @@ function handleDragOver(evt) {
     evt.stopPropagation();
     evt.preventDefault();
     evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
+}
+
+function changeDownloadFormat() {
+    jQuery('.dlformat').html(jQuery("#output_format option:selected").text());
 }

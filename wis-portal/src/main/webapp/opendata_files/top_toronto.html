@@ -1,0 +1,108 @@
+<link rel="stylesheet" type="text/css" href="/eirods_dav_files/styles/site.css"/>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-21666189-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-21666189-13');
+</script>
+
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top" style="text-transform: none ! important;">Grassroots
+            Data Repository</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            Menu
+            <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                
+
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/webdav" data-toggle="tooltip"
+                       data-placement="bottom" title="Mount the DFW Data portal as a network drive">Mount</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a id="searchLink" class="nav-link js-scroll-trigger" data-toggle="modal" data-target="#search_form"
+                       href="#" onclick="searchCollapse();">Search</a>
+                    <div id="searchFormHolder"
+                         style="display:none;position: absolute; margin-top:20px;margin-right:20px;"></div>
+                </li>
+                <li class="nav-item">
+                    <a id="loginout" class="nav-link js-scroll-trigger" href="" data-toggle="tooltip"
+                       data-placement="bottom" title="">Login</a>
+                </li>
+            </ul>
+            <img class="navbar-nav navbar-right" style="height:50px;margin-left:50px;"
+                 src="https://grassroots.tools/img/logo-white.png"
+                 alt="The Earlham Institute logo"/>
+        </div>
+    </div>
+</nav>
+
+<section id="services" >
+    <div class="container">
+
+        <h3 id="projectName" style="color: #18bc9c;"></h3>
+        <i>
+            <small>  </small>
+        </i>
+        <div id="description" style="text-align: justify; padding-bottom: 30px; max-height:300px; overflow-y: auto"></div>
+
+        <div id="licensePanel" style="display:none ! important; ">
+            This data is made available under the <a href="#" onclick="licenseCollapse();"><span
+                style="color: rgba(198, 31, 22, 1);"></span></a>
+            <br/>
+            <div id="licenseDetail" class="collapse" style="padding-top:20px;">
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<form action="/wheat/api/metadata/search" id="search_form_2">
+
+    <div class="input-group">
+        <input name="key" type="text" id="search_key" class="form-control" placeholder="Attribute"
+               aria-label="Attribute" aria-describedby="">
+        <input type="text" id="search_value" name="value" class="form-control" placeholder="Value" aria-label="Value"
+               aria-describedby="">
+        <div class="input-group-append">
+            <button class="btn btn-light" type="submit">Search</button>
+        </div>
+    </div>
+
+    <ul id="search_keys_autocomplete_list" class="autocomplete"></ul>
+    <ul id="search_values_autocomplete_list" class="autocomplete"></ul>
+</form>
+<style>
+    #tools {
+        display: none;
+    }
+</style>
+<img class="logo" alt="The Earlham Institute" src="http://earlham.ac.uk/sites/all/themes/site_theme/images/earlham-institure-logo.png"><br />Welcome to public data at the Earlham Institute
+We have a variety of scientific data and software available for download. Some of these are free to reuse whereas other sets are available under the displayed license agreements within their areas. 
+
+<div id="license">
+All of the data listed here is available under the prepublication data sharing principle of the <a href="https://www.nature.com/articles/461168a">Toronto agreement</a>.
+By using this data, you agree to:
+
+<ul>
+  <li>respect the rights of the data producers and contributors to analyze and publish the first global analyses and certain other reserved analyses of this data set in a peer-reviewed publication.</li>
+  <li>not redistribute, release, or otherwise provide access to the data to anyone outside of the group, until the data has been published &amp; submitted to the public data repositories.</li>
+  <li>contact the authors to discuss any plans to publish data or analyses that utilize this data to avoid the overlap of any planned analyses.</li>
+  <li>fully cite the prepublication data along with any applicable versioning details.</li>
+  <li>understand that this data as accessed is precompetitive and is not patentable in its present state.</li>
+</ul>
+This agreement does not expire by time but only upon publication of the first global analysis by the data producers and contributors.
+
+</div>

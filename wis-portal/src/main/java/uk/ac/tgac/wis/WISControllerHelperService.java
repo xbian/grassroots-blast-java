@@ -28,6 +28,8 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by IntelliJ IDEA.
@@ -99,12 +101,23 @@ public class WISControllerHelperService {
 
     String blastURL = "http://v0214.nbi.ac.uk/wheatis";
     String blastTestURL = "http://v0214.nbi.ac.uk:1888/grassroots/controller";
+    String blastTestURL2 = "http://v0214.nbi.ac.uk:2888/grassroots/controller";
     String simonURL = "http://n79610.nbi.ac.uk:8080/grassroots/controller";
+
+    String slurmTestURL = "http://v0687.nbi.ac.uk:1888/grassroots/controller";
+
+    String frontTestURL = "https://wheatis.tgac.ac.uk/grassroots-test";
+    String service_key = "service";
+
+    String blastbackendURL = "http://v0214.nbi.ac.uk/grassroots/controller";
+
+    String activeURL = blastbackendURL;
 
     public JSONObject getBlastService(HttpSession session, JSONObject json) {
         StringBuilder dbHTML = new StringBuilder();
         JSONObject responses = new JSONObject();
-        String url = blastURL;
+//        String url = blastURL;
+        String url = activeURL;
 
         JSONObject requestObject = new JSONObject();
         JSONObject operationsObject = new JSONObject();
@@ -130,33 +143,123 @@ public class WISControllerHelperService {
             String body = handler.handleResponse(response);
 
             JSONArray serviceArray = JSONArray.fromObject(body);
-            JSONArray dbArray = new JSONArray();
+//            JSONArray dbArray = new JSONArray();
             JSONArray parametersArray = serviceArray.getJSONObject(0).getJSONObject("operations").getJSONObject("parameter_set").getJSONArray("parameters");
+
+            Boolean synchronous = true;
+            if (serviceArray.getJSONObject(0).getJSONObject("operations").get("synchronous") != null) {
+                synchronous = serviceArray.getJSONObject(0).getJSONObject("operations").getBoolean("synchronous");
+            }
+
+            JSONArray dbGroupArray = new JSONArray();
+
 
             for (int i = 0; i < parametersArray.size(); i++) {
                 JSONObject parameter = parametersArray.getJSONObject(i);
-                if ("Available Databases".equals(parameter.getString("group"))) {
+                if ((parameter.getString("group")).matches("^Available Databases(.*)")) {
+                    Pattern p = Pattern.compile("^Available Databases(.*)");
+                    Matcher m = p.matcher(parameter.getString("group"));
+                    String provide = "";
+                    while (m.find()) {
+                        provide = m.group(1);
+                    }
                     String name = parameter.getString("name").split(";")[0];
                     String param = parameter.getString("param");
                     String tag = parameter.getString("tag");
-                    dbArray.add(parameter);
+//                    dbArray.add(parameter);
+                    String dbRowHTML;
                     if ("/tgac/public/databases/blast/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all".equals(param)) {
-                        dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" checked=\"checked\" /><b>" + name + "</b> <a target=\"_blank\" href=\"/images/Blast_database_announcement_v11.pdf\">README</a><br/>");
+                        dbRowHTML = ("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" checked=\"checked\" /> <b>" + name + "<i>" + provide + "</b></i> <a target=\"_blank\" href=\"/images/Blast_database_announcement_v11.pdf\">README</a><br/>");
+                        dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" checked=\"checked\" /> <b>" + name + "<i>" + provide + "</b></i> <a target=\"_blank\" href=\"/images/Blast_database_announcement_v11.pdf\">README</a><br/>");
+                    } else if ("/tgac/references/databases/blast/hordeum_vulgare/Hordeum_vulgare_Golden_promise_EIv1".equals(param) || "/tgac/references/databases/blast/hordeum_vulgare/Hordeum_vulgare_Golden_promise_EIv1.1".equals(param) ) {
+
                     } else {
-                        dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" />" + name + "<br/>");
+                        dbRowHTML = ("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" /> " + name + "<b><i>" + provide + "</b></i> <br/>");
+                        dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" /> " + name + "<b><i>" + provide + "</b></i> <br/>");
                     }
                 }
             }
 
-            responses.put("blastdbs", parametersArray);
+//            responses.put("blastdbs", parametersArray);
             responses.put("html", dbHTML.toString());
+            responses.put("synchronousbool", synchronous);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
-//    finally {
-//      httpClient.getConnectionManager().shutdown();
-//    }
+        return responses;
+    }
+
+    public JSONObject getBlastService2(HttpSession session, JSONObject json) {
+        StringBuilder dbHTML = new StringBuilder();
+        JSONObject responses = new JSONObject();
+//        String url = blastURL;
+        String url = activeURL;
+
+        JSONObject requestObject = new JSONObject();
+        JSONObject operationsObject = new JSONObject();
+        JSONArray servicesArray = new JSONArray();
+
+        servicesArray.add("Blast service");
+        requestObject.put("services", servicesArray);
+
+        operationsObject.put("operationId", 4);
+        requestObject.put("operations", operationsObject);
+
+        HttpClient httpClient = new DefaultHttpClient();
+
+
+        try {
+            HttpPost request = new HttpPost(url);
+            StringEntity params = new StringEntity(requestObject.toString());
+            request.addHeader("content-type", "application/x-www-form-urlencoded");
+            request.setEntity(params);
+            HttpResponse response = httpClient.execute(request);
+
+            ResponseHandler<String> handler = new BasicResponseHandler();
+            String body = handler.handleResponse(response);
+
+            JSONArray serviceArray = JSONArray.fromObject(body);
+//            JSONArray dbArray = new JSONArray();
+            JSONArray parametersArray = serviceArray.getJSONObject(0).getJSONObject("operations").getJSONObject("parameter_set").getJSONArray("parameters");
+
+            Boolean synchronous = true;
+            if (serviceArray.getJSONObject(0).getJSONObject("operations").get("synchronous") != null) {
+                synchronous = serviceArray.getJSONObject(0).getJSONObject("operations").getBoolean("synchronous");
+            }
+
+            JSONArray dbGroupArray = new JSONArray();
+
+
+            for (int i = 0; i < parametersArray.size(); i++) {
+                JSONObject parameter = parametersArray.getJSONObject(i);
+                if ((parameter.getString("group")).matches("^Available Databases(.*)")) {
+                    Pattern p = Pattern.compile("^Available Databases(.*)");
+                    Matcher m = p.matcher(parameter.getString("group"));
+                    String provide = "";
+                    while (m.find()) {
+                        provide = m.group(1);
+                    }
+                    String name = parameter.getString("name").split(";")[0];
+                    String param = parameter.getString("param");
+                    String tag = parameter.getString("tag");
+//                    dbArray.add(parameter);
+                    String dbRowHTML;
+                    if ("/tgac/references/databases/blast/hordeum_vulgare/Hordeum_vulgare_Golden_promise_EIv1".equals(param) || "/tgac/references/databases/blast/hordeum_vulgare/Hordeum_vulgare_Golden_promise_EIv1.1".equals(param) ) {
+                        dbRowHTML = ("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" checked=\"checked\" /> " + name + "<b><i>" + provide + "</b></i> <br/>");
+                        dbHTML.append("<input type=\"checkbox\" name=\"database\" value=\"" + param + "^" + tag + "\" checked=\"checked\" /> " + name + "<b><i>" + provide + "</b></i> <br/>");
+                    } else {
+                    }
+                }
+            }
+
+//            responses.put("blastdbs", parametersArray);
+            responses.put("html", dbHTML.toString());
+            responses.put("synchronousbool", synchronous);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
         return responses;
     }
 
@@ -228,7 +331,7 @@ public class WISControllerHelperService {
                 parameter.put("param", databasevaluelist[0]);
                 parameter.put("tag", Integer.parseInt(databasevaluelist[1]));
                 parameter.put("current_value", true);
-                parameter.put("wheatis_type", 0);
+                parameter.put("grassroots_type", 0);
                 parameter.put("concise", true);
 
                 parametersArray.add(parameter);
@@ -237,7 +340,7 @@ public class WISControllerHelperService {
                 databaseParameters.append("\"param\": \"" + databasevaluelist[0] + "\",");
                 databaseParameters.append("\"current_value\": true,");
                 databaseParameters.append("\"tag\": " + databasevaluelist[1] + ",");
-                databaseParameters.append("\"wheatis_type\": 0,");
+                databaseParameters.append("\"grassroots_type\": 0,");
                 databaseParameters.append("\"concise\": true");
                 databaseParameters.append("}");
             }
@@ -257,6 +360,7 @@ public class WISControllerHelperService {
         JSONObject p11 = new JSONObject();
         JSONObject p12 = new JSONObject();
         JSONObject p13 = new JSONObject();
+        JSONObject p14 = new JSONObject();
 
         JSONObject p1CurrentValue = new JSONObject();
         p1.put("param", "input");
@@ -264,8 +368,8 @@ public class WISControllerHelperService {
         p1CurrentValue.put("value", "");
         p1.put("current_value", p1CurrentValue);
         p1.put("tag", 1112100422);
-        p1.put("wheatis_type", 7);
-//        p2.put("type", "string");
+        p1.put("grassroots_type", 7);
+        p2.put("type", "string");
         p1.put("concise", true);
 
         parametersArray.add(p1);
@@ -273,326 +377,155 @@ public class WISControllerHelperService {
 
         JSONObject p2CurrentValue = new JSONObject();
         p2.put("param", "output");
-//        p2.put("type", "string");
+        p2.put("type", "string");
         p2.put("tag", 1112495430);
         p2CurrentValue.put("protocol", "");
         p2CurrentValue.put("value", "");
         p2.put("current_value", p2CurrentValue);
-//        p2.put("level", 7);
-        p2.put("wheatis_type", 6);
+        p2.put("level", 7);
+        p2.put("grassroots_type", 6);
         p2.put("concise", true);
 
         parametersArray.add(p2);
 
         p3.put("param", "query_sequence");
-//        p3.put("type", "string");
+        p3.put("type", "string");
         p3.put("tag", 1112626521);
-        p3.put("current_value", sequence.replaceAll("\\n", "\\\\n").replaceAll("\\r", "\\\\n"));
-//        p3.put("level", 7);
-        p3.put("wheatis_type", 5);
+        p3.put("current_value", sequence);
+        p3.put("level", 7);
+        p3.put("grassroots_type", 5);
         p3.put("concise", true);
 
         parametersArray.add(p3);
 
         p4.put("param", "from");
-//        p4.put("type", "integer");
+        p4.put("type", "integer");
         p4.put("tag", 1112622674);
         p4.put("current_value", Integer.parseInt(query_from));
-//        p4.put("level", 6);
-        p4.put("wheatis_type", 2);
+        p4.put("level", 6);
+        p4.put("grassroots_type", 2);
         p4.put("concise", true);
 
         parametersArray.add(p4);
 
         p5.put("param", "to");
-//        p5.put("type", "integer");
+        p5.put("type", "integer");
         p5.put("tag", 1112626255);
         p5.put("current_value", Integer.parseInt(query_to));
-//        p5.put("level", 6);
-        p5.put("wheatis_type", 2);
+        p5.put("level", 6);
+        p5.put("grassroots_type", 2);
         p5.put("concise", true);
 
         parametersArray.add(p5);
 
         p6.put("param", "max_target_sequences");
-//        p6.put("type", "integer");
+        p6.put("type", "integer");
         p6.put("tag", 1112363857);
         p6.put("current_value", Integer.parseInt(max_target_sequences));
-//        p6.put("level", 7);
-        p6.put("wheatis_type", 2);
+        p6.put("level", 7);
+        p6.put("grassroots_type", 2);
         p6.put("concise", true);
 
         parametersArray.add(p6);
 
         p7.put("param", "short_queries");
-//        p7.put("type", "boolean");
+        p7.put("type", "boolean");
         p7.put("tag", 1112754257);
         p7.put("current_value", Boolean.valueOf(short_queries));
-//        p7.put("level", 7);
-        p7.put("wheatis_type", 0);
+        p7.put("level", 7);
+        p7.put("grassroots_type", 0);
         p7.put("concise", true);
 
         parametersArray.add(p7);
 
         p8.put("param", "expect_threshold");
-//        p8.put("type", "integer");
+        p8.put("type", "integer");
         p8.put("tag", 1111840852);
         p8.put("current_value", Integer.parseInt(expect_threshold));
-//        p8.put("level", 7);
-        p8.put("wheatis_type", 2);
+        p8.put("level", 7);
+        p8.put("grassroots_type", 2);
         p8.put("concise", true);
 
         parametersArray.add(p8);
 
         p9.put("param", "word_size");
-//        p9.put("type", "integer");
+        p9.put("type", "integer");
         p9.put("tag", 1113015379);
         p9.put("current_value", Integer.parseInt(word_size));
-//        p9.put("level", 7);
-        p9.put("wheatis_type", 2);
+        p9.put("level", 7);
+        p9.put("grassroots_type", 2);
         p9.put("concise", true);
 
         parametersArray.add(p9);
 
         p10.put("param", "max_matches_in_a_query_range");
-//        p10.put("type", "integer");
+        p10.put("type", "integer");
         p10.put("tag", 1112363591);
         p10.put("current_value", Integer.parseInt(max_matches_query_range));
-//        p10.put("level", 7);
-        p10.put("wheatis_type", 2);
+        p10.put("level", 7);
+        p10.put("grassroots_type", 2);
         p10.put("concise", true);
 
         parametersArray.add(p10);
 
         p11.put("param", "output_format");
-//        p11.put("type", "integer");
+        p11.put("type", "integer");
         p11.put("tag", 1111903572);
         p11.put("current_value", 5);
-//        p11.put("level", 7);
-        p11.put("wheatis_type", 2);
+        p11.put("level", 7);
+        p11.put("grassroots_type", 2);
         p11.put("concise", true);
 
         parametersArray.add(p11);
 
         p12.put("param", "match");
-//        p12.put("type", "integer");
+        p12.put("type", "integer");
         p12.put("tag", 1112364099);
         p12.put("current_value", Integer.parseInt(match));
-//        p12.put("level", 6);
-        p12.put("wheatis_type", 1);
+        p12.put("level", 6);
+        p12.put("grassroots_type", 1);
         p12.put("concise", true);
 
         parametersArray.add(p12);
 
         p13.put("param", "mismatch");
+        p13.put("type", "integer");
         p13.put("tag", 1112363853);
         p13.put("current_value", Integer.parseInt(mismatch));
-        p12.put("wheatis_type", 1);
+        p13.put("grassroots_type", 1);
+        p13.put("level", 6);
         p13.put("concise", true);
 
         parametersArray.add(p13);
 
+        p14.put("param", "output_format");
+        p14.put("tag", 1111903572);
+        p14.put("current_value", 5);
+        p14.put("grassroots_type", 2);
+        p14.put("type", "integer");
+        p14.put("level", 7);
+        p14.put("concise", true);
+        parametersArray.add(p14);
+
         parameterSetObject.put("parameters", parametersArray);
 
         service1.put("run", true);
-        service1.put("services", "Blast service");
+        service1.put(service_key, "Blast service");
         service1.put("parameter_set", parameterSetObject);
         servicesArray.add(service1);
         requestObject.put("services", servicesArray);
 
-        String service = "{" +
-                "    \"services\": [" +
-                "        {" +
-                "            \"services\": \"Blast service\"," +
-                "            \"run\": true," +
-                "            \"parameter_set\": {" +
-                "      \"parameters\": [" +
-                "        {" +
-                "          \"level\": 7," +
-                "          \"param\": \"input\"," +
-                "          \"current_value\": {" +
-                "            \"protocol\": \"\"," +
-                "            \"value\": \"\"" +
-                "          }," +
-                "          \"tag\": 1112100422," +
-                "          \"wheatis_type\": 7," +
-                "          \"default\": {" +
-                "            \"protocol\": \"\"," +
-                "            \"value\": \"\"" +
-                "          }," +
-                "          \"type\": \"string\"," +
-                "          \"description\": \"The input file to read\"," +
-                "          \"name\": \"Input\"," +
-                "          \"group\": \"Query Sequence Parameters\"" +
-                "        }," +
-                "        {" +
-                "          \"level\": 7," +
-                "          \"param\": \"output\"," +
-                "          \"current_value\": {" +
-                "            \"protocol\": \"\"," +
-                "            \"value\": \"\"" +
-                "          }," +
-                "          \"tag\": 1112495430," +
-                "          \"wheatis_type\": 6," +
-                "          \"default\": {" +
-                "            \"protocol\": \"\"," +
-                "            \"value\": \"\"" +
-                "          }," +
-                "          \"type\": \"string\"," +
-                "          \"description\": \"The output file to write\"," +
-                "          \"name\": \"Output\"," +
-                "          \"group\": \"Query Sequence Parameters\"" +
-                "        }," +
-                "        {" +
-                "          \"level\": 7," +
-                "          \"param\": \"query_sequence\"," +
-                "          \"current_value\": \"" + sequence + "\"," +
-                "          \"tag\": 1112626521," +
-                "          \"wheatis_type\": 5," +
-                "          \"default\": \"\"," +
-                "          \"type\": \"string\"," +
-                "          \"description\": \"Query sequence(s) to be used for a BLAST search should be pasted in the 'Search' text area. It accepts a number of different types of input and automatically determines the format or the input. To allow this feature there are certain conventions required with regard to the input of identifiers (e.g., accessions or gi's)\"," +
-                "          \"name\": \"Query Sequence(s)\"," +
-                "          \"group\": \"Query Sequence Parameters\"" +
-                "        }," +
-                "        {" +
-                "          \"level\": 6," +
-                "          \"param\": \"from\"," +
-                "          \"current_value\": " + query_from + "," +
-                "          \"tag\": 1112622674," +
-                "          \"wheatis_type\": 2," +
-                "          \"default\": 0," +
-                "          \"type\": \"integer\"," +
-                "          \"description\": \"Coordinates for a subrange of the query sequence. The BLAST search will apply only to the residues in the range. Valid sequence coordinates are from 1 to the sequence length. Set either From or To to 0 to ignore the range. The range includes the residue at the To coordinate.\"," +
-                "          \"name\": \"From\"," +
-                "          \"group\": \"Query Sequence Parameters\"" +
-                "        }," +
-                "        {" +
-                "          \"level\": 6," +
-                "          \"param\": \"to\"," +
-                "          \"current_value\": " + query_to + "," +
-                "          \"tag\": 1112626255," +
-                "          \"wheatis_type\": 2," +
-                "          \"default\": 0," +
-                "          \"type\": \"integer\"," +
-                "          \"description\": \"Coordinates for a subrange of the query sequence. The BLAST search will apply only to the residues in the range. Valid sequence coordinates are from 1 to the sequence length. Set either From or To to 0 to ignore the range. The range includes the residue at the To coordinate.\"," +
-                "          \"name\": \"To\"," +
-                "          \"group\": \"Query Sequence Parameters\"" +
-                "        }," +
-                "        {" +
-                "          \"level\": 7," +
-                "          \"param\": \"max_target_sequences\"," +
-                "          \"current_value\": " + max_target_sequences + "," +
-                "          \"tag\": 1112363857," +
-                "          \"wheatis_type\": 2," +
-                "          \"default\": 100," +
-                "          \"type\": \"integer\"," +
-                "          \"description\": \"Select the maximum number of aligned sequences to display (the actual number of alignments may be greater than this).\"," +
-                "          \"name\": \"Max target sequences\"," +
-                "          \"group\": \"General Algorithm Parameters\"" +
-                "        }," +
-                "        {" +
-                "          \"level\": 7," +
-                "          \"param\": \"short_queries\"," +
-                "          \"current_value\": " + short_queries + "," +
-                "          \"tag\": 1112754257," +
-                "          \"wheatis_type\": 0," +
-                "          \"default\": true," +
-                "          \"type\": \"boolean\"," +
-                "          \"description\": \"Automatically adjust parameters for short input sequences\"," +
-                "          \"name\": \"Short queries\"," +
-                "          \"group\": \"General Algorithm Parameters\"" +
-                "        }," +
-                "        {" +
-                "          \"level\": 7," +
-                "          \"param\": \"expect_threshold\"," +
-                "          \"current_value\": " + expect_threshold + "," +
-                "          \"tag\": 1111840852," +
-                "          \"wheatis_type\": 2," +
-                "          \"default\": 10," +
-                "          \"type\": \"integer\"," +
-                "          \"description\": \"Expected number of chance matches in a random model\"," +
-                "          \"name\": \"Expect threshold\"," +
-                "          \"group\": \"General Algorithm Parameters\"" +
-                "        }," +
-                "        {" +
-                "          \"level\": 7," +
-                "          \"param\": \"word_size\"," +
-                "          \"current_value\": " + word_size + "," +
-                "          \"tag\": 1113015379," +
-                "          \"wheatis_type\": 2," +
-                "          \"default\": 28," +
-                "          \"type\": \"integer\"," +
-                "          \"description\": \"Expected number of chance matches in a random model\"," +
-                "          \"name\": \"Word size\"," +
-                "          \"group\": \"General Algorithm Parameters\"" +
-                "        }," +
-                "        {" +
-                "          \"level\": 7," +
-                "          \"param\": \"max_matches_in_a_query_range\"," +
-                "          \"current_value\": " + max_matches_query_range + "," +
-                "          \"tag\": 1112363591," +
-                "          \"wheatis_type\": 2," +
-                "          \"default\": 0," +
-                "          \"type\": \"integer\"," +
-                "          \"description\": \"Limit the number of matches to a query range. This option is useful if many strong matches to one part of a query may prevent BLAST from presenting weaker matches to another part of the query\"," +
-                "          \"name\": \"Max matches in a query range\"," +
-                "          \"group\": \"General Algorithm Parameters\"" +
-                "        }," +
-                "        {" +
-                "          \"level\": 7," +
-                "          \"param\": \"output_format\"," +
-                "          \"current_value\": 5," +
-                "          \"tag\": 1111903572," +
-                "          \"wheatis_type\": 2," +
-                "          \"default\": 5," +
-                "          \"type\": \"integer\"," +
-                "          \"description\": \"The output format for the results\"," +
-                "          \"name\": \"Output format\"," +
-                "          \"group\": \"General Algorithm Parameters\"" +
-                "        }," +
-                "        {" +
-                "          \"level\": 6," +
-                "          \"param\": \"match\"," +
-                "          \"current_value\": " + match + "," +
-                "          \"tag\": 1112364099," +
-                "          \"wheatis_type\": 1," +
-                "          \"default\": 2," +
-                "          \"type\": \"integer\"," +
-                "          \"description\": \"Reward for a nucleotide match.\"," +
-                "          \"name\": \"Match\"," +
-                "          \"group\": \"Scoring Parameters\"" +
-                "        }," +
-                "        {" +
-                "          \"level\": 6," +
-                "          \"param\": \"mismatch\"," +
-                "          \"current_value\": " + mismatch + "," +
-                "          \"tag\": 1112363853," +
-                "          \"wheatis_type\": 1," +
-                "          \"default\": -3," +
-                "          \"type\": \"integer\"," +
-                "          \"description\": \"Penalty for a nucleotide mismatch.\"," +
-                "          \"name\": \"Mismatch\"," +
-                "          \"group\": \"Scoring Parameters\"" +
-                "        }" +
-                databaseParameters.toString() +
-                "      ]" +
-                "            }" +
-                "        }" +
-                "    ]" +
-                "}";
         JSONObject responses = new JSONObject();
         try {
 
-            String url = blastURL;
+            String url = activeURL;
 
 
             HttpClient httpClient = new DefaultHttpClient();
 
             try {
                 HttpPost request = new HttpPost(url);
-//                StringEntity params = new StringEntity(requestObject.toString());
-                StringEntity params = new StringEntity(service.replaceAll("\\n", "\\\\n").replaceAll("\\r", "\\\\n"));
+                StringEntity params = new StringEntity(requestObject.toString());
                 request.addHeader("content-type", "application/x-www-form-urlencoded");
                 request.setEntity(params);
                 HttpResponse response = httpClient.execute(request);
@@ -605,10 +538,6 @@ public class WISControllerHelperService {
                 e.printStackTrace();
                 return null;
             }
-//      finally {
-//        httpClient.getConnectionManager().shutdown();
-//      }
-
             return responses;
 
         } catch (Exception e) {
@@ -619,7 +548,8 @@ public class WISControllerHelperService {
     public JSONObject checkBlastResult(HttpSession session, JSONObject json) {
         JSONObject responses = new JSONObject();
         String uuid = json.getString("uuid");
-        String url = blastURL;
+//        String url = blastURL;
+        String url = activeURL;
         JSONObject requestObject = new JSONObject();
         JSONObject operationsObject = new JSONObject();
         JSONArray servicesArray = new JSONArray();
@@ -642,8 +572,9 @@ public class WISControllerHelperService {
             ResponseHandler<String> handler = new BasicResponseHandler();
             String body = handler.handleResponse(response);
             // if 6 keep checking
-            JSONObject statusJSON = JSONObject.fromObject(body);
-            JSONArray statusArray = statusJSON.getJSONArray("services");
+            JSONArray statusArray = JSONArray.fromObject(body);
+//            JSONObject statusJSON = resultArray.getJSONObject(0);
+//            JSONArray statusArray = statusJSON.getJSONArray("services");
             if (statusArray.getJSONObject(0) != null) {
                 if (statusArray.getJSONObject(0).has("status")) {
                     int status = statusArray.getJSONObject(0).getInt("status");
@@ -658,18 +589,18 @@ public class WISControllerHelperService {
                         responses.put("html", "Job error");
                     }
                     if (status == 0) {
-                        responses.put("html", "Job idle <img src=\"/images/ajax-loader.gif\">");
+                        responses.put("html", "Job idle <img src=\"images/ajax-loader.gif\">");
                     }
                     if (status == 1) {
-                        responses.put("html", "Job pending <img src=\"/images/ajax-loader.gif\">");
+                        responses.put("html", "Job pending <img src=\"images/ajax-loader.gif\">");
                     }
                     if (status == 2) {
-                        responses.put("html", "Job started <img src=\"/images/ajax-loader.gif\">");
+                        responses.put("html", "Job started <img src=\"images/ajax-loader.gif\">");
                     }
                     if (status == 3) {
-                        responses.put("html", "Job finished <img src=\"/images/ajax-loader.gif\">");
+                        responses.put("html", "Job finished <img src=\"images/ajax-loader.gif\">");
                     }
-                    if (status == 4) {
+                    if (status == 4 || status == 5) {
                         responses.put("html", "Job succeeded");
                     }
 
@@ -687,9 +618,6 @@ public class WISControllerHelperService {
             e.printStackTrace();
             return null;
         }
-//    finally {
-//      httpClient.getConnectionManager().shutdown();
-//    }
         return responses;
     }
 
@@ -697,7 +625,7 @@ public class WISControllerHelperService {
         String rawResultString;
 
         String uuid = json.getString("uuid");
-        String url = blastURL;
+        String url = activeURL;
         JSONObject requestObject = new JSONObject();
         JSONObject operationsObject = new JSONObject();
         JSONArray servicesArray = new JSONArray();
@@ -719,17 +647,26 @@ public class WISControllerHelperService {
 
             ResponseHandler<String> handler = new BasicResponseHandler();
             String body = handler.handleResponse(response);
-            JSONObject xmlJSON = JSONObject.fromObject(body);
-            JSONArray xmlJSONArray = xmlJSON.getJSONArray("services");
-            rawResultString = xmlJSONArray.getJSONObject(0).getString("data");
+//            JSONObject xmlJSON = JSONObject.fromObject(body);
+//            JSONArray xmlJSONArray = xmlJSON.getJSONArray("services");
+            JSONArray xmlJSONArray = JSONArray.fromObject(body);
+            JSONArray resultsArray = xmlJSONArray.getJSONObject(0).getJSONArray("results");
+            rawResultString = resultsArray.getJSONObject(0).getString("data");
             return formatXMLBlastResult(rawResultString);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
-//    finally {
-//      httpClient.getConnectionManager().shutdown();
-//    }
+    }
+
+    public JSONObject formatXMLBlastResultFrontend(HttpSession session, JSONObject json) {
+        String rawResultString = json.getString("rawResultString");
+        String dbname = json.getString("dbname");
+        String uuid = json.getString("uuid");
+        JSONObject response = formatXMLBlastResult(rawResultString);
+        response.put("dbname", dbname);
+        response.put("uuid", uuid);
+        return response;
 
     }
 
@@ -864,6 +801,19 @@ public class WISControllerHelperService {
 
                     String turartuLink = "http://plants.ensembl.org/Triticum_urartu/Search/Results?species=Triticum%20urartu;idx=;q=";
 
+                    String tgacv1Link = "http://oct2017-plants.ensembl.org/Triticum_aestivum/Location/View?r=";
+
+                    if ("Triticum_aestivum_CS42_TGACv1_all".equals(databaseName)) {
+                        String ensemblAccession = "";
+                        Pattern p = Pattern.compile("^Triticum_aestivum_CS42_TGACv1_scaffold_(\\d+)_(\\d*[A-Z]*).*");
+                        Matcher m = p.matcher(accession);
+                        while (m.find()) {
+                            ensemblAccession = "TGACv1_scaffold_" + m.group(1) + "_" + m.group(2);
+                        }
+                        ensemblLink = tgacv1Link;
+                        linktoensembl = " | <a target=\"_blank\" href=\"" + ensemblLink + ensemblAccession + ":1\">View on Ensembl</a>";
+                    }
+
                     if ("Aegilops_tauschii.GCA_000347335.1.26.dna.genome".equals(databaseName)) {
                         ensemblLink = aegilopsTauschiiLink;
                         linktoensembl = " | <a target=\"_blank\" href=\"" + ensemblLink + accession + "\">Ensembl Search</a>";
@@ -890,6 +840,20 @@ public class WISControllerHelperService {
                     }
 
                     if ("/tgac/public/databases/blast/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all".equals(databaseString) ||
+                            "/tgac/references/databases/blast/hordeum_vulgare/Hordeum_vulgare_Golden_promise_EIv1".equals(databaseString) ||
+                            "/tgac/references/databases/blast/hordeum_vulgare/Hordeum_vulgare_Golden_promise_EIv1.1".equals(databaseString) ||
+                            "/tgac/public/databases/blast/triticum_aestivum/EI/v1.1/Triticum_aestivum_Cadenza_EIv1.1".equals(databaseString) ||
+                            "/tgac/public/databases/blast/triticum_turgidum/EI/v1.1/Triticum_turgidum_Kronos_EIv1.1".equals(databaseString) ||
+                            "/tgac/public/databases/blast/triticum_aestivum/EI/v1.1/Triticum_aestivum_Paragon_EIv1.1".equals(databaseString) ||
+                            "/tgac/public/databases/blast/triticum_aestivum/EI/v1.1/Triticum_aestivum_Robigus_EIv1.1".equals(databaseString) ||
+                            "/tgac/public/databases/blast/triticum_aestivum/EI/v1.1/Triticum_aestivum_Claire_EIv1.1".equals(databaseString) ||
+                            "/tgac/public/databases/blast/triticum_aestivum/EI/v1/Triticum_aestivum_Cadenza_EIv1".equals(databaseString) ||
+                            "/tgac/public/databases/blast/triticum_turgidum/EI/v1/Triticum_turgidum_Kronos_EIv1".equals(databaseString) ||
+                            "/tgac/public/databases/blast/triticum_aestivum/EI/v1/Triticum_aestivum_Paragon_EIv1".equals(databaseString) ||
+                            "/tgac/public/databases/blast/triticum_aestivum/EI/v1/Triticum_aestivum_Robigus_EIv1".equals(databaseString) ||
+                            "/tgac/public/databases/blast/triticum_aestivum/EI/v1/Triticum_aestivum_Claire_EIv1".equals(databaseString) ||
+//                            "/tgac/public/databases/blast/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_scaffold.annotation.gff3.cdna.fa".equals(databaseString) ||
+//                            "/tgac/public/databases/blast/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_scaffold.annotation.gff3.cds.fa".equals(databaseString) ||
                             "/tgac/public/databases/blast/aegilops_tauschii/GCA_000347335.1/Aegilops_tauschii.GCA_000347335.1.26.dna.genome".equals(databaseString) ||
                             "/tgac/public/databases/blast/triticum_aestivum/brenchley_CS42/subassemblies_TEcleaned_Hv80Bd75Sb70Os70_30aa_firstBestHit_assembly_ml40_mi99".equals(databaseString) ||
                             "/tgac/public/databases/blast/triticum_aestivum/IWGSC/v2/IWGSCv2.0".equals(databaseString) ||
@@ -897,7 +861,7 @@ public class WISControllerHelperService {
                             "/tgac/public/databases/blast/triticum_monococcum/spp_aegilopoides/Triticum_monococcum_G3116".equals(databaseString) ||
                             "/tgac/public/databases/blast/triticum_monococcum/spp_monococcum/Triticum_monococcum_DV92".equals(databaseString)
                             ) {
-                        id = "<a href='javascript:;' id='" + id.replaceAll("\\|", ":") + "' onclick=\"downloadFileFromServer('" + id.replaceAll("\\|", ":") + "','" + databaseString + "')\">" + id + "</a><div id='" + id.replaceAll("\\|", ":") + "status'></div>";
+                        id = id + " | <a href='javascript:;' id='" + id.replaceAll("\\|", ":") + "' onclick=\"downloadFileFromServer('" + id.replaceAll("\\|", ":") + "','" + databaseString + "')\">Download</a><span id='" + id.replaceAll("\\|", ":") + "status'></span>";
                     }
 
                     sb.append("<div class='blastResultBox ui-corner-all'>");
@@ -986,7 +950,7 @@ public class WISControllerHelperService {
             String id = json.getString("id");
             String db = json.getString("db");
             log.debug(id);
-            String url = blastTestURL;
+            String url = activeURL;
 
             JSONObject requestObject = new JSONObject();
             JSONArray servicesArray = new JSONArray();
@@ -1000,19 +964,9 @@ public class WISControllerHelperService {
             JSONObject p1 = new JSONObject();
             JSONObject p2 = new JSONObject();
 
-//            p1.put("param", "Index");
-//            p1.put("type", "string");
-//            p1.put("tag", 1398031948);
-////            p1.put("current_value", "/tgac/references/internal/assembly/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all.fa");
-//            p1.put("db", db);
-//            p1.put("level", 7);
-//            p1.put("grassroots_type", 5);
-//            p1.put("concise", true);
-
             p1.put("param", "Blast database");
             p1.put("type", "string");
             p1.put("tag", 1398030918);
-//            p1.put("current_value", "/tgac/references/internal/assembly/triticum_aestivum/TGAC/v1/Triticum_aestivum_CS42_TGACv1_all.fa");
             p1.put("current_value", db);
             p1.put("level", 7);
             p1.put("grassroots_type", 5);
@@ -1034,7 +988,7 @@ public class WISControllerHelperService {
             parameterSetObject.put("parameters", parametersArray);
 
             service1.put("run", true);
-            service1.put("services", "SamTools service");
+            service1.put(service_key, "SamTools service");
             service1.put("parameter_set", parameterSetObject);
 
 
@@ -1072,9 +1026,6 @@ public class WISControllerHelperService {
                 log.debug(e.toString());
                 return null;
             }
-//          finally {
-//              httpClient.getConnectionManager().shutdown();
-//          }
         } else {
             responses.put("file", "Error no id appeared");
         }
@@ -1099,7 +1050,7 @@ public class WISControllerHelperService {
         String rawResultString;
 
         String uuid = json.getString("id");
-        String url = blastTestURL;
+        String url = activeURL;
         JSONObject requestObject = new JSONObject();
         JSONArray servicesArray = new JSONArray();
 
@@ -1109,7 +1060,7 @@ public class WISControllerHelperService {
 
         JSONObject p1 = new JSONObject();
 
-        p1.put("param", "job_id");
+        p1.put("param", "job_ids");
         p1.put("tag", 1112099401);
         p1.put("current_value", uuid);
         p1.put("grassroots_type", 5);
@@ -1118,10 +1069,23 @@ public class WISControllerHelperService {
         p1.put("concise", true);
         parametersArray.add(p1);
 
+        JSONObject p2 = new JSONObject();
+
+
+        p2.put("param", "output_format");
+        p2.put("tag", 1111903572);
+        p2.put("current_value", 5);
+        p2.put("grassroots_type", 2);
+        p2.put("type", "integer");
+        p2.put("level", 7);
+        p2.put("concise", true);
+        parametersArray.add(p2);
+
+
         parameterSetObject.put("parameters", parametersArray);
 
         service1.put("run", true);
-        service1.put("services", "Blast service");
+        service1.put(service_key, "Blast service");
         service1.put("parameter_set", parameterSetObject);
 
         servicesArray.add(service1);
@@ -1144,10 +1108,10 @@ public class WISControllerHelperService {
             JSONArray resultArray = JSONArray.fromObject(body);
             JSONObject xmlJSON = (JSONObject) resultArray.get(0);
 
-            if (xmlJSON.get("status") != null) {
-                if (xmlJSON.getInt("status")!= -1) {
-                    JSONArray xmlJSONArray = xmlJSON.getJSONArray("services");
-                    rawResultString = xmlJSONArray.getJSONObject(0).getString("data");
+            if (xmlJSON.get("status_text") != null) {
+                if (xmlJSON.getString("status_text").equals("Succeeded")) {
+                    JSONObject resultData = (JSONObject) xmlJSON.getJSONArray("results").get(0);
+                    rawResultString = resultData.getString("data");
                     return formatXMLBlastResult(rawResultString);
                 } else {
                     result.put("html", "Error, Not able to retrieve job " + uuid);
@@ -1162,10 +1126,94 @@ public class WISControllerHelperService {
             result.put("error", e.toString());
             return result;
         }
-//    finally {
-//      httpClient.getConnectionManager().shutdown();
-//    }
+    }
 
+
+    public JSONObject downloadPreviousJob(HttpSession session, JSONObject json) {
+        String rawResultString;
+
+        String uuid = json.getString("id");
+        int format = 0;
+        if (json.get("format") != null) {
+            format = Integer.parseInt(json.getString("format"));
+        }
+        String url = activeURL;
+        JSONObject requestObject = new JSONObject();
+        JSONArray servicesArray = new JSONArray();
+
+        JSONObject service1 = new JSONObject();
+        JSONObject parameterSetObject = new JSONObject();
+        JSONArray parametersArray = new JSONArray();
+
+        JSONObject p1 = new JSONObject();
+
+        p1.put("param", "job_ids");
+        p1.put("tag", 1112099401);
+        p1.put("current_value", uuid);
+        p1.put("grassroots_type", 5);
+        p1.put("type", "string");
+        p1.put("level", 7);
+        p1.put("concise", true);
+        parametersArray.add(p1);
+
+        JSONObject p2 = new JSONObject();
+
+
+        p2.put("param", "output_format");
+        p2.put("tag", 1111903572);
+        p2.put("current_value", format);
+        p2.put("grassroots_type", 2);
+        p2.put("type", "integer");
+        p2.put("level", 7);
+        p2.put("concise", true);
+        parametersArray.add(p2);
+
+
+        parameterSetObject.put("parameters", parametersArray);
+
+        service1.put("run", true);
+        service1.put(service_key, "Blast service");
+        service1.put("parameter_set", parameterSetObject);
+
+        servicesArray.add(service1);
+        requestObject.put("services", servicesArray);
+
+        HttpClient httpClient = new DefaultHttpClient();
+
+
+        JSONObject result = new JSONObject();
+
+        try {
+            HttpPost request = new HttpPost(url);
+            StringEntity params = new StringEntity(requestObject.toString());
+            request.addHeader("content-type", "application/x-www-form-urlencoded");
+            request.setEntity(params);
+            HttpResponse response = httpClient.execute(request);
+
+            ResponseHandler<String> handler = new BasicResponseHandler();
+            String body = handler.handleResponse(response);
+            JSONArray resultArray = JSONArray.fromObject(body);
+            JSONObject xmlJSON = (JSONObject) resultArray.get(0);
+
+            if (xmlJSON.get("status_text") != null) {
+                if (xmlJSON.getString("status_text").equals("Succeeded")) {
+                    JSONObject resultData = (JSONObject) xmlJSON.getJSONArray("results").get(0);
+                    rawResultString = resultData.getString("data");
+                    result.put("file", rawResultString.replaceAll("%", " percent"));
+                    return result;
+                } else {
+                    result.put("file", "Error, Not able to retrieve job " + uuid);
+                    return result;
+                }
+            } else {
+                result.put("file", "Error, Not able to retrieve job " + uuid);
+                return result;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            result.put("error", e.toString());
+            return result;
+        }
     }
 
 }

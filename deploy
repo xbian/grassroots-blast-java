@@ -1,1 +1,1 @@
-scp wis-portal/target/ROOT.war wheatis@wheatis.tgac.ac.uk:
+scp wis-portal/target/ROOT.war grassroots.tools:

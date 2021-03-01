@@ -34,9 +34,6 @@
         <%--<p/>--%>
         <fieldset>
             <legend>BLAST Databases</legend>
-    <p>
-    Download full sequence files: <a href="http://opendata.earlham.ac.uk/Triticum_aestivum/">Triticum aestivum</a>  <a href="http://opendata.earlham.ac.uk/Triticum_turgidum/">Triticum turgidum</a>
-    </p>
             <div id="blastDBs"></div>
         </fieldset>
         <button id="blastButton1" type="button" onclick="sendBlastRequest();">BLAST Search</button>
@@ -63,17 +60,20 @@
                         <td style="padding-left:20px;"> To</td>
                         <td><input type="text" name="query_to" id="query_to" value="0" size="10"></td>
                     </tr>
-                    <tr>
+                  <%--  <tr>
                         <td><span class="blastFormTitle">Short queries</span></td>
                         <td><select name="short_queries" id="short_queries">
                             <option value="false" selected="selected">false</option>
                             <option value="true">true</option>
-                        </select></td>
+                        </select></td>--%>
 
                     </tr>
                     <tr>
                         <td><span class="blastFormTitle">Word size</span></td>
                         <td><select name="word_size" id="word_size" class="reset checkDef opts" defval="28">
+                        <option value="8">8</option>
+                        <option value="10">10</option>
+                        <option value="12">12</option>
                             <option value="16">16</option>
                             <option value="20">20</option>
                             <option value="24">24</option>
@@ -86,20 +86,27 @@
                         </select></td>
 
                     </tr>
-                    <tr>
+                   <%-- <tr>
                         <td><span class="blastFormTitle">Max matches</span></td>
                         <td><input name="max_matches_query_range" id="max_matches_query_range" size="10" type="text"
                                    value="0"/>
                         </td>
-                    </tr>
+                    </tr>--%>
                     <tr>
                         <td><span class="blastFormTitle">Match reward</span></td>
-                        <td><input name="match" id="match" size="10" type="text" value="2"/>
+                        <td>
+                        <select name="match" id="match" class="reset checkDef opts" >
+                            <option value="1">1</option>
+                        </select>
                         </td>
                     </tr>
                     <tr>
                         <td><span class="blastFormTitle">Mismatch penalty</span></td>
-                        <td><input name="mismatch" id="mismatch" size="10" type="text" value="-3" param="test"/>
+                        <td>
+                        <select name="mismatch" id="mismatch" class="reset checkDef opts" >
+                            <option value="-2">-2</option>
+                            <option value="-3" selected="selected">-3</option>
+                        </select>
                         </td>
                     </tr>
                 </table>
@@ -138,7 +145,7 @@
         dropZone.addEventListener('dragover', handleDragOver, false);
         dropZone.addEventListener('drop', handleFileSelect, false);
         jQuery(document).ready(function () {
-            getBlastDBs();
+            getBlastDBs2();
         });
 
     </script>
