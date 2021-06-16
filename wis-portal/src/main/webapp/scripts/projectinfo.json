@@ -223,5 +223,65 @@
     "@type": "Grassroots:Project",
     "type_description": "Dataset",
     "so:image": "https://grassroots.tools/grassroots/images/aiss/drawer"
+  },
+  {
+    "uuid": "7548b642-b060-4b89-9854-e48cbbe0987f",
+    "authors": [
+      "Jon Wright", "Bernardo Clavijo"
+    ],
+    "projectName": "Triticeae Genomics For Sustainable Agriculture",
+    "description": "Genome assemblies of the hexaploid UK wheat lines Cadenza, Claire, Paragon and Robigus and the tetraploid wheat line Kronos. Illumina paired-end and mate-pair reads were generated and assembled using the w2rap pipeline (see http://dx.doi.org/10.1101/gr.217117.116 for further details)",
+    "license": {
+      "so:name": "toronto",
+      "so:url": "https://www.nature.com/articles/461168a#Sec2"
+    },
+    "project_codes": [
+      "BB/J003557/1"
+    ],
+    "url": "https://opendata.earlham.ac.uk/wheat/under_license/toronto/Clavijo_2017-04-25_Wheat-LoLa/",
+    "irods_path": "/grassrootsZone/public/under_license/toronto/Clavijo_2017-04-25_Wheat-LoLa",
+    "@type": "Grassroots:Project",
+    "type_description": "Dataset",
+    "so:image": "https://grassroots.tools/grassroots/images/aiss/drawer"
+  },
+  {
+    "uuid": "ff193317-2b6a-4e82-a0bf-3ec00d26229c",
+    "authors": [
+      "Brande Wulff"
+    ],
+    "projectName": "",
+    "description": "",
+    "license": {
+      "so:name": "toronto",
+      "so:url": "https://www.nature.com/articles/461168a#Sec2"
+    },
+    "project_codes": [
+      "BB/P016855/1"
+    ],
+    "url": "https://opendata.earlham.ac.uk/wheat/under_license/toronto/Wulff_2019-03-13_OWWC_lineage1/",
+    "irods_path": "/grassrootsZone/public/under_license/toronto/Wulff_2019-03-13_OWWC_lineage1",
+    "@type": "Grassroots:Project",
+    "type_description": "Dataset",
+    "so:image": "https://grassroots.tools/grassroots/images/aiss/drawer"
+  },
+  {
+    "uuid": "db66c845-a544-4e55-862f-6e8b690dc7b0",
+    "authors": [
+      ""
+    ],
+    "projectName": "",
+    "description": "",
+    "license": {
+      "so:name": "toronto",
+      "so:url": "https://www.nature.com/articles/461168a#Sec2"
+    },
+    "project_codes": [
+      "BB/P016855/1"
+    ],
+    "url": "https://opendata.earlham.ac.uk/wheat/under_license/toronto/Brinton_etal_2020-05-20-Haplotypes-for-wheat-breeding/",
+    "irods_path": "/grassrootsZone/public/under_license/toronto/Brinton_etal_2020-05-20-Haplotypes-for-wheat-breeding",
+    "@type": "Grassroots:Project",
+    "type_description": "Dataset",
+    "so:image": "https://grassroots.tools/grassroots/images/aiss/drawer"
   }
 ]
